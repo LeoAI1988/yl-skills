@@ -1,7 +1,7 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "1.1.0",
-  "date": "2026-09-15",
+  "version": "1.2.0",
+  "date": "2026-09-16",
   "skills": {
     "yl-toolbox": {
       "version": "1.1.0",
@@ -62,6 +62,12 @@
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
+    },
+    "yl-skill-sync": {
+      "version": "1.0.0",
+      "category": "tooling",
+      "role": "member",
+      "license": "MIT"
     }
   }
 }

@@ -1,7 +1,7 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "1.1.0",
-  "date": "2026-09-15",
+  "version": "1.2.0",
+  "date": "2026-09-16",
   "skills": [
     {
       "name": "yl-chekhov-deep-writing",
@@ -185,6 +185,23 @@
       }
     },
     {
+      "name": "yl-skill-sync",
+      "description": "将公开 Skill 集合下载、安装并同步到本机可用的多个 Agent 入口，支持检查新版本、更新、状态核对和安全卸载。用户要求把一套 Skill 映射到本机所有智能体、从本地目录或 GitHub Release 安装，或检查和更新已安装的 YL Skill 时使用；不覆盖真实目录，不依赖其他工具箱。",
+      "version": "1.0.0",
+      "category": "tooling",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "agents/openai.yaml": "8da7d9256cc0e92efcf468acd87f6a4ce75c81bb455d3111408f65938810b12a",
+        "LICENSE": "d3e0a3ba0d79d89d0c25707893f2afc47330b22ddb3e6f1b9743e46b2df2d817",
+        "README.md": "6efb7c18c50aca48564a6f372f2723c1ba9ba542b40503755e8a6435858c55ee",
+        "scripts/sync.py": "44a1d2f41fe79f7b99f8a8eccd901aca0d6b3d7daebe5895b89f8cbb89d44e33",
+        "SKILL.md": "72149220809020c1335f4e505b82a7fa4d088bcf6cf31d438f4f2660ff878bd1",
+        "SOURCE.md": "4d9a9c142a990ed81372b911e0a3952e8c347106ac17f9d2c552db66ee2679e3",
+        "VERSION": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03"
+      }
+    },
+    {
       "name": "yl-toolbox",
       "description": "yl 个人精选工具箱入口。用户要求使用 yl 集群、选择 yl 工具，或希望用工具箱完成任务时，按目录选择已安装的相关 Skill 并执行。具体功能可直接调用对应 yl Skill。",
       "version": "1.1.0",
@@ -194,7 +211,7 @@
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "references/catalog.json": "4285ef8cce46af82549f46df86c5f4f506f7382a278fb6280ff241932ab212ac",
+        "references/catalog.json": "78ca9854750a5e53245cbdf0933817878fcabd409b6f8d6f41820caf5251e81c",
         "SKILL.md": "8d45d25f40cf21f42d7b966b3bef985b72e60cfe047f069287bcfc68b12bfc87"
       }
     },

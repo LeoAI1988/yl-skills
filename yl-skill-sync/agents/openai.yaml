@@ -1,0 +1,4 @@
+interface:
+  display_name: "YL Skill 同步"
+  short_description: "下载、更新并映射 Skill 到本机多个 Agent"
+  default_prompt: "使用 $yl-skill-sync 将指定的 YL Skill 集合安全安装或更新到本机可用的 Agent 入口，先做状态检查，保留真实目录并报告冲突。"

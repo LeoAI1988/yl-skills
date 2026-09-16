@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "skills": [
     {
       "name": "yl-chekhov-deep-writing",
@@ -38,6 +38,14 @@
       "description": "从截图、文案、视频或原帧制作 1080×1440 短视频封面，提供黑底白字大字模式（可选黄字强调及用户提供的头像）与半透明原帧无叠加头像模式。用户要求做封面、批量制作封面或从视频提炼封面标题时使用，并先让用户选择适合的模式。",
       "version": "1.0.0",
       "category": "video",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-skill-sync",
+      "description": "将公开 Skill 集合下载、安装并同步到本机可用的多个 Agent 入口，支持检查新版本、更新、状态核对和安全卸载。用户要求把一套 Skill 映射到本机所有智能体、从本地目录或 GitHub Release 安装，或检查和更新已安装的 YL Skill 时使用；不覆盖真实目录，不依赖其他工具箱。",
+      "version": "1.0.0",
+      "category": "tooling",
       "role": "member",
       "license": "MIT"
     },

@@ -1,6 +1,6 @@
 # yl Skill 集群
 
-把经过实际使用的写作、剪辑和封面工具整理成可独立安装的公开工具箱。当前版本 **1.1.0**。总入口选工具，分类入口选风格，具体 Skill 完成工作。
+把经过实际使用的写作、剪辑和封面工具整理成可独立安装的公开工具箱。当前版本 **1.2.0**。总入口选工具，分类入口选风格，具体 Skill 完成工作。
 
 ## 日常版与公开版
 
@@ -15,6 +15,7 @@
 | `yl-toolbox` | 工具箱总入口，支持同一任务的多 Skill 分工 |
 | `yl-writing` | 口述稿写公众号总框架；**契诃夫深度写作（常用首选）**、暴击／咪蒙式观点、自制卡兹克科技写作、Human Writing |
 | `yl-video` | 真人口播自动剪辑、黑底白字封面、半透明无头像封面 |
+| `yl-skill-sync` | 下载、更新并把 Skill 映射到本机多个 Agent 入口 |
 
 口述稿总框架为 `yl-write-voice-led-wechat`。四个写作风格成员分别是 `yl-chekhov-deep-writing`、`yl-write-impact-wechat`、`yl-kazik-writing`、`yl-human-writing`。Human Writing 是通用写作引擎，与自制卡兹克保持独立。视频成员是 `yl-remotion-talking-head-editor` 和 `yl-short-video-covers`。
 
@@ -44,6 +45,8 @@ python install.py --target "你的 Agent 的 skills 目录"
 
 也可以调用 `$yl-toolbox`、`$yl-writing`、`$yl-video` 或具体成员。剪辑的全自动／半自动与封面的视觉模式是两种不同选择，已选定就沿用。
 
+跨 Agent 安装和更新使用 `$yl-skill-sync`。它把真源放在公共 `~/.agents/skills`，仅在本机存在对应宿主目录时补充专属链接；支持本地目录、GitHub 仓库和 Release ZIP，不依赖 DBS。
+
 ## 写作的共同规则
 
 所有框架与风格都必须执行 [公共写作约束](yl-writing/references/writing-foundation.md)：写前检查原稿与材料，写后逐项复核，修掉确认的套话、空转、伪深刻、假经历和机械句式。直接调用风格成员也适用，单独安装时规则随成员携带。
@@ -62,7 +65,7 @@ python install.py --target "你的 Agent 的 skills 目录"
 
 ## 版本与分享
 
-首版 `1.0.0`；兼容新增升 `1.1.0`，修复升 `1.0.1`，重大不兼容变化升 `2.0.0`。变更见 [CHANGELOG](CHANGELOG.md)。
+首版 `1.0.0`；兼容新增升 `1.1.0`、`1.2.0`，修复升 `1.0.1`，重大不兼容变化升 `2.0.0`。变更见 [CHANGELOG](CHANGELOG.md)。
 
 分享根目录 `yl-toolbox-cluster.zip`，或单独的已审核 Skill 目录。固定名 ZIP 与带版本 ZIP 字节相同，并附 SHA-256。`cluster.json` 验证文件完整性，不是作者身份签名。
 

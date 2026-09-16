@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
-  "version": "1.1.0",
+  "version": "1.2.0",
   "review_method": "Per-file semantic review of changed/new materials, scoped privacy scan and executable regression checks. Byte-identical previously reviewed materials inherit 1.0.0 evidence; no independent new subagent review or real prose-quality guarantee is claimed.",
   "generated_exclusions": [
     "yl-toolbox/references/catalog.json"
   ],
-  "project_review": "1.1.0 docs, routing, file-scoped licenses, writing drift checks, local-only copy tool and synthetic tests reviewed. Existing byte-identical installer and other tools inherit 1.0.0 review.",
+  "project_review": "1.2.0 added yl-skill-sync; semantic review covered download source handling, routing, conflict preservation, reversible unlink and no dependency on other toolboxes. Existing unchanged materials inherit prior evidence.",
   "project_files": {
-    "README.md": "2131c7d32b211776ef9d37850b7307e1508ba19dcb1aaa9ce65eeb6f18104daf",
+    "README.md": "88967da8e71ca8dd591e8bc02a8acc0ec79e0e25c6ec7978bfafb5ba1f94f5a4",
     "PRD.md": "f9713e7376f68634e2be9075ec60970d58313a6b887e7fa415d2b3c3ff71ce30",
     "MAINTAINING.md": "56f5c0c4fdd924dd8cb16757aaca7067388ed3dd0a285ece015469ffc6db3d84",
-    "CHANGELOG.md": "419675d07517756fb4c185aa298757a32cc97752d38017bfca8da9e5eda2b2e6",
+    "CHANGELOG.md": "2ca9b3b06952302d24f415b95aea5a85248e9d5542126e6943ca1886244ec925",
     "LICENSE": "0a9dabde6fca3a8d9010c587bc53c09cc147aa081848fbbdab9f119be3f778f8",
     "THIRD_PARTY_NOTICES.md": "391a626df3eae87a1aad2c93e8f2bcb9a079d87c9de45524e67b5919c19c63a9",
     "AGENTS.md": "fa2fa511deab3e972b28dfb209f9267092a4430d3fea6c0cc24520e3fd580575",
     ".gitignore": "8cf91327b2d9c9d76246d25b403afb942b78441c63c8da06483afb00f68a6e19",
-    "release.json": "e948516a5c62026e9fc5a4b245e78e3441f716769bc47a1108a332183624f641",
+    "release.json": "5d875aec94bec787c55da7f5a24e77ffd469b0470e9eb010519a2aba2109dacf",
     "install.py": "a096c747b13b047babca5f1580ada311b20bf02267b607fc8cc38c80eb6923b1",
     "build.py": "b3b132a96fc89b320faa76b1c3092cc5432ac53f4b81144410ba9b2ff5862bd8",
     "yl集群_审核说明.md": "959a9ef3652e2a478d15fc8320a0533f814c8270c82cf5ca7c968773b2cd137b",
@@ -312,6 +312,22 @@
         "SOURCE.md": "5e32d0539065ef2bbc7a2cbd20951e8d8fec750bc6907173a1516c77b183caf4",
         "tests/test_check_article.py": "9919e151cd66669b93b276824b315299e2a60a6a74dc6aaa4fef433f00c826d4",
         "VERSION": "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1"
+      }
+    },
+    "yl-skill-sync": {
+      "review_date": "2026-09-16",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "New Skill semantically reviewed: local/GitHub source selection, temporary download cleanup, standard-library-only implementation, public and specialized Agent routing, Windows Junction fallback, conflict preservation and reversible unlink. No other toolbox is invoked.",
+      "files": {
+        "agents/openai.yaml": "8da7d9256cc0e92efcf468acd87f6a4ce75c81bb455d3111408f65938810b12a",
+        "LICENSE": "d3e0a3ba0d79d89d0c25707893f2afc47330b22ddb3e6f1b9743e46b2df2d817",
+        "README.md": "6efb7c18c50aca48564a6f372f2723c1ba9ba542b40503755e8a6435858c55ee",
+        "scripts/sync.py": "44a1d2f41fe79f7b99f8a8eccd901aca0d6b3d7daebe5895b89f8cbb89d44e33",
+        "SKILL.md": "72149220809020c1335f4e505b82a7fa4d088bcf6cf31d438f4f2660ff878bd1",
+        "SOURCE.md": "4d9a9c142a990ed81372b911e0a3952e8c347106ac17f9d2c552db66ee2679e3",
+        "VERSION": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03"
       }
     }
   }
