@@ -1,0 +1,29 @@
+Chekhov Deep Writing is a multi-license distribution.
+
+1. Original code in this release is licensed under Apache License 2.0.
+   See LICENSES/Apache-2.0.txt.
+
+2. Project-authored research cards, workflow documentation, mechanism cards,
+   and other original explanatory materials are licensed under Creative
+   Commons Attribution 4.0 International (CC BY 4.0), by the repository owner.
+   See LICENSES/CC-BY-4.0.txt.
+
+3. Russian Wikisource transcriptions and their derived clean/reading files are
+   distributed under Creative Commons Attribution-ShareAlike 4.0 International
+   (CC BY-SA 4.0), with the underlying Chekhov works in the public domain.
+   Attribution, fixed revision URLs, and hashes are in corpus/source-registry.csv
+   and corpus/corpus-manifest.json. See LICENSES/CC-BY-SA-4.0.txt.
+
+4. Project Gutenberg research-source files retain the Project Gutenberg terms
+   embedded in those files. They are included only in the research snapshot.
+
+5. Modern Chinese published translations are not licensed by this release and
+   are not included. Bibliographic target records do not grant text rights.
+
+Where a file carries a more specific notice, that notice controls.
+
+
+Public writing foundation added in cluster 1.1.0:
+The separate derived writing foundation documents are CC BY-NC 4.0.
+The Human Writing-derived checker remains MIT. Existing material retains
+its preceding license; see LICENSES/WRITING-FOUNDATION-NOTICE.md for file scope.

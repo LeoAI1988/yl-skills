@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl 视频"
+  short_description: "口播剪辑与两种短视频封面的分类入口，按目标选择并协作完成作品"
+  default_prompt: "使用 $yl-video，根据我的素材选择剪辑或封面工具并完成工作。"

@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-09-11",
+  "use": "Sanitized source attribution for the preserved eight-module editorial adaptation. No runtime DBS dependency.",
+  "third_party_origin": "dontbesilent DBS; title skill attributes its formula list to YAO. Attribution is retained; source growth claims are not this skill performance evidence.",
+  "runtime_file": "dbs-editorial-foundation.md",
+  "sources": [
+    {
+      "skill": "dbs-script-flow",
+      "sha256": "0decea58ba794d52c871472d78f7c22527e89faa778b7e80b48cc91f0140dbad",
+      "sections": [
+        "第一步：分段",
+        "第二步：逐段扫描三个维度",
+        "注意事项"
+      ],
+      "verified_excerpts": [
+        {
+          "quote": "上一段的最后一句，和这一段的第一句之间，有没有逻辑跳跃？",
+          "line": 63
+        },
+        {
+          "quote": "如果把这一段删掉，观众会不会 miss 掉关键信息？",
+          "line": 82
+        },
+        {
+          "quote": "不要只看\"话题字面上偏不偏\"，要看\"这段话在服务哪个论点\"",
+          "line": 250
+        }
+      ],
+      "internal_sections": [
+        "CF-01",
+        "CF-02",
+        "CF-03",
+        "CF-04",
+        "CF-08"
+      ],
+      "adaptation": "逐段定位、功能与承接、冗余反事实、长短句理解检查；补因果不是只加所以。",
+      "excluded": "不继承视频流失概率、30字警戒作为文章硬线、拍摄方式前问、再问是否改稿及满屏删除标记。",
+      "source_file": "dbs-script-flow/SKILL.md"
+    },
+    {
+      "skill": "dbs-hook",
+      "sha256": "390568fc8d90cb2fada43f8b03652ebe1b61af905ba73e9341a461c45edaa022",
+      "sections": [
+        "核心哲学",
+        "Phase 3：诊断当前开头",
+        "Phase 4：生成优化方案"
+      ],
+      "verified_excerpts": [
+        {
+          "quote": "好开头 = 话题 + Hook + 可信度",
+          "line": 20
+        },
+        {
+          "quote": "开头承诺的，正文能兑现吗？",
+          "line": 124
+        }
+      ],
+      "internal_sections": [
+        "CF-05",
+        "CF-06"
+      ],
+      "adaptation": "从已有素材选择入口；首屏交代对象与阅读理由，建立标题/开头到正文的兑现关系。",
+      "excluded": "去掉5秒、素材数量、强制悬念、扩大普世话题与源作者成绩案例。",
+      "source_file": "dbs-hook/SKILL.md"
+    },
+    {
+      "skill": "dbs-content",
+      "sha256": "42307b30a084f729153adecc90cfb4ee94147b19edf41f6044ed0748d125e999",
+      "sections": [
+        "原则 5：知识博主的核心工作只有两个",
+        "Phase 2：内容形式匹配",
+        "维度 1：文字洁癖检测",
+        "维度 3：表达效率检测"
+      ],
+      "verified_excerpts": [
+        {
+          "quote": "把事情搞清楚；2、把事情说清楚",
+          "line": 36
+        },
+        {
+          "quote": "深度分析、长逻辑链",
+          "line": 62
+        }
+      ],
+      "internal_sections": [
+        "CF-01",
+        "CF-04",
+        "CF-08"
+      ],
+      "adaptation": "长文章容纳完整推理；具体判断表达是否清楚，保留必要论证。",
+      "excluded": "不继承付款/产品前置、只诊断不写、神经改造/精神控制论断、原作者身份及推广。",
+      "source_file": "dbs-content/SKILL.md"
+    },
+    {
+      "skill": "dbs-resonate",
+      "sha256": "d1133197e4e221e1e8c23f8ed046f11681f536a196797eaef2e9beab867cd065",
+      "sections": [
+        "核心原则",
+        "Step 4：定位问题",
+        "Step 5：给出修改动作",
+        "常见问题模式"
+      ],
+      "verified_excerpts": [
+        {
+          "quote": "诊断必须指向原文",
+          "line": 37
+        },
+        {
+          "quote": "区分文稿能力与平台结果",
+          "line": 41
+        },
+        {
+          "quote": "主要目标是理解或收藏时，不强行增加传播刺激。",
+          "line": 181
+        }
+      ],
+      "internal_sections": [
+        "CF-01",
+        "CF-07",
+        "CF-08"
+      ],
+      "adaptation": "文本原句到障碍、到最小改法；一个主导机制解释实际问题，完整主线可包含多级子判断。",
+      "excluded": "不把一个核心主张变成只许一句话；不要求每篇输出理论报告或人为激起分享。",
+      "source_file": "dbs-resonate/SKILL.md"
+    },
+    {
+      "skill": "dbs-spread",
+      "sha256": "450341810d2d6f0a53006fa7a2a9390b13c54653f8ed4f0a718dd687372af944",
+      "sections": [
+        "核心原则",
+        "主理论池",
+        "Step 3：生成机制判断"
+      ],
+      "verified_excerpts": [
+        {
+          "quote": "理论解释需要文本证据",
+          "line": 38
+        },
+        {
+          "quote": "情绪、接受和分享属于不同结果",
+          "line": 46
+        }
+      ],
+      "internal_sections": [
+        "CF-07"
+      ],
+      "adaptation": "保留身份/处境、框架、情绪评价、用途与分享的分离检查；区分文本事实、机制推断和待验证反应。",
+      "excluded": "不继承聊天室下游、理论堆叠、未经实测的受众/平台表现。",
+      "source_file": "dbs-spread/SKILL.md"
+    },
+    {
+      "skill": "dbs-xhs-title",
+      "sha256": "8e73fe8bfbe94f2b89e651fc25ef8eeed56d53b985c3ca75a769e131527fb974",
+      "sections": [
+        "Step 2：匹配公式",
+        "核心规则",
+        "公式库（75 个公式，12 类触发器）"
+      ],
+      "verified_excerpts": [
+        {
+          "quote": "每个标题都必须能追溯到公式编号。",
+          "line": 142
+        },
+        {
+          "quote": "### 3. 为什么我不 [绝大多数人做的事]",
+          "line": 209
+        },
+        {
+          "quote": "### 16. [行为] 的后果",
+          "line": 301
+        },
+        {
+          "quote": "### 74. 关于 [话题]，我的处世哲学/原则",
+          "line": 712
+        }
+      ],
+      "internal_sections": [
+        "CF-06"
+      ],
+      "adaptation": "按原有素材匹配句法；保留所用公式编号：3,6,16,23,24,27,35,42,45,47,48,51,52,56,58,61,65,74。允许原句直接做标题，不必改成公式。",
+      "excluded": "去掉小红书20字、至少两项张力、标题不说答案、展示原爆款、结果时间保证与虚假权威。",
+      "source_file": "dbs-xhs-title/SKILL.md"
+    }
+  ],
+  "runtime_requires_source_files": false,
+  "update_policy": "Frozen local adaptation; manually compare source changes and user intent before revising. No automatic upstream update."
+}

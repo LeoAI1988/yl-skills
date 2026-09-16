@@ -1,0 +1,4 @@
+interface:
+  display_name: "暴击风格公众号写作"
+  short_description: "保留作者原话，写出高冲击、强节奏、可发布的微信公众号文章"
+  default_prompt: "使用 $yl-write-impact-wechat 先只生成文字 Markdown；我确认定稿后再制作配图和一键复制 HTML。"

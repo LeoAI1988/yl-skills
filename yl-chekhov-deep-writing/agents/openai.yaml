@@ -1,0 +1,6 @@
+interface:
+  display_name: "yl 契诃夫深层写作"
+  short_description: "Source-grounded Chinese writing from verified Chekhov research"
+  default_prompt: "Use $yl-chekhov-deep-writing to turn my materials into a source-grounded Chinese article."
+policy:
+  allow_implicit_invocation: true

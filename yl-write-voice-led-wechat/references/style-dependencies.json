@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "resolution": "fixed sibling directory, no automatic installation",
+  "frameworks": {
+    "chekhov": "yl-chekhov-deep-writing",
+    "kazik": "yl-kazik-writing",
+    "human": "yl-human-writing",
+    "impact": "yl-write-impact-wechat",
+    "editorial": null
+  },
+  "optional_expression": {
+    "chekhov+impact": "yl-write-impact-wechat"
+  }
+}

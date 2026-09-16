@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "name": "make-short-video-covers",
+      "files": {
+        "agents/openai.yaml": "bad84135f86b43fcc42a2cccbbdba0b928287fe56d00723c5ea054b3ad2fd0ee",
+        "assets/background-black-yellow-tech-v2.png": "ee53e201a98d2fa9ad66f118f80c8ae1999f6781728c54bb220bd1dd311cb1c2",
+        "assets/background-black-yellow-tech.png": "6d59efb00095ee104c0ce23bec318d5738864c5545cba7e494ae01a80c0659b9",
+        "assets/portrait-dario-amodei-unhappy-chroma-v1.png": "a996411bd7e2c9651000f49fc451af36c3e46015370c346044ea704c73b15137",
+        "assets/portrait-dario-amodei-unhappy-v1.png": "50c714b0ccd3b524a730a8880940cda118a4b75c1e48fbee7c67082f0ce51333",
+        "assets/portrait-elon-musk-chroma-v1.png": "85a87f8a0acdbdd9f2dcbecdd8a4b5bd211a8807b6d1035efeed425d1d6f5130",
+        "assets/portrait-elon-musk-source-v1.jpg": "e87944f6614e278d67bd28e1cc300bade971ee136c8b0420d115cd776b649ca8",
+        "assets/portrait-elon-musk-v1.png": "e9687bc2c8d5b4d4f785e5ca52858bc50acb28b75c5daa3f06c284b3f6bbb767",
+        "assets/portrait-elon-musk-worried-chroma-v2.png": "b567a0d4d0ebcb864fef1de3e2b7c1d3a900198e4d61d012faa08a3e73d26611",
+        "assets/portrait-elon-musk-worried-v2.png": "d8a102ff329ec7396372a5f11aa33c5f821a649ea379415d7e0568c4a026399f",
+        "assets/portrait-jensen-huang-chroma-v1.png": "12e392ade639ce2a8f353f3ffbb85679f9231107b8341e34c042e745f86cefa4",
+        "assets/portrait-jensen-huang-source-v1.jpg": "a75b76689eee292a8bcfaf4b3141c0463cc0863352eeb6404cc763136e51b7e6",
+        "assets/portrait-jensen-huang-v1.png": "4f290968be4abf841d057becd6e0e6eb55c8a491547442aaa621e8ad70592ee0",
+        "assets/portrait-jensen-huang-worried-chroma-v2.png": "b277d8ee960e938c0fd26952bd3dd2d71ba818ee66aec08f025b7d7c44c95653",
+        "assets/portrait-jensen-huang-worried-v2.png": "35afbce8177adf1fc9ededea4a1efe16e6606fdbdda6dfa548aefe97573d2103",
+        "assets/portrait-liang-wenfeng-chroma-v2.png": "8a2b693d2ee594323e1503326486c725d0f8349018d87cdd38072a4cd4ab4b44",
+        "assets/portrait-liang-wenfeng-source-v1.jpg": "41384aa602bdcd2f85addb89eaa3ffea1542b08557d8a4a93e22ea2156ebc263",
+        "assets/portrait-liang-wenfeng-v2.png": "acc9b2ceb27fcb2a0474f9bc978b84546b4f761f84a749291d2f822d29522ad8",
+        "assets/portrait-sam-altman-chroma-v1.png": "79c14bc76803f7a35ad8afc5017e6c55b1a796dbd57ce8c7e62575829b267900",
+        "assets/portrait-sam-altman-v1.png": "6a042be2bf76cbb054346855459612f9d44de2e59dfadfda9f2e81ff20783c92",
+        "assets/portrait-sam-altman-v2-speech.png": "94e20cdcc066d726314423f0e5e13b75d89f6e9913a77bed74c8b216cf418060",
+        "references/asset-prompts.md": "09d8b2ae82e838fe182ae0e74a9def9a93629b19312d7dbfe709dbb4f6042c0a",
+        "references/style-spec.md": "cc23d1a33324bd71634132eee5953258afe97e8304596ca44f2e6dac08c1767c",
+        "scripts/check_portrait_overlap.py": "cd5a7d2ab9abe1e67c319af0a8df394d1c86e264fd162a914258bbafe43bb440",
+        "scripts/prepare_title_crop.py": "7548d4457e1773cf3d9d859430191d4097e243830a338f903768a1a11b45e50e",
+        "scripts/prepare_video_input.py": "e32bd8385571c6ec12773547d20e2b62b21df0198314d1553ab2a21aa90a8005",
+        "scripts/render_cover.py": "83d0c6c660ebf39fd79e501a3bc7fa2e449ce64293d9d8fab84f833ffc29a7bf",
+        "scripts/validate_cover.py": "4a20fbe8a88a78b41d040b3597b21af757a4c2c39f3e77743c453d5b7102baf3",
+        "SKILL.md": "ca7428057454148bde14fc9a011f1cc9d6b31b052b1f931892d1ceab7f034543"
+      },
+      "excluded_from_distribution": {
+        "private_identity_filenames": 1,
+        "media_not_distributed": 20,
+        "bytecode": 5
+      },
+      "exclusion_reason": "All original media excluded: private identity or no accompanying redistribution license. Runtime bytecode excluded. Private identity filenames omitted from snapshot.",
+      "snapshot_ignored_patterns": [
+        "**/__pycache__/**",
+        "**/*.pyc"
+      ]
+    },
+    {
+      "name": "make-translucent-black-white-covers",
+      "files": {
+        "agents/openai.yaml": "2c49da29b22c54785d098cdba12df207cb6c855b8745af8b4f24a880fc692b92",
+        "scripts/prepare_video_input.py": "3c5f9e3623c7e05d305cf6b7377924d959ebdc41dce9f887361f84e46258e492",
+        "scripts/render_cover.py": "10fb3589eb2aa08d533976a3904766e43badf020db49edfbad991ad3d214ae37",
+        "scripts/validate_cover.py": "384f2fb44db05b455debb399b1aea2479255395640a6ff64d61439096caf2b0b",
+        "SKILL.md": "d7527eff5893c14b8fb3915e4398ee18cd7a1a321d54fe7e18b70b7cfd32ad9b"
+      },
+      "excluded_from_distribution": {
+        "private_identity_filenames": 0,
+        "media_not_distributed": 0,
+        "bytecode": 3
+      },
+      "exclusion_reason": "All original media excluded: private identity or no accompanying redistribution license. Runtime bytecode excluded. Private identity filenames omitted from snapshot.",
+      "snapshot_ignored_patterns": [
+        "**/__pycache__/**",
+        "**/*.pyc"
+      ]
+    }
+  ]
+}

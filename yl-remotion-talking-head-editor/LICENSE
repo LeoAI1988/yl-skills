@@ -1,0 +1,16 @@
+This Skill is a multi-license distribution.
+
+1. SKILL.md and references/*.md contain workflow adaptations based in part on
+   dontbesilent's DBS material. These documents are distributed under Creative
+   Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
+   Preserve the upstream attribution and adaptation notices. Commercial use
+   requires separate permission for that material.
+   See LICENSES/DBS-CC-BY-NC-4.0.txt and NOTICE.md.
+
+2. Original yl Python and PowerShell helper code, UI metadata and integration
+   metadata are distributed under the MIT License in LICENSES/MIT.txt.
+
+3. Third-party SDKs, fonts, models and external services are not bundled and
+   remain subject to their own terms. Installation conveys no service credits.
+
+The complete Skill cannot be described as an unrestricted MIT-only package.

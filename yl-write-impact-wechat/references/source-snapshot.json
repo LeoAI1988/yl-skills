@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "name": "write-impact-wechat",
+      "files": {
+        "agents/openai.yaml": "1c00a47624dc78a3c6d5255d7b658bdb143f368bd2c0222820998e76cf29e805",
+        "references/sourcing-and-claims.md": "a494a991531cfdad7c89f6c108895091566a8f3324aa1470ecd0f5501bf4859a",
+        "references/staged-delivery.md": "2873b6bbd887eeee8e773807b6674ce15f1b7afc12d8d69d6a8127b5eef4a1b7",
+        "references/style-contract.md": "afe650fb71954d5ccbfa43fcbb1edb859c65a3cb995a14741bb7b162f562f505",
+        "scripts/build-wechat-html.mjs": "2430d74c18dba754f08ea16f8d02c3c9f3b1230e1b43649358db129949174300",
+        "scripts/validate-wechat-article.mjs": "fe995e43ae742beff6a5e921d85d23b12c711775723691ec333f87ac36901a58",
+        "SKILL.md": "0fbccc18345b8f7d2f54c7dcb66ebafe3e631ca380cccb1b616e0643a8c2dfe2",
+        "tests/build-wechat-html.test.mjs": "67d41a2c6dac33d2ddd18080482c3e67067df662fa1a0e9d241de632817705cd",
+        "tests/validate-wechat-article.test.mjs": "06ace2fdf2939d58e2eac51cab5e79de256624bd725563101cbae79198062fc2"
+      }
+    }
+  ],
+  "excluded": []
+}

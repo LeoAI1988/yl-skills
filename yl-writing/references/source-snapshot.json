@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "name": "human-writing",
+      "tracking_scope": "listed_files",
+      "files": {
+        "SKILL.md": "114e2f19afdae3fc1fae7389017e00e87c3fc67ac0b621bf85f0c14d0fd56269",
+        "references/forum-prose.md": "20c22ad9c5c5c3f43ebae6bb7d258cfc42916413a82c2f95a0de9239541641dd",
+        "references/revision.md": "2e7d8f74ace9d90e4805b6061b8015c91e6088166e5d224be185aba5a94e6592",
+        "references/reality.md": "02004e1fd4dba40d8d50260982ecead81ce3788c7269922b8311514fe8edd0e6",
+        "references/fiction.md": "6efea0c16f28b7ae2d3531a7e2413577e2f6e3c1945912b087c28a0da6d0ad83",
+        "references/formats.md": "dd63704550574cd562b55f24307815e9172a63320dcfcc6006b3eab0ccc406bb",
+        "scripts/check_prose.py": "13110461036c25477963e19ce35c4a34df2a2d24a7132c909394370803822eea",
+        "dist/human-writing-lite.md": "52ba7c2fe1591d742a780e2d6ca2d6aa51dc430d88e2946fc4308470fa0bf884",
+        "LICENSE": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
+        "VERSION": "1575e1af4a95f12f70b4ee6a6adce8160953d93ea17dc2611b90883ccc3ad3b8"
+      }
+    },
+    {
+      "name": "dbs-ai-check",
+      "tracking_scope": "listed_files",
+      "files": {
+        "SKILL.md": "9d00040c66757ad0ccb7b610b37ca35284600a727968f5f6a066a66aef7e1041"
+      }
+    },
+    {
+      "name": "dbs-content",
+      "tracking_scope": "listed_files",
+      "files": {
+        "SKILL.md": "42307b30a084f729153adecc90cfb4ee94147b19edf41f6044ed0748d125e999"
+      }
+    },
+    {
+      "name": "dbs-script-flow",
+      "tracking_scope": "listed_files",
+      "files": {
+        "SKILL.md": "0decea58ba794d52c871472d78f7c22527e89faa778b7e80b48cc91f0140dbad"
+      }
+    },
+    {
+      "name": "dbs-hook",
+      "tracking_scope": "listed_files",
+      "files": {
+        "SKILL.md": "390568fc8d90cb2fada43f8b03652ebe1b61af905ba73e9341a461c45edaa022"
+      }
+    },
+    {
+      "name": "dbs-resonate",
+      "tracking_scope": "listed_files",
+      "files": {
+        "SKILL.md": "d1133197e4e221e1e8c23f8ed046f11681f536a196797eaef2e9beab867cd065"
+      }
+    },
+    {
+      "name": "dbs-spread",
+      "tracking_scope": "listed_files",
+      "files": {
+        "SKILL.md": "450341810d2d6f0a53006fa7a2a9390b13c54653f8ed4f0a718dd687372af944"
+      }
+    },
+    {
+      "name": "dbs-xhs-title",
+      "tracking_scope": "listed_files",
+      "files": {
+        "SKILL.md": "8e73fe8bfbe94f2b89e651fc25ef8eeed56d53b985c3ca75a769e131527fb974"
+      }
+    },
+    {
+      "name": "dbs-content-risk-check",
+      "tracking_scope": "listed_files",
+      "files": {
+        "SKILL.md": "7e5e746ac5a065b2bb7083df7e0f6469578f01853500053f46a44cdc24740490"
+      }
+    },
+    {
+      "name": "dbs-wechat-html",
+      "tracking_scope": "listed_files",
+      "files": {
+        "SKILL.md": "f59d8a151241ea788cd630c47b8110ac12900cf19f1d9ee7b88cd722acb9e20a"
+      }
+    },
+    {
+      "name": "dbs-content-system",
+      "tracking_scope": "listed_files",
+      "files": {
+        "SKILL.md": "30a8367a1c4008734a7b6b477e890e90aa70d03054b6ba5b3fde6cf9734377f4"
+      }
+    }
+  ]
+}

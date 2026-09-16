@@ -1,0 +1,6 @@
+interface:
+  display_name: "yl 口述稿写公众号"
+  short_description: "以本人原话与思想递进为主干，查询真实材料并调用可选写作框架完成公众号稿"
+  default_prompt: "使用 $yl-write-voice-led-wechat，把这段口述稿整理成公众号文章，保留原话并选择合适写法。"
+policy:
+  allow_implicit_invocation: false

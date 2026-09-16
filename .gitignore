@@ -1,0 +1,15 @@
+# Local materials, credentials and maintenance results are never distribution inputs.
+.env
+.env.*
+.local/
+private/
+work/
+output/
+__pycache__/
+*.pyc
+node_modules/
+.venv/
+.DS_Store
+# Distribute ZIPs as release assets; do not grow Git history with binary copies.
+*.zip
+*.zip.sha256

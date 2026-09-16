@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl · 真人口播 Remotion 剪辑"
+  short_description: "全自动或半自动逐字精剪，固定字幕和倍速，完成画质检查与开拍增强"
+  default_prompt: "使用 $yl-remotion-talking-head-editor 剪辑我提供的真人口播；未指定时先问全自动或半自动，逐项完成内容分析、字词精剪、固定字幕、开拍增强与验收。"

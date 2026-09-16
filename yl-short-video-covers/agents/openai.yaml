@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl 短视频封面"
+  short_description: "整合黑底白字大字与原帧半透明两种封面，支持截图、文案或视频输入"
+  default_prompt: "使用 $yl-short-video-covers 根据这份素材制作短视频封面，先选择黑底白字或半透明无头像模式。"

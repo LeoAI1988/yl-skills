@@ -1,0 +1,63 @@
+{
+  "schema_version": "chekhov-runtime-profile-v1",
+  "profile_status": "stable",
+  "source_manifest_sha256": "3f1b05b42dd17b6e3b23eac05f7132a5443c9562014fdd0352cf6dd81c211c46",
+  "mechanism_parameters": [
+    {
+      "runtime_code": "m_reweight_ambiguous_fact",
+      "applicability_codes": ["ambiguous_fact", "identity_or_reputation_stakes", "before_after_reweighting"],
+      "cost_codes": ["overpsychologize_institutional_risk", "reduce_medical_or_ethical_harm_to_frame", "unfalsifiable_frame"],
+      "role_options": ["primary", "auxiliary"]
+    },
+    {
+      "runtime_code": "m_constrain_judgment_with_observation",
+      "applicability_codes": ["detail_action_causal_link", "detail_claim_comparability", "viewpoint_bias_acknowledged"],
+      "cost_codes": ["slower_progression", "fixed_symbol_overreading", "detail_selection_bias"],
+      "role_options": ["primary", "auxiliary"]
+    },
+    {
+      "runtime_code": "m_extend_consequence_after_local_closure",
+      "applicability_codes": ["local_closure_signal", "sustained_new_state_or_responsibility", "no_invented_resolution"],
+      "cost_codes": ["felt_incompletion", "romanticize_unresolved_harm", "collapse_terminal_or_circular_endings"],
+      "role_options": ["primary", "auxiliary"]
+    }
+  ],
+  "shell_parameters": [
+    {
+      "dimension": "sentence_contour",
+      "mode": "accumulation_then_short_release",
+      "intensity": "medium",
+      "scope": "local",
+      "frequency_per_1000_chars": 3.0,
+      "max_consecutive": 1,
+      "salience_weight": 0.65
+    },
+    {
+      "dimension": "turn_signal",
+      "mode": "clue_before_explanation_turn",
+      "intensity": "high",
+      "scope": "transition",
+      "frequency_per_1000_chars": 2.0,
+      "max_consecutive": 1,
+      "salience_weight": 0.75
+    },
+    {
+      "dimension": "rhetorical_moves",
+      "mode": "voice_checked_by_consequence",
+      "intensity": "medium",
+      "scope": "local",
+      "frequency_per_1000_chars": 1.5,
+      "max_consecutive": 1,
+      "salience_weight": 0.6
+    }
+  ],
+  "constraints": {
+    "use_generic_fallback": false,
+    "forward_identity": false,
+    "forward_source_text": false,
+    "forward_research_cards": false,
+    "max_primary_mechanisms": 1,
+    "max_auxiliary_mechanisms": 2,
+    "max_shell_parameters": 2
+  }
+}

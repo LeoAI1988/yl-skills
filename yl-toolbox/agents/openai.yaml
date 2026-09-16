@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl 工具箱"
+  short_description: "yl 精选 Skill 集群入口，按任务选择工具并执行对应工作流"
+  default_prompt: "使用 $yl-toolbox，根据我的任务选择合适的已安装 yl Skill 并完成工作。"
