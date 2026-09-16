@@ -2095,6 +2095,893 @@
           "heading": "适合转入本 skill"
         }
       ]
+    },
+    {
+      "source": "yl-kazik-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "SKILL.md",
+      "sha256": "29cd17182a507aa93739f535fd700bd80a3dace4d463e3fe3d519659b97556bf",
+      "line_range": [
+        1,
+        283
+      ],
+      "headings": [
+        {
+          "line": 6,
+          "heading": "卡兹克机制型写作"
+        },
+        {
+          "line": 8,
+          "heading": "共同写作约束（每次必读）"
+        },
+        {
+          "line": 25,
+          "heading": "安装者表达校准"
+        },
+        {
+          "line": 39,
+          "heading": "按需加载参考文件"
+        },
+        {
+          "line": 49,
+          "heading": "一、先确认交付边界"
+        },
+        {
+          "line": 67,
+          "heading": "二、选择文章原型"
+        },
+        {
+          "line": 81,
+          "heading": "三、用HKRO决定是否动笔"
+        },
+        {
+          "line": 94,
+          "heading": "四、建立证据台账"
+        },
+        {
+          "line": 118,
+          "heading": "五、只保留一条因果主线"
+        },
+        {
+          "line": 132,
+          "heading": "六、设计标题和开头"
+        },
+        {
+          "line": 152,
+          "heading": "七、按证据阶梯写正文"
+        },
+        {
+          "line": 176,
+          "heading": "八、让用户而不是参考作者成为第一人称"
+        },
+        {
+          "line": 187,
+          "heading": "九、做事实、原创性和价值审计"
+        },
+        {
+          "line": 189,
+          "heading": "事实"
+        },
+        {
+          "line": 197,
+          "heading": "原创性"
+        },
+        {
+          "line": 203,
+          "heading": "读者价值"
+        },
+        {
+          "line": 209,
+          "heading": "十、分阶段交付"
+        },
+        {
+          "line": 211,
+          "heading": "Phase A，文字"
+        },
+        {
+          "line": 219,
+          "heading": "Phase B，图片与发布包"
+        },
+        {
+          "line": 232,
+          "heading": "Get笔记归档闭环"
+        },
+        {
+          "line": 248,
+          "heading": "十一、运行确定性校验"
+        },
+        {
+          "line": 264,
+          "heading": "十二、终审输出"
+        },
+        {
+          "line": 275,
+          "heading": "停止条件"
+        }
+      ]
+    },
+    {
+      "source": "yl-kazik-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "references/user_voice.md",
+      "sha256": "22637b2c3bb24fb77af0d66b818213514710c34e485ee970d8c2f18031d31c5a",
+      "line_range": [
+        1,
+        62
+      ],
+      "headings": [
+        {
+          "line": 1,
+          "heading": "安装者的语料与声音边界"
+        },
+        {
+          "line": 5,
+          "heading": "1. 来源优先级"
+        },
+        {
+          "line": 15,
+          "heading": "2. 原话卡"
+        },
+        {
+          "line": 32,
+          "heading": "3. 既有成稿"
+        },
+        {
+          "line": 38,
+          "heading": "4. 实践卡"
+        },
+        {
+          "line": 44,
+          "heading": "5. 声音校准"
+        },
+        {
+          "line": 58,
+          "heading": "6. 结尾与阶段门"
+        }
+      ]
+    },
+    {
+      "source": "yl-kazik-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "references/style_examples.md",
+      "sha256": "d53146a1aaecfa0cfb1e481e1a1a320f14daae0dbd782d2b27492eaa9430cfce",
+      "line_range": [
+        1,
+        88
+      ],
+      "headings": [
+        {
+          "line": 1,
+          "heading": "机制型句段示例"
+        },
+        {
+          "line": 5,
+          "heading": "1. 标题"
+        },
+        {
+          "line": 13,
+          "heading": "2. 开头"
+        },
+        {
+          "line": 21,
+          "heading": "3. 事实、停顿、判断"
+        },
+        {
+          "line": 31,
+          "heading": "4. 技术翻译"
+        },
+        {
+          "line": 39,
+          "heading": "5. 个人转折"
+        },
+        {
+          "line": 43,
+          "heading": "6. 真实失败"
+        },
+        {
+          "line": 51,
+          "heading": "7. 工作流观点"
+        },
+        {
+          "line": 55,
+          "heading": "8. 榜单与互动量"
+        },
+        {
+          "line": 63,
+          "heading": "9. 行动"
+        },
+        {
+          "line": 71,
+          "heading": "10. 结尾"
+        },
+        {
+          "line": 75,
+          "heading": "11. 常见 AI 味修复"
+        },
+        {
+          "line": 86,
+          "heading": "12. 节奏检查"
+        }
+      ]
+    },
+    {
+      "source": "yl-kazik-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "references/evidence_and_images.md",
+      "sha256": "28451680e5ab9948cf6faea0afc3e9992a190acdf351ef93d5a6f7fc91d6e836",
+      "line_range": [
+        1,
+        115
+      ],
+      "headings": [
+        {
+          "line": 1,
+          "heading": "事实、公开文章、X证据与配图边界"
+        },
+        {
+          "line": 3,
+          "heading": "目录"
+        },
+        {
+          "line": 13,
+          "heading": "1. 证据等级"
+        },
+        {
+          "line": 23,
+          "heading": "2. 公开文章处理"
+        },
+        {
+          "line": 32,
+          "heading": "3. 动态数字"
+        },
+        {
+          "line": 51,
+          "heading": "4. 开放权重"
+        },
+        {
+          "line": 64,
+          "heading": "5. X证据"
+        },
+        {
+          "line": 85,
+          "heading": "6. 图片"
+        },
+        {
+          "line": 105,
+          "heading": "7. 材料台账"
+        }
+      ]
+    },
+    {
+      "source": "yl-kazik-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "references/corpus_findings.md",
+      "sha256": "5fe6255dcc0b45e5c1afc36c6d81dbe2b9ca09c6810202ae8e48fee62c91e386",
+      "line_range": [
+        1,
+        145
+      ],
+      "headings": [
+        {
+          "line": 1,
+          "heading": "30篇公开样本与写作机制"
+        },
+        {
+          "line": 5,
+          "heading": "目录"
+        },
+        {
+          "line": 16,
+          "heading": "1. 证据边界"
+        },
+        {
+          "line": 31,
+          "heading": "2. 30篇样本矩阵"
+        },
+        {
+          "line": 70,
+          "heading": "3. 10篇全文观察"
+        },
+        {
+          "line": 85,
+          "heading": "4. 选题引擎"
+        },
+        {
+          "line": 99,
+          "heading": "5. 标题与开头"
+        },
+        {
+          "line": 112,
+          "heading": "6. 正文与结尾"
+        },
+        {
+          "line": 126,
+          "heading": "7. 爆点机制"
+        },
+        {
+          "line": 139,
+          "heading": "8. 使用限制"
+        }
+      ]
+    },
+    {
+      "source": "yl-kazik-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "SOURCE.md",
+      "sha256": "e8db043c0ae64d678b2fa22d62ed8dfcbe4228159ef9a7fd39deddb785e53699",
+      "line_range": [
+        1,
+        24
+      ],
+      "headings": [
+        {
+          "line": 1,
+          "heading": "来源与公开版范围"
+        },
+        {
+          "line": 3,
+          "heading": "来源"
+        },
+        {
+          "line": 7,
+          "heading": "许可"
+        },
+        {
+          "line": 11,
+          "heading": "适配内容"
+        },
+        {
+          "line": 20,
+          "heading": "运行与数据"
+        }
+      ]
+    },
+    {
+      "source": "yl-kazik-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "LICENSE",
+      "sha256": "04a538d00dd52fef19205ac68dbfd8855a1ff374213a3d49f358e0177f48c4ba",
+      "line_range": [
+        1,
+        27
+      ],
+      "headings": []
+    },
+    {
+      "source": "yl-human-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "SKILL.md",
+      "sha256": "1e99a1121cc5b93c8244b9e950242def0f721e66f52914e70cf6b2c8967830fb",
+      "line_range": [
+        1,
+        193
+      ],
+      "headings": [
+        {
+          "line": 6,
+          "heading": "活人感写作"
+        },
+        {
+          "line": 8,
+          "heading": "共同写作约束（每次必读）"
+        },
+        {
+          "line": 21,
+          "heading": "第一关先看作品靠什么站住"
+        },
+        {
+          "line": 49,
+          "heading": "按任务读取"
+        },
+        {
+          "line": 59,
+          "heading": "多条规则同时出现时"
+        },
+        {
+          "line": 71,
+          "heading": "安装者表达校准"
+        },
+        {
+          "line": 89,
+          "heading": "先确定作品对现实作出什么承诺"
+        },
+        {
+          "line": 91,
+          "heading": "现实写作"
+        },
+        {
+          "line": 95,
+          "heading": "虚构创作"
+        },
+        {
+          "line": 99,
+          "heading": "混合创作"
+        },
+        {
+          "line": 105,
+          "heading": "动笔前先找到说话位置"
+        },
+        {
+          "line": 129,
+          "heading": "第一稿直接带着人写"
+        },
+        {
+          "line": 155,
+          "heading": "不要穿论坛服装"
+        },
+        {
+          "line": 163,
+          "heading": "成稿绝对不能出现"
+        },
+        {
+          "line": 187,
+          "heading": "交稿"
+        }
+      ]
+    },
+    {
+      "source": "yl-human-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "references/forum-prose.md",
+      "sha256": "20c22ad9c5c5c3f43ebae6bb7d258cfc42916413a82c2f95a0de9239541641dd",
+      "line_range": [
+        1,
+        349
+      ],
+      "headings": [
+        {
+          "line": 1,
+          "heading": "像一个人在网上认真说话"
+        },
+        {
+          "line": 7,
+          "heading": "读这份文件的顺序"
+        },
+        {
+          "line": 18,
+          "heading": "先有说话位置"
+        },
+        {
+          "line": 36,
+          "heading": "写给眼前这个读者"
+        },
+        {
+          "line": 44,
+          "heading": "文章按局部问题往前走"
+        },
+        {
+          "line": 60,
+          "heading": "句子先把主干交出来"
+        },
+        {
+          "line": 76,
+          "heading": "让一句话沿着动作往后长"
+        },
+        {
+          "line": 95,
+          "heading": "知识等问题走到那里再出现"
+        },
+        {
+          "line": 105,
+          "heading": "说到读者能接住就停"
+        },
+        {
+          "line": 115,
+          "heading": "白话打底，古意看场合"
+        },
+        {
+          "line": 129,
+          "heading": "让句子有松有紧"
+        },
+        {
+          "line": 164,
+          "heading": "具体细节必须有工作"
+        },
+        {
+          "line": 174,
+          "heading": "判断要带着来路"
+        },
+        {
+          "line": 182,
+          "heading": "没有亲历也别写成标准答案"
+        },
+        {
+          "line": 205,
+          "heading": "幽默来自降格"
+        },
+        {
+          "line": 213,
+          "heading": "三种默认走法"
+        },
+        {
+          "line": 215,
+          "heading": "回答体"
+        },
+        {
+          "line": 221,
+          "heading": "长帖体"
+        },
+        {
+          "line": 227,
+          "heading": "文章体"
+        },
+        {
+          "line": 233,
+          "heading": "原创示范"
+        },
+        {
+          "line": 237,
+          "heading": "直答以后再解释"
+        },
+        {
+          "line": 249,
+          "heading": "没有亲历时走一遍普通流程"
+        },
+        {
+          "line": 261,
+          "heading": "人物经历平着讲"
+        },
+        {
+          "line": 271,
+          "heading": "讲一个产品为什么没用起来"
+        },
+        {
+          "line": 283,
+          "heading": "资料不足时收住"
+        },
+        {
+          "line": 293,
+          "heading": "观点从小事里长出来"
+        },
+        {
+          "line": 303,
+          "heading": "长帖允许绕一下再回来"
+        },
+        {
+          "line": 317,
+          "heading": "判断从正面下，不借翻案抬价"
+        },
+        {
+          "line": 327,
+          "heading": "长短句自己会呼吸"
+        },
+        {
+          "line": 337,
+          "heading": "动笔前最后看一眼"
+        }
+      ]
+    },
+    {
+      "source": "yl-human-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "references/revision.md",
+      "sha256": "bd09ff525ec3845c68924d844003f10c3fe88ff84c55dbc155aca3cc2130f687",
+      "line_range": [
+        1,
+        206
+      ],
+      "headings": [
+        {
+          "line": 3,
+          "heading": "改稿时先救人，再清句子"
+        },
+        {
+          "line": 11,
+          "heading": "改稿顺序"
+        },
+        {
+          "line": 21,
+          "heading": "第一遍看谁在说"
+        },
+        {
+          "line": 34,
+          "heading": "第二遍看文章怎样往前走"
+        },
+        {
+          "line": 52,
+          "heading": "第三遍拆掉表演性中文"
+        },
+        {
+          "line": 54,
+          "heading": "假深刻"
+        },
+        {
+          "line": 60,
+          "heading": "假具体"
+        },
+        {
+          "line": 66,
+          "heading": "假口语"
+        },
+        {
+          "line": 72,
+          "heading": "抽象名词"
+        },
+        {
+          "line": 78,
+          "heading": "比喻换场"
+        },
+        {
+          "line": 86,
+          "heading": "第四遍听一遍中文顺不顺"
+        },
+        {
+          "line": 90,
+          "heading": "主干早点来"
+        },
+        {
+          "line": 100,
+          "heading": "前一句把什么交给了后一句"
+        },
+        {
+          "line": 108,
+          "heading": "停顿有轻重"
+        },
+        {
+          "line": 114,
+          "heading": "动作后面少解释一句"
+        },
+        {
+          "line": 120,
+          "heading": "白话与古意别打架"
+        },
+        {
+          "line": 126,
+          "heading": "第五遍清掉绝对不能出现的东西"
+        },
+        {
+          "line": 164,
+          "heading": "第六遍核现实或设定"
+        },
+        {
+          "line": 172,
+          "heading": "第七遍查结尾"
+        },
+        {
+          "line": 182,
+          "heading": "使用检查脚本"
+        },
+        {
+          "line": 194,
+          "heading": "最后冷读"
+        }
+      ]
+    },
+    {
+      "source": "yl-human-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "references/reality.md",
+      "sha256": "02004e1fd4dba40d8d50260982ecead81ce3788c7269922b8311514fe8edd0e6",
+      "line_range": [
+        1,
+        119
+      ],
+      "headings": [
+        {
+          "line": 1,
+          "heading": "现实题材多一层事实核验"
+        },
+        {
+          "line": 7,
+          "heading": "读这份文件的顺序"
+        },
+        {
+          "line": 16,
+          "heading": "先分清材料身份"
+        },
+        {
+          "line": 30,
+          "heading": "正文只保留读者需要知道的归属"
+        },
+        {
+          "line": 42,
+          "heading": "用户经历不能代写"
+        },
+        {
+          "line": 50,
+          "heading": "人物故事先找真实压力"
+        },
+        {
+          "line": 71,
+          "heading": "历史叙事分开三件事"
+        },
+        {
+          "line": 83,
+          "heading": "新闻与产品先确认进行到哪一步"
+        },
+        {
+          "line": 93,
+          "heading": "行业影响落到具体角色"
+        },
+        {
+          "line": 101,
+          "heading": "数据写完继续走一步"
+        },
+        {
+          "line": 107,
+          "heading": "判断要有边界"
+        },
+        {
+          "line": 115,
+          "heading": "来源怎样交付"
+        }
+      ]
+    },
+    {
+      "source": "yl-human-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "references/formats.md",
+      "sha256": "dd63704550574cd562b55f24307815e9172a63320dcfcc6006b3eab0ccc406bb",
+      "line_range": [
+        1,
+        99
+      ],
+      "headings": [
+        {
+          "line": 1,
+          "heading": "不同形式怎样换衣服"
+        },
+        {
+          "line": 5,
+          "heading": "知乎回答"
+        },
+        {
+          "line": 13,
+          "heading": "论坛长帖"
+        },
+        {
+          "line": 21,
+          "heading": "公众号与博客长文"
+        },
+        {
+          "line": 29,
+          "heading": "人物与历史长文"
+        },
+        {
+          "line": 37,
+          "heading": "新闻、产品与行业解读"
+        },
+        {
+          "line": 45,
+          "heading": "观点与评论"
+        },
+        {
+          "line": 51,
+          "heading": "个人叙事"
+        },
+        {
+          "line": 57,
+          "heading": "短文与社交内容"
+        },
+        {
+          "line": 65,
+          "heading": "教程与方法"
+        },
+        {
+          "line": 73,
+          "heading": "评测与商业稿"
+        },
+        {
+          "line": 81,
+          "heading": "口播、播客与演讲"
+        },
+        {
+          "line": 89,
+          "heading": "剧本与对白"
+        },
+        {
+          "line": 95,
+          "heading": "诗歌与抒情写作"
+        }
+      ]
+    },
+    {
+      "source": "yl-human-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "references/fiction.md",
+      "sha256": "6efea0c16f28b7ae2d3531a7e2413577e2f6e3c1945912b087c28a0da6d0ad83",
+      "line_range": [
+        1,
+        113
+      ],
+      "headings": [
+        {
+          "line": 1,
+          "heading": "虚构写作让人物自己把事做出来"
+        },
+        {
+          "line": 7,
+          "heading": "读这份文件的顺序"
+        },
+        {
+          "line": 15,
+          "heading": "先给人物一件眼下要办的事"
+        },
+        {
+          "line": 27,
+          "heading": "性格藏在选择里"
+        },
+        {
+          "line": 35,
+          "heading": "每场戏结束时改变一点东西"
+        },
+        {
+          "line": 45,
+          "heading": "对白在做事"
+        },
+        {
+          "line": 53,
+          "heading": "细节跟着视角走"
+        },
+        {
+          "line": 61,
+          "heading": "设定等人物碰到再讲"
+        },
+        {
+          "line": 69,
+          "heading": "场景与概述交替"
+        },
+        {
+          "line": 77,
+          "heading": "第一人称可以完整虚构"
+        },
+        {
+          "line": 83,
+          "heading": "现实部分按需核准"
+        },
+        {
+          "line": 91,
+          "heading": "原创示范"
+        },
+        {
+          "line": 107,
+          "heading": "结尾留下后果"
+        }
+      ]
+    },
+    {
+      "source": "yl-human-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "SOURCE.md",
+      "sha256": "24df87a278a8eb3063ee0dcf2e54642a69a7374fe473aae992ee4231fb64d831",
+      "line_range": [
+        1,
+        25
+      ],
+      "headings": [
+        {
+          "line": 1,
+          "heading": "来源与公开版范围"
+        },
+        {
+          "line": 3,
+          "heading": "来源"
+        },
+        {
+          "line": 7,
+          "heading": "许可"
+        },
+        {
+          "line": 11,
+          "heading": "适配内容"
+        },
+        {
+          "line": 19,
+          "heading": "运行与数据"
+        }
+      ]
+    },
+    {
+      "source": "yl-human-writing public package before retirement",
+      "release": "1.2.0",
+      "file": "LICENSE",
+      "sha256": "fb414a1ecc21b3609f542295bce1d6b74db7600c58113d7d42192b01b33744d3",
+      "line_range": [
+        1,
+        27
+      ],
+      "headings": []
     }
-  ]
+  ],
+  "supplemented_at": "2026-09-16"
 }

@@ -1,4 +1,0 @@
-interface:
-  display_name: "卡兹克机制型公众号写作"
-  short_description: "用公开证据、个人原始语料和机制化结构写AI科技公众号文章"
-  default_prompt: "使用 $yl-kazik-writing，把公开事实、X原帖和我的原始语料写成一篇有冲突、有证据、有个人判断的AI科技公众号文章。"

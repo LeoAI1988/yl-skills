@@ -12,13 +12,11 @@
 
 ### 第 2 层：具体写作框架（互斥选一个）
 
-`writing_framework` 必须互斥取一个值；当前四个风格框架及一个自带编辑模式可选：
+`writing_framework` 必须互斥取一个值；当前两个风格框架及一个自带编辑模式可选：
 
 | 值 | 用户说法 | 使用的外部依赖 | 决定什么 |
 |---|---|---|---|
 | `chekhov` | 契诃夫、克制细腻 | `yl-chekhov-deep-writing` | 观察与解释顺序、细节承担判断、克制且有余味的节奏 |
-| `kazik` | 卡兹克、机制型、AI 科技公众号 | `yl-kazik-writing` | 文章原型、HKRO 判断、证据台账、证据阶梯、标题与开头机制 |
-| `human` | Human Writing、自然中文 | `yl-human-writing` | 材料驱动、自然句法与文体适配 |
 | `impact` | 暴击、咪蒙式观点 | `yl-write-impact-wechat` | 真实冲突、证据承接与节奏 |
 | `editorial` | DBS 编辑方法、只修原稿 | 自带 `dbs-editorial-foundation.md` | 结构、逻辑、理解难度、共鸣与传播机制；不加载外部 DBS |
 
@@ -26,7 +24,7 @@
 
 ### 第 3 层：表层风格（互斥，可选）
 
-在选定框架内部再选。`chekhov` 框架下可为契诃夫风或 `impact`（暴击风、咪蒙式）；`impact` 需额外引用 `yl-write-impact-wechat`，它只增加节奏落差、判断落锤和准确锋利的对照，并仍受契诃夫底层思维约束。`kazik`、`human`、`impact`、`editorial` 框架是否再分表层风格，按各自合同执行。
+在选定框架内部再选。`chekhov` 框架下可为契诃夫风或 `impact`（暴击风、咪蒙式）；`impact` 需额外引用 `yl-write-impact-wechat`，它只增加节奏落差、判断落锤和准确锋利的对照，并仍受契诃夫底层思维约束。`impact`、`editorial` 框架是否再分表层风格，按各自合同执行。
 
 “咪蒙式”是用户用来选择节奏的名称，当前真实实现为 `yl-write-impact-wechat` 的安装者表达合同；不声称接入了一套未找到的咪蒙作者语料或专属 Skill。任何框架与风格都不逐句仿作，不搬作家情节、典型意象或原句。
 
@@ -46,9 +44,7 @@
 |---|---|---|
 | 契诃夫框架，必需 | `SKILL.md` 的目标边界；`references/workflow.md`；`references/mechanisms.md`；`references/media.md` 的公众号段与共同媒介约束；`assets/runtime-profile.json`；`scripts/load_runtime_profile.py` | 思维、适用条件、代价、事实与因果检查、中性参数 |
 | 契诃夫框架，启用外壳时 | `references/language-shell.md` | 本文确有适用材料时至多两个参数；不能为凑参数重写原稿 |
-| 卡兹克框架，仅 `kazik` | `SKILL.md` 的安装者表达校准、文章原型、HKRO、证据台账与阶段门；`references/corpus_findings.md`；`references/user_voice.md`；`references/style_examples.md` | 原型选择、证据阶梯、标题与开头机制、字数上限、事实与原创性审计；结尾用安装者提供版本 |
 | 暴击风格，仅 `impact` | `SKILL.md` 的核心合同、安装者表达校准、快速验收与红线；`references/style-contract.md`；`references/sourcing-and-claims.md` 的证据、归属与主张分类 | 原話保护、节奏、短句停顿、准确对照、判断与证据承接 |
-| Human 框架，仅 `human` | `SKILL.md`；`references/forum-prose.md`、`reality.md`、`revision.md` 的适用部分 | 自然表达；本 Skill 的原稿保护、篇幅和公共约束优先 |
 | 自带编辑，仅 `editorial` | 本目录 `references/dbs-editorial-foundation.md` | 完整 CF-01—CF-08；无需外部依赖 |
 
 不用旧 Skill 的整体任务入口替换本 Skill 流程。尤其不继承：从零新写母版、固定科技题材结构、1800 字默认硬限、重启选题、额外通用写作 Skill、仅因输入含 Get 字样就调用云端、强制分阶段审批、封面/HTML/平台发布和云端同步。篇幅、原稿存放、定稿与后续授权统一由本 Skill 主流程和本轮任务管理。固定公众号结尾采用安装者已经提供或确认的约定；不因风格包新增促销内容而自动变更。
@@ -88,7 +84,7 @@ loader 返回的是完整 profile，仍含带作者标识的 `schema_version` �
 
 ## 4. 两模式共享的底层思维（`chekhov` 框架；其他框架同受这些约束）
 
-本节机制属 `chekhov` 框架。选用 `kazik` 或 `human`、`impact`、`editorial` 时，机制清单以各自 skill 为准，但本节的真实性、因果、观察、反例与后果约束同样适用，不得因换框架而放弃。
+本节机制属 `chekhov` 框架。选用 `impact` 或 `editorial` 时，机制清单以各自 skill 为准，但本节的真实性、因果、观察、反例与后果约束同样适用，不得因换框架而放弃。
 
 在既有原稿上寻找适用机制，最多一个主机制、两个辅助机制。没有适用材料时允许本篇不启用特定机制，并说明 `not_applicable`；仍执行真实、因果、观察、反例与后果约束，不为了“像文学”造现场。
 
@@ -128,7 +124,7 @@ loader 返回的是完整 profile，仍含带作者标识的 `schema_version` �
 主流程内部审校记录至少保留：
 
 ```yaml
-writing_framework: chekhov # chekhov | kazik | human | impact | editorial，必须单选
+writing_framework: chekhov # chekhov | impact | editorial，必须单选
 style_profile: chekhov # 框架内的表层风格；chekhov 框架下为 chekhov | impact
 dependency_status: verified # 或 compatible_reread / unavailable
 resolved_dependencies: [] # 路径、observed_sha256、读取时间，仅协调层保留

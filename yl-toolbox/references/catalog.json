@@ -1,29 +1,13 @@
 {
-  "version": "1.2.0",
+  "version": "2.0.2",
   "skills": [
     {
       "name": "yl-chekhov-deep-writing",
       "description": "基于可追溯的契诃夫俄文原著、已验证的高层写作机制和受约束的语言外壳，完成中文公众号文章、短视频连续口播、朋友圈、人物故事、观点稿与现实材料改写。用户要求克制而锋利的人性观察、让细节约束判断、保留反例与未尽后果，或明确要求使用契诃夫研究线时使用；不用于逐句仿写、复刻人物情节、冒充中文出版译本或无材料补写现实事实。",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "category": "writing",
       "role": "member",
       "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND CC-BY-NC-4.0"
-    },
-    {
-      "name": "yl-human-writing",
-      "description": "通用中文创作与改稿 Skill。用于知乎回答、论坛长帖、公众号文章、博客、评论、人物故事、历史叙事、新闻与行业解读、科普、教程、评测、个人叙事、小说、故事、对白、口播和演讲稿。默认写成一个见过事、查过材料、愿意把来龙去脉讲清楚的人在说话，重点保留中文互联网长回答与长帖的活人感和自然中文韵律，避免空泛的机构腔、喊口号式演说腔、营销腔和模型腔。非虚构长文先检查材料够不够，材料不足时研究、追问或缩短，绝不用重复解释灌字数。现实内容额外核验事实、引语、数据与用户亲历，虚构内容可以创造人物、场景、对白、心理与情节。默认清理公式化翻案、滥用冒号和破折号、商业黑话与模型惯用黑话；用户亲手修改或确认的自然表达优先于这些默认禁令。不创建新的个人写作 Skill。",
-      "version": "1.1.0",
-      "category": "writing",
-      "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0"
-    },
-    {
-      "name": "yl-kazik-writing",
-      "description": "基于公开文章机制观察与安装者自有逐字稿的AI科技公众号机制型写作技能。用于撰写或改写AI热点、科技趋势、产品实测、行业观点、商业与工作流类公众号文章，以及做选题、正文质检和定稿后Get笔记归档；当用户提到卡兹克写作、数字生命卡兹克风格、爆款公众号改写、AI科技热评、要求结合Get笔记原始语料，或要求把定稿同步到命名知识库时触发。提炼高层叙事机制，不复刻具体作者的身份、签名、联系方式、独特口癖或受保护表达。",
-      "version": "1.1.0",
-      "category": "writing",
-      "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0"
     },
     {
       "name": "yl-remotion-talking-head-editor",
@@ -44,7 +28,7 @@
     {
       "name": "yl-skill-sync",
       "description": "将公开 Skill 集合下载、安装并同步到本机可用的多个 Agent 入口，支持检查新版本、更新、状态核对和安全卸载。用户要求把一套 Skill 映射到本机所有智能体、从本地目录或 GitHub Release 安装，或检查和更新已安装的 YL Skill 时使用；不覆盖真实目录，不依赖其他工具箱。",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "tooling",
       "role": "member",
       "license": "MIT"
@@ -60,23 +44,23 @@
     {
       "name": "yl-write-impact-wechat",
       "description": "Use when drafting, revising, or packaging Chinese WeChat Official Account opinion, trend, or marketing articles from recordings, transcripts, notes, or the author's prior writing, especially when the user asks to preserve original phrases, remove generic AI prose, strengthen rapid-fire rhythm, create a high-impact opening, or use a 暴击风格.",
-      "version": "1.1.0",
+      "version": "2.0.0",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
     },
     {
       "name": "yl-write-voice-led-wechat",
-      "description": "以用户本人的口述转写、录音或长短视频稿为底板，最大保留原话与思想递进，调用本人知识和表达资产进行修补、润色或扩写成微信公众号文章。用户调用本 Skill 时使用；它是口述底稿成文的总框架，可挂契诃夫、卡兹克、Human Writing、暴击观点等具体写作框架，以及契诃夫风、暴击风等表层风格，不用于从零选题或第三方文章洗稿。",
-      "version": "1.0.0",
+      "description": "以用户本人的口述转写、录音或长短视频稿为底板，最大保留原话与思想递进，调用本人知识和表达资产进行修补、润色或扩写成微信公众号文章。用户调用本 Skill 时使用；它是口述底稿成文的总框架，可挂契诃夫、暴击观点两种具体写作框架或自带编辑模式，以及契诃夫风、暴击风等表层风格，不用于从零选题或第三方文章洗稿。",
+      "version": "2.0.0",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
     },
     {
       "name": "yl-writing",
-      "description": "yl 写作分类入口。口述稿转公众号进入口述总框架；写文章、改稿或选择文风时，提供契诃夫、暴击观点、自制卡兹克、Human Writing 四种选择，统一执行公共去 AI 味规则。",
-      "version": "1.1.0",
+      "description": "yl 写作分类入口。口述稿转公众号进入口述总框架；写文章、改稿或选择文风时，提供契诃夫、暴击观点两种风格与基座编辑，统一执行公共去 AI 味规则。",
+      "version": "2.0.0",
       "category": "writing",
       "role": "router",
       "license": "MIT AND CC-BY-NC-4.0"

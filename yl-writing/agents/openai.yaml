@@ -1,4 +1,4 @@
 interface:
   display_name: "yl 写作"
-  short_description: "口述稿与四种写作风格的统一入口，保留原稿并执行公共去 AI 味约束"
+  short_description: "口述稿与两种写作风格的统一入口，保留原稿并执行公共去 AI 味约束"
   default_prompt: "使用 $yl-writing，帮我选择适合材料的写作风格并完成文章。"

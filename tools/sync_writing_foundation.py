@@ -1,7 +1,7 @@
 """Check common writing copies; --apply copies reviewed canonical edits locally."""
 import argparse
 from library import ROOT, NAME, read_json
-from writing_foundation import SHARED_FILES, portable_text, validate
+from writing_foundation import SHARED_FILES, validate
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -25,9 +25,8 @@ def main():
                 target = ROOT/name/rel
                 target.parent.mkdir(parents=True, exist_ok=True)
                 target.write_bytes((ROOT/'yl-writing'/rel).read_bytes())
-        (ROOT/'yl-human-writing/dist/yl-human-writing-lite.md').write_text(portable_text(ROOT), encoding='utf-8')
     validate(ROOT, release)
-    print('Writing foundation copies and portable text are consistent; semantic review still required.')
+    print('Writing foundation copies are consistent; semantic review still required.')
 
 if __name__ == '__main__':
     main()

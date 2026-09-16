@@ -12,3 +12,5 @@ dontbesilent，Copyright (c) 2026。DBS 方法按 [CC BY-NC 4.0](DBS-CC-BY-NC-4.
 - 口述稿成员另有从 DBS 摘编的 `references/dbs-editorial-foundation.md` 与 `references/dbs-source-manifest.json`，CC BY-NC 4.0；不把来源作者案例或其产品成绩作为本包证据。
 
 公共规则单独保存在这些文件中，不把契诃夫原有的 CC BY/CC BY-SA 或 Apache 文件改授为 CC BY-NC。完整成员携带非商业材料，分发与使用须同时遵守适用条件。作者自己的输入输出不自动归本包所有。
+
+2026-09-16，yl Skill Cluster contributors 从维护者自制卡兹克机制包（原 MIT）及 Human Writing 公开适配包补充来源、回改校准、因果桥、动态事实和文体边界。卡兹克是研究对象归属，不代表原作者参与或背书；未分发其文章原文。独立成员退役不撤销 Human Writing、DBS 的署名与文件级许可。

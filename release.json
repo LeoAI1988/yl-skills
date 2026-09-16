@@ -1,16 +1,16 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "1.2.0",
+  "version": "2.0.2",
   "date": "2026-09-16",
   "skills": {
     "yl-toolbox": {
-      "version": "1.1.0",
+      "version": "2.0.0",
       "category": "entry",
       "role": "router",
       "license": "MIT"
     },
     "yl-writing": {
-      "version": "1.1.0",
+      "version": "2.0.0",
       "category": "writing",
       "role": "router",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -22,25 +22,13 @@
       "license": "MIT"
     },
     "yl-chekhov-deep-writing": {
-      "version": "1.1.0",
+      "version": "2.0.0",
       "category": "writing",
       "role": "member",
       "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND CC-BY-NC-4.0"
     },
     "yl-write-impact-wechat": {
-      "version": "1.1.0",
-      "category": "writing",
-      "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0"
-    },
-    "yl-kazik-writing": {
-      "version": "1.1.0",
-      "category": "writing",
-      "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0"
-    },
-    "yl-human-writing": {
-      "version": "1.1.0",
+      "version": "2.0.0",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -58,13 +46,13 @@
       "license": "MIT"
     },
     "yl-write-voice-led-wechat": {
-      "version": "1.0.0",
+      "version": "2.0.0",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
     },
     "yl-skill-sync": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "tooling",
       "role": "member",
       "license": "MIT"

@@ -74,24 +74,21 @@ class WritingChecks(unittest.TestCase):
                         target = folder/rel
                         target.parent.mkdir(parents=True, exist_ok=True)
                         shutil.copyfile(ROOT/name/rel, target)
-            portable = work/'yl-human-writing/dist/yl-human-writing-lite.md'
-            portable.parent.mkdir()
-            shutil.copyfile(ROOT/'yl-human-writing/dist/yl-human-writing-lite.md', portable)
             validate(work, release)
-            edited = work/'yl-kazik-writing/references/anti-ai-rules.md'
+            edited = work/'yl-write-impact-wechat/references/anti-ai-rules.md'
             before = edited.read_bytes()
             edited.write_bytes(before+b'\nDrift\n')
             with self.assertRaisesRegex(ValueError, 'copy differs'):
                 validate(work, release)
             edited.write_bytes(before)
-            entry = work/'yl-kazik-writing/SKILL.md'
+            entry = work/'yl-write-impact-wechat/SKILL.md'
             entry.write_text(entry.read_text(encoding='utf-8').replace(HOOK, ''), encoding='utf-8')
             with self.assertRaisesRegex(ValueError, 'direct-call'):
                 validate(work, release)
 
     def test_voice_style_dependencies_are_public_and_present(self):
         values = read_json(ROOT/'yl-write-voice-led-wechat/references/style-dependencies.json')
-        self.assertEqual(set(values['frameworks']), {'chekhov','kazik','human','impact','editorial'})
+        self.assertEqual(set(values['frameworks']), {'chekhov','impact','editorial'})
         for name in values['frameworks'].values():
             if name:
                 self.assertTrue((ROOT/name/'SKILL.md').is_file())

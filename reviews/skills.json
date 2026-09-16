@@ -1,31 +1,33 @@
 {
   "schema_version": 1,
-  "version": "1.2.0",
+  "version": "2.0.2",
   "review_method": "Per-file semantic review of changed/new materials, scoped privacy scan and executable regression checks. Byte-identical previously reviewed materials inherit 1.0.0 evidence; no independent new subagent review or real prose-quality guarantee is claimed.",
   "generated_exclusions": [
     "yl-toolbox/references/catalog.json"
   ],
-  "project_review": "1.2.0 added yl-skill-sync; semantic review covered download source handling, routing, conflict preservation, reversible unlink and no dependency on other toolboxes. Existing unchanged materials inherit prior evidence.",
+  "project_review": "2.0.2: GitHub Release installation instructions reviewed for download/hash/persistent-source/conflict boundaries. Existing reviewed nine-skill content and approved poster retained. Legacy updater and Grok ownership limitations documented, not claimed repaired.",
   "project_files": {
-    "README.md": "88967da8e71ca8dd591e8bc02a8acc0ec79e0e25c6ec7978bfafb5ba1f94f5a4",
-    "PRD.md": "f9713e7376f68634e2be9075ec60970d58313a6b887e7fa415d2b3c3ff71ce30",
-    "MAINTAINING.md": "56f5c0c4fdd924dd8cb16757aaca7067388ed3dd0a285ece015469ffc6db3d84",
-    "CHANGELOG.md": "2ca9b3b06952302d24f415b95aea5a85248e9d5542126e6943ca1886244ec925",
+    "README.md": "085d7fdd2be9c28fc8a04e1483d49ce69f90357d33a774549c00aa771157e346",
+    "PRD.md": "8aa7cdd1ca0081df6e9deb60767b7844adc78ca8e09ee48e652f251e4ae8848e",
+    "MAINTAINING.md": "e5512928992ec0fd45c6a459e6bb92f0d83a1fb10e83644788477c47cd1d3f44",
+    "CHANGELOG.md": "087cf1d941ce9483e099636521f6ca4380afca2ab5b064b56d29a0f6eb9af1ad",
     "LICENSE": "0a9dabde6fca3a8d9010c587bc53c09cc147aa081848fbbdab9f119be3f778f8",
-    "THIRD_PARTY_NOTICES.md": "391a626df3eae87a1aad2c93e8f2bcb9a079d87c9de45524e67b5919c19c63a9",
+    "THIRD_PARTY_NOTICES.md": "e70be4222036c37d3237ef501e63d4bfed0ca7cb940893934d1b362cfceb97e7",
     "AGENTS.md": "fa2fa511deab3e972b28dfb209f9267092a4430d3fea6c0cc24520e3fd580575",
     ".gitignore": "8cf91327b2d9c9d76246d25b403afb942b78441c63c8da06483afb00f68a6e19",
-    "release.json": "5d875aec94bec787c55da7f5a24e77ffd469b0470e9eb010519a2aba2109dacf",
+    "release.json": "208a2518a0dbff7ff6dd3960fc5f7e9d9b4eb2b535ec1fcb5b89d201248a369f",
     "install.py": "a096c747b13b047babca5f1580ada311b20bf02267b607fc8cc38c80eb6923b1",
     "build.py": "b3b132a96fc89b320faa76b1c3092cc5432ac53f4b81144410ba9b2ff5862bd8",
-    "yl集群_审核说明.md": "959a9ef3652e2a478d15fc8320a0533f814c8270c82cf5ca7c968773b2cd137b",
-    "tools/audit.py": "515082bea45b22f699f2edb772ade0d8ed4cb5f0c7bfaad1b76573ec83e622d3",
+    "yl集群_审核说明.md": "7428fd83827e29caab292e3190b79893b2676e10a0f80c2ffca42957ff437479",
+    "Skill清单_v2.0.0.md": "567f3f0c2d1ace3e151588977a6dfd6cd29a476d999cf0dbd8257a166be134c8",
+    "YL-Skill集群.jpg": "5dc8ac5ff3f45b735cc089ba9635cd53f01dfb06ebf90899ef037b9fb4c9dd94",
+    "tools/audit.py": "98dbc69d839929ee70968a96b2e164d59bfd5e09858a2959272104679430ced1",
     "tools/check_updates.py": "50798b31a19022d4da82bbf4bb0eb72d55c402c0219b2ce5fba664bc5a2160fb",
-    "tools/library.py": "cdd49ad437c12130eb3815a0f07e43433b6e9a5c0eb720633a63011e64826028",
-    "tools/sync_writing_foundation.py": "8d27932cfeb90fe490576f2b5029899ce18dc87b71ede1252519c10d0bb9ccf5",
-    "tools/test_writing.py": "553415d782ba3e8427b015899afb42b49bce5bcaec2e6e9e51eafd522276a355",
+    "tools/library.py": "ecc1c9ee6eb2a8c8057452145102ddff32044a6128fa30e84d3b3b1baab10215",
+    "tools/sync_writing_foundation.py": "aeba499fb0d4b5404727660d97e63afdde34eda1bd73849cf6f577f127a6028c",
+    "tools/test_writing.py": "ba8726fd56d902591304adf0a92ab77352c57001f7256c2e19101fcea5679ca4",
     "tools/verify.py": "0143ac3c9db9e0966db3fde469c1cbad8d81de37c27ff6c9b3574265733e1800",
-    "tools/writing_foundation.py": "0f34c11af72d93fe9aaabc2d7c592680d7499a0b15cf4a3a66a7ebfbfb20fbe7"
+    "tools/writing_foundation.py": "f2825e79c1b08cb95bc280ebb84a9c99bc0006a6e9cffb9c14073c923bee20f5"
   },
   "skills": {
     "yl-chekhov-deep-writing": {
@@ -37,7 +39,7 @@
       "files": {
         "agents/openai.yaml": "d1697ba03ab8c0b75f468e670ba18dd97481e96384d19fb45aaef91dc7347059",
         "assets/runtime-profile.json": "6fd59d787fee8c15a235f755e087378c1a89bd651d44fb4a25691230affbec67",
-        "AUDIT.md": "7e78c058a90ca87a0d900fceb91b2a9b7c315826427daf342b89c2c10ce076da",
+        "AUDIT.md": "d35d571f8dc8cb2c61291c9bc078b242bbebcf4a1cc707e7243f7d9d56ab90d0",
         "corpus/corpus-manifest.json": "41f728c75c1cfeb7e4486280185f91d89a441b392cf450766e9325e864c4b060",
         "corpus/originals/ru/clean/SRC-CHE-001_body.txt": "3bf6550172806fae084e933deebf3097a67edceb68fe850e9c64f429222ef95a",
         "corpus/originals/ru/clean/SRC-CHE-002_body.txt": "ede290d388ee89c0533cccad66947177fe82cb1799feef5fb1948d4df0cc87c5",
@@ -58,19 +60,19 @@
         "LICENSES/CC-BY-SA-4.0.txt": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5",
         "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
         "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
-        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "d4b49ef81dac61eaa7e22c1a4744000456b83a5ed923ab8a5c97bdb41cbcdf53",
+        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "1f9e14c610651210fcbdc27bc95b1c7ff40964a2001deac3f651d05913ddc8c9",
         "NOTICE.md": "39dcd504bb612d3dcaf6c90b329e51d825758122f7dbb7501a61f90d4a4a3f80",
         "README.md": "fd02a2c98efb58ba1ea8c4a311379035abca115c5b4dca67473bde4e8a4a88de",
-        "references/anti-ai-extraction.md": "17d58a28edf46f78a54090062cb238c2c8252ba6ecfb7c965549fbf9a822e4d6",
-        "references/anti-ai-rules.md": "86384df3b6463975a753ad8c629192c9d30e8fb36d1ad095f9fd8eae95c70f99",
-        "references/anti-ai-source-inventory.json": "adc942a5466bd9c470a5f52c8f200dfcd36a9b80a8242004544c62cf98464c8b",
+        "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
+        "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
+        "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
         "references/corpus.md": "0ec3fa0d6cda86fc472fe1eb3625f791f14743df723a08c1a480426a0cf43a1f",
         "references/language-shell.md": "c302a8dfd878955a070285dce3d70be052d71424435194c47c7401dc8c123dea",
         "references/mechanisms.md": "e3fce3374934b1c24f294b8e0e57716c8707f067eb9174d0277bc590b33279e8",
         "references/media.md": "ec5cd0986d26bd563bd5dc43c63280abb3f8a0ca7cbf871e0ff433294ef9a2ea",
         "references/source-snapshot.json": "11b59381a78f817144a87643e29b32e56bccfe6e7abe256afc84b0a49f7d8ac7",
         "references/workflow.md": "971666bafd2289326bf113976c776021c7fc2647a7d49542d23c39ee29e448a5",
-        "references/writing-foundation.md": "f3933b295f26889c2f4f13a0e94c2fd3cc2b794045b65a1a65b956541f713ec3",
+        "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
         "scripts/corpus_utils.py": "3ff8e7137b20fe709afb16d907c265e08a02e389a389516b62510d68301c31cd",
         "scripts/load_runtime_profile.py": "2c388d3e6af0806d3b20ba9e221655639a98de1826ba05265fef91937469efe4",
@@ -78,70 +80,9 @@
         "scripts/test_portable_install.py": "d63bdd99e96791d88f695716ce964c86cf186ae99773470d66c34f46460f1c49",
         "scripts/verify_install.py": "ce2c271fb5624663b860dc16343825f1f46c7a56ea96a8b9c1d018d8041f2299",
         "SKILL.md": "748f084395757a5ed8ddd36961980f13a97563662c09a44e462323501e19a474",
-        "VERSION": "6ca2e3356014241331fb2b399428fca23c558e3f3d428edcf4f56eb0fe907069"
-      }
-    },
-    "yl-human-writing": {
-      "review_date": "2026-09-15",
-      "privacy_review": "passed",
-      "rights_review": "passed",
-      "method_review": "passed",
-      "review_note": "1.1.0 changed files semantically reviewed: common rules, scoped source extraction, optional assets/CTA, direct-call contracts and file-level attribution. See AUDIT.md where present and root audit; identical old files retain prior evidence. This is not a real-article quality certification.",
-      "files": {
-        "agents/openai.yaml": "3f6f053a9a9f22bc4316c896a101220d61b8213da430533fb0d6313e6ba4c97b",
-        "AUDIT.md": "bae43a330f90d4989c449b1c1cbfaeaa98a7eacc639fb6059f70b6161d6806c0",
-        "dist/yl-human-writing-lite.md": "daf171439bc66707b7852a5703b7bdecf9712a358779537d2cc019dc8e80ad94",
-        "LICENSE": "fb414a1ecc21b3609f542295bce1d6b74db7600c58113d7d42192b01b33744d3",
-        "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
-        "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
-        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "d4b49ef81dac61eaa7e22c1a4744000456b83a5ed923ab8a5c97bdb41cbcdf53",
-        "references/anti-ai-extraction.md": "17d58a28edf46f78a54090062cb238c2c8252ba6ecfb7c965549fbf9a822e4d6",
-        "references/anti-ai-rules.md": "86384df3b6463975a753ad8c629192c9d30e8fb36d1ad095f9fd8eae95c70f99",
-        "references/anti-ai-source-inventory.json": "adc942a5466bd9c470a5f52c8f200dfcd36a9b80a8242004544c62cf98464c8b",
-        "references/fiction.md": "6efea0c16f28b7ae2d3531a7e2413577e2f6e3c1945912b087c28a0da6d0ad83",
-        "references/formats.md": "dd63704550574cd562b55f24307815e9172a63320dcfcc6006b3eab0ccc406bb",
-        "references/forum-prose.md": "20c22ad9c5c5c3f43ebae6bb7d258cfc42916413a82c2f95a0de9239541641dd",
-        "references/reality.md": "02004e1fd4dba40d8d50260982ecead81ce3788c7269922b8311514fe8edd0e6",
-        "references/revision.md": "bd09ff525ec3845c68924d844003f10c3fe88ff84c55dbc155aca3cc2130f687",
-        "references/source-snapshot.json": "0bd44d43d1fff3790bb2e6b184ee45074400841b16708a1a4b507f9d7d69b978",
-        "references/writing-foundation.md": "f3933b295f26889c2f4f13a0e94c2fd3cc2b794045b65a1a65b956541f713ec3",
-        "scripts/check_prose.py": "50b2f1242b967df88f86a543d6f7da251c4ebb94f8792ee140e81e4994d30e49",
-        "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
-        "SKILL.md": "1e99a1121cc5b93c8244b9e950242def0f721e66f52914e70cf6b2c8967830fb",
-        "SOURCE.md": "24df87a278a8eb3063ee0dcf2e54642a69a7374fe473aae992ee4231fb64d831",
-        "VERSION": "6ca2e3356014241331fb2b399428fca23c558e3f3d428edcf4f56eb0fe907069"
-      }
-    },
-    "yl-kazik-writing": {
-      "review_date": "2026-09-15",
-      "privacy_review": "passed",
-      "rights_review": "passed",
-      "method_review": "passed",
-      "review_note": "1.1.0 changed files semantically reviewed: common rules, scoped source extraction, optional assets/CTA, direct-call contracts and file-level attribution. See AUDIT.md where present and root audit; identical old files retain prior evidence. This is not a real-article quality certification.",
-      "files": {
-        "agents/openai.yaml": "a49c1706c6be3679e2d0cdc441ee289e5173741c3c08c63358c4a14205e77fdb",
-        "AUDIT.md": "093907b98916d2d701c89fd9a896a5698d399a4f492a495454d71134dd3c848f",
-        "LICENSE": "04a538d00dd52fef19205ac68dbfd8855a1ff374213a3d49f358e0177f48c4ba",
-        "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
-        "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
-        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "d4b49ef81dac61eaa7e22c1a4744000456b83a5ed923ab8a5c97bdb41cbcdf53",
-        "references/anti-ai-extraction.md": "17d58a28edf46f78a54090062cb238c2c8252ba6ecfb7c965549fbf9a822e4d6",
-        "references/anti-ai-rules.md": "86384df3b6463975a753ad8c629192c9d30e8fb36d1ad095f9fd8eae95c70f99",
-        "references/anti-ai-source-inventory.json": "adc942a5466bd9c470a5f52c8f200dfcd36a9b80a8242004544c62cf98464c8b",
-        "references/case-study-template.md": "5abe36de4f27e117e09a70f63987ac84e3ab741dc15838bf455f1744424072b4",
-        "references/corpus_findings.md": "5fe6255dcc0b45e5c1afc36c6d81dbe2b9ca09c6810202ae8e48fee62c91e386",
-        "references/evidence_and_images.md": "28451680e5ab9948cf6faea0afc3e9992a190acdf351ef93d5a6f7fc91d6e836",
-        "references/source-snapshot.json": "561289a32a5c0bcd45210f52500003afeefcf68a6bc0784f0f61eea28b25339a",
-        "references/style_examples.md": "d53146a1aaecfa0cfb1e481e1a1a320f14daae0dbd782d2b27492eaa9430cfce",
-        "references/user_voice.md": "22637b2c3bb24fb77af0d66b818213514710c34e485ee970d8c2f18031d31c5a",
-        "references/writing-foundation.md": "f3933b295f26889c2f4f13a0e94c2fd3cc2b794045b65a1a65b956541f713ec3",
-        "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
-        "scripts/test_validate_article.py": "50c68b3ce2bf60d39c981b7bd86cec713b90a0bcc6ded372b6bd3d3ab3d19749",
-        "scripts/validate_article.py": "1baf375f3d6c02036e67253003226434b48ffe8b2ddc7e803de6114a11406433",
-        "SKILL.md": "29cd17182a507aa93739f535fd700bd80a3dace4d463e3fe3d519659b97556bf",
-        "SOURCE.md": "e8db043c0ae64d678b2fa22d62ed8dfcbe4228159ef9a7fd39deddb785e53699",
-        "VERSION": "6ca2e3356014241331fb2b399428fca23c558e3f3d428edcf4f56eb0fe907069"
-      }
+        "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
+      },
+      "review_2_0": "Per-file semantic review: public source fingerprints/attribution, original-voice and genre boundaries, two-style routing and no retired runtime dependency. No private data or new external write workflow. Unchanged files inherit prior review."
     },
     "yl-remotion-talking-head-editor": {
       "review_date": "2026-09-15",
@@ -213,8 +154,9 @@
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "SKILL.md": "8d45d25f40cf21f42d7b966b3bef985b72e60cfe047f069287bcfc68b12bfc87"
-      }
+        "SKILL.md": "ac3dade7cf476a9eef871ff6e10a7632f35ab9626218a1058e8f948860602d00"
+      },
+      "review_2_0": "Per-file semantic review: public source fingerprints/attribution, original-voice and genre boundaries, two-style routing and no retired runtime dependency. No private data or new external write workflow. Unchanged files inherit prior review."
     },
     "yl-video": {
       "review_date": "2026-09-15",
@@ -236,19 +178,19 @@
       "review_note": "1.1.0 changed files semantically reviewed: common rules, scoped source extraction, optional assets/CTA, direct-call contracts and file-level attribution. See AUDIT.md where present and root audit; identical old files retain prior evidence. This is not a real-article quality certification.",
       "files": {
         "agents/openai.yaml": "82d067b91e7ea95979cbd3f8bf21ddf8f96179629b6fcb3a1fbd774d66806a85",
-        "AUDIT.md": "33c81a325c31de1bf72c10aa3acd4d4d5ed8a309027408c8f4885f38b8252720",
+        "AUDIT.md": "ada92229038852e0491e592a60bbd4e9696b53fcbae75d714dfae341eb3bfa2b",
         "LICENSE": "04a538d00dd52fef19205ac68dbfd8855a1ff374213a3d49f358e0177f48c4ba",
         "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
         "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
-        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "d4b49ef81dac61eaa7e22c1a4744000456b83a5ed923ab8a5c97bdb41cbcdf53",
-        "references/anti-ai-extraction.md": "17d58a28edf46f78a54090062cb238c2c8252ba6ecfb7c965549fbf9a822e4d6",
-        "references/anti-ai-rules.md": "86384df3b6463975a753ad8c629192c9d30e8fb36d1ad095f9fd8eae95c70f99",
-        "references/anti-ai-source-inventory.json": "adc942a5466bd9c470a5f52c8f200dfcd36a9b80a8242004544c62cf98464c8b",
+        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "1f9e14c610651210fcbdc27bc95b1c7ff40964a2001deac3f651d05913ddc8c9",
+        "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
+        "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
+        "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
         "references/source-snapshot.json": "8a21f7e779981029ab49cd098784ec40b8f18464f8b224e21d7c0b8f6ee22da0",
         "references/sourcing-and-claims.md": "36d6f0e62fe3d678a94a140521f540a2de7dadbd289c084732ed7667bc7ef110",
         "references/staged-delivery.md": "9a3c61fa59801bf656e2e11d1982f950ad2564ad805fc28f1cefe93618b86125",
         "references/style-contract.md": "21e73b0be4590d0a2cfed0edb9356fe3ff16974fa0ec7a4e2f05339ccc9cdd82",
-        "references/writing-foundation.md": "f3933b295f26889c2f4f13a0e94c2fd3cc2b794045b65a1a65b956541f713ec3",
+        "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
         "scripts/build-wechat-html.mjs": "7ccfb50c8d69de9333f872fe8c099dcfcbd6ea722a01e162d689799a6095463a",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
         "scripts/validate-wechat-article.mjs": "4cd3fa023670a3a3c6bb8c45671f1ce81324a3716b746f112f66c48d6b3c454a",
@@ -256,8 +198,9 @@
         "SOURCE.md": "a20d73aa93b8fdf4d6e40b14d2642d1342abddbf757784e6648eb201a8fcec87",
         "tests/build-wechat-html.test.mjs": "37144dc903899bf89e9ca1a2d8ac1eb36bdd5cf5c1bed30bbaa7d378376bc95f",
         "tests/validate-wechat-article.test.mjs": "e675a47fdaa2220548f51ffd5688dcfd9d752845277283e0518c71eb588c25c7",
-        "VERSION": "6ca2e3356014241331fb2b399428fca23c558e3f3d428edcf4f56eb0fe907069"
-      }
+        "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
+      },
+      "review_2_0": "Per-file semantic review: public source fingerprints/attribution, original-voice and genre boundaries, two-style routing and no retired runtime dependency. No private data or new external write workflow. Unchanged files inherit prior review."
     },
     "yl-writing": {
       "review_date": "2026-09-15",
@@ -266,21 +209,22 @@
       "method_review": "passed",
       "review_note": "1.1.0 changed files semantically reviewed: common rules, scoped source extraction, optional assets/CTA, direct-call contracts and file-level attribution. See AUDIT.md where present and root audit; identical old files retain prior evidence. This is not a real-article quality certification.",
       "files": {
-        "agents/openai.yaml": "fa9e6caaeef308fbb3b9329bd6cf5a31d0deb094a9e412872621c41a9200f154",
-        "AUDIT.md": "dcc0105d10feaaff8d4abf8b9a5ced8c94c56aab1d99685c7ac7c8b2ff09b1c8",
+        "agents/openai.yaml": "04006c59ed4ecc43803f1f8a06665946bbff2f0f6300ba76dd1937a6b537caa5",
+        "AUDIT.md": "943aac3ebbc67d98308f07feb67ac13ef5fd0d2965069249be7853ce09eba5b0",
         "LICENSE": "3cb972c099342a0132bfd661cafaa33349de89808696d0cf1264e142e7580628",
         "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
         "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
-        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "d4b49ef81dac61eaa7e22c1a4744000456b83a5ed923ab8a5c97bdb41cbcdf53",
-        "references/anti-ai-extraction.md": "17d58a28edf46f78a54090062cb238c2c8252ba6ecfb7c965549fbf9a822e4d6",
-        "references/anti-ai-rules.md": "86384df3b6463975a753ad8c629192c9d30e8fb36d1ad095f9fd8eae95c70f99",
-        "references/anti-ai-source-inventory.json": "adc942a5466bd9c470a5f52c8f200dfcd36a9b80a8242004544c62cf98464c8b",
-        "references/source-snapshot.json": "941e0996d6aa34e04de2fa5b219aa9408e9bb505bf100b75e46cda244174b504",
-        "references/writing-foundation.md": "f3933b295f26889c2f4f13a0e94c2fd3cc2b794045b65a1a65b956541f713ec3",
+        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "1f9e14c610651210fcbdc27bc95b1c7ff40964a2001deac3f651d05913ddc8c9",
+        "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
+        "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
+        "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
+        "references/source-snapshot.json": "c5a8df03ff81d317697b1523a5df9efdb0dd7cc7c8fdc142af75aa8fa5e08925",
+        "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
-        "SKILL.md": "a2b89c86b5eef21ab1f32f08fb2c1bc3cd5222cfb30932e8e21cb80236f703d6",
-        "VERSION": "6ca2e3356014241331fb2b399428fca23c558e3f3d428edcf4f56eb0fe907069"
-      }
+        "SKILL.md": "45c61e9b9ad33436b678fabae1506116187cb8890fb9f31da44d14f777ab4857",
+        "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
+      },
+      "review_2_0": "Per-file semantic review: public source fingerprints/attribution, original-voice and genre boundaries, two-style routing and no retired runtime dependency. No private data or new external write workflow. Unchanged files inherit prior review."
     },
     "yl-write-voice-led-wechat": {
       "review_date": "2026-09-15",
@@ -290,29 +234,30 @@
       "review_note": "1.1.0 changed files semantically reviewed: common rules, scoped source extraction, optional assets/CTA, direct-call contracts and file-level attribution. See AUDIT.md where present and root audit; identical old files retain prior evidence. This is not a real-article quality certification.",
       "files": {
         "agents/openai.yaml": "fc401c8541e282b058ccefa5c01dceccbc8db5f031aef9780e22ae0b86c46b9d",
-        "AUDIT.md": "560305f109707a6baf465cb8ad82dbc0be35b8d64f95487a797a15f1cb7044bf",
+        "AUDIT.md": "d0d639ac4f54ad2e114d19a41f94d275dd8da90f0b8d4b60a1a01016c6689801",
         "LICENSE": "3cca40899dec2ed92e7a30fbe86f5558594dccccb0ebe7f03ea2b75b4790297d",
         "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
         "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
-        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "d4b49ef81dac61eaa7e22c1a4744000456b83a5ed923ab8a5c97bdb41cbcdf53",
-        "references/anti-ai-extraction.md": "17d58a28edf46f78a54090062cb238c2c8252ba6ecfb7c965549fbf9a822e4d6",
-        "references/anti-ai-rules.md": "86384df3b6463975a753ad8c629192c9d30e8fb36d1ad095f9fd8eae95c70f99",
-        "references/anti-ai-source-inventory.json": "adc942a5466bd9c470a5f52c8f200dfcd36a9b80a8242004544c62cf98464c8b",
+        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "1f9e14c610651210fcbdc27bc95b1c7ff40964a2001deac3f651d05913ddc8c9",
+        "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
+        "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
+        "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
         "references/dbs-editorial-foundation.md": "2c9e7ac8208e085916eff4b72a85d4c3e6fe2b1a47db1c9eeb7c3a6a2c0de7fb",
         "references/dbs-source-manifest.json": "40e61cc4dee44910b713703a8ca7f284fe32f268b248af8b6ffdbfa390c88253",
-        "references/edit-card.md": "378c61a72f9c75952f6f67ca7f19efff8547e8257d512bee463bc38adb23c1b6",
+        "references/edit-card.md": "f8763eb9a1379625f53b2cd942eaec14edcc3b97b90f4331946a05cd91993d2f",
         "references/knowledge-and-source-contract.md": "c4817801e72e65968238b6b3ec35f81c6a9b777ed39d59f8ef52074c5576a77e",
         "references/source-snapshot.json": "3a06390852709d24dd9b91cb546780e5eb3940b19033e974b7641baf8794a094",
-        "references/style-adapters.md": "a6a95893f24a3181ac8f85db208cb61f5f29526936e01363deb6ec1fd09ecb16",
-        "references/style-dependencies.json": "2f7ba2393c4820dc06e17c8cfcef53fac5ba0a1a87f139b958b3965aacb8ce73",
-        "references/writing-foundation.md": "f3933b295f26889c2f4f13a0e94c2fd3cc2b794045b65a1a65b956541f713ec3",
+        "references/style-adapters.md": "77c7a06ad4950aa82e521cc194690ccd99f08fe8f020f492c5eee36f594e3b2d",
+        "references/style-dependencies.json": "4aa56eee5f0e2cc04771b9a845202965d557e088c2a2375ad1d810418b60f224",
+        "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
         "scripts/check_article.py": "f8e7a2caaa93953e8c170e51f8e6337034695c1d7ced6ab93707c57685b8afde",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
-        "SKILL.md": "53ae0c2ba1b73e637d0866324ca8e32edd9b57a0487209cfbb60168beabfb40f",
-        "SOURCE.md": "5e32d0539065ef2bbc7a2cbd20951e8d8fec750bc6907173a1516c77b183caf4",
+        "SKILL.md": "0625ef98821f71e3c0e83b0c1af369674ff19f6b6879216fa0735e79476b65f5",
+        "SOURCE.md": "5d170734e932649e3678d05b638c363098e0127ff3ce04575ddd93fcefaa579a",
         "tests/test_check_article.py": "9919e151cd66669b93b276824b315299e2a60a6a74dc6aaa4fef433f00c826d4",
-        "VERSION": "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1"
-      }
+        "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
+      },
+      "review_2_0": "Per-file semantic review: public source fingerprints/attribution, original-voice and genre boundaries, two-style routing and no retired runtime dependency. No private data or new external write workflow. Unchanged files inherit prior review."
     },
     "yl-skill-sync": {
       "review_date": "2026-09-16",
@@ -323,12 +268,13 @@
       "files": {
         "agents/openai.yaml": "8da7d9256cc0e92efcf468acd87f6a4ce75c81bb455d3111408f65938810b12a",
         "LICENSE": "d3e0a3ba0d79d89d0c25707893f2afc47330b22ddb3e6f1b9743e46b2df2d817",
-        "README.md": "6efb7c18c50aca48564a6f372f2723c1ba9ba542b40503755e8a6435858c55ee",
+        "README.md": "e48f1dcbac3fda5c7cf3245c721678ffb327d08fadb26f362b11c8f06a0d26f5",
         "scripts/sync.py": "44a1d2f41fe79f7b99f8a8eccd901aca0d6b3d7daebe5895b89f8cbb89d44e33",
-        "SKILL.md": "72149220809020c1335f4e505b82a7fa4d088bcf6cf31d438f4f2660ff878bd1",
+        "SKILL.md": "216d15344c0a07747b991dcdce9249c4dd1332247349a7f1a292a90f2a389d8e",
         "SOURCE.md": "4d9a9c142a990ed81372b911e0a3952e8c347106ac17f9d2c552db66ee2679e3",
-        "VERSION": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03"
-      }
+        "VERSION": "f34306bb50e2d2ec59c788b9013c5ac682ef7f7f69345a3e957e38c0b6ba2fdd"
+      },
+      "review_2_0_2": "Documentation-only restriction takes precedence over legacy commands; no automatic updater or safe Grok overwrite/unlink claim. Script bytes unchanged."
     }
   }
 }

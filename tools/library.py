@@ -11,7 +11,8 @@ TEXT_SUFFIXES = {'.md', '.py', '.ps1', '.yaml', '.yml', '.json', '.txt', '.toml'
                  '.js', '.mjs', '.ts', '.tsx', '.jsx', '.css', '.html', '.sh', '.csv'}
 ROOT_FILES = ['README.md', 'PRD.md', 'MAINTAINING.md', 'CHANGELOG.md', 'LICENSE',
               'THIRD_PARTY_NOTICES.md', 'AGENTS.md', '.gitignore', 'release.json',
-              'install.py', 'build.py', 'yl集群_审核说明.md']
+              'install.py', 'build.py', 'yl集群_审核说明.md', 'Skill清单_v2.0.0.md']
+ASSET_FILES = ['YL-Skill集群.jpg']
 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
@@ -78,6 +79,11 @@ def check_links(folder, blobs):
 
 def project_map(root=ROOT):
     values = {name: (root/name).read_bytes() for name in ROOT_FILES}
+    for name in ASSET_FILES:
+        path = root/name
+        if is_link(path):
+            raise ValueError('Linked project asset')
+        values[name] = path.read_bytes()
     for p in sorted((root/'tools').glob('*.py')):
         if is_link(p):
             raise ValueError('Linked maintenance script')
@@ -86,4 +92,3 @@ def project_map(root=ROOT):
 
 def hash_map(blobs):
     return {name: digest(data) for name, data in blobs.items()}
-
