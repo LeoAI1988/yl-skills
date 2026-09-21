@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "baseline_note": "Selective sanitized adaptation, not a byte-for-byte copy.",
+  "sources": [
+    {
+      "name": "analyze-platform-content-performance",
+      "host": "codex",
+      "tracking_scope": "listed_files",
+      "reviewed_at": "2026-09-21",
+      "files": {
+        "SKILL.md": "cf698c38e090357dcf5b5b9f6423ddbb51946fde0f6906b1fd9e4b8e1f2a6daa",
+        "references/capture-guides.md": "c8e6851e56ec26fc4cd4cf5c5020416f350c825fbc7c78d2665175020740fe52",
+        "references/data-schema.md": "428a59718eb1d09d00ad2c0776dd05772156f3e3a395384470829081aa65526e",
+        "references/report-requirements.md": "a604dcf66bfad3fb27bdd04d55da14797aa30def8bc9e1e6efb5d1da8c995369",
+        "scripts/analyze_performance.py": "31b4d3913df2bd770aa818d9286a26e1eb79bf94e2bd29c860e0ae2b5f96f954",
+        "scripts/transcribe_audio.py": "0a0c508bf24e7a6a2fd3b2f3d31f021d944da509db91775a468384fa87682df1"
+      }
+    },
+    {
+      "name": "channels-backend-analytics",
+      "host": "workbuddy",
+      "tracking_scope": "listed_files",
+      "reviewed_at": "2026-09-21",
+      "files": {
+        "SKILL.md": "bef0488a5b161783df2a1c21c3f0d95e094d3a53b9d12fcfaeec82677e7e2471"
+      }
+    },
+    {
+      "name": "wechat-channels-shop-capture",
+      "host": "workbuddy",
+      "tracking_scope": "listed_files",
+      "reviewed_at": "2026-09-21",
+      "files": {
+        "SKILL.md": "5fb9116b14908c2af3a1a95dccf32b134cb67cf1649db0c84459eeb3b0f0dd19"
+      }
+    }
+  ]
+}

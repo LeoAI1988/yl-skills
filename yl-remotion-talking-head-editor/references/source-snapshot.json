@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "baseline_note": "Current daily-source comparison baseline; the existing public copy has independent reviewed adaptations and is not byte-identical to the source.",
+  "baseline_note": "Reviewed 2.1.0 comparison baseline. Public adaptations retained; see root alignment report. Fingerprints are not bundled source content.",
   "sources": [
     {
       "name": "remotion-talking-head-editor",
@@ -8,27 +8,29 @@
         "agents/openai.yaml": "b46fdc5e699fb965178874f229afbc9328cee6ccc4b5e7718cd2e9830278dc3a",
         "references/acceptance.md": "40b470f30cad9658a4cd29b50622ee550bcfd55f884cd63f1f29edf0401a250f",
         "references/approved-example.md": "a1706b22ab60fed40579c4969bfc2b375bdad714c4bad3ebea03cbe9072ec717",
-        "references/content-analysis.md": "66e07965d58a04ae4f87790ee0bfe46f1a0cfa30c38b4bd6ad7a08e70c8c30dd",
-        "references/editing-workflow.md": "ae2ce3e6360b850b3502b7b93cdf9157d8fc5719b873da586da5afc5bd4e1a8d",
+        "references/content-analysis.md": "4f8dd6a714a1afac767ec21e00b0a723a584fda6fc86031aa70baee599fc6ffd",
+        "references/editing-workflow.md": "182ed7dd90a51a644a1b6b7722ef4ae14bb1196cd743ba622c02ef87ec37f32d",
         "references/final-transcript-archive.md": "703b565e0466e5eb400974b8e272549cf0dba07f1c5857e0a9be9dc8a183b498",
-        "references/kaipai-enhance.md": "bd88f96c5b199b241bf78ef8866b2adf4d7b25815cce8eb4903e53d7bd780a2a",
-        "references/pause-policy.json": "2ea1def286b50572c7ba17668efcc2bfac13ec4d36fe73119da5eb0a5959393c",
+        "references/kaipai-enhance.md": "0cb3e1d4ac82ec136b6b42451135ba4b9e48171bf79220c61d4315cb4911c6d0",
+        "references/pause-policy.json": "1dff3c4bbba4212ed296fda2bfb494140d5021f52f2d0974e1de9eed62f61f96",
         "references/rendering.md": "08b0cd59f5a15a37afa0a88698227143ee0f3d9fdf314145bb220b2cabe13bb7",
         "references/visual-style.md": "b14cfd077b6b5825d904e12e962d98810fb8eabc38882ca830852159d7f3792d",
         "scripts/kaipai_enhance.py": "de7044dd60457f3df5529e37202b02c1695ec83a7adffc0d5036674d2c022022",
         "scripts/pause-probe.py": "c8ca46429aa766714816ccede8af1f6b49652b6cf153994219dde80793e3c371",
         "scripts/render-static-overlays.py": "0c5e108f88490602c551a961523c8f6fe03a477d2ceea29d771eee372606624e",
+        "scripts/review_final.py": "9527edc0a371dbb68f6ee37751a0352a99549f033e81f0b1e8e633c6db3e5c9b",
         "scripts/validate-talking-head-video.ps1": "001eb9ac236ed5eb864b0dfff3eb8a633f96cf3ed5ee0884b630fc36db8828e9",
         "scripts/validate-video.py": "8e78abaed90f943f7e75c12926b00b9d4a70980d2c23f891bf93eecf69e774ab",
         "scripts/word-audit.py": "d40f96d3ab920affe3d8a79228a772f7ba4dc70250a1c7675aa9409e8c0836fc",
-        "SKILL.md": "403b56de6d69522126ff2c51d38f34eb4b810155a553c694c1891bf16d97e667"
+        "SKILL.md": "dbc93b9118ea49ad4987bb7fcc03548c5f110772a86e0850ecf4ef608fa0d7ff"
       },
       "snapshot_ignored_patterns": [
         "scripts/kaipai_sdk/**",
         "**/__pycache__/**",
         "**/*.pyc"
       ],
-      "exclusion_reason": "External SDK and runtime bytecode are not bundled or tracked."
+      "exclusion_reason": "External SDK and runtime bytecode are not bundled or tracked.",
+      "reviewed_at": "2026-09-21"
     }
   ]
 }

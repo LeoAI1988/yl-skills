@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "compact-v5-20260914",
+  "id": "compact-v6-20260921",
   "coordinate": "final_output_seconds",
   "candidateSeconds": 0.15,
   "triggerSeconds": 0.2,
@@ -15,9 +15,12 @@
   ],
   "wordInternalAndOpeningReviewSeconds": 0.12,
   "meaningfulTransitionMaxSeconds": 0.3,
-  "technicalCandidateSeconds": 0.25,
+  "technicalCandidateSeconds": 0.15,
   "requiresAcousticConfirmation": true,
   "requiresJoinVerification": true,
   "reference": "通用紧凑停顿策略；按当前素材声学边界校准，不用内容删除、总时长比或局部变速推断停顿参数。",
-  "sentenceRetentionNote": "通常0.15–0.20秒；超过0.20到0.24秒只用于提问、强调等有明确语义理由的位置，不能作为每句默认。"
+  "sentenceRetentionNote": "通常0.15–0.20秒；超过0.20到0.24秒只用于提问、强调等有明确语义理由的位置，不能作为每句默认。",
+  "openingWindowSeconds": 5,
+  "openingCandidateSeconds": 0.08,
+  "openingTargetTotalSeconds": 0.05
 }

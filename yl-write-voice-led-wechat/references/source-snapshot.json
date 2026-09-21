@@ -5,16 +5,18 @@
       "name": "write-voice-led-wechat",
       "tracking_scope": "listed_files",
       "files": {
-        "SKILL.md": "4d4d6b494bc42f9a8868566abf035ba6fdb8c276792181ddc88c326bda72f00f",
         "agents/openai.yaml": "cf953968469c92e42994c96292d977c7ec198df5b33e8cef0b795a096c103b50",
-        "scripts/check_article.py": "57bd4f666f4b33d3192c6245aa016b3acd4c401a389e1fa2af0064a9f4dd7833",
-        "references/style-adapters.md": "15124ca8a5fd117faafcf0aed60bb7f3591a31f09e151ad6d56497f0fce38340",
-        "references/style-dependencies.json": "3c0139ed656fa97162b98a38d021e872f186ced209579b18a2dfd2c3e939aa23",
-        "references/knowledge-and-source-contract.md": "b7c54a3c0ad4d612ad75e7544b655539f6554be2466d366b69ae3acd8e8794ba",
-        "references/edit-card.md": "88baccd3b843a55c3f85f807791724c9a12add31dd36a0ebae7c55d7846fc573",
         "references/dbs-editorial-foundation.md": "43949d9b26c7ab7caa4ba728b0c37a06246bade4fd4f61f13d7fb7fcf40fdf05",
-        "references/dbs-source-manifest.json": "016afbed13263cf34c6e51f0b5f6316c42061dcce3230bc0aa3ab9665521560f"
-      }
+        "references/dbs-source-manifest.json": "016afbed13263cf34c6e51f0b5f6316c42061dcce3230bc0aa3ab9665521560f",
+        "references/edit-card.md": "c69b26eda1f8cf908b162765d4e39254fcd728fbae54ba4fb24ba78b89d3761d",
+        "references/knowledge-and-source-contract.md": "b7c54a3c0ad4d612ad75e7544b655539f6554be2466d366b69ae3acd8e8794ba",
+        "references/style-adapters.md": "a100dcc0c5e3f2a000415be2b67f09cbd284bc4bf2c521a8d16b3e6ef94e3787",
+        "references/style-dependencies.json": "d71f27b1214b621efc7f9808f4429d91e02a1f24f53c6d02e35263c58421e79b",
+        "scripts/check_article.py": "3ab245aef2326e5a78d6a6ab3dc1b52342696e9c0184b0707845b82cf5bdb535",
+        "SKILL.md": "c1260feab2adeb1d61530329c7ac8419e0233769a2a042bf0ea3e0866ef29160"
+      },
+      "reviewed_at": "2026-09-21"
     }
-  ]
+  ],
+  "baseline_note": "Reviewed 2.1.0 comparison baseline. Public adaptations retained; see root alignment report. Fingerprints are not bundled source content."
 }

@@ -4,20 +4,55 @@
     {
       "name": "chekhov-deep-writing",
       "files": {
-        "agents/openai.yaml": "28209a533245a669a1fc98335d8c4c7d6f24d080300881d8e5bbab0f2a7ebc93",
+        "agents/openai.yaml": "73ec23f782906993a35cd7ac3c42c17c80db4ee5ba9d5d8441e89d0b74d1f6ac",
         "assets/runtime-profile.json": "6fd59d787fee8c15a235f755e087378c1a89bd651d44fb4a25691230affbec67",
-        "references/corpus.md": "9bca2cd50773eccffc79b0f76aa2ea3be12db5bb92314468c994f7686d0c4a0c",
+        "AUDIT.md": "7e78c058a90ca87a0d900fceb91b2a9b7c315826427daf342b89c2c10ce076da",
+        "corpus/corpus-manifest.json": "41f728c75c1cfeb7e4486280185f91d89a441b392cf450766e9325e864c4b060",
+        "corpus/originals/ru/clean/SRC-CHE-001_body.txt": "3bf6550172806fae084e933deebf3097a67edceb68fe850e9c64f429222ef95a",
+        "corpus/originals/ru/clean/SRC-CHE-002_body.txt": "ede290d388ee89c0533cccad66947177fe82cb1799feef5fb1948d4df0cc87c5",
+        "corpus/originals/ru/clean/SRC-CHE-003_body.txt": "ca4928696ad0812a4f40a3fa5c213a1d254ae565e61a1a5e8f1285909e0f40ea",
+        "corpus/originals/ru/clean/SRC-CHE-004_body.txt": "e3e2f5b0a98db894964c359014550f8218b85c7666a61af54c0369055e341d0b",
+        "corpus/originals/ru/clean/SRC-CHE-005_body.txt": "15cc27daf2889c78b2bd82ae358e79910b8419f43fe62f9464ec0f6909e77440",
+        "corpus/originals/ru/clean/SRC-CHE-006_body.txt": "de8af0bef82c2125d403b235e6d9e78f119ac2f552aee40a6dc62b4b1f36bc39",
+        "corpus/originals/ru/clean/SRC-CHE-007_body.txt": "f5656c6d4393979084f7ecd87ae2894b1b567836ec2dbba7d83d99cae6f76260",
+        "corpus/originals/ru/clean/SRC-CHE-008_body.txt": "5843b186011fb5df0dfa39704e28a0020f7e28b36f3ab16dbd3e7fa50289dc1f",
+        "corpus/originals/ru/clean/SRC-CHE-009_body.txt": "1453ae3343da6fb5adf2d19087cc8221bebf7536b01857c8dd98e318c5765362",
+        "corpus/originals/ru/clean/SRC-CHE-010_body.txt": "bee574c83c8d470727fbae20179d7da7922c5a2c7003bbf78c8634cdd05c9a74",
+        "corpus/originals/ru/clean/SRC-CHE-011_body.txt": "a9be48e2cbc9807302d8e9522a1c58b17097c731d8a5d6e60f96f67266e6f094",
+        "corpus/originals/ru/clean/SRC-CHE-013_body.txt": "14251a538aebdf6070ae50e7c45dc0caec594098e3dfed81a92938b0ac00b158",
+        "corpus/source-registry.csv": "f1bf06ee16dfb8b604728c5be679d337ffbb61fd294de87ec979cc1eca1d8c78",
+        "LICENSES/Apache-2.0.txt": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+        "LICENSES/CC-BY-4.0.txt": "9ba9550ad48438d0836ddab3da480b3b69ffa0aac7b7878b5a0039e7ab429411",
+        "LICENSES/CC-BY-SA-4.0.txt": "28a9529c7d0bb4dc51f4bf5c116a3d16ef247a052f7591466768ddf563fd1cf5",
+        "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
+        "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
+        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "d4b49ef81dac61eaa7e22c1a4744000456b83a5ed923ab8a5c97bdb41cbcdf53",
+        "NOTICE.md": "39dcd504bb612d3dcaf6c90b329e51d825758122f7dbb7501a61f90d4a4a3f80",
+        "README.md": "fd02a2c98efb58ba1ea8c4a311379035abca115c5b4dca67473bde4e8a4a88de",
+        "references/anti-ai-extraction.md": "17d58a28edf46f78a54090062cb238c2c8252ba6ecfb7c965549fbf9a822e4d6",
+        "references/anti-ai-rules.md": "86384df3b6463975a753ad8c629192c9d30e8fb36d1ad095f9fd8eae95c70f99",
+        "references/anti-ai-source-inventory.json": "adc942a5466bd9c470a5f52c8f200dfcd36a9b80a8242004544c62cf98464c8b",
+        "references/corpus.md": "0ec3fa0d6cda86fc472fe1eb3625f791f14743df723a08c1a480426a0cf43a1f",
+        "references/daily-integration.json": "e77bc242f95aef7f4d15fb4f7e644c61f0741e7326e4e750cadc2e560c23e262",
+        "references/daily-update.md": "bfd48ebc92525ae1a85b028f72a2dc9d32b40d7beccf6a8fd66e42807f8b1ad4",
         "references/language-shell.md": "c302a8dfd878955a070285dce3d70be052d71424435194c47c7401dc8c123dea",
         "references/mechanisms.md": "e3fce3374934b1c24f294b8e0e57716c8707f067eb9174d0277bc590b33279e8",
         "references/media.md": "ec5cd0986d26bd563bd5dc43c63280abb3f8a0ca7cbf871e0ff433294ef9a2ea",
+        "references/source-snapshot.json": "11b59381a78f817144a87643e29b32e56bccfe6e7abe256afc84b0a49f7d8ac7",
         "references/workflow.md": "971666bafd2289326bf113976c776021c7fc2647a7d49542d23c39ee29e448a5",
-        "scripts/corpus_utils.py": "f3a973d537466aa8cca660d0be0b78b0a3eb98a7761aa0afc2fdbd364cb5b9f6",
+        "references/writing-foundation.md": "f3933b295f26889c2f4f13a0e94c2fd3cc2b794045b65a1a65b956541f713ec3",
+        "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
+        "scripts/corpus_utils.py": "3ff8e7137b20fe709afb16d907c265e08a02e389a389516b62510d68301c31cd",
         "scripts/load_runtime_profile.py": "2c388d3e6af0806d3b20ba9e221655639a98de1826ba05265fef91937469efe4",
-        "scripts/search_corpus.py": "d02ccc8d6a0e48b2e2368475e9ded1b27433af19c15a5882386a681574029861",
-        "scripts/verify_install.py": "75369350c719f2c2b4701125a6fc809f4533414d0c5d9dc261e749ce79a66007",
-        "SKILL.md": "8c6a2ea8eb14271dd202cfb289cca10a6605de7d123fae0bf5772b0b8cb18e3f"
-      }
-    },
+        "scripts/search_corpus.py": "f57d1c6221d0b541bf74ccb1caf54ceab4995f3542e0a72bee26bc3224f44c37",
+        "scripts/test_portable_install.py": "d63bdd99e96791d88f695716ce964c86cf186ae99773470d66c34f46460f1c49",
+        "scripts/verify_install.py": "ce2c271fb5624663b860dc16343825f1f46c7a56ea96a8b9c1d018d8041f2299",
+        "SKILL.md": "f37a6c3f97c9e05312ca9c07142a01c91d12f48694af69ef2f128d45d3b2a766"
+      },
+      "reviewed_at": "2026-09-21"
+    }
+  ],
+  "historical_sources": [
     {
       "name": "chekhov-deep-writing-release",
       "files": {
@@ -64,7 +99,10 @@
         "corpus/originals/ru/metadata/SRC-CHE-013_source.json": "d7a3c79d39e6386c1e6464bb066431494b0001fa4774915512708701e38adb15",
         "corpus/originals/ru/clean/SRC-CHE-013_body.meta.json": "940ddec3ca25cc7626c310bcfc813beb833c1b1028df6686a69efdb7c9b252a1"
       },
-      "tracking_scope": "listed_files"
+      "tracking_scope": "listed_files",
+      "status": "historical_source_unavailable",
+      "note": "Historical release-source fingerprint retained; current daily source checked separately. No claim of current equality."
     }
-  ]
+  ],
+  "baseline_note": "Reviewed 2.1.0 comparison baseline. Public adaptations retained; see root alignment report. Fingerprints are not bundled source content."
 }

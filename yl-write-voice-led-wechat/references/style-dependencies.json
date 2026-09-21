@@ -8,5 +8,8 @@
   },
   "optional_expression": {
     "chekhov+impact": "yl-write-impact-wechat"
+  },
+  "aliases": {
+    "dbs": "editorial"
   }
 }

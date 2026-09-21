@@ -32,7 +32,7 @@
         "scripts/prepare_video_input.py": "e32bd8385571c6ec12773547d20e2b62b21df0198314d1553ab2a21aa90a8005",
         "scripts/render_cover.py": "83d0c6c660ebf39fd79e501a3bc7fa2e449ce64293d9d8fab84f833ffc29a7bf",
         "scripts/validate_cover.py": "4a20fbe8a88a78b41d040b3597b21af757a4c2c39f3e77743c453d5b7102baf3",
-        "SKILL.md": "ca7428057454148bde14fc9a011f1cc9d6b31b052b1f931892d1ceab7f034543"
+        "SKILL.md": "8ab2cbaade194bf10c36a5f0ea445321ef57432909fa20e1aa2f938989330fdb"
       },
       "excluded_from_distribution": {
         "private_identity_filenames": 1,
@@ -43,7 +43,8 @@
       "snapshot_ignored_patterns": [
         "**/__pycache__/**",
         "**/*.pyc"
-      ]
+      ],
+      "reviewed_at": "2026-09-21"
     },
     {
       "name": "make-translucent-black-white-covers",
@@ -63,7 +64,9 @@
       "snapshot_ignored_patterns": [
         "**/__pycache__/**",
         "**/*.pyc"
-      ]
+      ],
+      "reviewed_at": "2026-09-21"
     }
-  ]
+  ],
+  "baseline_note": "Reviewed 2.1.0 comparison baseline. Public adaptations retained; see root alignment report. Fingerprints are not bundled source content."
 }

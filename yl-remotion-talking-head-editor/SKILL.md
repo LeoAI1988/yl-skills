@@ -104,3 +104,9 @@ description: Edit Chinese talking-head footage with built-in mandatory content, 
 - 由安装者指定一份维护真源；更新分发副本时核对版本，避免多份规则漂移。分享包不包含本机 Junction 或符号链接。
 
 安装与工具准备见 [环境与参考](references/approved-example.md)。示例工程不是运行依赖，不能向新视频复制旧标题、旧字幕、旧切点或旧人物画面。
+
+## 2.1 同步补充：覆盖检查和成片复审
+
+剪辑前、导出后必读 [转写覆盖与成片复审](references/final-review.md)。转写覆盖检查在删空白前执行；GATE-3 在 GATE-2 中完成，增强回片后复验。旧段落中前五秒只从 0.12 秒起检查的描述升级为 0.08 秒起候选，确认后目标约 0.05 秒，均为成片坐标；其他停顿范围不变。不得用转写空白直接当作无声。
+
+覆盖区间可用 `scripts/check_asr_coverage.py --input /work/coverage.json` 只读检查，输入为 `{"coordinate":"source_seconds","vad":[[0,2]],"asr":[[0,1]]}`；两组须先对齐同一源时间轴。结果只生成听审候选，不自动删片。

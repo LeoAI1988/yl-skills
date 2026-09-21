@@ -1,10 +1,18 @@
 {
-  "version": "2.0.2",
+  "version": "2.1.0",
   "skills": [
+    {
+      "name": "yl-channels-analytics",
+      "description": "按需采集和复盘用户授权的视频号后台作品、留存、粉丝、逐字稿及可选微信小店成交数据。用户要求视频号运营复盘、批量抓取后台数据、分析爆款和普通作品表现、核对带货归因时使用；可读取后台导出文件离线分析。",
+      "version": "1.0.0",
+      "category": "analytics",
+      "role": "member",
+      "license": "MIT"
+    },
     {
       "name": "yl-chekhov-deep-writing",
       "description": "基于可追溯的契诃夫俄文原著、已验证的高层写作机制和受约束的语言外壳，完成中文公众号文章、短视频连续口播、朋友圈、人物故事、观点稿与现实材料改写。用户要求克制而锋利的人性观察、让细节约束判断、保留反例与未尽后果，或明确要求使用契诃夫研究线时使用；不用于逐句仿写、复刻人物情节、冒充中文出版译本或无材料补写现实事实。",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "category": "writing",
       "role": "member",
       "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND CC-BY-NC-4.0"
@@ -12,7 +20,7 @@
     {
       "name": "yl-remotion-talking-head-editor",
       "description": "Edit Chinese talking-head footage with built-in mandatory content, script-flow and opening analysis, word-accurate mistake and hesitation removal, stable fixed-size captions, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Cards are off unless explicitly requested; preserve the original voice and export the complete final spoken transcript.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "video",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -20,7 +28,7 @@
     {
       "name": "yl-short-video-covers",
       "description": "从截图、文案、视频或原帧制作 1080×1440 短视频封面，提供黑底白字大字模式（可选黄字强调及用户提供的头像）与半透明原帧无叠加头像模式。用户要求做封面、批量制作封面或从视频提炼封面标题时使用，并先让用户选择适合的模式。",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "video",
       "role": "member",
       "license": "MIT"
@@ -44,7 +52,7 @@
     {
       "name": "yl-write-impact-wechat",
       "description": "Use when drafting, revising, or packaging Chinese WeChat Official Account opinion, trend, or marketing articles from recordings, transcripts, notes, or the author's prior writing, especially when the user asks to preserve original phrases, remove generic AI prose, strengthen rapid-fire rhythm, create a high-impact opening, or use a 暴击风格.",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -52,7 +60,7 @@
     {
       "name": "yl-write-voice-led-wechat",
       "description": "以用户本人的口述转写、录音或长短视频稿为底板，最大保留原话与思想递进，调用本人知识和表达资产进行修补、润色或扩写成微信公众号文章。用户调用本 Skill 时使用；它是口述底稿成文的总框架，可挂契诃夫、暴击观点两种具体写作框架或自带编辑模式，以及契诃夫风、暴击风等表层风格，不用于从零选题或第三方文章洗稿。",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -60,7 +68,7 @@
     {
       "name": "yl-writing",
       "description": "yl 写作分类入口。口述稿转公众号进入口述总框架；写文章、改稿或选择文风时，提供契诃夫、暴击观点两种风格与基座编辑，统一执行公共去 AI 味规则。",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "category": "writing",
       "role": "router",
       "license": "MIT AND CC-BY-NC-4.0"

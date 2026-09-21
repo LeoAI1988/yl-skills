@@ -1,0 +1,4 @@
+interface:
+  display_name: "YL 视频号数据复盘"
+  short_description: "采集视频号作品留存粉丝与可选小店成交数据，按证据复盘和归因"
+  default_prompt: "使用 $yl-channels-analytics 采集并复盘我授权的视频号数据，先核对范围与采集覆盖。"

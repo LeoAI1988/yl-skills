@@ -1,6 +1,6 @@
 # yl Skill 集群
 
-把经过实际使用的写作、剪辑和封面工具整理成可独立安装的公开工具箱。当前版本 **2.0.2**（9 个 Skill）。总入口选工具，分类入口选风格，具体 Skill 完成工作。
+把经过实际使用的写作、剪辑和封面工具整理成可独立安装的公开工具箱。当前版本 **2.1.0**（10 个 Skill）。总入口选工具，分类入口选风格，具体 Skill 完成工作。
 
 ## 日常版与公开版
 
@@ -10,7 +10,14 @@
 
 ## 工具箱一览
 
-![YL Skill 集群](YL-Skill集群.jpg)
+当前结构：`yl-toolbox` → 写作（入口＋口述框架＋契诃夫＋暴击）、视频（入口＋口播剪辑＋双模式封面）、数据复盘（视频号／按需小店）、安装维护。
+
+<details>
+<summary>查看已确认的 2.0.0 历史宣传图（9 项，不含新增数据复盘）</summary>
+
+![YL Skill 集群历史图](YL-Skill集群.jpg)
+
+</details>
 
 ## 有哪些工具
 
@@ -19,6 +26,7 @@
 | `yl-toolbox` | 工具箱总入口，支持同一任务的多 Skill 分工 |
 | `yl-writing` | 口述稿写公众号总框架；**契诃夫深度写作（常用首选）**、暴击／咪蒙式观点；全部内置共同写作基座 |
 | `yl-video` | 真人口播自动剪辑、黑底白字封面、半透明无头像封面 |
+| `yl-channels-analytics` | 视频号后台采集、逐字稿、留存与粉丝复盘；按需小店成交归因 |
 | `yl-skill-sync` | 本地目录映射和安装状态核对；自动下载更新待完善 |
 
 口述稿总框架为 `yl-write-voice-led-wechat`。两个风格成员为 `yl-chekhov-deep-writing`、`yl-write-impact-wechat`。卡兹克和 Human Writing 已退出独立成员，适用的自然表达与证据方法并入公共基座，无需另装。视频成员是 `yl-remotion-talking-head-editor` 和 `yl-short-video-covers`。
@@ -44,7 +52,7 @@ python install.py --target "你的 Agent 的 skills 目录" --dry-run
 python install.py --target "你的 Agent 的 skills 目录"
 ```
 
-安装器校验全部文件后一次安装 9 个 Skill，支持重复安装相同内容，拒绝覆盖不同内容。更新前在 Skill 安装目录之外备份旧版，再移开需要更新的旧目录后安装。也可手动复制全部 `yl-*` 目录；不要把外层项目目录当作一个 Skill。
+安装器校验全部文件后一次安装 10 个 Skill，支持重复安装相同内容，拒绝覆盖不同内容。更新前在 Skill 安装目录之外备份旧版，再移开需要更新的旧目录后安装。也可手动复制全部 `yl-*` 目录；不要把外层项目目录当作一个 Skill。
 
 安装后重新加载或重启 Agent。成员可以单独安装；分类入口和口述总框架需要所选风格成员同时安装在同级目录；口述框架自带的基础编辑模式可独立使用。安装器不修改 Agent 全局设置、不安装第三方依赖、不配置账号。
 
@@ -83,8 +91,10 @@ python install.py --target "你的 Agent 的 skills 目录"
 
 分享根目录 `yl-toolbox-cluster.zip`，或单独的已审核 Skill 目录。固定名 ZIP 与带版本 ZIP 字节相同，并附 SHA-256。`cluster.json` 验证文件完整性，不是作者身份签名。
 
-公开仓库为 [LeoAI1988/yl-skills](https://github.com/LeoAI1988/yl-skills)。通过 [最新 Release](https://github.com/LeoAI1988/yl-skills/releases/latest) 获取公开发行附件；已确认宣传图随 ZIP 分发，展示 2.0.0 的九项工具架构；2.0.1 增加图示，2.0.2 增加 GitHub 下载安装说明。项目不默认创建定时任务。
+公开仓库为 [LeoAI1988/yl-skills](https://github.com/LeoAI1988/yl-skills)。通过 [最新 Release](https://github.com/LeoAI1988/yl-skills/releases/latest) 获取公开发行附件；已确认宣传图随 ZIP 分发，展示 2.0.0 的九项工具架构；2.0.1 增加图示，2.0.2 增加 GitHub 下载安装说明；2.1.0 新增数据复盘及剪辑检查，最新能力以清单为准。项目不默认创建定时任务。
 
 从旧版迁移：`yl-kazik-writing`、`yl-human-writing` 不再发行。备份并检查安装者修改后，可由安装者移出这两个旧入口；安装器不会自动删除它们，也不会覆盖不同版本。原来请求自然润色的任务可交给 `yl-writing`，口述成文交给 `yl-write-voice-led-wechat`。日常个人原版不受本次整理影响。
 
-最新英文名、中文名、简介和用法见 [Skill 清单](Skill清单_v2.0.0.md)。
+最新英文名、中文名、简介和用法见 [Skill 清单](Skill清单_v2.1.0.md)。
+
+本轮逐项比对与采用／排除说明见 [2.1.0 对齐报告](版本对齐_v2.1.0.md)。使用新入口可说：“用 yl-channels-analytics 复盘我的视频号近 30 天，排除直播切片，先核对采集覆盖；有带货数据再核对成交归因。”

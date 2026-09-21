@@ -5,16 +5,28 @@
       "name": "write-impact-wechat",
       "files": {
         "agents/openai.yaml": "1c00a47624dc78a3c6d5255d7b658bdb143f368bd2c0222820998e76cf29e805",
+        "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
+        "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
+        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "d4b49ef81dac61eaa7e22c1a4744000456b83a5ed923ab8a5c97bdb41cbcdf53",
+        "references/anti-ai-extraction.md": "17d58a28edf46f78a54090062cb238c2c8252ba6ecfb7c965549fbf9a822e4d6",
+        "references/anti-ai-rules.md": "86384df3b6463975a753ad8c629192c9d30e8fb36d1ad095f9fd8eae95c70f99",
+        "references/anti-ai-source-inventory.json": "adc942a5466bd9c470a5f52c8f200dfcd36a9b80a8242004544c62cf98464c8b",
+        "references/daily-integration.json": "304db660f041e53796cd6d0e040fd0f65fe08438760b74b2154c7a37e447335d",
+        "references/daily-update.md": "bfd48ebc92525ae1a85b028f72a2dc9d32b40d7beccf6a8fd66e42807f8b1ad4",
         "references/sourcing-and-claims.md": "a494a991531cfdad7c89f6c108895091566a8f3324aa1470ecd0f5501bf4859a",
         "references/staged-delivery.md": "2873b6bbd887eeee8e773807b6674ce15f1b7afc12d8d69d6a8127b5eef4a1b7",
         "references/style-contract.md": "afe650fb71954d5ccbfa43fcbb1edb859c65a3cb995a14741bb7b162f562f505",
+        "references/writing-foundation.md": "f3933b295f26889c2f4f13a0e94c2fd3cc2b794045b65a1a65b956541f713ec3",
         "scripts/build-wechat-html.mjs": "2430d74c18dba754f08ea16f8d02c3c9f3b1230e1b43649358db129949174300",
+        "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
         "scripts/validate-wechat-article.mjs": "fe995e43ae742beff6a5e921d85d23b12c711775723691ec333f87ac36901a58",
-        "SKILL.md": "0fbccc18345b8f7d2f54c7dcb66ebafe3e631ca380cccb1b616e0643a8c2dfe2",
+        "SKILL.md": "78073e3d8872c4abf120e2fb1dcbadbaf3315c3a25a6dd304498f9b14b1b7c4f",
         "tests/build-wechat-html.test.mjs": "67d41a2c6dac33d2ddd18080482c3e67067df662fa1a0e9d241de632817705cd",
         "tests/validate-wechat-article.test.mjs": "06ace2fdf2939d58e2eac51cab5e79de256624bd725563101cbae79198062fc2"
-      }
+      },
+      "reviewed_at": "2026-09-21"
     }
   ],
-  "excluded": []
+  "excluded": [],
+  "baseline_note": "Reviewed 2.1.0 comparison baseline. Public adaptations retained; see root alignment report. Fingerprints are not bundled source content."
 }

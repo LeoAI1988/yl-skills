@@ -1,12 +1,31 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "2.0.2",
-  "date": "2026-09-16",
+  "version": "2.1.0",
+  "date": "2026-09-21",
   "skills": [
+    {
+      "name": "yl-channels-analytics",
+      "description": "按需采集和复盘用户授权的视频号后台作品、留存、粉丝、逐字稿及可选微信小店成交数据。用户要求视频号运营复盘、批量抓取后台数据、分析爆款和普通作品表现、核对带货归因时使用；可读取后台导出文件离线分析。",
+      "version": "1.0.0",
+      "category": "analytics",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "agents/openai.yaml": "cdbcf1e68ddd9882404bda3202bf9f0e78db5d3386de29f649a581aa87e7a8ce",
+        "LICENSE": "fe1fb4ab17f3d9b4f5a5fb3a7b0d66e56d5d37bde20d7293c566cd6df26d8818",
+        "references/capture.md": "56fb58c2ec2159b6d4f5ea90d9324a5d6f57201fc2d8d41159bdbe40e083fe8e",
+        "references/data-schema.md": "67929144c5f1249d323d23c79d3f271ee08044c116599570795c83884f58820e",
+        "references/review.md": "2de059930a78acb425bc5e04634b7e4697daf5d5109648add8a35a7e089ea5b1",
+        "references/source-snapshot.json": "a73d0f7151b9727359b2f3d024a4506a46097fb09859ae457e93af10ad3df3a7",
+        "scripts/summarize.py": "b0a605f102494adcd26b9f87d20b172e7fea2b23d27e85bf736b5135263c53ff",
+        "SKILL.md": "b04f6007efc8740c0353788f70a7cb05b250246886b41add7b4d3eb901c9c65b",
+        "SOURCE.md": "8df89aeaa6f61643ce368c38fa058e55d991e7e83231d661fe13baa3bda4e8bb"
+      }
+    },
     {
       "name": "yl-chekhov-deep-writing",
       "description": "基于可追溯的契诃夫俄文原著、已验证的高层写作机制和受约束的语言外壳，完成中文公众号文章、短视频连续口播、朋友圈、人物故事、观点稿与现实材料改写。用户要求克制而锋利的人性观察、让细节约束判断、保留反例与未尽后果，或明确要求使用契诃夫研究线时使用；不用于逐句仿写、复刻人物情节、冒充中文出版译本或无材料补写现实事实。",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "category": "writing",
       "role": "member",
       "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND CC-BY-NC-4.0",
@@ -44,7 +63,7 @@
         "references/language-shell.md": "c302a8dfd878955a070285dce3d70be052d71424435194c47c7401dc8c123dea",
         "references/mechanisms.md": "e3fce3374934b1c24f294b8e0e57716c8707f067eb9174d0277bc590b33279e8",
         "references/media.md": "ec5cd0986d26bd563bd5dc43c63280abb3f8a0ca7cbf871e0ff433294ef9a2ea",
-        "references/source-snapshot.json": "11b59381a78f817144a87643e29b32e56bccfe6e7abe256afc84b0a49f7d8ac7",
+        "references/source-snapshot.json": "c9815418045a3fe3c849e453fb53f27686fb02c48d8558f3b42c1f93add59cb2",
         "references/workflow.md": "971666bafd2289326bf113976c776021c7fc2647a7d49542d23c39ee29e448a5",
         "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
@@ -60,7 +79,7 @@
     {
       "name": "yl-remotion-talking-head-editor",
       "description": "Edit Chinese talking-head footage with built-in mandatory content, script-flow and opening analysis, word-accurate mistake and hesitation removal, stable fixed-size captions, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Cards are off unless explicitly requested; preserve the original voice and export the complete final spoken transcript.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "video",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -74,28 +93,31 @@
         "NOTICE.md": "7c1090affd5ed8dd3a085fa7055ccc884615ceb4940af08faab21c620fbcd75d",
         "references/acceptance.md": "89bce72fa2a017909ad65f44259cc5e1b8d5c34342bcbcc701c4dc53b0dd91bc",
         "references/approved-example.md": "e6c2999a1d03557860fe10841b8096a9f5cfb0132ccf95a854da2be8b1727e35",
-        "references/content-analysis.md": "e65a6bd2cc0ade60d15af36b303dc392f4938c81b1387f06303440e9a73605f7",
-        "references/editing-workflow.md": "2c54fe2494b14496146414b6bf345b5ce836c51b4e1533128b43e87d1b015856",
+        "references/content-analysis.md": "156989a6e48657f460371b5355f77472b88914b56e3849184ff0612c21c3cda1",
+        "references/editing-workflow.md": "98caa225994c14b5224842a98b4409e70863fa30f577d567e053a83f53aacb57",
+        "references/final-review.md": "031fad33d914f24a0157e93c7e5a7245bda06febaef98bb82210814f0942e5ef",
         "references/final-transcript-archive.md": "84f54160af02633e6bc795471a425a678156c832fd671501bde6d00c3985d9ec",
-        "references/kaipai-enhance.md": "43dd111a2f392cc80fa17069ead97cb1376bf31e64a673c8cd10054c39c3cf83",
-        "references/pause-policy.json": "d77639eac5349b1ff1f27dd40384eebbddcf466c3051cd62028c4c1b7076b7e9",
+        "references/kaipai-enhance.md": "18d960b66c4859699592102bf2b29f60076643fdf5baf078743571140483f447",
+        "references/pause-policy.json": "87e92600c4b88c95b4355a779850b398363f2be255c5d3fdf9f6a3ccdedc630a",
         "references/rendering.md": "53de0b3fd9724b5ab8af5b6f083f3cc913aa73d13ec82f33e647d6ca2ede5b60",
-        "references/source-snapshot.json": "7457f4fa88eefc99ea19e707a2be93f75d5d3ffe9c75d9364e8bf3bb3c18c679",
+        "references/source-snapshot.json": "ac3859773adddce60143952f057502f8a491ac08965b22785de9901c1e566e00",
         "references/visual-style.md": "7cbec32df34404268f3c88409979b160d6afc53228312c584c48be6eb6850f4f",
+        "scripts/check_asr_coverage.py": "2220e3d458f8c9aa9d9055445d3a970c5210a00990e1d600af32100840ea6871",
         "scripts/kaipai_enhance.py": "a0f6829dacf17c5018d499764f6f961005f5cdebf66c6daa27b75e923e727b5e",
         "scripts/pause-probe.py": "c8ca46429aa766714816ccede8af1f6b49652b6cf153994219dde80793e3c371",
         "scripts/render-static-overlays.py": "0c5e108f88490602c551a961523c8f6fe03a477d2ceea29d771eee372606624e",
+        "scripts/review_final.py": "9bd41f6ba51fcd78b991965e64df1144d6531fad6911825e849bac8b122c0088",
         "scripts/validate-talking-head-video.ps1": "a7e85c1d24406bc3aecf92cbda3546b9cf74cdc869d76a2900b4755dc2826b30",
         "scripts/validate-video.py": "15d1156c9b3ed264b2e05844b085d57a4be35158ce5ebba6d820e496c344aba1",
         "scripts/word-audit.py": "d40f96d3ab920affe3d8a79228a772f7ba4dc70250a1c7675aa9409e8c0836fc",
-        "SKILL.md": "af219abf2db3a2d0eb63ef33781d85166d5bbf3ddc5bd0462bd8f6cbf35ab7b5",
+        "SKILL.md": "a95b4d1389b500f388f6a334903c17f8e492dbb091b14cc8809af29c8c48bdad",
         "tests/test_report_paths.py": "81a7461ff5275269f9e1295e4a3dc58d9c4bfc6bb52f5a002605e74e2f6f0354"
       }
     },
     {
       "name": "yl-short-video-covers",
       "description": "从截图、文案、视频或原帧制作 1080×1440 短视频封面，提供黑底白字大字模式（可选黄字强调及用户提供的头像）与半透明原帧无叠加头像模式。用户要求做封面、批量制作封面或从视频提炼封面标题时使用，并先让用户选择适合的模式。",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "video",
       "role": "member",
       "license": "MIT",
@@ -106,7 +128,7 @@
         "references/asset-prompts.md": "c506006a84bed655a8803c32d9a42587537644b48b41738b454841b3c8fc8656",
         "references/bold-mode.md": "8c30d23121311a3afa61571f656e4113fde31a4e2987759d4c31a7061d47bcd6",
         "references/provenance.md": "6ec20060abc2497673287e0ce6a9e864fe7de94baa5b29abafb9fc46b91747f8",
-        "references/source-snapshot.json": "f4aab50dd2eb4b5b475783b45e6494ae7263862982bab05f34cddf58f97bd959",
+        "references/source-snapshot.json": "5d259527935929e5b8cb5d1fe64062984e41fc4069c23b54ff3a7235f52f3d25",
         "references/style-spec.md": "926f5f7d8b3869c0740d46f6fb655d3eb217c2c1a7cb5cb3c71f149de59c6423",
         "references/translucent-mode.md": "7741d807a6531be9cbcdf3306d51f0c3df1badcd88c41baceb017a284eb1c309",
         "scripts/check_portrait_overlap.py": "4364773fa4197f9b2f556db4e1364a726bb6f8bbd93c518a003ad0bf0c20f41c",
@@ -117,7 +139,7 @@
         "scripts/render_translucent_cover.py": "669dc85eeb13cce223e36f7fb9685353e057b8b33f67ec8063ec03b17c616aca",
         "scripts/validate_bold_cover.py": "48f8582bd32da1d92ef036fc15fcc00223b2d95b18ec1e61ddaa2c90d47c7f1e",
         "scripts/validate_translucent_cover.py": "7ea25801ba8e9189b3e3cae640ad8aa947e0a2f98831f6df57e1bfeacc9f68e6",
-        "SKILL.md": "3b8ad95da997107b0afe53b288e8e375ab2add8606b827a003fefd0cb3e7e2c5"
+        "SKILL.md": "cee37c07d518101721b8d68a6ebdb34c8b7d0e0a656f5c67a9e631f36a8cdbe5"
       }
     },
     {
@@ -140,15 +162,15 @@
     {
       "name": "yl-toolbox",
       "description": "yl 个人精选工具箱入口。用户要求使用 yl 集群、选择 yl 工具，或希望用工具箱完成任务时，按目录选择已安装的相关 Skill 并执行。具体功能可直接调用对应 yl Skill。",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "category": "entry",
       "role": "router",
       "license": "MIT",
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "references/catalog.json": "8fff581ab5a826b59f860cfde77b9da0db95829df3972f2261ad227c871d70ff",
-        "SKILL.md": "ac3dade7cf476a9eef871ff6e10a7632f35ab9626218a1058e8f948860602d00"
+        "references/catalog.json": "beddaa432491d0418e8e97a4369690d7de88763e32e9aea0cbd6ba1cf5de4d86",
+        "SKILL.md": "cb7977443c029338978e743aac0109784c3b99db0c91cc5937ffed0237132981"
       }
     },
     {
@@ -167,7 +189,7 @@
     {
       "name": "yl-write-impact-wechat",
       "description": "Use when drafting, revising, or packaging Chinese WeChat Official Account opinion, trend, or marketing articles from recordings, transcripts, notes, or the author's prior writing, especially when the user asks to preserve original phrases, remove generic AI prose, strengthen rapid-fire rhythm, create a high-impact opening, or use a 暴击风格.",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -181,7 +203,7 @@
         "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
         "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
         "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
-        "references/source-snapshot.json": "8a21f7e779981029ab49cd098784ec40b8f18464f8b224e21d7c0b8f6ee22da0",
+        "references/source-snapshot.json": "52a6c07f0ca4a16724ce73630a63534ac4014b3a737106a92ad7a923dfa3277c",
         "references/sourcing-and-claims.md": "36d6f0e62fe3d678a94a140521f540a2de7dadbd289c084732ed7667bc7ef110",
         "references/staged-delivery.md": "9a3c61fa59801bf656e2e11d1982f950ad2564ad805fc28f1cefe93618b86125",
         "references/style-contract.md": "21e73b0be4590d0a2cfed0edb9356fe3ff16974fa0ec7a4e2f05339ccc9cdd82",
@@ -199,7 +221,7 @@
     {
       "name": "yl-write-voice-led-wechat",
       "description": "以用户本人的口述转写、录音或长短视频稿为底板，最大保留原话与思想递进，调用本人知识和表达资产进行修补、润色或扩写成微信公众号文章。用户调用本 Skill 时使用；它是口述底稿成文的总框架，可挂契诃夫、暴击观点两种具体写作框架或自带编辑模式，以及契诃夫风、暴击风等表层风格，不用于从零选题或第三方文章洗稿。",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -217,13 +239,13 @@
         "references/dbs-source-manifest.json": "40e61cc4dee44910b713703a8ca7f284fe32f268b248af8b6ffdbfa390c88253",
         "references/edit-card.md": "f8763eb9a1379625f53b2cd942eaec14edcc3b97b90f4331946a05cd91993d2f",
         "references/knowledge-and-source-contract.md": "c4817801e72e65968238b6b3ec35f81c6a9b777ed39d59f8ef52074c5576a77e",
-        "references/source-snapshot.json": "3a06390852709d24dd9b91cb546780e5eb3940b19033e974b7641baf8794a094",
-        "references/style-adapters.md": "77c7a06ad4950aa82e521cc194690ccd99f08fe8f020f492c5eee36f594e3b2d",
-        "references/style-dependencies.json": "4aa56eee5f0e2cc04771b9a845202965d557e088c2a2375ad1d810418b60f224",
+        "references/source-snapshot.json": "8b0bcc63cc387fc18fb68378dcdcdbbbd379bb698c8af62881ac9c9733325fb9",
+        "references/style-adapters.md": "dcb1889b37b791a2dd11e4ad76c09c725a922024325680a3d3b4ca38e3a34e3f",
+        "references/style-dependencies.json": "2250b65f496553e322540afebaa386e5cd9e1af00f85e3c3cf9c698b5e5dd452",
         "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
-        "scripts/check_article.py": "f8e7a2caaa93953e8c170e51f8e6337034695c1d7ced6ab93707c57685b8afde",
+        "scripts/check_article.py": "74201742f90f261ae1a3982e02ee69e28577b18d08e52cf7618b62c7e4608275",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
-        "SKILL.md": "0625ef98821f71e3c0e83b0c1af369674ff19f6b6879216fa0735e79476b65f5",
+        "SKILL.md": "54409789d02c6ed3943de4b5c6438dd0e76e4678afdb85d0657c5aae52cbe06f",
         "SOURCE.md": "5d170734e932649e3678d05b638c363098e0127ff3ce04575ddd93fcefaa579a",
         "tests/test_check_article.py": "9919e151cd66669b93b276824b315299e2a60a6a74dc6aaa4fef433f00c826d4",
         "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
@@ -232,7 +254,7 @@
     {
       "name": "yl-writing",
       "description": "yl 写作分类入口。口述稿转公众号进入口述总框架；写文章、改稿或选择文风时，提供契诃夫、暴击观点两种风格与基座编辑，统一执行公共去 AI 味规则。",
-      "version": "2.0.0",
+      "version": "2.0.1",
       "category": "writing",
       "role": "router",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -246,7 +268,7 @@
         "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
         "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
         "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
-        "references/source-snapshot.json": "c5a8df03ff81d317697b1523a5df9efdb0dd7cc7c8fdc142af75aa8fa5e08925",
+        "references/source-snapshot.json": "e8e277b6584ded57400b26358d907ba1e8793c1e9357ba4a857bb25974c7b51e",
         "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
         "SKILL.md": "45c61e9b9ad33436b678fabae1506116187cb8890fb9f31da44d14f777ab4857",

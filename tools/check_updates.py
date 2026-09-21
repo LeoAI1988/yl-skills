@@ -44,14 +44,21 @@ def main():
             parser.error('--source requires NAME=PATH')
         overrides[name] = Path(path).expanduser()
     results = []
+    historical = []
     for snapshot in sorted(ROOT.glob('yl-*/references/source-snapshot.json')):
         value = read_json(snapshot)
+        for source in value.get('historical_sources', []):
+            historical.append({'skill': snapshot.parents[1].name, 'source': source['name'],
+                               'status': source.get('status', 'historical'),
+                               'note': source.get('note', '')})
         for source in value['sources']:
             name = source['name']
-            base = overrides.get(name, args.skills_root.expanduser()/name)
+            default_base = (Path.home()/'.workbuddy'/'skills'/name if source.get('host') == 'workbuddy'
+                            else args.skills_root.expanduser()/name)
+            base = overrides.get(name, default_base)
             results.append({'skill': snapshot.parents[1].name, 'source': name,
                             **compare(base, source)})
-    print(json.dumps({'read_only': True, 'results': results,
+    print(json.dumps({'read_only': True, 'results': results, 'historical_sources': historical,
                       'note': 'Source differences require review; no files were copied.'},
                      ensure_ascii=False, indent=2))
     return 2 if any(v['status'] == 'source_missing' for v in results) else (

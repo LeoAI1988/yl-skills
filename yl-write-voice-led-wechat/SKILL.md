@@ -96,3 +96,9 @@ description: 以用户本人的口述转写、录音或长短视频稿为底板�
 ## 开发维护
 
 技术来源及改编边界见 [DBS 来源清单](references/dbs-source-manifest.json)；风格路径与指纹见 [风格依赖](references/style-dependencies.json)。DBS 文件已内化，原安装变更不影响运行；风格依赖更新需重新检查协议，不能仅凭名字相同当作行为相同。合成验收位于 `tests/test_check_article.py`，不含真实用户稿件，不能当作写作素材。
+
+## 编辑模式兼容与本次对齐
+
+旧口令中的 `dbs` 编辑框架在本公开版映射为自带 `editorial`，执行内置方法，不调用外部 DBS。它不是新增风格，不恢复已退役的卡兹克或 Human Writing 独立入口。口述稿仍是底板；保留原话、逐项核对增补依据、写后语义复核继续生效。
+
+结尾由安装者配置；`check_article.py --cta-file` 可核验指定结尾，`--no-cta` 显式表示本次不要求固定结尾。没有配置时也不会植入作者 CTA。

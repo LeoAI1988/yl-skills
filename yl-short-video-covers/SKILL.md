@@ -41,3 +41,7 @@ description: 从截图、文案、视频或原帧制作 1080×1440 短视频封�
 - 通用输入准备：`scripts/prepare_video_input.py`、`scripts/prepare_title_crop.py`。
 
 除内部字体辅助模块外，各入口脚本都支持 `--help`。公开维护时参照 [来源快照](references/source-snapshot.json) 核对来源升级，并逐文件复核公开差异；不反向覆盖日常使用版。
+
+## 人像模式补充检查
+
+人像位于文字上方，不能让文字盖住脸部；检查完整头部和抠图边缘。逐字遮挡以不超过约 25% 为目标，达到 50% 为失败，优先重排文字，再移动或缩小人像。短标题补充仍单独传入 `--supplement`，不合入 `--title`。已有 [大字模式](references/bold-mode.md) 内的绿幕检查、避免误抠除深色衣服和缩略图验收继续适用。
