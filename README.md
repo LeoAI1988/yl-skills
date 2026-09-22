@@ -1,6 +1,6 @@
 # yl Skill 集群
 
-把经过实际使用的写作、剪辑和封面工具整理成可独立安装的公开工具箱。当前版本 **2.1.0**（10 个 Skill）。总入口选工具，分类入口选风格，具体 Skill 完成工作。
+把经过实际使用的写作、剪辑和封面工具整理成可独立安装的公开工具箱。当前版本 **2.1.1**（10 个 Skill）。总入口选工具，分类入口选风格，具体 Skill 完成工作。
 
 ## 日常版与公开版
 
@@ -12,12 +12,9 @@
 
 当前结构：`yl-toolbox` → 写作（入口＋口述框架＋契诃夫＋暴击）、视频（入口＋口播剪辑＋双模式封面）、数据复盘（视频号／按需小店）、安装维护。
 
-<details>
-<summary>查看已确认的 2.0.0 历史宣传图（9 项，不含新增数据复盘）</summary>
+![YL Skill 集群：10 个 Skill、4 个功能板块](YL-Skill集群.jpg)
 
-![YL Skill 集群历史图](YL-Skill集群.jpg)
-
-</details>
+海报标注 v2.1.0 能力架构；v2.1.1 将这张新版海报加入仓库和安装包，Skill 能力不变。
 
 ## 有哪些工具
 
@@ -91,10 +88,12 @@ python install.py --target "你的 Agent 的 skills 目录"
 
 分享根目录 `yl-toolbox-cluster.zip`，或单独的已审核 Skill 目录。固定名 ZIP 与带版本 ZIP 字节相同，并附 SHA-256。`cluster.json` 验证文件完整性，不是作者身份签名。
 
-公开仓库为 [LeoAI1988/yl-skills](https://github.com/LeoAI1988/yl-skills)。通过 [最新 Release](https://github.com/LeoAI1988/yl-skills/releases/latest) 获取公开发行附件；已确认宣传图随 ZIP 分发，展示 2.0.0 的九项工具架构；2.0.1 增加图示，2.0.2 增加 GitHub 下载安装说明；2.1.0 新增数据复盘及剪辑检查，最新能力以清单为准。项目不默认创建定时任务。
+公开仓库为 [LeoAI1988/yl-skills](https://github.com/LeoAI1988/yl-skills)。通过 [最新 Release](https://github.com/LeoAI1988/yl-skills/releases/latest) 获取公开发行附件；新版十项工具宣传图随 ZIP 分发；2.1.0 新增数据复盘及剪辑检查，2.1.1 同步新版海报，最新能力以清单为准。项目不默认创建定时任务。
 
 从旧版迁移：`yl-kazik-writing`、`yl-human-writing` 不再发行。备份并检查安装者修改后，可由安装者移出这两个旧入口；安装器不会自动删除它们，也不会覆盖不同版本。原来请求自然润色的任务可交给 `yl-writing`，口述成文交给 `yl-write-voice-led-wechat`。日常个人原版不受本次整理影响。
 
 最新英文名、中文名、简介和用法见 [Skill 清单](Skill清单_v2.1.0.md)。
 
 本轮逐项比对与采用／排除说明见 [2.1.0 对齐报告](版本对齐_v2.1.0.md)。使用新入口可说：“用 yl-channels-analytics 复盘我的视频号近 30 天，排除直播切片，先核对采集覆盖；有带货数据再核对成交归因。”
+
+当前数据复盘含逐字稿获取、保存、数据关联与分析，尚未包含完整的文稿入库、蒸馏、知识原子及表达资产管理流程。

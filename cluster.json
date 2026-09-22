@@ -1,7 +1,7 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "2.1.0",
-  "date": "2026-09-21",
+  "version": "2.1.1",
+  "date": "2026-09-22",
   "skills": [
     {
       "name": "yl-channels-analytics",
@@ -169,7 +169,7 @@
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "references/catalog.json": "beddaa432491d0418e8e97a4369690d7de88763e32e9aea0cbd6ba1cf5de4d86",
+        "references/catalog.json": "596445afb41f805f200a5077d218d3aec58b2c9579d5089e6ab814640541cbc1",
         "SKILL.md": "cb7977443c029338978e743aac0109784c3b99db0c91cc5937ffed0237132981"
       }
     },
