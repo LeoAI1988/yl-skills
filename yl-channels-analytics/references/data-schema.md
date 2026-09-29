@@ -26,7 +26,9 @@
 - 覆盖表：collection_id、layer、expected_count、checked_count、available_count、status、reason、evidence_path。status 为 complete / partial / not_available / not_requested；未知 expected_count 不能自称 complete。
 - 留存表：publication_id、capture_id、原标签、ratio、denominator、window；平台 3 秒指标不能改称 5 秒。
 - 账号表：日期窗口、总粉丝、新增、流失、净增和各受众维度；不得复制到每条作品伪装单篇指标。
-- 成交表：订单／明细 ID、已付／取消／退款状态、币种、金额、商品、渠道、可核实的 publication_id、归因层级、时间口径。公开分析只用去标识汇总；客户联系方式默认不收集。
+- 成交表：订单／明细 ID、已付／取消／退款状态、币种、金额、商品、渠道、可核实的 publication_id、归因层级、时间口径。默认只用去标识汇总；授权客户明细按配置展示，HTML 联系方式脱敏、完整 Excel 内部保存。
 - 内容表：publication_id、原片／原稿位置、音频哈希、raw_asr、cleaned_transcript、封面／标题和核验状态。
 
 独立完整复盘交付这些表或等价结构；小脚本只承担播放分布统计，不代替整套台账。
+
+图文用 content_type=image 标记；completion_pct、three_sec_pct、watch_seconds、duration_seconds 为 null。图文可保留播放排行，但不进入视频评分组。

@@ -1,26 +1,146 @@
 {
-  "version": "2.1.1",
+  "version": "3.2.12",
   "skills": [
     {
       "name": "yl-channels-analytics",
-      "description": "按需采集和复盘用户授权的视频号后台作品、留存、粉丝、逐字稿及可选微信小店成交数据。用户要求视频号运营复盘、批量抓取后台数据、分析爆款和普通作品表现、核对带货归因时使用；可读取后台导出文件离线分析。",
-      "version": "1.0.0",
+      "description": "按需采集和复盘用户授权的视频号后台作品、留存、粉丝、逐字稿及可选微信小店成交数据，并生成结构固定的复盘大屏。用户要求视频号运营复盘、批量抓取后台数据、分析爆款和普通作品表现、核对带货归因、制作复盘大屏时使用；可读取后台导出文件离线分析。",
+      "version": "1.4.1",
       "category": "analytics",
       "role": "member",
       "license": "MIT"
     },
     {
+      "name": "yl-chatcut-landscape-interview-editor",
+      "description": "用 ChatCut Desktop 剪横屏访谈、个人 IP 独白和长口播复盘。先做全文逻辑删改，再按原声精剪、字幕包装与本地导出；支持全自动和半自动多轮红线定稿。横屏访谈只走本 Skill，不调用旧 Remotion 横屏流程。",
+      "version": "3.0.0",
+      "category": "video",
+      "role": "member",
+      "license": "MIT AND CC-BY-NC-4.0"
+    },
+    {
       "name": "yl-chekhov-deep-writing",
       "description": "基于可追溯的契诃夫俄文原著、已验证的高层写作机制和受约束的语言外壳，完成中文公众号文章、短视频连续口播、朋友圈、人物故事、观点稿与现实材料改写。用户要求克制而锋利的人性观察、让细节约束判断、保留反例与未尽后果，或明确要求使用契诃夫研究线时使用；不用于逐句仿写、复刻人物情节、冒充中文出版译本或无材料补写现实事实。",
-      "version": "2.0.1",
+      "version": "3.0.0",
       "category": "writing",
       "role": "member",
       "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND CC-BY-NC-4.0"
     },
     {
+      "name": "yl-knowledge",
+      "description": "YL 知识管理总入口。构建知识库、同步笔记、导入本人材料或采集本人新文稿时，协调归档、蒸馏、去重、表达、体系和验收；知识检索只读，不启动入库。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "router",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-knowledge-build",
+      "description": "新建本地知识库及阅读文件夹体系，或接入用户现有知识库；首次设置时提供沿用现有结构与创建推荐结构两个选择。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-knowledge-check",
+      "description": "验收知识处理的来源覆盖、原句、语义去重、产物及关系，发现只同步未蒸馏、遗漏材料、失效引用和未完成旧项。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-knowledge-distill",
+      "description": "从本人完整原文中提炼可复用观点、概念、方法、案例和论述链，逐字回源，并先与现有知识原子做语义去重。",
+      "version": "1.0.6",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-knowledge-expressions",
+      "description": "从本人语料中提取可复用原话、比喻、金句、口头表达及完整论述节奏，维护表达资产与来源和观点的关联。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-knowledge-import",
+      "description": "将本地文档、导出笔记、录音录像和逐字稿纳入统一知识处理流程，保留原文件及版本，调用已有解析转写工具后自动衔接蒸馏。",
+      "version": "1.0.3",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-knowledge-ingest",
+      "description": "对接收到的语料完成作者归属、版本、正式位置和重复判断，保留唯一正文与来源记录，并把本人可提炼内容交给知识蒸馏。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-knowledge-obsidian",
+      "description": "将同一 Markdown 知识库接入 Obsidian，维护双链、原生视图和关系图；环境允许时操作软件并区分文件验收与真实界面验收。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-knowledge-organize",
+      "description": "将知识原子与作品组织成可阅读的领域观点树、概念关联和完整论述，保持一个知识体系及跨来源、跨领域连接。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-knowledge-review-sync",
+      "description": "接收自媒体复盘结果，更新作品历史表现、选题数据与统一排名，并将新增本人文稿自动交给蒸馏流程。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-knowledge-search",
+      "description": "只读检索本地知识库的原文、知识原子、表达和作品，为问答或写作提供可回源的相关证据与完整上下文。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-knowledge-sync",
+      "description": "将配置的 Get 或其他笔记来源同步到本地，并自动衔接归档、蒸馏、去重、表达和思想体系更新；不止于下载，不修改云端笔记。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-media",
+      "description": "YL 自媒体采集与复盘入口，协调视频号、公众号及跨平台同作品比较，把新增本人文稿和复盘结果交回统一知识库。",
+      "version": "1.2.0",
+      "category": "analytics",
+      "role": "router",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-official-account-analytics",
+      "description": "采集和复盘微信公众号账号、文章、分发通知、阅读来源及转化，保留全文与历史数据，并将新增本人文稿自动交给知识管理。",
+      "version": "1.0.1",
+      "category": "analytics",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
       "name": "yl-remotion-talking-head-editor",
       "description": "Edit Chinese talking-head footage with built-in mandatory content, script-flow and opening analysis, word-accurate mistake and hesitation removal, stable fixed-size captions, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Cards are off unless explicitly requested; preserve the original voice and export the complete final spoken transcript.",
-      "version": "1.1.0",
+      "version": "3.0.0",
       "category": "video",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -28,23 +148,23 @@
     {
       "name": "yl-short-video-covers",
       "description": "从截图、文案、视频或原帧制作 1080×1440 短视频封面，提供黑底白字大字模式（可选黄字强调及用户提供的头像）与半透明原帧无叠加头像模式。用户要求做封面、批量制作封面或从视频提炼封面标题时使用，并先让用户选择适合的模式。",
-      "version": "1.1.0",
+      "version": "3.0.0",
       "category": "video",
       "role": "member",
       "license": "MIT"
     },
     {
       "name": "yl-skill-sync",
-      "description": "将公开 Skill 集合下载、安装并同步到本机可用的多个 Agent 入口，支持检查新版本、更新、状态核对和安全卸载。用户要求把一套 Skill 映射到本机所有智能体、从本地目录或 GitHub Release 安装，或检查和更新已安装的 YL Skill 时使用；不覆盖真实目录，不依赖其他工具箱。",
-      "version": "1.0.1",
+      "description": "整套安装或升级 YL 通用核心，将明确指定的其他 Agent 映射到 Codex 的同一安装；个人配置独立保留，不重复安装多份核心。",
+      "version": "3.0.0",
       "category": "tooling",
       "role": "member",
       "license": "MIT"
     },
     {
       "name": "yl-video",
-      "description": "yl 视频分类入口。用户希望剪真人口播、做短视频封面，或同时制作视频与封面时，选择自动剪辑或两种封面模式，并按任务依赖调用成员。",
-      "version": "1.0.0",
+      "description": "yl 视频分类入口。自动剪辑分为真人口播与 ChatCut 横屏访谈两项；也支持两种短视频封面模式，按任务依赖调用成员。",
+      "version": "3.0.0",
       "category": "video",
       "role": "router",
       "license": "MIT"
@@ -52,7 +172,7 @@
     {
       "name": "yl-write-impact-wechat",
       "description": "Use when drafting, revising, or packaging Chinese WeChat Official Account opinion, trend, or marketing articles from recordings, transcripts, notes, or the author's prior writing, especially when the user asks to preserve original phrases, remove generic AI prose, strengthen rapid-fire rhythm, create a high-impact opening, or use a 暴击风格.",
-      "version": "2.0.1",
+      "version": "3.0.0",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -60,7 +180,7 @@
     {
       "name": "yl-write-voice-led-wechat",
       "description": "以用户本人的口述转写、录音或长短视频稿为底板，最大保留原话与思想递进，调用本人知识和表达资产进行修补、润色或扩写成微信公众号文章。用户调用本 Skill 时使用；它是口述底稿成文的总框架，可挂契诃夫、暴击观点两种具体写作框架或自带编辑模式，以及契诃夫风、暴击风等表层风格，不用于从零选题或第三方文章洗稿。",
-      "version": "2.1.0",
+      "version": "3.0.0",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -68,7 +188,7 @@
     {
       "name": "yl-writing",
       "description": "yl 写作分类入口。口述稿转公众号进入口述总框架；写文章、改稿或选择文风时，提供契诃夫、暴击观点两种风格与基座编辑，统一执行公共去 AI 味规则。",
-      "version": "2.0.1",
+      "version": "3.0.0",
       "category": "writing",
       "role": "router",
       "license": "MIT AND CC-BY-NC-4.0"

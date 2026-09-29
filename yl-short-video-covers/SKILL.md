@@ -5,6 +5,8 @@ description: 从截图、文案、视频或原帧制作 1080×1440 短视频封�
 
 # yl 短视频封面
 
+先按 [个人配置约定](../yl-toolbox/references/profile.md) 读取相关个人说明、合法头像与工具位置。个人已确定的封面模式直接沿用，不反复问。用户选择描边科技拼贴风时另读 [描边变体](references/outlined-mode.md)，不能当成纯黑底模式丢失。
+
 先辨认用户选择的模式。若没有指定，简要展示两种区别并让用户选择；若已说“黑底白字”或“半透明无头像”，直接进入对应模式。不要把两套字数、构图规则混用。
 
 | 模式 | 画面与标题 | 读取规则 |
@@ -40,7 +42,7 @@ description: 从截图、文案、视频或原帧制作 1080×1440 短视频封�
 - 头像遮挡估算：`scripts/check_portrait_overlap.py`，只在叠加头像时有意义。
 - 通用输入准备：`scripts/prepare_video_input.py`、`scripts/prepare_title_crop.py`。
 
-除内部字体辅助模块外，各入口脚本都支持 `--help`。公开维护时参照 [来源快照](references/source-snapshot.json) 核对来源升级，并逐文件复核公开差异；不反向覆盖日常使用版。
+除内部字体辅助模块外，各入口脚本都支持 `--help`。维护时参照 [来源快照](references/source-snapshot.json) 核对历史方法来源。当前日常版和发行版使用同一核心；个人素材与选择在核心之外。
 
 ## 人像模式补充检查
 

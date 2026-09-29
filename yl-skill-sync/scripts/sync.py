@@ -1,250 +1,99 @@
-#!/usr/bin/env python3
-"""Download, update and map a Skill collection to local Agent entry points."""
-from __future__ import annotations
-
+"""Whole-cluster install and explicit host mappings; no auto-discovered installations."""
+from pathlib import Path
 import argparse
-import base64
+import hashlib
 import json
 import os
-import shutil
-import subprocess
+import re
 import sys
 import tempfile
-import urllib.parse
 import urllib.request
 import zipfile
-from pathlib import Path
+from cluster_install import install, contents, linked, make_link, child
 
-PUBLIC_COMPATIBLE = {
-    "codex", "github-copilot", "gemini", "cursor", "augment",
-    "roo-code", "opencode", "openhands",
-}
-SPECIALIZED = {
-    ".claude": "Claude Code", ".workbuddy": "WorkBuddy",
-    ".hermes": "Hermes Agent", ".kiro": "Kiro", ".qwen": "Qwen Code",
-    ".cline": "Cline",
-}
+def acquire(value, expected=None):
+    if not value.startswith('https://'):
+        if '://' in value: raise ValueError('Only local directories or HTTPS archives')
+        return Path(value).expanduser().resolve()
+    if not expected or not re.fullmatch('[a-fA-F0-9]{64}',expected): raise ValueError('HTTPS source requires separately obtained SHA-256')
+    cache=Path(os.environ.get('YL_RELEASE_CACHE',str(Path.home()/'.cache/yl-toolbox/releases')))
+    cache.mkdir(parents=True,exist_ok=True)
+    with urllib.request.urlopen(value,timeout=30) as response: data=response.read(256*1024*1024+1)
+    if len(data)>256*1024*1024 or hashlib.sha256(data).hexdigest()!=expected.lower(): raise ValueError('Package size/hash failed')
+    folder=cache/expected.lower()
+    if folder.exists():
+        root=folder/'yl-toolbox-cluster'
+        if not (root/'cluster.json').is_file(): raise ValueError('Incomplete release cache')
+        return root
+    import io
+    with zipfile.ZipFile(io.BytesIO(data)) as z:
+        names=set();total=0
+        for item in z.infolist():
+            name=item.filename;parts=name.rstrip('/').split('/')
+            if not parts or parts[0]!='yl-toolbox-cluster' or any(v in ('','.','..') for v in parts) or '\\' in name or ':' in name: raise ValueError('Unsafe archive member')
+            if name in names or ((item.external_attr>>16)&0o170000)==0o120000: raise ValueError('Duplicate archive member or link')
+            names.add(name);total+=item.file_size
+        if total>512*1024*1024: raise ValueError('Unpacked archive too large')
+        stage=Path(tempfile.mkdtemp(prefix='.download-',dir=cache));z.extractall(stage)
+        if not (stage/'yl-toolbox-cluster/cluster.json').is_file(): raise ValueError('No cluster manifest')
+        stage.rename(folder)
+    return folder/'yl-toolbox-cluster'
 
-
-def emit(payload: dict) -> None:
-    print(json.dumps(payload, ensure_ascii=False, indent=2))
-
-
-def skill_dirs(root: Path) -> list[Path]:
-    root = root.expanduser().resolve()
-    if (root / "SKILL.md").is_file():
-        return [root]
-    found = sorted(p for p in root.iterdir() if p.is_dir() and (p / "SKILL.md").is_file())
-    if not found:
-        raise ValueError(f"没有找到 SKILL.md：{root}")
-    return found
-
-
-def frontmatter(skill: Path) -> tuple[str, str]:
-    text = (skill / "SKILL.md").read_text(encoding="utf-8")
-    if not text.startswith("---"):
-        raise ValueError(f"缺少 frontmatter：{skill}")
-    block = text.split("---", 2)[1]
-    values: dict[str, str] = {}
-    for line in block.splitlines():
-        if ":" in line:
-            key, value = line.split(":", 1)
-            values[key.strip()] = value.strip().strip('"\'')
-    name = values.get("name") or skill.name
-    description = values.get("description", "")
-    if not name or any(c in name for c in "/\\"):
-        raise ValueError(f"Skill 名称无效：{skill}")
-    return name, description
-
-
-def resolve_source(value: str) -> tuple[Path, tempfile.TemporaryDirectory | None]:
-    candidate = Path(value).expanduser()
-    if candidate.exists():
-        return candidate, None
-    parsed = urllib.parse.urlparse(value)
-    if parsed.scheme not in {"http", "https"}:
-        raise ValueError(f"本地路径不存在或 URL 无效：{value}")
-    temp = tempfile.TemporaryDirectory(prefix="yl-skill-sync-")
-    destination = Path(temp.name)
-    request = urllib.request.Request(value, headers={"User-Agent": "yl-skill-sync"})
-    if value.lower().endswith(".zip"):
-        archive = destination / "source.zip"
-        with urllib.request.urlopen(request, timeout=60) as response:
-            archive.write_bytes(response.read())
-    else:
-        path = parsed.path.strip("/").split("/")
-        if len(path) < 2 or parsed.netloc.lower() != "github.com":
-            raise ValueError("仓库 URL 必须是 GitHub 仓库或 ZIP URL")
-        owner, repo = path[:2]
-        repo = repo.removesuffix(".git")
-        api = urllib.request.Request(
-            f"https://api.github.com/repos/{owner}/{repo}/releases/latest",
-            headers={"Accept": "application/vnd.github+json", "User-Agent": "yl-skill-sync"},
-        )
+def map_hosts(target, destinations, dry_run=False):
+    target=target.expanduser().absolute()
+    meta=json.loads((target/'.yl-cluster-install.json').read_text(encoding='utf-8'));planned=[]
+    for value in destinations:
+        dest=value.expanduser().absolute()
+        if dest.resolve()==target.resolve(): raise ValueError('Cannot map primary to itself')
+        if target.resolve() in dest.resolve().parents or dest.resolve() in target.resolve().parents:
+            raise ValueError('Host roots must not overlap')
+        for info in meta['skills'].values():
+            core=Path(info['source']).resolve()
+            if dest.resolve()==core or core in dest.resolve().parents or dest.resolve() in core.parents:
+                raise ValueError('Host root overlaps a core member')
+        if linked(dest): raise ValueError('Host skills root itself is linked')
+        for name,info in meta['skills'].items():
+            src=child(target,name);dst=child(dest,name)
+            if contents(src,allow_root_link=True)!=info['files']: raise ValueError('Primary core drift: '+name)
+            if dst.exists() or linked(dst):
+                if not linked(dst) or dst.resolve()!=src.resolve(): raise ValueError('Host conflict; preserve entry: '+str(dst))
+            else: planned.append((src,dst))
+    created=[]
+    if not dry_run:
         try:
-            with urllib.request.urlopen(api, timeout=30) as response:
-                release = json.load(response)
-            assets = [a for a in release.get("assets", []) if a.get("name", "").endswith(".zip")]
-            download_url = assets[0]["browser_download_url"] if assets else f"https://codeload.github.com/{owner}/{repo}/zip/refs/heads/main"
+            for src,dst in planned:
+                dst.parent.mkdir(parents=True,exist_ok=True);make_link(dst,src);created.append(dst)
+                if contents(dst,allow_root_link=True)!=meta['skills'][dst.name]['files']: raise ValueError('Mapped hashes differ')
         except Exception:
-            download_url = f"https://codeload.github.com/{owner}/{repo}/zip/refs/heads/main"
-        archive = destination / "source.zip"
-        with urllib.request.urlopen(urllib.request.Request(download_url, headers={"User-Agent": "yl-skill-sync"}), timeout=120) as response:
-            archive.write_bytes(response.read())
-    with zipfile.ZipFile(archive) as package:
-        package.extractall(destination / "extracted")
-    extracted = destination / "extracted"
-    if list(extracted.rglob("SKILL.md")):
-        return extracted, temp
-    raise ValueError("下载包中没有可安装的 Skill")
-
-
-def link(target: Path, source: Path, dry_run: bool, created: list[str], conflicts: list[str], kept: list[str]) -> None:
-    target = target.expanduser()
-    source = source.resolve()
-    if target.is_symlink() or getattr(target, "is_junction", lambda: False)() or target.exists():
-        try:
-            if target.resolve() == source:
-                kept.append(str(target))
-                return
-        except OSError:
-            pass
-        conflicts.append(str(target))
-        return
-    if dry_run:
-        created.append(str(target))
-        return
-    target.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        target.symlink_to(source, target_is_directory=True)
-    except (OSError, NotImplementedError):
-        if os.name != "nt":
+            for dst in reversed(created):
+                if os.name=='nt': os.rmdir(dst)
+                else: dst.unlink()
             raise
-        result = subprocess.run(["cmd", "/c", "mklink", "/J", str(target), str(source)], capture_output=True, text=True)
-        if result.returncode:
-            raise OSError(result.stderr.strip() or result.stdout.strip() or "无法创建 Windows Junction")
-    created.append(str(target))
+    return {'status':'dry_run' if dry_run else 'mapped','new_links':len(planned),'targets':[str(p) for p in destinations],'copies':0}
 
+def status(target,destinations):
+    meta=json.loads((target/'.yl-cluster-install.json').read_text(encoding='utf-8'));problems=[]
+    for name,info in meta['skills'].items():
+        p=child(target,name)
+        if not p.exists() or contents(p,allow_root_link=True)!=info['files']: problems.append(name+': primary missing/drift')
+        for dest in destinations:
+            q=child(dest,name)
+            if not linked(q) or q.resolve()!=p.resolve(): problems.append(name+': host missing/wrong mapping')
+    return {'status':'PASS' if not problems else 'INCOMPLETE','version':meta['version'],'members':len(meta['skills']),'problems':problems,'runtime_invocation_tested':False}
 
-def grok_adapter(target: Path, source: Path, name: str, description: str, dry_run: bool, created: list[str], conflicts: list[str]) -> None:
-    if target.exists() and not target.is_file():
-        conflicts.append(str(target))
-        return
-    content = f"---\nname: {name}\ndescription: {description}\nuser_invocable: true\n---\n\n真源 Skill 位于：{source / 'SKILL.md'}\n请读取真源并按其规则执行。此文件是 Grok 适配层，不是另一份副本。\n"
-    if dry_run:
-        created.append(str(target))
-        return
-    target.parent.mkdir(parents=True, exist_ok=True)
-    if target.exists() and target.read_text(encoding="utf-8") == content:
-        return
-    target.write_text(content, encoding="utf-8")
-    created.append(str(target))
-
-
-def install(root: Path, dry_run: bool) -> dict:
-    skills = skill_dirs(root)
-    home = Path.home()
-    created: list[str] = []
-    conflicts: list[str] = []
-    kept: list[str] = []
-    names: list[str] = []
-    for skill in skills:
-        name, description = frontmatter(skill)
-        names.append(name)
-        link(home / ".agents" / "skills" / name, skill, dry_run, created, conflicts, kept)
-        for host_dir in SPECIALIZED:
-            if (home / host_dir).exists():
-                link(home / host_dir / "skills" / name, skill, dry_run, created, conflicts, kept)
-        if (home / ".grok").exists():
-            grok_adapter(home / ".grok" / "skills" / name / "SKILL.md", skill, name, description, dry_run, created, conflicts)
-    return {"source": str(root.resolve()), "skills": names, "created": created, "kept": kept, "conflicts": conflicts, "dry_run": dry_run}
-
-
-def status(root: Path) -> dict:
-    skills = skill_dirs(root)
-    home = Path.home()
-    entries = []
-    for skill in skills:
-        name, _ = frontmatter(skill)
-        targets = [home / ".agents" / "skills" / name]
-        targets += [home / d / "skills" / name for d in SPECIALIZED if (home / d).exists()]
-        targets += [home / ".grok" / "skills" / name / "SKILL.md"] if (home / ".grok").exists() else []
-        for target in targets:
-            if not target.exists() and not target.is_symlink():
-                state = "missing"
-            elif target.is_file():
-                state = "adapter" if ".grok" in str(target) else "conflict"
-            else:
-                state = "linked" if target.resolve() == skill.resolve() else "conflict"
-            entries.append({"skill": name, "target": str(target), "state": state})
-    return {"source": str(root.resolve()), "entries": entries}
-
-
-def unlink(root: Path, dry_run: bool) -> dict:
-    skills = skill_dirs(root)
-    home = Path.home()
-    removed: list[str] = []
-    kept: list[str] = []
-    for skill in skills:
-        name, _ = frontmatter(skill)
-        targets = [home / ".agents" / "skills" / name]
-        targets += [home / d / "skills" / name for d in SPECIALIZED if (home / d).exists()]
-        targets += [home / ".grok" / "skills" / name / "SKILL.md"] if (home / ".grok").exists() else []
-        for target in targets:
-            if not target.exists() and not target.is_symlink():
-                continue
-            if target.is_file() and ".grok" in str(target):
-                if dry_run:
-                    removed.append(str(target))
-                else:
-                    target.unlink(); removed.append(str(target))
-            elif (target.is_symlink() or getattr(target, "is_junction", lambda: False)()) and target.resolve() == skill.resolve():
-                if dry_run:
-                    removed.append(str(target))
-                else:
-                    target.unlink(); removed.append(str(target))
-            else:
-                kept.append(str(target))
-    return {"source": str(root.resolve()), "removed": removed, "kept": kept, "dry_run": dry_run}
-
-
-def main() -> int:
-    parser = argparse.ArgumentParser(description="YL Skill 下载、更新和多 Agent 同步")
-    sub = parser.add_subparsers(dest="command", required=True)
-    install_parser = sub.add_parser("install")
-    install_parser.add_argument("source")
-    install_parser.add_argument("--dry-run", action="store_true")
-    update_parser = sub.add_parser("update")
-    update_parser.add_argument("--source", required=True)
-    update_parser.add_argument("--dry-run", action="store_true")
-    status_parser = sub.add_parser("status")
-    status_parser.add_argument("source")
-    unlink_parser = sub.add_parser("unlink")
-    unlink_parser.add_argument("source")
-    unlink_parser.add_argument("--dry-run", action="store_true")
-    args = parser.parse_args()
-    temp = None
+def main():
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('command',choices=['install','map','status'])
+    p.add_argument('--source');p.add_argument('--sha256');p.add_argument('--target',required=True,type=Path)
+    p.add_argument('--map-target',action='append',type=Path,default=[]);p.add_argument('--upgrade',action='store_true');p.add_argument('--dry-run',action='store_true');a=p.parse_args()
     try:
-        if args.command == "update":
-            root, temp = resolve_source(args.source)
-            result = install(root, args.dry_run)
-        else:
-            root = Path(args.source).expanduser()
-            if args.command == "install":
-                result = install(root, args.dry_run)
-            elif args.command == "status":
-                result = status(root)
-            else:
-                result = unlink(root, args.dry_run)
-        emit(result)
-        return 2 if result.get("conflicts") else 0
-    except (OSError, ValueError, urllib.error.URLError, zipfile.BadZipFile) as error:
-        emit({"error": str(error)})
-        return 1
-    finally:
-        if temp is not None:
-            temp.cleanup()
+        if a.command=='install':
+            if not a.source: raise ValueError('--source required')
+            if a.map_target: raise ValueError('Run map after verified primary installation')
+            result=install(acquire(a.source,a.sha256),a.target,upgrade=a.upgrade,dry_run=a.dry_run)
+        elif a.command=='map': result=map_hosts(a.target,a.map_target,a.dry_run)
+        else: result=status(a.target,a.map_target)
+        print(json.dumps(result,ensure_ascii=False,indent=2));return 2 if result.get('status')=='INCOMPLETE' else 0
+    except (ValueError,OSError,KeyError) as exc:
+        print(json.dumps({'status':'ERROR','error':str(exc)},ensure_ascii=False));return 2
 
-
-if __name__ == "__main__":
-    raise SystemExit(main())
+if __name__=='__main__':sys.exit(main())

@@ -1,31 +1,58 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "2.1.1",
-  "date": "2026-09-22",
+  "version": "3.2.12",
+  "date": "2026-09-29",
   "skills": [
     {
       "name": "yl-channels-analytics",
-      "description": "按需采集和复盘用户授权的视频号后台作品、留存、粉丝、逐字稿及可选微信小店成交数据。用户要求视频号运营复盘、批量抓取后台数据、分析爆款和普通作品表现、核对带货归因时使用；可读取后台导出文件离线分析。",
-      "version": "1.0.0",
+      "description": "按需采集和复盘用户授权的视频号后台作品、留存、粉丝、逐字稿及可选微信小店成交数据，并生成结构固定的复盘大屏。用户要求视频号运营复盘、批量抓取后台数据、分析爆款和普通作品表现、核对带货归因、制作复盘大屏时使用；可读取后台导出文件离线分析。",
+      "version": "1.4.1",
       "category": "analytics",
       "role": "member",
       "license": "MIT",
       "files": {
         "agents/openai.yaml": "cdbcf1e68ddd9882404bda3202bf9f0e78db5d3386de29f649a581aa87e7a8ce",
         "LICENSE": "fe1fb4ab17f3d9b4f5a5fb3a7b0d66e56d5d37bde20d7293c566cd6df26d8818",
-        "references/capture.md": "56fb58c2ec2159b6d4f5ea90d9324a5d6f57201fc2d8d41159bdbe40e083fe8e",
-        "references/data-schema.md": "67929144c5f1249d323d23c79d3f271ee08044c116599570795c83884f58820e",
-        "references/review.md": "2de059930a78acb425bc5e04634b7e4697daf5d5109648add8a35a7e089ea5b1",
+        "references/capture.md": "1d65a5b71a6df65d1823b0da1b0549f0b9f1d5e325fdb8fc1aef79355b960f80",
+        "references/dashboard-schema.md": "3d7b5a625ec1252ddcab482410c11bb553afb2d88f6e48d1afa866bcef18bad1",
+        "references/dashboard.md": "5f1e34656359fd56d16b4c229659bb7ecbdb87021ff576c6db6aea64fde5fb8b",
+        "references/data-schema.md": "c71edbf4f060c3e83df2c3d4b3012c9c3153e3272693420a9c330235494619a4",
+        "references/review.md": "e7bfff946ec374b6aa18165303dd7144f5068bd080c57de9a056b284d3ec0bed",
         "references/source-snapshot.json": "a73d0f7151b9727359b2f3d024a4506a46097fb09859ae457e93af10ad3df3a7",
+        "scripts/dashboard.css": "de0d2cbfe5023dd01aa1e152b25b141890269e9750028d8e916592fef0a81528",
+        "scripts/dashboard.js": "d3daa23e8c688e8d3fad2d71595f78f49e02350b14b41464ce10364bfd1b424f",
+        "scripts/dashboard.py": "8d656d62bbe49a30912db4bc16c231d97f093a09a5b4ef696079ba450bc095fe",
         "scripts/summarize.py": "b0a605f102494adcd26b9f87d20b172e7fea2b23d27e85bf736b5135263c53ff",
-        "SKILL.md": "b04f6007efc8740c0353788f70a7cb05b250246886b41add7b4d3eb901c9c65b",
+        "SKILL.md": "f8630fa321354e8502b930e7aaebb9b7622c4a26505281273ce5aee2c23f8e09",
         "SOURCE.md": "8df89aeaa6f61643ce368c38fa058e55d991e7e83231d661fe13baa3bda4e8bb"
+      }
+    },
+    {
+      "name": "yl-chatcut-landscape-interview-editor",
+      "description": "用 ChatCut Desktop 剪横屏访谈、个人 IP 独白和长口播复盘。先做全文逻辑删改，再按原声精剪、字幕包装与本地导出；支持全自动和半自动多轮红线定稿。横屏访谈只走本 Skill，不调用旧 Remotion 横屏流程。",
+      "version": "3.0.0",
+      "category": "video",
+      "role": "member",
+      "license": "MIT AND CC-BY-NC-4.0",
+      "files": {
+        "agents/openai.yaml": "f5170303c914bf91b77f859b87f1cecac48edbc67237765fa0de14e04d2553c1",
+        "LICENSE": "1cd8ef10561aadfe6689f12b1cf974d24d9e186f76681a7ac432e1533cb5e038",
+        "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
+        "LICENSES/MIT.txt": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
+        "NOTICE.md": "823879a4531999fee24df958c264854e7ced917edac5402e32522ff644ef3d2d",
+        "references/audio.md": "28067a69b35110c6985c1a3d40cd3ffff574c05791486c0b8eb46af137af9de6",
+        "references/chatcut-workflow.md": "b70e80bf4fa9810766ee9bd03f567925304a3f2a7a206633480cc4648805947c",
+        "references/editorial-and-redlines.md": "47ff31f723166cd72536469c7a7133bc8e08ac86f1736e871322e11d9d01bdc2",
+        "references/lessons-and-scenarios.md": "47e2d9a522e0224bf083b0eeea30a69c6b22a5776e87cefea3de71c94325eda8",
+        "references/precision-and-acceptance.md": "7bd94b553571afb4bd091f721857f6fd0c7c706314c55326127c819bdf079d36",
+        "references/visual.md": "cd9695a56b5436aeeea99ab5449bba672a58edf6f5266226e2b1fcfef6f33514",
+        "SKILL.md": "2aea5c470185aa628dbfde9b8af877fe5fbe33096a40db3d22c1a44f3ee2bcf9"
       }
     },
     {
       "name": "yl-chekhov-deep-writing",
       "description": "基于可追溯的契诃夫俄文原著、已验证的高层写作机制和受约束的语言外壳，完成中文公众号文章、短视频连续口播、朋友圈、人物故事、观点稿与现实材料改写。用户要求克制而锋利的人性观察、让细节约束判断、保留反例与未尽后果，或明确要求使用契诃夫研究线时使用；不用于逐句仿写、复刻人物情节、冒充中文出版译本或无材料补写现实事实。",
-      "version": "2.0.1",
+      "version": "3.0.0",
       "category": "writing",
       "role": "member",
       "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND CC-BY-NC-4.0",
@@ -65,7 +92,7 @@
         "references/media.md": "ec5cd0986d26bd563bd5dc43c63280abb3f8a0ca7cbf871e0ff433294ef9a2ea",
         "references/source-snapshot.json": "c9815418045a3fe3c849e453fb53f27686fb02c48d8558f3b42c1f93add59cb2",
         "references/workflow.md": "971666bafd2289326bf113976c776021c7fc2647a7d49542d23c39ee29e448a5",
-        "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
+        "references/writing-foundation.md": "6a82fc6302860f7f8d2ba4855ff47b5afdb92ef2486df7ab0add2c319aa5fff5",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
         "scripts/corpus_utils.py": "3ff8e7137b20fe709afb16d907c265e08a02e389a389516b62510d68301c31cd",
         "scripts/load_runtime_profile.py": "2c388d3e6af0806d3b20ba9e221655639a98de1826ba05265fef91937469efe4",
@@ -77,9 +104,171 @@
       }
     },
     {
+      "name": "yl-knowledge",
+      "description": "YL 知识管理总入口。构建知识库、同步笔记、导入本人材料或采集本人新文稿时，协调归档、蒸馏、去重、表达、体系和验收；知识检索只读，不启动入库。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "router",
+      "license": "MIT",
+      "files": {
+        "references/contract.md": "4693305d1a0036803e39d7a8b9a008b57a35a84acbec4ae8adc99320c7b9f721",
+        "scripts/knowledge.py": "9ab182043e559381433e4549129ab953896c429c755e8696c39f1710594fe59c",
+        "SKILL.md": "f53e5b09cad3da4606b60b750a2a08643895ccf79f8e938bd6c04cbbd4144137"
+      }
+    },
+    {
+      "name": "yl-knowledge-build",
+      "description": "新建本地知识库及阅读文件夹体系，或接入用户现有知识库；首次设置时提供沿用现有结构与创建推荐结构两个选择。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "SKILL.md": "a547a22138405688f107e2f518b1bb1c4c0cec74c23e894b74715b85ad4dec19"
+      }
+    },
+    {
+      "name": "yl-knowledge-check",
+      "description": "验收知识处理的来源覆盖、原句、语义去重、产物及关系，发现只同步未蒸馏、遗漏材料、失效引用和未完成旧项。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "SKILL.md": "37bdd0fb6c78cb5f1699da7f7ce9ad1a1e4445ad9326205cd8d49ede1249c8f9"
+      }
+    },
+    {
+      "name": "yl-knowledge-distill",
+      "description": "从本人完整原文中提炼可复用观点、概念、方法、案例和论述链，逐字回源，并先与现有知识原子做语义去重。",
+      "version": "1.0.6",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "references/objects.md": "dad900a6aff9d2a1a4e90ebe22140111e286805276d343672ebef199d20b5f15",
+        "SKILL.md": "0f2e27331788a772c8adc0a879d54a436cf520142af2ff124f976f51897a9f23"
+      }
+    },
+    {
+      "name": "yl-knowledge-expressions",
+      "description": "从本人语料中提取可复用原话、比喻、金句、口头表达及完整论述节奏，维护表达资产与来源和观点的关联。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "SKILL.md": "ae8ba8d018979f17c790f4b37a7823ae9738ff2a6b90e769ca4137bfd116bcae"
+      }
+    },
+    {
+      "name": "yl-knowledge-import",
+      "description": "将本地文档、导出笔记、录音录像和逐字稿纳入统一知识处理流程，保留原文件及版本，调用已有解析转写工具后自动衔接蒸馏。",
+      "version": "1.0.3",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "SKILL.md": "3ac546276f45f80096006193f06eefc89faf728088f24db70bcd971dd5ec87f1"
+      }
+    },
+    {
+      "name": "yl-knowledge-ingest",
+      "description": "对接收到的语料完成作者归属、版本、正式位置和重复判断，保留唯一正文与来源记录，并把本人可提炼内容交给知识蒸馏。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "SKILL.md": "541741d6926dbd3ce8e412ea54a52751f73c8ef09ea78196104902dd2024947d"
+      }
+    },
+    {
+      "name": "yl-knowledge-obsidian",
+      "description": "将同一 Markdown 知识库接入 Obsidian，维护双链、原生视图和关系图；环境允许时操作软件并区分文件验收与真实界面验收。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "SKILL.md": "815d2c5d08c70cd008a70f1c92f89274d13ce573c93f835afd673f40276ab3d3"
+      }
+    },
+    {
+      "name": "yl-knowledge-organize",
+      "description": "将知识原子与作品组织成可阅读的领域观点树、概念关联和完整论述，保持一个知识体系及跨来源、跨领域连接。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "SKILL.md": "005c2204446d894519687c5b3d7143af43be11b62b65e76cd98c6da201dcf228"
+      }
+    },
+    {
+      "name": "yl-knowledge-review-sync",
+      "description": "接收自媒体复盘结果，更新作品历史表现、选题数据与统一排名，并将新增本人文稿自动交给蒸馏流程。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "SKILL.md": "4fa9ef574f0159d676fd034490be45dc2a88f22e55414f62f79f8b9be4a564ee"
+      }
+    },
+    {
+      "name": "yl-knowledge-search",
+      "description": "只读检索本地知识库的原文、知识原子、表达和作品，为问答或写作提供可回源的相关证据与完整上下文。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "SKILL.md": "3e968505da5175a0674db7d7f023fc8fa590802154c1d18d60f0d399888623ac"
+      }
+    },
+    {
+      "name": "yl-knowledge-sync",
+      "description": "将配置的 Get 或其他笔记来源同步到本地，并自动衔接归档、蒸馏、去重、表达和思想体系更新；不止于下载，不修改云端笔记。",
+      "version": "1.0.0",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "references/connectors.md": "1cefc85681bd4f664150071ee6363ad6ff7eae167f1d2e14bafdc49ec1f90ae7",
+        "scripts/getnote_sync.py": "85281ac5b2627cb4c3e1ed15c44a45c2d95f9d8cf09e92e6d6b7fc0adebd49e8",
+        "SKILL.md": "9e0e6ab61d7938e00debfc0c2dfd03bdb39cbf32e8a5f1f2b79a15c5cd345a22"
+      }
+    },
+    {
+      "name": "yl-media",
+      "description": "YL 自媒体采集与复盘入口，协调视频号、公众号及跨平台同作品比较，把新增本人文稿和复盘结果交回统一知识库。",
+      "version": "1.2.0",
+      "category": "analytics",
+      "role": "router",
+      "license": "MIT",
+      "files": {
+        "references/handoff.md": "5e8390dec0f00ff36c350be7c76d6422deccd7a7e6ac19f666db308db1d1ed19",
+        "references/ranking.md": "30f81597e4d68ad2e27106dd6cc803ba3fede4b4d04e9d18dd61db4e4326fefa",
+        "scripts/ranking.py": "e7d5dd802a1f5f63870ca5604f8fbb663720cb1d034b4a583fcd4f3cf9598c86",
+        "SKILL.md": "b13d5bc5d8f8f2e8c9b887a4c3bb11c14daadde37da797d5391090143cf29e5b"
+      }
+    },
+    {
+      "name": "yl-official-account-analytics",
+      "description": "采集和复盘微信公众号账号、文章、分发通知、阅读来源及转化，保留全文与历史数据，并将新增本人文稿自动交给知识管理。",
+      "version": "1.0.1",
+      "category": "analytics",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "SKILL.md": "09c96e2855bda8c9702e81fe77c968185e686111e33f12225b76ff7378711591"
+      }
+    },
+    {
       "name": "yl-remotion-talking-head-editor",
       "description": "Edit Chinese talking-head footage with built-in mandatory content, script-flow and opening analysis, word-accurate mistake and hesitation removal, stable fixed-size captions, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Cards are off unless explicitly requested; preserve the original voice and export the complete final spoken transcript.",
-      "version": "1.1.0",
+      "version": "3.0.0",
       "category": "video",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -110,14 +299,14 @@
         "scripts/validate-talking-head-video.ps1": "a7e85c1d24406bc3aecf92cbda3546b9cf74cdc869d76a2900b4755dc2826b30",
         "scripts/validate-video.py": "15d1156c9b3ed264b2e05844b085d57a4be35158ce5ebba6d820e496c344aba1",
         "scripts/word-audit.py": "d40f96d3ab920affe3d8a79228a772f7ba4dc70250a1c7675aa9409e8c0836fc",
-        "SKILL.md": "a95b4d1389b500f388f6a334903c17f8e492dbb091b14cc8809af29c8c48bdad",
+        "SKILL.md": "062b796e4ee3da546495c481139230dbd6ac97a0455b3d637ee91128225595cc",
         "tests/test_report_paths.py": "81a7461ff5275269f9e1295e4a3dc58d9c4bfc6bb52f5a002605e74e2f6f0354"
       }
     },
     {
       "name": "yl-short-video-covers",
       "description": "从截图、文案、视频或原帧制作 1080×1440 短视频封面，提供黑底白字大字模式（可选黄字强调及用户提供的头像）与半透明原帧无叠加头像模式。用户要求做封面、批量制作封面或从视频提炼封面标题时使用，并先让用户选择适合的模式。",
-      "version": "1.1.0",
+      "version": "3.0.0",
       "category": "video",
       "role": "member",
       "license": "MIT",
@@ -127,6 +316,7 @@
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
         "references/asset-prompts.md": "c506006a84bed655a8803c32d9a42587537644b48b41738b454841b3c8fc8656",
         "references/bold-mode.md": "8c30d23121311a3afa61571f656e4113fde31a4e2987759d4c31a7061d47bcd6",
+        "references/outlined-mode.md": "d0c63e6dffeb3539f3b7fccf9f27d6a962c0b741b3f349732611839d13ab3607",
         "references/provenance.md": "6ec20060abc2497673287e0ce6a9e864fe7de94baa5b29abafb9fc46b91747f8",
         "references/source-snapshot.json": "5d259527935929e5b8cb5d1fe64062984e41fc4069c23b54ff3a7235f52f3d25",
         "references/style-spec.md": "926f5f7d8b3869c0740d46f6fb655d3eb217c2c1a7cb5cb3c71f149de59c6423",
@@ -139,13 +329,13 @@
         "scripts/render_translucent_cover.py": "669dc85eeb13cce223e36f7fb9685353e057b8b33f67ec8063ec03b17c616aca",
         "scripts/validate_bold_cover.py": "48f8582bd32da1d92ef036fc15fcc00223b2d95b18ec1e61ddaa2c90d47c7f1e",
         "scripts/validate_translucent_cover.py": "7ea25801ba8e9189b3e3cae640ad8aa947e0a2f98831f6df57e1bfeacc9f68e6",
-        "SKILL.md": "cee37c07d518101721b8d68a6ebdb34c8b7d0e0a656f5c67a9e631f36a8cdbe5"
+        "SKILL.md": "5afa6bcbbbc29ee482090652bb13a884ad70d41305371dad389f3370bb043214"
       }
     },
     {
       "name": "yl-skill-sync",
-      "description": "将公开 Skill 集合下载、安装并同步到本机可用的多个 Agent 入口，支持检查新版本、更新、状态核对和安全卸载。用户要求把一套 Skill 映射到本机所有智能体、从本地目录或 GitHub Release 安装，或检查和更新已安装的 YL Skill 时使用；不覆盖真实目录，不依赖其他工具箱。",
-      "version": "1.0.1",
+      "description": "整套安装或升级 YL 通用核心，将明确指定的其他 Agent 映射到 Codex 的同一安装；个人配置独立保留，不重复安装多份核心。",
+      "version": "3.0.0",
       "category": "tooling",
       "role": "member",
       "license": "MIT",
@@ -153,8 +343,9 @@
         "agents/openai.yaml": "8da7d9256cc0e92efcf468acd87f6a4ce75c81bb455d3111408f65938810b12a",
         "LICENSE": "d3e0a3ba0d79d89d0c25707893f2afc47330b22ddb3e6f1b9743e46b2df2d817",
         "README.md": "e48f1dcbac3fda5c7cf3245c721678ffb327d08fadb26f362b11c8f06a0d26f5",
-        "scripts/sync.py": "44a1d2f41fe79f7b99f8a8eccd901aca0d6b3d7daebe5895b89f8cbb89d44e33",
-        "SKILL.md": "216d15344c0a07747b991dcdce9249c4dd1332247349a7f1a292a90f2a389d8e",
+        "scripts/cluster_install.py": "9c72a161d4910d2fe6b43872694130bbd50dc41909aee1dcaf2a9097dd262ffa",
+        "scripts/sync.py": "11cf00dba8ccb26ffbf544620bda13a5eac3777f9fb486d89d9b7aae192e6420",
+        "SKILL.md": "ad6bc4bfa257ca3b282d9e0775423b8ea38286456dece366ea98e02827750eae",
         "SOURCE.md": "4d9a9c142a990ed81372b911e0a3952e8c347106ac17f9d2c552db66ee2679e3",
         "VERSION": "f34306bb50e2d2ec59c788b9013c5ac682ef7f7f69345a3e957e38c0b6ba2fdd"
       }
@@ -162,34 +353,36 @@
     {
       "name": "yl-toolbox",
       "description": "yl 个人精选工具箱入口。用户要求使用 yl 集群、选择 yl 工具，或希望用工具箱完成任务时，按目录选择已安装的相关 Skill 并执行。具体功能可直接调用对应 yl Skill。",
-      "version": "2.1.0",
+      "version": "3.0.0",
       "category": "entry",
       "role": "router",
       "license": "MIT",
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "references/catalog.json": "596445afb41f805f200a5077d218d3aec58b2c9579d5089e6ab814640541cbc1",
-        "SKILL.md": "cb7977443c029338978e743aac0109784c3b99db0c91cc5937ffed0237132981"
+        "references/catalog.json": "f0a434d6473927f21f8713b918aae9d158231cbb1fe4be29d6da0a5ca5dc0f65",
+        "references/profile.example.json": "bf5f9a815327dd9ca4757d0231341eec0301e62aac464ec00ff58116e816697c",
+        "references/profile.md": "357e2de7fcaf8c1a18cddee1d882b0d380a0e2c5ce28e73f8ba2bab8ae03ea56",
+        "SKILL.md": "21b93cb87d707979b3224930938ce922ce77ddf9d62fccc9a8776de2a829e435"
       }
     },
     {
       "name": "yl-video",
-      "description": "yl 视频分类入口。用户希望剪真人口播、做短视频封面，或同时制作视频与封面时，选择自动剪辑或两种封面模式，并按任务依赖调用成员。",
-      "version": "1.0.0",
+      "description": "yl 视频分类入口。自动剪辑分为真人口播与 ChatCut 横屏访谈两项；也支持两种短视频封面模式，按任务依赖调用成员。",
+      "version": "3.0.0",
       "category": "video",
       "role": "router",
       "license": "MIT",
       "files": {
         "agents/openai.yaml": "1d82e29506addcfaa9d9d877ebcbc3635836ec4c153a64961a561728991dc4d0",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "SKILL.md": "23dd17d929716d7707f5fa9a8d5eabb11dae33e159acf40e8ea68f74463183d0"
+        "SKILL.md": "57389f402340612f0b843410907a5be889fa9ddacbf8e237d9b7294580f45e2d"
       }
     },
     {
       "name": "yl-write-impact-wechat",
       "description": "Use when drafting, revising, or packaging Chinese WeChat Official Account opinion, trend, or marketing articles from recordings, transcripts, notes, or the author's prior writing, especially when the user asks to preserve original phrases, remove generic AI prose, strengthen rapid-fire rhythm, create a high-impact opening, or use a 暴击风格.",
-      "version": "2.0.1",
+      "version": "3.0.0",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -207,7 +400,7 @@
         "references/sourcing-and-claims.md": "36d6f0e62fe3d678a94a140521f540a2de7dadbd289c084732ed7667bc7ef110",
         "references/staged-delivery.md": "9a3c61fa59801bf656e2e11d1982f950ad2564ad805fc28f1cefe93618b86125",
         "references/style-contract.md": "21e73b0be4590d0a2cfed0edb9356fe3ff16974fa0ec7a4e2f05339ccc9cdd82",
-        "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
+        "references/writing-foundation.md": "6a82fc6302860f7f8d2ba4855ff47b5afdb92ef2486df7ab0add2c319aa5fff5",
         "scripts/build-wechat-html.mjs": "7ccfb50c8d69de9333f872fe8c099dcfcbd6ea722a01e162d689799a6095463a",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
         "scripts/validate-wechat-article.mjs": "4cd3fa023670a3a3c6bb8c45671f1ce81324a3716b746f112f66c48d6b3c454a",
@@ -221,7 +414,7 @@
     {
       "name": "yl-write-voice-led-wechat",
       "description": "以用户本人的口述转写、录音或长短视频稿为底板，最大保留原话与思想递进，调用本人知识和表达资产进行修补、润色或扩写成微信公众号文章。用户调用本 Skill 时使用；它是口述底稿成文的总框架，可挂契诃夫、暴击观点两种具体写作框架或自带编辑模式，以及契诃夫风、暴击风等表层风格，不用于从零选题或第三方文章洗稿。",
-      "version": "2.1.0",
+      "version": "3.0.0",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -238,11 +431,11 @@
         "references/dbs-editorial-foundation.md": "2c9e7ac8208e085916eff4b72a85d4c3e6fe2b1a47db1c9eeb7c3a6a2c0de7fb",
         "references/dbs-source-manifest.json": "40e61cc4dee44910b713703a8ca7f284fe32f268b248af8b6ffdbfa390c88253",
         "references/edit-card.md": "f8763eb9a1379625f53b2cd942eaec14edcc3b97b90f4331946a05cd91993d2f",
-        "references/knowledge-and-source-contract.md": "c4817801e72e65968238b6b3ec35f81c6a9b777ed39d59f8ef52074c5576a77e",
+        "references/knowledge-and-source-contract.md": "3c280c2d3d0681c71f49f8ad6928bdecc4b3f21c8a126020f240352978ce0778",
         "references/source-snapshot.json": "8b0bcc63cc387fc18fb68378dcdcdbbbd379bb698c8af62881ac9c9733325fb9",
         "references/style-adapters.md": "dcb1889b37b791a2dd11e4ad76c09c725a922024325680a3d3b4ca38e3a34e3f",
         "references/style-dependencies.json": "2250b65f496553e322540afebaa386e5cd9e1af00f85e3c3cf9c698b5e5dd452",
-        "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
+        "references/writing-foundation.md": "6a82fc6302860f7f8d2ba4855ff47b5afdb92ef2486df7ab0add2c319aa5fff5",
         "scripts/check_article.py": "74201742f90f261ae1a3982e02ee69e28577b18d08e52cf7618b62c7e4608275",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
         "SKILL.md": "54409789d02c6ed3943de4b5c6438dd0e76e4678afdb85d0657c5aae52cbe06f",
@@ -254,7 +447,7 @@
     {
       "name": "yl-writing",
       "description": "yl 写作分类入口。口述稿转公众号进入口述总框架；写文章、改稿或选择文风时，提供契诃夫、暴击观点两种风格与基座编辑，统一执行公共去 AI 味规则。",
-      "version": "2.0.1",
+      "version": "3.0.0",
       "category": "writing",
       "role": "router",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -269,9 +462,9 @@
         "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
         "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
         "references/source-snapshot.json": "e8e277b6584ded57400b26358d907ba1e8793c1e9357ba4a857bb25974c7b51e",
-        "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
+        "references/writing-foundation.md": "6a82fc6302860f7f8d2ba4855ff47b5afdb92ef2486df7ab0add2c319aa5fff5",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
-        "SKILL.md": "45c61e9b9ad33436b678fabae1506116187cb8890fb9f31da44d14f777ab4857",
+        "SKILL.md": "90eeade536e3bc51db8a9d87c3fd9eadba10fe2c0d8e204481023290225f9611",
         "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
       }
     }

@@ -4,6 +4,19 @@
 
 优先官方导出，其次已登录的可见页面，再考虑当前浏览器工具明确允许的同源只读请求。浏览器运行在隔离会话时，不能声称自动继承桌面 Chrome 登录。禁止通过系统文件、Cookie 导出、远程调试绕过工具权限。
 
+**工具选择**：使用当前宿主已授权且可维持登录态的能力，先读工具规范并实测。工具名称、个人配置路径与历史运行记录不写成通用依赖；连接不可用时不绕过限制，保留未采集状态。
+
+**连接故障分层**：先验证宿主能列出浏览器和标签，再验证登录，最后排查 iframe、shadow DOM、接口与分页。若标签枚举也连接失败，页面选择器不是当前根因；只用宿主提供的重置、重连方式，并检查日志。另一个宿主能采集不证明当前工具可用，两者的浏览器桥接与登录会话可能独立。一次重置及一次宿主重启仍失败时记录错误，不反复要求扫码，不把 Skill 的第三方工具示例当作当前可调用工具。
+
+### Codex 与 WorkBuddy 连接验收
+
+- 保留 WorkBuddy 已验证的浏览器工具与配置；修复 Codex 连接不改写另一宿主的路径、登录态或工作流程。
+- Codex 使用当前工具说明中提供的浏览器入口。同一地址有多个标签时，先列出标签，按明确标签 ID 绑定；不能假定列表第一个就是用户刚扫码的页面。
+- 用户扫码必须在当前工具实际绑定的浏览器会话完成。说明是内置浏览器还是外部浏览器，避免让用户在不相通的会话中重复登录。
+- 标签列表可读、地址已改变、首页可读、详情可读、导出完成是不同检查点。逐步保存状态，不把前一项成功当作后一项成功。
+- 交互后验证目的页面正文。点击错位时先读取新状态和截图，检查遮挡、可见节点及坐标映射；仍无法可靠操作可请用户在同一会话手动进入目标页。目标页读取仍超时则记录正文读取失败，不写“连接已打通”。
+- 当前工具只允许只读 DOM 时，不执行页面 fetch、隐藏点击或读取运行时凭证。下方历史接口与 Playwright 示例仅适用于明确允许相应能力的宿主。
+
 历史实现中视频号助手主内容可能在 iframe，列表项可能为 `.post-feed-item`，滚动容器可能为 `.app-body`。每次先检查当前 DOM、框架和可见标签，不硬认第一个 iframe 或第几个统计列。SPA 用实际菜单导航；直跳旧 URL 可能回首页。
 
 逐层记录 expected / checked / available 数量和证据：
@@ -22,7 +35,16 @@
 
 以下只是历史接口线索，必须从当次授权页面观察到实际请求再使用，不能硬编码认证信息或凭空构造后台请求：
 
-- `statistic/post_list` 常见 `objectId`、`createTime`、`desc.description`、`readCount`、`fullPlayRate`、`avgPlayTimeSec`、`fastFlipRate`、`likeCount`、`commentCount`、`forwardCount`、`favCount`、`followCount`。逐一核对页面标签、单位和统计窗口。
+**已实测确认（2026-09-25，视频号助手）**：
+
+- 作品列表接口为 `POST https://channels.weixin.qq.com/micro/content/cgi-bin/mmfinderassistant-bin/post/post_list?_aid=<会话ID>`。**路径含 `/micro/content/` 前缀**（列表在 iframe 上下文），漏掉前缀会取不到。
+- 请求体 `{pageSize, currentPage, postStatus:0, sortType:0, searchWord:"", needRefreshPost:0}`。**`pageSize:100` 只控制单页大小，不保证返回全部作品；无论页大小都检查分页结束标志与总数**；`pageSize:20` 时无 `hasMore` 字段，翻页须用响应里的 `continueFlag` + `lastBuff`。
+- 取数方式：先经真实菜单进入"内容管理 → 视频"（直跳 `/platform/post/list` 会回首页），再用同源 `fetch` 调上述接口；字段口径见下条。
+- 账号级 `statistic/fans_trend`、`statistic/new_post_total_data` 空参返回全 0，需日期参数；账号总量与昨日数据以首页展示值为准。
+- 扫码后等待手机确认及回调完成，再正常导航；回调期间不刷新。
+
+- `statistic/post_list` 常见 `objectId`、`createTime`、`desc.description`、`readCount`、`fullPlayRate`、`avgPlayTimeSec`、`fastFlipRate`、`likeCount`、`commentCount`、`forwardCount`、`favCount`、`followCount`。逐一核对页面标签、单位和统计窗口。另可用 `desc.media[0].videoPlayLen` 取时长（秒）、`desc.shortTitle` 取短标题。
+- `fullPlayRate` 实测为 0–1 小数（如 0.3397＝33.97%），写入报告前统一换算并标注。
 - `fastFlipRate` 不自动等于 2 秒或 5 秒退出；`favCount` 不自动译为收藏，视频号可能对应推荐。保留原字段和标签。
 - `get-product-statics` 可能包含 `exposeCnt`、`clickCnt`、`orderCnt`、`dealMoney`，金额单位、窗口和订单状态须验证。
 - 小店 `orderSearch` 等列表可能使用 `nextKey` 分页；走到结束，不能只取首批。会话头只在当前会话使用，不记录令牌和认证头。订单 ID 存字符串，核对支付、取消、退款状态与订单金额单位（可能为分），逐商品处理，不能只取第一项。
@@ -37,3 +59,73 @@
 支持相应 API 的浏览器环境可将授权音频 decodeAudioData 后经 OfflineAudioContext 转单声道 16 kHz PCM，再写标准 WAV；实际工具不支持则使用允许的导出及 FFmpeg，不假造已保存的文件。
 
 ASR 应保留媒体 SHA-256、模型、时间、语言、完整原始文本和带起止秒的分段。局部听审校正单独存 cleaned transcript。ASR 过滤静音不证明没有漏字。标题和模型总结均不能冒充完整逐字稿。
+
+## 本地成片与平台发布对照
+
+标题变化时不能只凭标题判作品。用合法取得的平台视频与本地成片做多时点画面指纹比较，保留最优、次优距离和间距，再以开场音频、时长、正文交叉核对。压缩、裁切、不同开头会影响阈值，不沿用某次样本距离作通用标准。
+
+已有本地转写模型优先复用缓存；环境支持时显式离线加载，不能把联网检查失败误报为模型缺失。机器路径从个人配置取。ASR同音噪声不能凭语义相似直接写死发布身份。
+
+确认匹配后写 publication_id、published_at、publication_title、证据与置信度。未配上只能记“未匹配”；只有已完整核查目标账号与窗口并有足够证据时才能判“未发布”。先保留旧关联，新增修订记录。
+
+## 常见页面结构与兼容性提示
+
+### 工具与登录态
+- 先检查当前后台是否已登录；会话保存由宿主决定，不假定重启后仍登录，也不在尚未检查时要求重新扫码。
+- 遇到 `ERR_PROXY_CONNECTION_FAILED` 时报告网络连接错误，按宿主支持的排障流程处理；不自动改代理、凭证或网络安全设置。
+
+### 商家后台 `store.weixin.qq.com/shop/*` 的读取方式（重要修正）
+- 主 frame 只有左侧菜单与页脚，正文**既不在 iframe、也不在 light DOM，而在 `micro-app` 自定义元素的 open shadow DOM**。
+  `document.body.innerText` 读不到内容，`page.frames()` 也只列出一个空的 `about:blank`。
+  正确读法：
+
+  ```js
+  const sr = document.querySelector('micro-app').shadowRoot;
+  const box = [...sr.querySelectorAll('div')]
+    .sort((a, b) => (b.innerText || '').length - (a.innerText || '').length)[0];
+  box.innerText;   // 整页正文
+  ```
+
+- 表格行可能被拆成多个 `tr`。按订单号定位行内按钮：**先找含订单号的叶子节点，再向上 `parentElement` 找含目标类的容器**，直接按 `tr` 匹配会落空。
+- **订单详情 URL 参数是全小写 `orderid`**：`/shop/order/detail?orderid=<订单号>`。用 `orderId` 会得到"骨架在、数据不加载"的空壳页。
+- 列表行里的"详情"是 `DIV.optLink`，点击会**开新标签页**，操作完记得切回。
+
+### iframe 中的可见内容
+- `store.weixin.qq.com/talent/*`、`channels.weixin.qq.com/platform/statistic/*` 的正文常挂在同域 iframe 下，例如
+  `https://channels.weixin.qq.com/compass/embed/channels-helper-product?code=...`
+- 使用当前工具支持的 frame 定位与只读 DOM 能力。某个工具支持 `page.frames()` 不代表所有宿主都支持，更不代表允许任意页面脚本。
+
+### 视频号助手菜单
+- 菜单可能有折叠与展开两套同名节点。根据当前可见状态定位正确菜单；定位不明确时先观察截图，不依据隐藏节点的顺序盲点。
+- 路由：数据中心 → 带货数据 = `/platform/statistic/cargo/transcation`（平台侧拼写就是 **transcation**）；视频数据 = `/platform/statistic/post`。
+- **视频号助手「数据中心 → 带货数据」＝ 电商罗盘「成交分析」的内嵌镜像**（页面自带"前往「电商罗盘」查看更多维度的数据"），数据完全一致。它最细只到**场景**（短视频／商品分享／橱窗…）＋**商品**＋规格，**没有视频维度**。
+
+### 罗盘
+- 请求体与响应体**都是加密的 `__payload__`**（不同于订单接口的"请求加密、响应明文"），接口层拿不到数据，只能靠页面渲染或官方"下载数据"。
+- 短视频明细页顶部有**官方明文**：「本页面展示的是筛选时间内发布的短视频整条累积数据，非筛选时间内的成交数据。」→ 筛选筛的是**发布时间**。
+- 成交归因窗口应按当前账号的证据配置处理：保存同一视频多次导出、采集时间、点击与成交变化、官方说明及用户确认。经多轮验证的项目结论可按该项目采用口径使用，不推广成所有账号或所有未来版本的永久机制。窗口长度未得到证据时不写死。官方累计说明与实测不一致时保留两者，分开报告归因成交和全店已付。
+
+- 点击被固定表头遮挡时，检查截图、滚动或关闭遮挡层，再用宿主支持的交互方法；不绕过只读 evaluate 限制派发隐藏点击。
+- 日期控件为 readonly，不能 `fill()`；必须点输入框 → 点 `.weui-desktop-picker__panel_day td`。如面板失焦会关闭，可在同次调用中顺序完成已定位的打开和选日期操作，再回读日期。
+
+### 订单字段与授权范围
+`shop-faas/mmchannelstradeorder/list/cgi/orderSearch` 的响应里，除商品与金额外还有：
+
+- `buyerInfo.nickName` —— 买家微信昵称
+- `acceptInfo.rechargeData.content` —— 手机号（虚拟订单；另有 `acceptInfo.addressInfo.virtualOrderTelNumber` 作为备用路径）
+- `commonInfo.openid`、`orderStatus.payTime`、`notesInfo.customerNotes`（买家留言）
+- `orderProductInfo[0].productSource.saleChannel` / `accountName`（成交来源＝带货方式＋账号）
+- `orderProductInfo[0].productSource.contentName` —— **实测该字段全部为空**，只能说明本次这些记录缺少「来源视频」，不能外推所有接口
+
+解析前先检查字段名、类型和经过脱敏的样例，再按本次授权保存业务字段。不得把整条含个人信息的记录 dump 到日志。完整客户信息只在用户授权的本地明细文件保留。
+
+### 「订单／成交 → 具体视频」的归因边界（四路核验）
+
+| 路径 | 最细粒度 | 有「来源视频」吗 |
+|---|---|---|
+| 商家后台 订单列表／详情 | 带货方式 ＋ 账号 | ✗ |
+| 罗盘 成交分析 | 渠道（全部／视频号／分享带货） | ✗ |
+| 罗盘 短视频明细·详情 | 单条视频（按发布时间筛；成交窗口按本次证据） | — |
+| 视频号助手 带货数据 | 场景 ＋ 商品 ＋ 规格 | ✗ |
+
+→ **上述路径在该次观察中未给出「某天成交来自哪条视频」**；其他任务先核对当前产品能力。成交部分只能分别报：平台已付款总量、渠道／场景分布、罗盘窗口内可归因部分；**三者口径不同，不可相加**，并明确标注哪一层是上限。

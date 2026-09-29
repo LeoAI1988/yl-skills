@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl 横屏访谈剪辑（ChatCut）"
+  short_description: "ChatCut 本地横屏访谈精剪，全自动或半自动红线定稿、音画核验与成片交付"
+  default_prompt: "使用 $yl-chatcut-landscape-interview-editor 剪辑这条横屏访谈，按我的全自动或半自动选择完成全文删改、精剪与本地成片交付。"

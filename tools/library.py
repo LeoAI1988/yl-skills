@@ -11,7 +11,7 @@ TEXT_SUFFIXES = {'.md', '.py', '.ps1', '.yaml', '.yml', '.json', '.txt', '.toml'
                  '.js', '.mjs', '.ts', '.tsx', '.jsx', '.css', '.html', '.sh', '.csv'}
 ROOT_FILES = ['README.md', 'PRD.md', 'MAINTAINING.md', 'CHANGELOG.md', 'LICENSE',
               'THIRD_PARTY_NOTICES.md', 'AGENTS.md', '.gitignore', 'release.json',
-              'install.py', 'build.py', 'yl集群_审核说明.md', 'Skill清单_v2.1.0.md', '版本对齐_v2.1.0.md']
+              'install.py', 'build.py', 'yl集群_审核说明.md', 'Skill清单_v2.1.0.md', '版本对齐_v2.1.0.md', 'Skill清单_v2.2.0.md', 'Skill清单_v3.0.0.md']
 ASSET_FILES = ['YL-Skill集群.jpg']
 
 def digest(data):
@@ -24,8 +24,10 @@ def read_json(path):
     return json.loads(path.read_text(encoding='utf-8-sig'))
 
 def is_link(path):
-    return path.is_symlink() or (path.exists() and
-        bool(getattr(path.stat(), 'st_file_attributes', 0) & 0x400))
+    try:
+        return path.is_symlink() or bool(getattr(path.lstat(), 'st_file_attributes', 0) & 0x400)
+    except FileNotFoundError:
+        return False
 
 def relative_file(value):
     return (isinstance(value, str) and bool(value) and '\\' not in value

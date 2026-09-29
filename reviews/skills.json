@@ -1,43 +1,101 @@
 {
   "schema_version": 1,
-  "version": "2.1.1",
-  "review_method": "Changed/new files semantically reviewed by the maintainer agent, sensitive-data scanned, with synthetic regression and real FFmpeg synthetic-audio CLI checks. Unchanged files inherit prior evidence. No live backend or real-person editing acceptance claimed.",
+  "version": "3.2.12",
+  "review_method": "Changed/new files reviewed by maintainer; independent isolated forward tests for knowledge and Windows install. Existing unchanged bytes inherit previous reviews. No live cloud/Obsidian or real media quality acceptance claimed.",
   "generated_exclusions": [
     "yl-toolbox/references/catalog.json"
   ],
-  "project_review": "2.1.1: visually reviewed ten-Skill poster, replaced historical image, verified capability and installation wording. Documentation-only release; current reviewed Skill files unchanged. Knowledge ingestion/distillation remains unimplemented.",
+  "project_review": "Reviewed public version and download documentation; verified established analytics requirements. Existing unchanged byte reviews inherited. This release does not claim browser connection or live collection is fixed.",
   "project_files": {
-    "README.md": "6cbeb46a9ccd0426ac7686b9737b858e4c084a73612f4371bf8dc1be3d952af9",
-    "PRD.md": "376a05c0c5f34414c903541705663d7cdf9f01de415e1d056a4e4825514fd8f4",
-    "MAINTAINING.md": "e5512928992ec0fd45c6a459e6bb92f0d83a1fb10e83644788477c47cd1d3f44",
-    "CHANGELOG.md": "aa2b04ab9a23c6394cdc8baa1048b06c4f41c8a3b62d20f8c777fc00f4046852",
+    "README.md": "f8f4b78d14bfd3fdaf5036e9acd5b13e0e5496dbbb320c08041ed8bd380047b6",
+    "PRD.md": "24c41442d5d4ea2e7aaee49817b7e5f58630cb7be53e13a4bbbf6341e30f032c",
+    "MAINTAINING.md": "9869b54c017fa035fea4a33dfe622ffb4aca629a4214a1fd1ee530463bd7b201",
+    "CHANGELOG.md": "2866b29a27c8780c94c8eb5893a15d7534a92102a984039b98f2ec01acafa201",
     "LICENSE": "0a9dabde6fca3a8d9010c587bc53c09cc147aa081848fbbdab9f119be3f778f8",
-    "THIRD_PARTY_NOTICES.md": "88c81758fe78b9a60f399ab2370fe4249707183e86e7a79048b53ee9aca050c0",
-    "AGENTS.md": "fa2fa511deab3e972b28dfb209f9267092a4430d3fea6c0cc24520e3fd580575",
+    "THIRD_PARTY_NOTICES.md": "eaf032d7b3467c808680c757d44a3767bf5ab6279f297d776ca0f639d84029f5",
+    "AGENTS.md": "6f0c8cf0ced63ada0fc766fcce0150aeab0a32703ce0854b8848c0d3000b5800",
     ".gitignore": "8cf91327b2d9c9d76246d25b403afb942b78441c63c8da06483afb00f68a6e19",
-    "release.json": "ca863f6af8cbfcb24e65a64036ea23d553b8e2e93865f3c77401f4a7e6a4dc74",
-    "install.py": "a096c747b13b047babca5f1580ada311b20bf02267b607fc8cc38c80eb6923b1",
-    "build.py": "b3b132a96fc89b320faa76b1c3092cc5432ac53f4b81144410ba9b2ff5862bd8",
-    "yl集群_审核说明.md": "dbfc61f89d121139904c0f08195c00a8ea02830b0c04c5d5544557acec533e92",
+    "release.json": "ac62d4a9825b685a2d0b4adf9609928d236232a3ea2e9888dc2e924af5c111d8",
+    "install.py": "9c72a161d4910d2fe6b43872694130bbd50dc41909aee1dcaf2a9097dd262ffa",
+    "build.py": "76ea649fd032691761598b09c290d5bfb2c0bcb7e3c44e5d9ce43c1513098b21",
+    "yl集群_审核说明.md": "1efbd9579df44be05b85e97a2e591ed9787aea1475f95c66510b9875312c644b",
     "Skill清单_v2.1.0.md": "af6f906b6a9e9af7ed466acb2da3f73c20781dfbf2d9c803a9fc95660664d271",
     "版本对齐_v2.1.0.md": "b17f5ac2068f4328ebd91d727b6e4e42fc3cf0a6798a6c779deddb8eda16278d",
+    "Skill清单_v2.2.0.md": "97771d9456c71fa013e30d11f9b37f5da25540fac8fec8d305e3c2ae6aa94996",
+    "Skill清单_v3.0.0.md": "93efa911ac9f7b1c256ffc76126167ac3a9572c5a187e5a12896bf2d21bab3cf",
     "YL-Skill集群.jpg": "c890ad842b624997d170ad75297c748e1ec06337453338e8796bd11e6a673bc4",
     "tools/audit.py": "98dbc69d839929ee70968a96b2e164d59bfd5e09858a2959272104679430ced1",
     "tools/check_updates.py": "f5eb4c191ef365c3d5aeb6398beb5739c9f8b2a81e661dbfffa1556798657c61",
-    "tools/library.py": "058bcae8b47116c84037eab08b5ffb121af6967799180166afc3603546fc4ce4",
+    "tools/library.py": "864680582d28124be1142cf74bbae26f4075a0f0a0939a02d9e83dcd31da3f0f",
+    "tools/sync_cluster_runtime.py": "e291668932f177de772df0ce484577caee361fbf7dc2d71a5cff64a9a8b85593",
     "tools/sync_writing_foundation.py": "aeba499fb0d4b5404727660d97e63afdde34eda1bd73849cf6f577f127a6028c",
+    "tools/test_dashboard.py": "91cdea3630b86a82411ffdb6c90f1b0df2765962eb72eb171a4227ede969e31c",
+    "tools/test_knowledge.py": "0fb6e301066d2e8d9144e116a8a91dce7ef76e462d9fbf6ba2e6f0729bbf2038",
     "tools/test_release_updates.py": "77f09513c6d3de4cb7a35805817b08807edfc40ac9f89172ca9d098baef3928b",
     "tools/test_writing.py": "ba8726fd56d902591304adf0a92ab77352c57001f7256c2e19101fcea5679ca4",
     "tools/verify.py": "0143ac3c9db9e0966db3fde469c1cbad8d81de37c27ff6c9b3574265733e1800",
     "tools/writing_foundation.py": "f2825e79c1b08cb95bc280ebb84a9c99bc0006a6e9cffb9c14073c923bee20f5"
   },
   "skills": {
-    "yl-chekhov-deep-writing": {
-      "review_date": "2026-09-21",
+    "yl-toolbox": {
+      "review_date": "2026-09-24",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Changed/new material reviewed for public portability, privacy, provenance and scope; adoption/exclusion decisions in root 2.1.0 alignment report. Existing unchanged materials retain prior review. Technical and synthetic checks do not certify subjective output or live platform capture.",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
+        "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
+        "references/profile.example.json": "bf5f9a815327dd9ca4757d0231341eec0301e62aac464ec00ff58116e816697c",
+        "references/profile.md": "357e2de7fcaf8c1a18cddee1d882b0d380a0e2c5ce28e73f8ba2bab8ae03ea56",
+        "SKILL.md": "21b93cb87d707979b3224930938ce922ce77ddf9d62fccc9a8776de2a829e435"
+      }
+    },
+    "yl-writing": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "agents/openai.yaml": "04006c59ed4ecc43803f1f8a06665946bbff2f0f6300ba76dd1937a6b537caa5",
+        "AUDIT.md": "943aac3ebbc67d98308f07feb67ac13ef5fd0d2965069249be7853ce09eba5b0",
+        "LICENSE": "3cb972c099342a0132bfd661cafaa33349de89808696d0cf1264e142e7580628",
+        "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
+        "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
+        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "1f9e14c610651210fcbdc27bc95b1c7ff40964a2001deac3f651d05913ddc8c9",
+        "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
+        "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
+        "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
+        "references/source-snapshot.json": "e8e277b6584ded57400b26358d907ba1e8793c1e9357ba4a857bb25974c7b51e",
+        "references/writing-foundation.md": "6a82fc6302860f7f8d2ba4855ff47b5afdb92ef2486df7ab0add2c319aa5fff5",
+        "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
+        "SKILL.md": "90eeade536e3bc51db8a9d87c3fd9eadba10fe2c0d8e204481023290225f9611",
+        "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
+      }
+    },
+    "yl-video": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "agents/openai.yaml": "1d82e29506addcfaa9d9d877ebcbc3635836ec4c153a64961a561728991dc4d0",
+        "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
+        "SKILL.md": "57389f402340612f0b843410907a5be889fa9ddacbf8e237d9b7294580f45e2d"
+      }
+    },
+    "yl-chekhov-deep-writing": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
       "files": {
         "agents/openai.yaml": "d1697ba03ab8c0b75f468e670ba18dd97481e96384d19fb45aaef91dc7347059",
         "assets/runtime-profile.json": "6fd59d787fee8c15a235f755e087378c1a89bd651d44fb4a25691230affbec67",
@@ -74,7 +132,7 @@
         "references/media.md": "ec5cd0986d26bd563bd5dc43c63280abb3f8a0ca7cbf871e0ff433294ef9a2ea",
         "references/source-snapshot.json": "c9815418045a3fe3c849e453fb53f27686fb02c48d8558f3b42c1f93add59cb2",
         "references/workflow.md": "971666bafd2289326bf113976c776021c7fc2647a7d49542d23c39ee29e448a5",
-        "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
+        "references/writing-foundation.md": "6a82fc6302860f7f8d2ba4855ff47b5afdb92ef2486df7ab0add2c319aa5fff5",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
         "scripts/corpus_utils.py": "3ff8e7137b20fe709afb16d907c265e08a02e389a389516b62510d68301c31cd",
         "scripts/load_runtime_profile.py": "2c388d3e6af0806d3b20ba9e221655639a98de1826ba05265fef91937469efe4",
@@ -85,12 +143,45 @@
         "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
       }
     },
-    "yl-remotion-talking-head-editor": {
-      "review_date": "2026-09-21",
+    "yl-write-impact-wechat": {
+      "review_date": "2026-09-24",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Changed/new material reviewed for public portability, privacy, provenance and scope; adoption/exclusion decisions in root 2.1.0 alignment report. Existing unchanged materials retain prior review. Technical and synthetic checks do not certify subjective output or live platform capture.",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "agents/openai.yaml": "82d067b91e7ea95979cbd3f8bf21ddf8f96179629b6fcb3a1fbd774d66806a85",
+        "AUDIT.md": "ada92229038852e0491e592a60bbd4e9696b53fcbae75d714dfae341eb3bfa2b",
+        "LICENSE": "04a538d00dd52fef19205ac68dbfd8855a1ff374213a3d49f358e0177f48c4ba",
+        "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
+        "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
+        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "1f9e14c610651210fcbdc27bc95b1c7ff40964a2001deac3f651d05913ddc8c9",
+        "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
+        "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
+        "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
+        "references/source-snapshot.json": "52a6c07f0ca4a16724ce73630a63534ac4014b3a737106a92ad7a923dfa3277c",
+        "references/sourcing-and-claims.md": "36d6f0e62fe3d678a94a140521f540a2de7dadbd289c084732ed7667bc7ef110",
+        "references/staged-delivery.md": "9a3c61fa59801bf656e2e11d1982f950ad2564ad805fc28f1cefe93618b86125",
+        "references/style-contract.md": "21e73b0be4590d0a2cfed0edb9356fe3ff16974fa0ec7a4e2f05339ccc9cdd82",
+        "references/writing-foundation.md": "6a82fc6302860f7f8d2ba4855ff47b5afdb92ef2486df7ab0add2c319aa5fff5",
+        "scripts/build-wechat-html.mjs": "7ccfb50c8d69de9333f872fe8c099dcfcbd6ea722a01e162d689799a6095463a",
+        "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
+        "scripts/validate-wechat-article.mjs": "4cd3fa023670a3a3c6bb8c45671f1ce81324a3716b746f112f66c48d6b3c454a",
+        "SKILL.md": "2fa53f2f8dc5ee571e73f945dee23579adbb50800d9dd04277b9794e16f7f5d3",
+        "SOURCE.md": "a20d73aa93b8fdf4d6e40b14d2642d1342abddbf757784e6648eb201a8fcec87",
+        "tests/build-wechat-html.test.mjs": "37144dc903899bf89e9ca1a2d8ac1eb36bdd5cf5c1bed30bbaa7d378376bc95f",
+        "tests/validate-wechat-article.test.mjs": "e675a47fdaa2220548f51ffd5688dcfd9d752845277283e0518c71eb588c25c7",
+        "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
+      }
+    },
+    "yl-remotion-talking-head-editor": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
       "files": {
         ".gitignore": "18b75d7bfe3dc025255659764e612bb3501334d820bc480b1ea05c655ab2f13a",
         "agents/openai.yaml": "502c3df67acb2db3342cacaf4fa83262d328daeece6f971f5e29679da4b78497",
@@ -118,22 +209,24 @@
         "scripts/validate-talking-head-video.ps1": "a7e85c1d24406bc3aecf92cbda3546b9cf74cdc869d76a2900b4755dc2826b30",
         "scripts/validate-video.py": "15d1156c9b3ed264b2e05844b085d57a4be35158ce5ebba6d820e496c344aba1",
         "scripts/word-audit.py": "d40f96d3ab920affe3d8a79228a772f7ba4dc70250a1c7675aa9409e8c0836fc",
-        "SKILL.md": "a95b4d1389b500f388f6a334903c17f8e492dbb091b14cc8809af29c8c48bdad",
+        "SKILL.md": "062b796e4ee3da546495c481139230dbd6ac97a0455b3d637ee91128225595cc",
         "tests/test_report_paths.py": "81a7461ff5275269f9e1295e4a3dc58d9c4bfc6bb52f5a002605e74e2f6f0354"
       }
     },
     "yl-short-video-covers": {
-      "review_date": "2026-09-21",
+      "review_date": "2026-09-24",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Changed/new material reviewed for public portability, privacy, provenance and scope; adoption/exclusion decisions in root 2.1.0 alignment report. Existing unchanged materials retain prior review. Technical and synthetic checks do not certify subjective output or live platform capture.",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
       "files": {
         "agents/openai.yaml": "f9b69277cbbd073e1dca09644b2245ad7f6e862f1fe06602b8eb3f9948e48baa",
         "AUDIT.md": "3c293fafa3ab92c1f4c215984ff7841e5873b11759f5cc0e11fd2b2350781805",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
         "references/asset-prompts.md": "c506006a84bed655a8803c32d9a42587537644b48b41738b454841b3c8fc8656",
         "references/bold-mode.md": "8c30d23121311a3afa61571f656e4113fde31a4e2987759d4c31a7061d47bcd6",
+        "references/outlined-mode.md": "d0c63e6dffeb3539f3b7fccf9f27d6a962c0b741b3f349732611839d13ab3607",
         "references/provenance.md": "6ec20060abc2497673287e0ce6a9e864fe7de94baa5b29abafb9fc46b91747f8",
         "references/source-snapshot.json": "5d259527935929e5b8cb5d1fe64062984e41fc4069c23b54ff3a7235f52f3d25",
         "references/style-spec.md": "926f5f7d8b3869c0740d46f6fb655d3eb217c2c1a7cb5cb3c71f149de59c6423",
@@ -146,93 +239,16 @@
         "scripts/render_translucent_cover.py": "669dc85eeb13cce223e36f7fb9685353e057b8b33f67ec8063ec03b17c616aca",
         "scripts/validate_bold_cover.py": "48f8582bd32da1d92ef036fc15fcc00223b2d95b18ec1e61ddaa2c90d47c7f1e",
         "scripts/validate_translucent_cover.py": "7ea25801ba8e9189b3e3cae640ad8aa947e0a2f98831f6df57e1bfeacc9f68e6",
-        "SKILL.md": "cee37c07d518101721b8d68a6ebdb34c8b7d0e0a656f5c67a9e631f36a8cdbe5"
-      }
-    },
-    "yl-toolbox": {
-      "review_date": "2026-09-21",
-      "privacy_review": "passed",
-      "rights_review": "passed",
-      "method_review": "passed",
-      "review_note": "Changed/new material reviewed for public portability, privacy, provenance and scope; adoption/exclusion decisions in root 2.1.0 alignment report. Existing unchanged materials retain prior review. Technical and synthetic checks do not certify subjective output or live platform capture.",
-      "files": {
-        "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
-        "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "SKILL.md": "cb7977443c029338978e743aac0109784c3b99db0c91cc5937ffed0237132981"
-      }
-    },
-    "yl-video": {
-      "review_date": "2026-09-15",
-      "privacy_review": "passed",
-      "rights_review": "passed",
-      "method_review": "passed",
-      "review_note": "Editing and two cover modes route to actual members; chosen modes, dependency order and final transcript reuse reviewed.",
-      "files": {
-        "agents/openai.yaml": "1d82e29506addcfaa9d9d877ebcbc3635836ec4c153a64961a561728991dc4d0",
-        "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "SKILL.md": "23dd17d929716d7707f5fa9a8d5eabb11dae33e159acf40e8ea68f74463183d0"
-      }
-    },
-    "yl-write-impact-wechat": {
-      "review_date": "2026-09-21",
-      "privacy_review": "passed",
-      "rights_review": "passed",
-      "method_review": "passed",
-      "review_note": "Changed/new material reviewed for public portability, privacy, provenance and scope; adoption/exclusion decisions in root 2.1.0 alignment report. Existing unchanged materials retain prior review. Technical and synthetic checks do not certify subjective output or live platform capture.",
-      "files": {
-        "agents/openai.yaml": "82d067b91e7ea95979cbd3f8bf21ddf8f96179629b6fcb3a1fbd774d66806a85",
-        "AUDIT.md": "ada92229038852e0491e592a60bbd4e9696b53fcbae75d714dfae341eb3bfa2b",
-        "LICENSE": "04a538d00dd52fef19205ac68dbfd8855a1ff374213a3d49f358e0177f48c4ba",
-        "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
-        "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
-        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "1f9e14c610651210fcbdc27bc95b1c7ff40964a2001deac3f651d05913ddc8c9",
-        "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
-        "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
-        "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
-        "references/source-snapshot.json": "52a6c07f0ca4a16724ce73630a63534ac4014b3a737106a92ad7a923dfa3277c",
-        "references/sourcing-and-claims.md": "36d6f0e62fe3d678a94a140521f540a2de7dadbd289c084732ed7667bc7ef110",
-        "references/staged-delivery.md": "9a3c61fa59801bf656e2e11d1982f950ad2564ad805fc28f1cefe93618b86125",
-        "references/style-contract.md": "21e73b0be4590d0a2cfed0edb9356fe3ff16974fa0ec7a4e2f05339ccc9cdd82",
-        "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
-        "scripts/build-wechat-html.mjs": "7ccfb50c8d69de9333f872fe8c099dcfcbd6ea722a01e162d689799a6095463a",
-        "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
-        "scripts/validate-wechat-article.mjs": "4cd3fa023670a3a3c6bb8c45671f1ce81324a3716b746f112f66c48d6b3c454a",
-        "SKILL.md": "2fa53f2f8dc5ee571e73f945dee23579adbb50800d9dd04277b9794e16f7f5d3",
-        "SOURCE.md": "a20d73aa93b8fdf4d6e40b14d2642d1342abddbf757784e6648eb201a8fcec87",
-        "tests/build-wechat-html.test.mjs": "37144dc903899bf89e9ca1a2d8ac1eb36bdd5cf5c1bed30bbaa7d378376bc95f",
-        "tests/validate-wechat-article.test.mjs": "e675a47fdaa2220548f51ffd5688dcfd9d752845277283e0518c71eb588c25c7",
-        "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
-      }
-    },
-    "yl-writing": {
-      "review_date": "2026-09-21",
-      "privacy_review": "passed",
-      "rights_review": "passed",
-      "method_review": "passed",
-      "review_note": "Changed/new material reviewed for public portability, privacy, provenance and scope; adoption/exclusion decisions in root 2.1.0 alignment report. Existing unchanged materials retain prior review. Technical and synthetic checks do not certify subjective output or live platform capture.",
-      "files": {
-        "agents/openai.yaml": "04006c59ed4ecc43803f1f8a06665946bbff2f0f6300ba76dd1937a6b537caa5",
-        "AUDIT.md": "943aac3ebbc67d98308f07feb67ac13ef5fd0d2965069249be7853ce09eba5b0",
-        "LICENSE": "3cb972c099342a0132bfd661cafaa33349de89808696d0cf1264e142e7580628",
-        "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
-        "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
-        "LICENSES/WRITING-FOUNDATION-NOTICE.md": "1f9e14c610651210fcbdc27bc95b1c7ff40964a2001deac3f651d05913ddc8c9",
-        "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
-        "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
-        "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
-        "references/source-snapshot.json": "e8e277b6584ded57400b26358d907ba1e8793c1e9357ba4a857bb25974c7b51e",
-        "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
-        "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
-        "SKILL.md": "45c61e9b9ad33436b678fabae1506116187cb8890fb9f31da44d14f777ab4857",
-        "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
+        "SKILL.md": "5afa6bcbbbc29ee482090652bb13a884ad70d41305371dad389f3370bb043214"
       }
     },
     "yl-write-voice-led-wechat": {
-      "review_date": "2026-09-21",
+      "review_date": "2026-09-24",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Changed/new material reviewed for public portability, privacy, provenance and scope; adoption/exclusion decisions in root 2.1.0 alignment report. Existing unchanged materials retain prior review. Technical and synthetic checks do not certify subjective output or live platform capture.",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
       "files": {
         "agents/openai.yaml": "fc401c8541e282b058ccefa5c01dceccbc8db5f031aef9780e22ae0b86c46b9d",
         "AUDIT.md": "d0d639ac4f54ad2e114d19a41f94d275dd8da90f0b8d4b60a1a01016c6689801",
@@ -246,11 +262,11 @@
         "references/dbs-editorial-foundation.md": "2c9e7ac8208e085916eff4b72a85d4c3e6fe2b1a47db1c9eeb7c3a6a2c0de7fb",
         "references/dbs-source-manifest.json": "40e61cc4dee44910b713703a8ca7f284fe32f268b248af8b6ffdbfa390c88253",
         "references/edit-card.md": "f8763eb9a1379625f53b2cd942eaec14edcc3b97b90f4331946a05cd91993d2f",
-        "references/knowledge-and-source-contract.md": "c4817801e72e65968238b6b3ec35f81c6a9b777ed39d59f8ef52074c5576a77e",
+        "references/knowledge-and-source-contract.md": "3c280c2d3d0681c71f49f8ad6928bdecc4b3f21c8a126020f240352978ce0778",
         "references/source-snapshot.json": "8b0bcc63cc387fc18fb68378dcdcdbbbd379bb698c8af62881ac9c9733325fb9",
         "references/style-adapters.md": "dcb1889b37b791a2dd11e4ad76c09c725a922024325680a3d3b4ca38e3a34e3f",
         "references/style-dependencies.json": "2250b65f496553e322540afebaa386e5cd9e1af00f85e3c3cf9c698b5e5dd452",
-        "references/writing-foundation.md": "f5a3d3e90d8cea131b57d828c3a40cd08dee10246e50dbe146f4a998c3a0d33d",
+        "references/writing-foundation.md": "6a82fc6302860f7f8d2ba4855ff47b5afdb92ef2486df7ab0add2c319aa5fff5",
         "scripts/check_article.py": "74201742f90f261ae1a3982e02ee69e28577b18d08e52cf7618b62c7e4608275",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
         "SKILL.md": "54409789d02c6ed3943de4b5c6438dd0e76e4678afdb85d0657c5aae52cbe06f",
@@ -260,38 +276,237 @@
       }
     },
     "yl-skill-sync": {
-      "review_date": "2026-09-16",
+      "review_date": "2026-09-24",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "New Skill semantically reviewed: local/GitHub source selection, temporary download cleanup, standard-library-only implementation, public and specialized Agent routing, Windows Junction fallback, conflict preservation and reversible unlink. No other toolbox is invoked.",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
       "files": {
         "agents/openai.yaml": "8da7d9256cc0e92efcf468acd87f6a4ce75c81bb455d3111408f65938810b12a",
         "LICENSE": "d3e0a3ba0d79d89d0c25707893f2afc47330b22ddb3e6f1b9743e46b2df2d817",
         "README.md": "e48f1dcbac3fda5c7cf3245c721678ffb327d08fadb26f362b11c8f06a0d26f5",
-        "scripts/sync.py": "44a1d2f41fe79f7b99f8a8eccd901aca0d6b3d7daebe5895b89f8cbb89d44e33",
-        "SKILL.md": "216d15344c0a07747b991dcdce9249c4dd1332247349a7f1a292a90f2a389d8e",
+        "scripts/cluster_install.py": "9c72a161d4910d2fe6b43872694130bbd50dc41909aee1dcaf2a9097dd262ffa",
+        "scripts/sync.py": "11cf00dba8ccb26ffbf544620bda13a5eac3777f9fb486d89d9b7aae192e6420",
+        "SKILL.md": "ad6bc4bfa257ca3b282d9e0775423b8ea38286456dece366ea98e02827750eae",
         "SOURCE.md": "4d9a9c142a990ed81372b911e0a3952e8c347106ac17f9d2c552db66ee2679e3",
         "VERSION": "f34306bb50e2d2ec59c788b9013c5ac682ef7f7f69345a3e957e38c0b6ba2fdd"
-      },
-      "review_2_0_2": "Documentation-only restriction takes precedence over legacy commands; no automatic updater or safe Grok overwrite/unlink claim. Script bytes unchanged."
+      }
     },
     "yl-channels-analytics": {
-      "review_date": "2026-09-21",
+      "review_date": "2026-09-28",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Changed/new material reviewed for public portability, privacy, provenance and scope; adoption/exclusion decisions in root 2.1.0 alignment report. Existing unchanged materials retain prior review. Technical and synthetic checks do not certify subjective output or live platform capture.",
+      "review_note": "2026-09-28 追加并逐字复核：新增 references/dashboard.md（固化复盘大屏 14 章版式、深色变量、两段式生成脚本、逐字稿弹窗组件与易错点）；references/capture.md 补 2026-09-28 实测（商家后台 micro-app shadow DOM 读法、跨域 iframe 可直接读取并修正 9/25 旧结论、订单详情 orderid 参数、订单接口完整字段清单、罗盘成交列不累计、菜单重复项与点击遮挡绕法）；SKILL.md 增补大屏步骤与描述。内容不含账号标识、本机路径、客户资料与订单明细。",
+      "changed_files_reviewed": [
+        "SKILL.md",
+        "references/capture.md",
+        "references/dashboard.md"
+      ],
       "files": {
         "agents/openai.yaml": "cdbcf1e68ddd9882404bda3202bf9f0e78db5d3386de29f649a581aa87e7a8ce",
         "LICENSE": "fe1fb4ab17f3d9b4f5a5fb3a7b0d66e56d5d37bde20d7293c566cd6df26d8818",
-        "references/capture.md": "56fb58c2ec2159b6d4f5ea90d9324a5d6f57201fc2d8d41159bdbe40e083fe8e",
-        "references/data-schema.md": "67929144c5f1249d323d23c79d3f271ee08044c116599570795c83884f58820e",
-        "references/review.md": "2de059930a78acb425bc5e04634b7e4697daf5d5109648add8a35a7e089ea5b1",
+        "references/capture.md": "1d65a5b71a6df65d1823b0da1b0549f0b9f1d5e325fdb8fc1aef79355b960f80",
+        "references/dashboard-schema.md": "3d7b5a625ec1252ddcab482410c11bb553afb2d88f6e48d1afa866bcef18bad1",
+        "references/dashboard.md": "5f1e34656359fd56d16b4c229659bb7ecbdb87021ff576c6db6aea64fde5fb8b",
+        "references/data-schema.md": "c71edbf4f060c3e83df2c3d4b3012c9c3153e3272693420a9c330235494619a4",
+        "references/review.md": "e7bfff946ec374b6aa18165303dd7144f5068bd080c57de9a056b284d3ec0bed",
         "references/source-snapshot.json": "a73d0f7151b9727359b2f3d024a4506a46097fb09859ae457e93af10ad3df3a7",
+        "scripts/dashboard.css": "de0d2cbfe5023dd01aa1e152b25b141890269e9750028d8e916592fef0a81528",
+        "scripts/dashboard.js": "d3daa23e8c688e8d3fad2d71595f78f49e02350b14b41464ce10364bfd1b424f",
+        "scripts/dashboard.py": "8d656d62bbe49a30912db4bc16c231d97f093a09a5b4ef696079ba450bc095fe",
         "scripts/summarize.py": "b0a605f102494adcd26b9f87d20b172e7fea2b23d27e85bf736b5135263c53ff",
-        "SKILL.md": "b04f6007efc8740c0353788f70a7cb05b250246886b41add7b4d3eb901c9c65b",
+        "SKILL.md": "f8630fa321354e8502b930e7aaebb9b7622c4a26505281273ce5aee2c23f8e09",
         "SOURCE.md": "8df89aeaa6f61643ce368c38fa058e55d991e7e83231d661fe13baa3bda4e8bb"
+      },
+      "review_notes": "Inspected main-entry delivery contract: product separation, video cohort, full content, display rules, customer consent boundaries and truthful completion states. No private data or personal authorization distributed."
+    },
+    "yl-knowledge": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "references/contract.md": "4693305d1a0036803e39d7a8b9a008b57a35a84acbec4ae8adc99320c7b9f721",
+        "scripts/knowledge.py": "9ab182043e559381433e4549129ab953896c429c755e8696c39f1710594fe59c",
+        "SKILL.md": "f53e5b09cad3da4606b60b750a2a08643895ccf79f8e938bd6c04cbbd4144137"
+      }
+    },
+    "yl-knowledge-build": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "SKILL.md": "a547a22138405688f107e2f518b1bb1c4c0cec74c23e894b74715b85ad4dec19"
+      }
+    },
+    "yl-knowledge-sync": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "references/connectors.md": "1cefc85681bd4f664150071ee6363ad6ff7eae167f1d2e14bafdc49ec1f90ae7",
+        "scripts/getnote_sync.py": "85281ac5b2627cb4c3e1ed15c44a45c2d95f9d8cf09e92e6d6b7fc0adebd49e8",
+        "SKILL.md": "9e0e6ab61d7938e00debfc0c2dfd03bdb39cbf32e8a5f1f2b79a15c5cd345a22"
+      }
+    },
+    "yl-knowledge-import": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "SKILL.md": "3ac546276f45f80096006193f06eefc89faf728088f24db70bcd971dd5ec87f1"
+      },
+      "review_notes": "Changed files semantically reviewed: external data/personal preferences, preserved attribution, host capability limits, product/type isolation and traceable formulas. Knowledge module edits remove only private path examples. Real collection remains a per-run validation."
+    },
+    "yl-knowledge-ingest": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "SKILL.md": "541741d6926dbd3ce8e412ea54a52751f73c8ef09ea78196104902dd2024947d"
+      }
+    },
+    "yl-knowledge-distill": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "references/objects.md": "dad900a6aff9d2a1a4e90ebe22140111e286805276d343672ebef199d20b5f15",
+        "SKILL.md": "0f2e27331788a772c8adc0a879d54a436cf520142af2ff124f976f51897a9f23"
+      },
+      "review_notes": "Changed files semantically reviewed: external data/personal preferences, preserved attribution, host capability limits, product/type isolation and traceable formulas. Knowledge module edits remove only private path examples. Real collection remains a per-run validation."
+    },
+    "yl-knowledge-expressions": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "SKILL.md": "ae8ba8d018979f17c790f4b37a7823ae9738ff2a6b90e769ca4137bfd116bcae"
+      }
+    },
+    "yl-knowledge-organize": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "SKILL.md": "005c2204446d894519687c5b3d7143af43be11b62b65e76cd98c6da201dcf228"
+      }
+    },
+    "yl-knowledge-search": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "SKILL.md": "3e968505da5175a0674db7d7f023fc8fa590802154c1d18d60f0d399888623ac"
+      }
+    },
+    "yl-knowledge-obsidian": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "SKILL.md": "815d2c5d08c70cd008a70f1c92f89274d13ce573c93f835afd673f40276ab3d3"
+      }
+    },
+    "yl-knowledge-review-sync": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "SKILL.md": "4fa9ef574f0159d676fd034490be45dc2a88f22e55414f62f79f8b9be4a564ee"
+      }
+    },
+    "yl-knowledge-check": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "SKILL.md": "37bdd0fb6c78cb5f1699da7f7ce9ad1a1e4445ad9326205cd8d49ede1249c8f9"
+      }
+    },
+    "yl-media": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "references/handoff.md": "5e8390dec0f00ff36c350be7c76d6422deccd7a7e6ac19f666db308db1d1ed19",
+        "references/ranking.md": "30f81597e4d68ad2e27106dd6cc803ba3fede4b4d04e9d18dd61db4e4326fefa",
+        "scripts/ranking.py": "e7d5dd802a1f5f63870ca5604f8fbb663720cb1d034b4a583fcd4f3cf9598c86",
+        "SKILL.md": "b13d5bc5d8f8f2e8c9b887a4c3bb11c14daadde37da797d5391090143cf29e5b"
+      },
+      "review_notes": "Changed files semantically inspected: five-dimensional percentiles, product-separated daily chart, missing-data gaps, masked HTML, full transcript display without internal evidence, content-based categorization and host-specific connection verification. Personal data remains external; existing rights notices retained."
+    },
+    "yl-official-account-analytics": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "SKILL.md": "09c96e2855bda8c9702e81fe77c968185e686111e33f12225b76ff7378711591"
+      }
+    },
+    "yl-chatcut-landscape-interview-editor": {
+      "review_date": "2026-09-24",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
+      "changed_files_reviewed": [],
+      "files": {
+        "agents/openai.yaml": "f5170303c914bf91b77f859b87f1cecac48edbc67237765fa0de14e04d2553c1",
+        "LICENSE": "1cd8ef10561aadfe6689f12b1cf974d24d9e186f76681a7ac432e1533cb5e038",
+        "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
+        "LICENSES/MIT.txt": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
+        "NOTICE.md": "823879a4531999fee24df958c264854e7ced917edac5402e32522ff644ef3d2d",
+        "references/audio.md": "28067a69b35110c6985c1a3d40cd3ffff574c05791486c0b8eb46af137af9de6",
+        "references/chatcut-workflow.md": "b70e80bf4fa9810766ee9bd03f567925304a3f2a7a206633480cc4648805947c",
+        "references/editorial-and-redlines.md": "47ff31f723166cd72536469c7a7133bc8e08ac86f1736e871322e11d9d01bdc2",
+        "references/lessons-and-scenarios.md": "47e2d9a522e0224bf083b0eeea30a69c6b22a5776e87cefea3de71c94325eda8",
+        "references/precision-and-acceptance.md": "7bd94b553571afb4bd091f721857f6fd0c7c706314c55326127c819bdf079d36",
+        "references/visual.md": "cd9695a56b5436aeeea99ab5449bba672a58edf6f5266226e2b1fcfef6f33514",
+        "SKILL.md": "2aea5c470185aa628dbfde9b8af877fe5fbe33096a40db3d22c1a44f3ee2bcf9"
       }
     }
   }

@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "knowledge_root": "",
+  "paths": {
+    "thoughts": "01_我的思想体系",
+    "works": "02_我的作品全集",
+    "topics": "03_选题库",
+    "expressions": "04_表达资产",
+    "atoms": "05_知识原子/条目",
+    "private": "80_私人档案",
+    "system": "90_系统资料"
+  },
+  "source_roots": [],
+  "personal_instructions": [],
+  "domains": [],
+  "sources": {"getnote": {"libraries": []}},
+  "excluded_source_ids": [],
+  "tools": {},
+  "local_hooks": {}
+}

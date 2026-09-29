@@ -9,8 +9,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent/'tools'))
 from library import (ROOT, VERSION, read_json, json_bytes, digest, file_map,
                      skill_metadata, check_links, project_map, hash_map)
 from writing_foundation import validate as validate_writing_foundation
+from sync_cluster_runtime import validate as validate_cluster_runtime
 
 def prepare():
+    validate_cluster_runtime()
     release = read_json(ROOT/'release.json')
     if not VERSION.fullmatch(release['version']):
         raise ValueError('Invalid release version')
