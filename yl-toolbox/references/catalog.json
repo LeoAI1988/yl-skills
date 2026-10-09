@@ -1,29 +1,32 @@
 {
-  "version": "3.4.0",
+  "version": "3.4.1",
   "skills": [
     {
       "name": "yl-channels-analytics",
       "description": "按需采集和复盘用户授权的视频号后台作品、留存、粉丝、逐字稿及可选微信小店成交数据，并生成结构固定的复盘大屏。用户要求视频号运营复盘、批量抓取后台数据、分析爆款和普通作品表现、核对带货归因、制作复盘大屏时使用；可读取后台导出文件离线分析。",
       "version": "1.4.1",
-      "category": "analytics",
+      "category": "media",
       "role": "member",
-      "license": "MIT"
+      "license": "MIT",
+      "subcategory": "analytics"
     },
     {
       "name": "yl-chatcut-landscape-interview-editor",
       "description": "用 ChatCut Desktop 剪横屏访谈、个人 IP 独白和长口播复盘。先做全文逻辑删改，再按原声精剪、字幕包装与本地导出；支持全自动和半自动多轮红线定稿。横屏访谈只走本 Skill，不调用旧 Remotion 横屏流程。",
       "version": "3.0.0",
-      "category": "video",
+      "category": "media",
       "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0"
+      "license": "MIT AND CC-BY-NC-4.0",
+      "subcategory": "video"
     },
     {
       "name": "yl-chekhov-deep-writing",
       "description": "基于可追溯的契诃夫俄文原著、已验证的高层写作机制和受约束的语言外壳，完成中文公众号文章、短视频连续口播、朋友圈、人物故事、观点稿与现实材料改写。用户要求克制而锋利的人性观察、让细节约束判断、保留反例与未尽后果，或明确要求使用契诃夫研究线时使用；不用于逐句仿写、复刻人物情节、冒充中文出版译本或无材料补写现实事实。",
       "version": "3.3.1",
-      "category": "writing",
+      "category": "media",
       "role": "member",
-      "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND CC-BY-NC-4.0"
+      "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND CC-BY-NC-4.0",
+      "subcategory": "writing"
     },
     {
       "name": "yl-knowledge",
@@ -123,43 +126,48 @@
     },
     {
       "name": "yl-media",
-      "description": "YL 自媒体采集与复盘入口，协调视频号、公众号及跨平台同作品比较，把新增本人文稿和复盘结果交回统一知识库。",
-      "version": "1.2.0",
-      "category": "analytics",
+      "description": "YL 自媒体统一入口。写作、视频剪辑、短视频封面、视频号与公众号采集复盘均先由这里分流，按需调用写作和视频子入口，并把本人文稿及复盘结果交回知识库。",
+      "version": "3.4.1",
+      "category": "media",
       "role": "router",
-      "license": "MIT"
+      "license": "MIT",
+      "subcategory": "entry"
     },
     {
       "name": "yl-official-account-analytics",
       "description": "采集和复盘微信公众号账号、文章、分发通知、阅读来源及转化，保留全文与历史数据，并将新增本人文稿自动交给知识管理。",
       "version": "1.0.1",
-      "category": "analytics",
+      "category": "media",
       "role": "member",
-      "license": "MIT"
+      "license": "MIT",
+      "subcategory": "analytics"
     },
     {
       "name": "yl-ppt",
-      "description": "将逐字稿、文档或已有演示稿制作成可授课的 PPT；规划逐页内容、沿用参考风格、设计关系图，按批注修改并管理商品图等多版本。适用于从原稿做课件或继续修改用户手调的 PPT。",
-      "version": "1.0.0",
-      "category": "presentation",
+      "description": "YL 办公板块的 PPT 制作与迭代。将逐字稿、文档或已有演示稿制作成课件，规划逐页内容、沿用参考风格、设计关系图，处理批注和多版本，保留用户手调。",
+      "version": "1.0.1",
+      "category": "office",
       "role": "member",
-      "license": "MIT"
+      "license": "MIT",
+      "subcategory": "presentation"
     },
     {
       "name": "yl-remotion-talking-head-editor",
       "description": "Edit Chinese talking-head footage with built-in mandatory content, script-flow and opening analysis, word-accurate mistake and hesitation removal, stable fixed-size captions, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Cards are off unless explicitly requested; preserve the original voice and export the complete final spoken transcript.",
       "version": "3.0.0",
-      "category": "video",
+      "category": "media",
       "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0"
+      "license": "MIT AND CC-BY-NC-4.0",
+      "subcategory": "video"
     },
     {
       "name": "yl-short-video-covers",
       "description": "从截图、文案、视频或原帧制作 1080×1440 短视频封面，提供黑底白字大字模式（可选黄字强调及用户提供的头像）与半透明原帧无叠加头像模式。用户要求做封面、批量制作封面或从视频提炼封面标题时使用，并先让用户选择适合的模式。",
       "version": "3.0.0",
-      "category": "video",
+      "category": "media",
       "role": "member",
-      "license": "MIT"
+      "license": "MIT",
+      "subcategory": "video"
     },
     {
       "name": "yl-skill-sync",
@@ -171,35 +179,39 @@
     },
     {
       "name": "yl-video",
-      "description": "yl 视频分类入口。自动剪辑分为真人口播与 ChatCut 横屏访谈两项；也支持两种短视频封面模式，按任务依赖调用成员。",
-      "version": "3.0.0",
-      "category": "video",
+      "description": "yl 自媒体板块的视频子入口，由 yl-media 分流进入。处理真人口播、ChatCut 横屏访谈和短视频封面，按任务依赖调用成员。",
+      "version": "3.4.1",
+      "category": "media",
       "role": "router",
-      "license": "MIT"
+      "license": "MIT",
+      "subcategory": "video"
     },
     {
       "name": "yl-write-impact-wechat",
       "description": "Use when drafting, revising, or packaging Chinese WeChat Official Account opinion, trend, or marketing articles from recordings, transcripts, notes, or the author's prior writing, especially when the user asks to preserve original phrases, remove generic AI prose, strengthen rapid-fire rhythm, create a high-impact opening, or use a 暴击风格.",
       "version": "3.3.1",
-      "category": "writing",
+      "category": "media",
       "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0"
+      "license": "MIT AND CC-BY-NC-4.0",
+      "subcategory": "writing"
     },
     {
       "name": "yl-write-voice-led-wechat",
       "description": "以用户本人的口述转写、录音或长短视频稿为底板，最大保留原话与思想递进，调用本人知识和表达资产进行修补、润色或扩写成微信公众号文章。用户调用本 Skill 时使用；它是口述底稿成文的总框架，可挂契诃夫、暴击观点两种具体写作框架或自带编辑模式，以及契诃夫风、暴击风等表层风格，不用于从零选题或第三方文章洗稿。",
       "version": "3.3.1",
-      "category": "writing",
+      "category": "media",
       "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0"
+      "license": "MIT AND CC-BY-NC-4.0",
+      "subcategory": "writing"
     },
     {
       "name": "yl-writing",
-      "description": "yl 写作分类入口。口述稿转公众号进入口述总框架；写文章、改稿或选择文风时，提供契诃夫、暴击观点两种风格与基座编辑，统一执行公共去 AI 味规则。",
-      "version": "3.3.1",
-      "category": "writing",
+      "description": "yl 自媒体板块的写作子入口，由 yl-media 分流进入。处理口述稿转公众号、写文章、改稿或已指定文风，保留原稿并执行公共写作约束。",
+      "version": "3.4.1",
+      "category": "media",
       "role": "router",
-      "license": "MIT AND CC-BY-NC-4.0"
+      "license": "MIT AND CC-BY-NC-4.0",
+      "subcategory": "writing"
     }
   ]
 }

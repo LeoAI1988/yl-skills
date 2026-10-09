@@ -1,9 +1,11 @@
 ---
 name: yl-video
-description: yl 视频分类入口。自动剪辑分为真人口播与 ChatCut 横屏访谈两项；也支持两种短视频封面模式，按任务依赖调用成员。
+description: yl 自媒体板块的视频子入口，由 yl-media 分流进入。处理真人口播、ChatCut 横屏访谈和短视频封面，按任务依赖调用成员。
 ---
 
 # yl 视频
+
+本 Skill 是 `yl-media` 下的视频子入口。尚未经过本次自媒体分流时，先读同级 `yl-media/SKILL.md` 的路由规则，再回到本分支；已分流则直接执行，不反复回跳。保留已选剪辑/封面模式，不因路由要求用户重复授权。
 
 先按 [个人配置约定](../yl-toolbox/references/profile.md) 读取有关素材、工具与偏好的外部说明；已确认设置直接复用。
 

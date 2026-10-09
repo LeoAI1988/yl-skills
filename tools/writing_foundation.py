@@ -18,7 +18,7 @@ def validate(root, release):
     canonical = root/'yl-writing'
     baseline = {rel: (canonical/rel).read_bytes() for rel in SHARED_FILES}
     for name, config in release['skills'].items():
-        if config['category'] != 'writing':
+        if config['category'] != 'writing' and config.get('subcategory') != 'writing':
             continue
         folder = root/name
         if HOOK not in (folder/'SKILL.md').read_text(encoding='utf-8-sig'):

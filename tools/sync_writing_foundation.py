@@ -8,7 +8,8 @@ def main():
     parser.add_argument('--apply', action='store_true')
     args = parser.parse_args()
     release = read_json(ROOT/'release.json')
-    members = [name for name, item in release['skills'].items() if item['category']=='writing']
+    members = [name for name, item in release['skills'].items()
+               if item['category']=='writing' or item.get('subcategory')=='writing']
     if any(not NAME.fullmatch(name) or (ROOT/name).is_symlink() or
            bool(getattr((ROOT/name).stat(), 'st_file_attributes', 0) & 0x400)
            for name in members):

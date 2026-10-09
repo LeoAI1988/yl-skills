@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl 自媒体"
+  short_description: "统一统筹写作、视频剪辑、封面及平台采集复盘，按任务分流到子入口"
+  default_prompt: "使用 $yl-media，根据我的目标进入写作、视频或平台复盘流程，并复用已有素材和授权。"

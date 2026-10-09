@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
-  "version": "3.4.0",
+  "version": "3.4.1",
   "review_method": "Changed/new files reviewed by maintainer; independent isolated forward tests for knowledge and Windows install. Existing unchanged bytes inherit previous reviews. No live cloud/Obsidian or real media quality acceptance claimed.",
   "generated_exclusions": [
     "yl-toolbox/references/catalog.json"
   ],
-  "project_review": "Reviewed new PPT workflow, standard-library read-only inspector, synthetic tests, routing, release docs and poster. No private decks, source passages, product/QR assets, personal configuration or bundled proprietary runtime included. Earlier 3.3.1 members retain their verified hash-bound reviews. Poster visually checked for 26 members across 6 categories.",
+  "project_review": "Reviewed requested four-board grouping: media owns writing, video and analytics; office owns PPT. Subcategory preserves writing validation and sync. No capabilities removed; no private data. Poster visually checked for layout, 26 total and 4 boards. Unchanged files retain previous hash-bound reviews.",
   "project_files": {
-    "README.md": "90a717f5eff30357019c59b3b283142d788f2282d0da446d8fafd582ad483d43",
-    "PRD.md": "24c41442d5d4ea2e7aaee49817b7e5f58630cb7be53e13a4bbbf6341e30f032c",
+    "README.md": "c29a293774a1ec828693e0a6ee0b6691884829d98abe4a94462ccbc1c9c2e006",
+    "PRD.md": "2003e2dee077bca15363f92ae9181dc84c6da6b438eb2d2a10979842881ed54d",
     "MAINTAINING.md": "9869b54c017fa035fea4a33dfe622ffb4aca629a4214a1fd1ee530463bd7b201",
-    "CHANGELOG.md": "46c467899abe114795adeba38d9e77c33f19cb61b74ebc78222b7850940cbe9f",
+    "CHANGELOG.md": "cb3347c6de78b2fa1b6158c8737b0aefb98fc7322f8a295adfbfcecbf99e7cc2",
     "LICENSE": "0a9dabde6fca3a8d9010c587bc53c09cc147aa081848fbbdab9f119be3f778f8",
     "THIRD_PARTY_NOTICES.md": "fe149379e4cf377ffa065def171296568bf12d30cabd33efe0fcddc228d4a81d",
     "AGENTS.md": "6f0c8cf0ced63ada0fc766fcce0150aeab0a32703ce0854b8848c0d3000b5800",
     ".gitignore": "8cf91327b2d9c9d76246d25b403afb942b78441c63c8da06483afb00f68a6e19",
-    "release.json": "d7d7dbf08dcbdd0ed07c70d822264175df1b203d90957ca8b9b75e1c886931ae",
+    "release.json": "d33c1938a2f38954a15bece9d6bd92ff06af473c8a3ecdce55be599a81f209c6",
     "install.py": "9c72a161d4910d2fe6b43872694130bbd50dc41909aee1dcaf2a9097dd262ffa",
     "build.py": "76ea649fd032691761598b09c290d5bfb2c0bcb7e3c44e5d9ce43c1513098b21",
     "yl集群_审核说明.md": "1efbd9579df44be05b85e97a2e591ed9787aea1475f95c66510b9875312c644b",
@@ -24,20 +24,20 @@
     "Skill清单_v2.2.0.md": "97771d9456c71fa013e30d11f9b37f5da25540fac8fec8d305e3c2ae6aa94996",
     "Skill清单_v3.0.0.md": "93efa911ac9f7b1c256ffc76126167ac3a9572c5a187e5a12896bf2d21bab3cf",
     "YL-Skill集群.jpg": "c890ad842b624997d170ad75297c748e1ec06337453338e8796bd11e6a673bc4",
-    "YL-Skill集群_v3.4.0.png": "2efc52f982ffe6ab493bdf9aa9d7e65d7ddfc9758913b657d097493c93926953",
+    "YL-Skill集群_v3.4.1.png": "f5bd9dc4fbaaa65c3207510ec095ce5cefd1fc6b883b8521a1a6af389b3afc78",
     "tools/audit.py": "98dbc69d839929ee70968a96b2e164d59bfd5e09858a2959272104679430ced1",
     "tools/check_updates.py": "f5eb4c191ef365c3d5aeb6398beb5739c9f8b2a81e661dbfffa1556798657c61",
-    "tools/library.py": "4d9d83fedd1344a1b2d9ddf669ca02661b06109f164fce5f412059aaaf88e21b",
+    "tools/library.py": "190913c19c8fd9eba9849b12c8c4329ddeeb4544addc5a0c9a252e229b6b4c9d",
     "tools/sync_cluster_runtime.py": "e291668932f177de772df0ce484577caee361fbf7dc2d71a5cff64a9a8b85593",
-    "tools/sync_writing_foundation.py": "aeba499fb0d4b5404727660d97e63afdde34eda1bd73849cf6f577f127a6028c",
+    "tools/sync_writing_foundation.py": "df489422d08f73ff2f0030787b1b8b68a2913a8e652c075065a1d1e6b9085cc1",
     "tools/test_dashboard.py": "91cdea3630b86a82411ffdb6c90f1b0df2765962eb72eb171a4227ede969e31c",
     "tools/test_knowledge.py": "0fb6e301066d2e8d9144e116a8a91dce7ef76e462d9fbf6ba2e6f0729bbf2038",
     "tools/test_ppt.py": "05b96456d86c67caa698e767b7ea5aca48a95ca47d6157f8542c1a9c99599f3f",
     "tools/test_release_updates.py": "77f09513c6d3de4cb7a35805817b08807edfc40ac9f89172ca9d098baef3928b",
     "tools/test_retrieval.py": "31376f391586d3fa5870981185c23b64411b18c2d086d5458ad23c46b1185646",
-    "tools/test_writing.py": "ba8726fd56d902591304adf0a92ab77352c57001f7256c2e19101fcea5679ca4",
+    "tools/test_writing.py": "fa618fa91632b5bb976a41b2152a371d6a4d9dabf6de6c09906346a53aaada5a",
     "tools/verify.py": "0143ac3c9db9e0966db3fde469c1cbad8d81de37c27ff6c9b3574265733e1800",
-    "tools/writing_foundation.py": "f2825e79c1b08cb95bc280ebb84a9c99bc0006a6e9cffb9c14073c923bee20f5"
+    "tools/writing_foundation.py": "a082dcc5bb0798c6439a8e2355b5ad953f05e341fb55850c1932ed160cd83e0d"
   },
   "skills": {
     "yl-toolbox": {
@@ -45,7 +45,7 @@
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Reviewed original MIT PPT workflow and read-only tooling: source fidelity, actual reference style, annotation targeting, explicit variants, final manual-edit protection, portable runtime limits and factual QA. No private course material or copied runtime manuals. Toolbox change only routes PPT tasks; prior router files retain prior reviews.",
+      "review_note": "Reviewed changed routing and interface files: unified media entry dispatches writing/video once, preserves user mode and source-first constraints, no unrelated analytics or login for creation requests. PPT is office. Existing execution methods and permissions unchanged.",
       "changed_files_reviewed": [
         "SKILL.md"
       ],
@@ -54,20 +54,21 @@
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
         "references/profile.example.json": "bf5f9a815327dd9ca4757d0231341eec0301e62aac464ec00ff58116e816697c",
         "references/profile.md": "357e2de7fcaf8c1a18cddee1d882b0d380a0e2c5ce28e73f8ba2bab8ae03ea56",
-        "SKILL.md": "af0aeb1a842af7b8897636a0219b5efa9b177994f2d9ef1f97f8dee4577ea8df"
+        "SKILL.md": "73d8e7aa5141ecf11dc9e27668072cfa03f254aa844cf27a7344c7607ce68e1e"
       }
     },
     "yl-writing": {
-      "review_date": "2026-10-08",
+      "review_date": "2026-10-09",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Reviewed common source retrieval constraint: full original paragraphs, unatomized text, context and changed positions, explicit degradation, no unrelated enrichment or implicit style authorization. No personal paths, source text or credentials. All unchanged bytes inherit prior review.",
+      "review_note": "Reviewed changed routing and interface files: unified media entry dispatches writing/video once, preserves user mode and source-first constraints, no unrelated analytics or login for creation requests. PPT is office. Existing execution methods and permissions unchanged.",
       "changed_files_reviewed": [
-        "references/writing-foundation.md"
+        "agents/openai.yaml",
+        "SKILL.md"
       ],
       "files": {
-        "agents/openai.yaml": "04006c59ed4ecc43803f1f8a06665946bbff2f0f6300ba76dd1937a6b537caa5",
+        "agents/openai.yaml": "a316d7b13109b438424fcff3e3454f25f7bd65fe6f2eb8d2ddcb1807d0e92c46",
         "AUDIT.md": "943aac3ebbc67d98308f07feb67ac13ef5fd0d2965069249be7853ce09eba5b0",
         "LICENSE": "3cb972c099342a0132bfd661cafaa33349de89808696d0cf1264e142e7580628",
         "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
@@ -79,22 +80,25 @@
         "references/source-snapshot.json": "e8e277b6584ded57400b26358d907ba1e8793c1e9357ba4a857bb25974c7b51e",
         "references/writing-foundation.md": "96a9cde2890168fe6ec5cd4206b7761843a442502acb91355c741f4825ccd425",
         "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
-        "SKILL.md": "09a5f0e39d910a653c3644e478209cbc56968ae5a0b3772ddbdda1ca2068b6d5",
+        "SKILL.md": "524136527bd1309f3ba47869acb6f7c281b79a7ec406c6c965b8f83a0c69c5db",
         "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
       },
       "retrieval_upgrade_review": "2026-10-08: reviewed original/derived separation, source version and authorship checks, offline model boundaries and complete passage handoff. Retrieval produces candidates requiring Agent review; no full-corpus semantic repair claimed. Unchanged files inherit prior reviews."
     },
     "yl-video": {
-      "review_date": "2026-09-24",
+      "review_date": "2026-10-09",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
-      "changed_files_reviewed": [],
+      "review_note": "Reviewed changed routing and interface files: unified media entry dispatches writing/video once, preserves user mode and source-first constraints, no unrelated analytics or login for creation requests. PPT is office. Existing execution methods and permissions unchanged.",
+      "changed_files_reviewed": [
+        "agents/openai.yaml",
+        "SKILL.md"
+      ],
       "files": {
-        "agents/openai.yaml": "1d82e29506addcfaa9d9d877ebcbc3635836ec4c153a64961a561728991dc4d0",
+        "agents/openai.yaml": "380fe31b379213d703cc61d10bb8a75d7c31eab1808234a29c6ff82bda4f7b78",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "SKILL.md": "57389f402340612f0b843410907a5be889fa9ddacbf8e237d9b7294580f45e2d"
+        "SKILL.md": "2c5abca7c24169ec23288994e05129f4ef1625470b2dbc8c84f51480bed35872"
       }
     },
     "yl-chekhov-deep-writing": {
@@ -485,17 +489,21 @@
       "retrieval_upgrade_review": "2026-10-08: reviewed original/derived separation, source version and authorship checks, offline model boundaries and complete passage handoff. Retrieval produces candidates requiring Agent review; no full-corpus semantic repair claimed. Unchanged files inherit prior reviews."
     },
     "yl-media": {
-      "review_date": "2026-09-24",
+      "review_date": "2026-10-09",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
-      "changed_files_reviewed": [],
+      "review_note": "Reviewed changed routing and interface files: unified media entry dispatches writing/video once, preserves user mode and source-first constraints, no unrelated analytics or login for creation requests. PPT is office. Existing execution methods and permissions unchanged.",
+      "changed_files_reviewed": [
+        "agents/openai.yaml",
+        "SKILL.md"
+      ],
       "files": {
+        "agents/openai.yaml": "0746ec31d529200f31a571ebcb5c2d9b124490384c95034c01c2ec5235b7b7d9",
         "references/handoff.md": "5e8390dec0f00ff36c350be7c76d6422deccd7a7e6ac19f666db308db1d1ed19",
         "references/ranking.md": "30f81597e4d68ad2e27106dd6cc803ba3fede4b4d04e9d18dd61db4e4326fefa",
         "scripts/ranking.py": "e7d5dd802a1f5f63870ca5604f8fbb663720cb1d034b4a583fcd4f3cf9598c86",
-        "SKILL.md": "b13d5bc5d8f8f2e8c9b887a4c3bb11c14daadde37da797d5391090143cf29e5b"
+        "SKILL.md": "a26a6d4e08c534819935adddef0dc910009d4521dddb1d8a8d82147b001a309c"
       },
       "review_notes": "Changed files semantically inspected: five-dimensional percentiles, product-separated daily chart, missing-data gaps, masked HTML, full transcript display without internal evidence, content-based categorization and host-specific connection verification. Personal data remains external; existing rights notices retained."
     },
@@ -537,14 +545,8 @@
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Reviewed original MIT PPT workflow and read-only tooling: source fidelity, actual reference style, annotation targeting, explicit variants, final manual-edit protection, portable runtime limits and factual QA. No private course material or copied runtime manuals. Toolbox change only routes PPT tasks; prior router files retain prior reviews.",
+      "review_note": "Reviewed changed routing and interface files: unified media entry dispatches writing/video once, preserves user mode and source-first constraints, no unrelated analytics or login for creation requests. PPT is office. Existing execution methods and permissions unchanged.",
       "changed_files_reviewed": [
-        "agents/openai.yaml",
-        "LICENSE",
-        "references/design.md",
-        "references/revisions.md",
-        "references/runtime-qa.md",
-        "scripts/pptx_inspect.py",
         "SKILL.md"
       ],
       "files": {
@@ -554,7 +556,7 @@
         "references/revisions.md": "7c4d3589671ab6ded0cd8d4ac86f06020cc731655e19db754a582d1134bbb130",
         "references/runtime-qa.md": "4dcabeaccab580b3f619d01db201c659dc6c3a4abee2f0308e6eb9ad7ae6d0d3",
         "scripts/pptx_inspect.py": "2879bab7462a5c83de9dc6c7da7999e456a98fc65ede09062afec66b2539e9e4",
-        "SKILL.md": "76fb606431f9fa27899578dbb3aac8977068c2366835c1ea37c91e7975912625"
+        "SKILL.md": "4a9e21d283fd2e271f8651c5de7a0fafd41a0e690192dd843396c5543f977a70"
       }
     }
   }

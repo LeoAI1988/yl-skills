@@ -51,7 +51,7 @@ class WritingChecks(unittest.TestCase):
     def test_all_writing_members_work_standalone(self):
         release = read_json(ROOT/'release.json')
         for member, config in release['skills'].items():
-            if config['category'] != 'writing':
+            if config['category'] != 'writing' and config.get('subcategory') != 'writing':
                 continue
             with self.subTest(member=member), tempfile.TemporaryDirectory(prefix='yl-writing-standalone-') as tmp:
                 folder = Path(tmp)/member
@@ -68,7 +68,7 @@ class WritingChecks(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix='yl-writing-drift-') as tmp:
             work = Path(tmp)
             for name, config in release['skills'].items():
-                if config['category'] == 'writing':
+                if config['category'] == 'writing' or config.get('subcategory') == 'writing':
                     folder = work/name
                     for rel in (*SHARED_FILES, 'SKILL.md'):
                         target = folder/rel
