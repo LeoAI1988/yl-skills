@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import re
+import subprocess
 import sys
 import tempfile
 
@@ -39,6 +40,7 @@ def profile_path(value=None):
 
 def load_profile(path):
     cfg = read_json(path)
+    cfg['_profile_path'] = str(Path(path).resolve())
     if cfg.get('schema_version') != 1 or not cfg.get('knowledge_root'):
         raise ValueError('Profile needs schema_version=1 and knowledge_root')
     if 'ranking' in cfg or 'auto_distill' in cfg:
@@ -263,21 +265,20 @@ def init(profile, root_value, mode):
     return {'status': 'configured', 'mode': mode, 'profile': str(profile),
             'next': 'Review path mappings before importing; no content has been distilled'}
 
-def search(cfg, root, query):
-    terms = [t.casefold() for t in query.split() if t]
-    result = []
-    for role in ('thoughts', 'works', 'topics', 'expressions', 'atoms'):
-        folder = inside(root, cfg['paths'][role])
-        for p in folder.rglob('*.md') if folder.exists() else []:
-            if root not in p.resolve().parents:
-                continue
-            text = p.read_text(encoding='utf-8-sig')
-            score = sum(t in text.casefold() for t in terms)
-            if score:
-                snippets = [line for line in text.splitlines() if any(t in line.casefold() for t in terms)]
-                result.append({'path': p.relative_to(root).as_posix(), 'matched_terms': score,
-                               'snippets': snippets[:4]})
-    return sorted(result, key=lambda r: -r['matched_terms'])[:30]
+def search(cfg, root, query, mode='hybrid', limit=8, also_query=None):
+    """One source-first search implementation; never silently use derived snippets."""
+    if not cfg.get('retrieval') or not cfg.get('_profile_path'):
+        raise ValueError('Configure retrieval before searching; derived views are not original evidence')
+    script = Path(__file__).resolve().parents[2]/'yl-knowledge-search/scripts/retrieval.py'
+    command = [cfg['retrieval'].get('python', sys.executable), '-B', '-X', 'utf8',
+               str(script), '--profile', cfg['_profile_path'], 'search', '--query', query,
+               '--mode', mode, '--limit', str(limit)]
+    for q in also_query or []:
+        command.extend(['--also-query',q])
+    proc = subprocess.run(command, capture_output=True, text=True, encoding='utf-8')
+    if proc.returncode:
+        raise ValueError('Source retrieval failed: ' + (proc.stdout or proc.stderr)[:1000])
+    return json.loads(proc.stdout)
 
 def refresh(cfg, root):
     state = state_load(cfg, root)
@@ -301,6 +302,9 @@ def main():
     for name in ('queue','check','refresh'):
         sub.add_parser(name)
     b = sub.add_parser('search'); b.add_argument('--query', required=True)
+    b.add_argument('--mode', choices=['text','semantic','hybrid'], default='hybrid')
+    b.add_argument('--limit', type=int, default=8)
+    b.add_argument('--also-query',action='append',default=[])
     a = p.parse_args()
     profile = profile_path(a.profile)
     try:
@@ -310,7 +314,7 @@ def main():
             cfg, root = load_profile(profile)
             if a.command == 'register': result = register(cfg, root, a.file, a.id, a.origin, a.ownership)
             elif a.command == 'record': result = record(cfg, root, a.id, read_json(a.receipt))
-            elif a.command == 'search': result = search(cfg, root, a.query)
+            elif a.command == 'search': result = search(cfg, root, a.query, a.mode, max(1,min(a.limit,50)), a.also_query)
             elif a.command == 'refresh': result = refresh(cfg, root)
             else: result = inspect(cfg, root)
         print(json.dumps(result, ensure_ascii=False, indent=2))

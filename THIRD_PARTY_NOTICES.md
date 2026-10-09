@@ -21,6 +21,14 @@
 
 2026-09-15 已核实 [DBS 上游许可](https://github.com/dontbesilent2025/dbskill/blob/8b8e33f1ecaed8cee606fe950c4426b525ead314/LICENSE)。**当前集群是多许可的源码公开工具箱，不能把整个 ZIP 称为无限制商用的 MIT 开源包。** CC BY-NC 的非商业条款只适用于其覆盖材料；完整剪辑成员及附带共同规则的写作成员均包含非商业材料，商业使用或分发须取得相应授权或符合另行许可。既有风格和契诃夫语料原许可不变，安装者的文章不因使用工具就自动采用本包许可。
 
-## 2.1.0 新增材料
+## 3.3.0 本地检索运行依赖
+
+检索脚本为本库自制 MIT 代码。模型和依赖不捆绑进 Skill ZIP；安装者在独立环境获取并遵守各自许可。轻量中文基线为 [BAAI/bge-small-zh-v1.5](https://huggingface.co/BAAI/bge-small-zh-v1.5)，可由 FastEmbed 使用 [Qdrant ONNX 转换版](https://huggingface.co/Qdrant/bge-small-zh-v1.5)；模型元数据标注 MIT。FastEmbed 为 Apache-2.0，jieba、PyYAML、ONNX Runtime 为 MIT，NumPy 为 BSD-3-Clause；实际版本许可随安装环境保留。不附赠任何云接口额度，不将模型许可外推到用户语料。
+
+## 2.1.0 运行材料说明
 
 `yl-channels-analytics` 来源于安装者自有的平台分析与 WorkBuddy 采集流程；公开适配和离线统计脚本采用 MIT，未携带第三方 SDK、模型或后台数据，详见成员 SOURCE.md。口播新增复审和覆盖脚本为本库独立改写的 MIT 代码；剪辑工作流既有 DBS 衍生文档仍保留 CC BY-NC 4.0。
+
+## 3.4.0 PPT 工作流
+
+`yl-ppt` 的工作流文档与只读 PPTX 检查脚本为本库独立实现，采用 MIT。包内不含任何商业幻灯片运行时、宿主内置 Skill 原文、私人课程、参考 PPT、商品图片、二维码或字体。各宿主的生成、图像及渲染工具另按其许可和可用性使用；共享工作流不承诺跨宿主具备相同工具。

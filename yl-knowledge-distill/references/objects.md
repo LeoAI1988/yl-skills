@@ -1,156 +1,60 @@
-# 最小对象与完成记录
+# 原文、表达单元与完成证据
 
-混合来源使用 `ownership: mixed` 时，完成收据还必须有 `owned_spans: [[本人片段起始行, 结束行], ...]`；逐字证据只能来自这些已判断为本人说话的段落。范围由 Agent 依据原文/说话人核实，不是脚本自动识别。
+## 一份正文，多种入口
 
-沿用已有库的格式优先，不能另造一套正文。新对象 Markdown 可用 YAML frontmatter：`id,type,title,version,source_id,source_sha256,authorship,confirmation_state,domain`；正文分“原话”“解释/方法”“语境与边界”“来源”“关联”。类型可为观点、概念、问题、方法、案例、表达或完整论述链，不以类别硬拆同一语义。
+原件（照片、录音、云端快照）不可覆盖。忠实转写保留疑点与原件位置；清洗正文只修有依据的识别错误、病句及无意义重复，并保留修改对照。已确认作品可以直接作为文字主源，不复制另一套正文。
 
-每个引文记录来源 ID、该版本 SHA-256、逐字片段、定位；多来源逐条对应。确认状态：原话已核、解释待本人确认；来自本人定稿；本人明确确认对象。外部引文保留真实作者，不填 user_owned。
+原子、表达资产和思想树引用同一文字主源。摘要只帮助导航，不能取代原段。原子不等于短句：独立理解需要数段就保留数段；有效复沓、例子、比喻、限定、转折和结论属于思想本身。本人原句放在可见正文，不仅藏在文件属性中。
 
-对已有同义对象追加来源和表达变体，不替换原有来源数组。关联至少有目标 ID/路径、关系（同义、延展、应用、冲突、解释、证明）、原因与确认状态。正文用相对链接或双链，不能只有不可点击的 ID。
+## 引用与归属
 
-通用登记命令：`knowledge.py --profile PROFILE record --id SOURCE_ID --receipt RECEIPT.json`。该 JSON 位于本地系统资料，不随 Skill 发布。
+每个引用记录 source_id、source_version/hash、连续段落定位、校订状态。清洗稿引文必须与所指清洗版本一致，不能改过字却声称与原始快照逐字相同。跨段组合摘录分别标注各段，不能伪装成连续原话。
+
+本人记录、本人发言、引用外部作者、Agent解释、本人确认的整理稿分别标注。说话人显示为“说话人1”不必然是他人；必须结合已核说话人映射和上下文。归属未知片段可作为待核原文供查阅，但不能当作已核本人引语。
+
+## 原子及关系
+
+沿用既有稳定ID和正文，不因旧格式不能通过新程序就另建重复实体。新对象最低包含 id、type、title、version、来源、归属与确认状态。正文以完整原段、语境、必要解释、来源、关联为主。
+
+同义补来源和措辞变体；新条件、新立场或思想变化保留延展/冲突关系。关系类型及旧格式兼容由库适配器处理，不把某一安装者的ID前缀、目录白名单写成通用限制。新合法来源先登记，不因所在子目录新建而只能归档不能提炼。
+
+## 覆盖与完成
+
+逐段记录去向：新增、补入既有、保留为全文/表达、明确排除、待核。无新原子仍须保留全文可检索；高相似稿本逐段检查差异，不能免除未重合部分的处理。
+
+通用完成记录继续使用 knowledge.py record。coverage只是执行者的阅读记录，不是语义质量证明。每份记录还应附保真复核说明：关键原话与论述顺序保留情况、修改/组合摘录、全文调用入口、未决问题。不得只填“已检查”。
+
+收据文件以 JSON 保存到安装者系统资料区，使用 `knowledge.py --profile PROFILE record --id SOURCE_ID --receipt RECEIPT.json`。最小结构：
 
 ```json
 {
   "source_sha256": "SHA256_OF_REGISTERED_SOURCE",
   "ownership": "user_owned",
   "coverage": [[1, 10]],
-  "classification_reason": "依据本人确认或逐段判断的证据",
-  "dedup_reason": "实际比较过哪些既有对象，如何处理同义或差异",
-  "atoms": [{"path": "05_知识原子/条目/OPI-unique.md", "quotes": ["原文中的完整片段"]}],
+  "classification_reason": "实际归属证据",
+  "dedup_reason": "已比较对象和差异处置",
+  "atoms": [{"path": "05_知识原子/条目/OPI-example.md", "quotes": ["原文中的完整片段"]}],
   "expressions": [],
-  "expression_reason": "已检查表达，本次没有独立新增的理由",
+  "expression_reason": "提取或不新增的具体依据",
   "links": ["01_我的思想体系/相关分支.md"],
-  "organization_reason": "归到哪个观点分支、作品关系如何维护",
+  "organization_reason": "观点分支与作品关系",
   "disposition": "distilled",
-  "note": "完整阅读及边界说明"
+  "note": "保真复核、逐段去向及未决说明"
 }
 ```
 
-coverage 是该版本全文的连续行号范围，必须覆盖全文；只是自报覆盖并不替代 Agent 实际阅读。每个产物 path 必须已经存在；quotes 必须同时存在于源和产物中。合并既有对象也登记其实际路径和本次逐字证据。无原子时 disposition 为 `no_new_atoms` 并说明原因；外部/明确排除分别用 `external_reference` / `excluded`，不生成本人原子。未决材料不提交假完成收据。
+coverage须覆盖登记版本全文，产物路径已存在，引文同时出现在登记来源与产物中。`mixed` 来源还需 `owned_spans`；只从逐段归属确认的本人片段提取。无新原子使用 `no_new_atoms` 并说明理由；外部、明确排除分别使用 `external_reference`、`excluded`。待核材料不提交假完成收据。机器校验只验证形状及引文匹配，不验证自报阅读和解释质量。
 
-## 原子 YAML 硬约束（2026-09-26 实测补录，违反会被校验拦下）
+引用既有对象前查当前活跃实体及归并映射，不把新来源挂在已退役变体；来源、哈希、定位逐项对齐，旧来源不被新增来源覆盖。关系必须有目标、类型、证据和确认状态，并提供可点击入口。
 
-写原子前先对照本节，别等校验报错再回头改。
+验证要同时覆盖：原件/页数完整、净稿与原件一致、引文和所指版本一致、来源路径可回读、关系有效、同义变体未丢、未原子化原段可搜索。逐字或归属检查失败的片段不得继续标为已核引文；其他已核片段可以独立使用。
 
-- **`derivation.mode` 与类型绑定**：`QUO` 类型**必须**是 `verbatim`；`OPI / CAS / CON / SOL` 用 `source_grounded_abstraction`，纯亲历案例可用 `firsthand_case_extraction`。
-  ⚠️ 注意：`QUO` 写错这一条 **`knowledge_atoms.py rebuild` 查不出来**，只有独立的 `verify_v2_atoms.py` 会报 `QUO derivation.mode must be verbatim`。两个校验都要跑。
-- **`expression_roles` 允许值**：`hook / conflict / contrast / pain_point / judgment / method / proof / case / metaphor / escalation / rhythm / gold_line / closing`。
-  **没有 `viewpoint`**，写 `viewpoint` 直接报 `unsupported expression role`。
-- **`relationships[].type` 只允许四种**：`回应 / 解释 / 证明 / 冲突`。**没有 `支撑`、`举例`**；关系必须有 `target_id`、`evidence`、`confidence`、`status`。
-- **正文必需小节**（缺一个就报 `missing body section`）：`## 原子内容`、`## 使用语境`、`## 不适用边界`、`## 来源定位`、`## 适用平台或内容类型`、`## 关联原子`。最后两节最容易被漏。
-- **三处必须一一对齐**：`source_documents`、`source_hashes`、`source_locator` 三个列表**长度必须相等**且逐位对应；`verbatim_source` 必须同时出现在 `source_documents` 中，且其哈希等于文件实际哈希。
-  删改来源时**必须三处同步删改**——只删路径会留下孤立哈希/定位行，报 `source paths and hashes must be non-empty and aligned`。
-- **来源必须落在可引用白名单目录内**。新建子目录（例如在 `02_素材库/01_我的原始思考/` 下另开一个分类目录）会被判 `source is outside the eligible user-owned source set`，此时该文件只能作归档，不能列为任何原子的 `source_document`；在完成收据里用文字说明它与哪些既有原子同源。
-- `relationship_schema_version` 必须为 `2.1`；`confirmation_state` 取 `source_verified_pending_user_confirmation / confirmed_via_user_final_source / user_confirmed_atom`。
+## 本人使用与对外披露
 
-## 常见校验错的处置顺序
+两者是不同维度。不得只按“公开/P2/P3”等目录名决定整篇是否阅读或整理。依用户授权和片段归属处理，凭据与私人事实不混进普通写作语料；本人思想不因相邻私人事实而整体跳过。明确排除名单在全部检索入口一致生效。
 
-1. `knowledge_atoms.py rebuild` → 结构与逐字源一致性（**先跑这个**）
-2. `verify_v2_atoms.py` → 类型专属规则（QUO 的 derivation 等）与逐字在源中存在性
-3. `knowledge_network.py verify` → 跨来源策展与共同概念
-任一步报错都先修再进下一步；只修到不报错就宣布完成是假完成。
+## 检索交接
 
-## 状态锁与重入
+完整文字主源登记到 yl-knowledge-search 的来源清单；在全文与本地语义索引更新后验证。只把原子、摘要、导航建成索引不是完成。原件版本或正文变动后重新校对受影响引文，并增量更新索引。
 
-`knowledge.py` 的操作被中断（例如传错 `--receipt` 格式）会留下 `90_系统资料/YL知识管理/state.lock`，之后所有操作都报 `Another operation is active`。
-确认没有进程在跑之后，直接删除这个空锁文件即可恢复；不要改 `state.json` 绕过。
-另外 `record --receipt` 收的是 **JSON 文件路径**，不是 Markdown；Markdown 会报 `Expecting value: line 1 column 1`。
-
-## 给原子挂来源前先查它的状态（2026-09-27 踩坑）
-
-挂来源、补来源之前，**必须先读原子的 `v2_status` 与 `canonical`**：
-
-- `v2_status: activated` + `canonical: true` 才是当前活跃实体，新来源挂这里。
-- `v2_status: retired` / `canonical: false` 是**已归并的历史变体**，它的内容已经并入另一个实体（`aliases` 里有它的 ID）。**不要给它挂任何新来源或补充段**，否则：
-  - 结构校验会报 `verbatim_source is not registered` 之类；
-  - 统一网络会把把它判为 `removed_or_deactivated_existing_atom`，要求“核对旧关系及引用，禁止静默保留失效可写作状态”。
-- 正确做法：用 `aliases` 或 `已核验原子归并.json` 找到 `target`，把来源挂到那个活跃实体上。
-
-**另一条硬规矩**：`既有库策展基线.json` **只登记活跃原子**。把 retired 原子写进基线，会立刻触发 `removed_or_deactivated_existing_atom`（网络按 `baseline` 有、`current` 无来判定“被移除”）。发现误入就直接从基线里删掉该 ID。
-
-## 清理来源引用时三处必须同步
-
-删/改某个来源时，`source_documents`、`source_hashes`、`source_locator` **三个列表要一起动**。
-只删路径行的典型后果：留下孤立的哈希行与定位行 → 报 `source paths and hashes must be non-empty and aligned` 和 `source_locator must be a non-empty list aligned with source_documents`。
-清理时按“这个来源对应的路径行 + 哈希行 + 定位行”三件一起删，删完立刻跑 `rebuild` 确认。
-
-## 原文原句必须可调用（2026-09-27 建原句库的教训）
-
-**只提炼成原子是不够的。** 原子是骨架，原句是血肉；写文章时如果不给原句调用通道，
-就是在"因为萃取而丢失信息量"。检索层必须同时覆盖**原文层**，不能只有总结卡可搜。
-
-已建：`90_系统资料/系统导航/08_原句库/sentence_index.py`（`build` / `search` / `stats`），
-`search --query "关键词"` 直接返回**命中那句本身 + 出处文件 + 行号**。
-
-### 外部真源按「文件夹」判密级（2026-09-27 改定）
-
-安装者已配置按目录分级的外部只读真源时，
-**不要按登记表的 `privacy_level` 或内容哈希去判断，直接看路径**：
-
-- `公开/` → 收录
-- `P2/`、`P3/`、其它 → **跳过且不解析内容**（是“不读”，不是“读了再丢”）
-
-理由：登记表里受限项的路径本来就是脱敏的（`[受限]`），且哈希存的是**规范化哈希**而非文件字节哈希，
-按哈希匹配会全军覆没；文件夹才是不会漂移的物理权威。
-
-```python
-rel_top = os.path.relpath(dp, CONFIGURED_SOURCE_ROOT).split(os.sep)[0]
-if rel_top != "公开":
-    skipped += 1          # 不打开文件
-    continue
-```
-
-### 建索引时必须守住的三条保真红线
-
-**红线 1：分清谁在说话。**
-Get笔记原文里 `🟣 我` 是本人原话，`🟢 说话人1` / `🔵 说话人3` 往往是**他人或环境音**
-（车载导航"下一站…请提前做好下车准备"、路人），另有 AI 自动生成的标题与总结。
-**不区分就会把他人的话和 AI 总结当成本人原话调出来。** 只保留标"我"的段落。
-
-**红线 2：过滤不能一刀切。**
-把所有文件都套"粘性过滤"会把本人正文一起删掉（实测 93,064 句 → 63,654 句）。
-**要按文件类型分治**：只有真正的多人转写稿才启用粘性过滤；原子/作品正文/文章
-只剔除显式的他人标记行。判断"是不是转写稿"不能只看有无时间戳——**原子和文章里
-也会引用带时间戳的原话**；正确条件是「有 `getnote_note_id` 标记」或
-「时间戳说话人标记 ≥3 个**且其中确实有非本人说话人**」。
-
-**红线 3：别把原子的"头部"当引文切掉。**
-原子文件往往 100+ 行，其中**大部分是头部（frontmatter）**，而
-`verbatim_core`、`progression[].verbatim` 这些**原话就写在头部里**。
-按处理转写稿的习惯切头部＝把最值钱的原句丢了（实测原子内容 41,327 → 13,192 句）。
-**非转写稿一律保留完整内容（含头部）**，只在行清洗时剥掉字段键名（`xxx:`），保留值。
-
-### 自检口径
-建完索引必须抽查：① 原文独有的句子能否搜到；② 搜到的句子是否确实出自本人；
-③ 总数不能明显低于上一版（明显下降通常意味着误删）。
-
-## 新建原子的 ID 前缀（2026-09-27 踩坑）
-
-现代方案**只认这几个前缀**：`OPI / SOL / QUO / CON / CAS / QST / KP`（外加 `KP*` 概念卡）。
-**`CHAIN` 不是前缀**，它只是 legacy `GX-…-018-CHAIN` 这类 ID 的**后缀**。
-
-造一个 `CHAIN-20260927-0001` 不会有任何报错提示，但后果是连锁的：
-
-1. 网络 `load_ai()` **不加载该前缀** → 该原子根本不进 `records`；
-2. 一旦在 `CROSS_EDGES` 里引用它，`refresh` 直接抛 `AssertionError: ('XXX', 'YYY')`；
-3. **这个异常会让整个 `refresh` 中断**，`跨来源待复核队列.json`、`当前状态.json` 都停留在上一轮，看起来像“基线没同步”，极易误判。
-
-**找机制类的卡用 `CON`，方法类用 `SOL`。**
-
-## 跑状态类命令不要屏蔽输出（2026-09-27 教训）
-
-`refresh` / `rebuild` / `scan` 这类会写状态文件的命令，**必须看 stdout/stderr**。
-用 `>/dev/null` 会把 traceback 一起吞掉，只剩一个“队列没清”的表象，排查成本翻几倍。
-写状态的操作失败时，**状态文件不会回滚**，留在旧值上，比直接报错更容易误导。
-
-## legacy 原子不能作为正式关系目标（2026-09-27 踩坑）
-
-库里 `GX-*` 那批（约 270 条）是 legacy 格式，**没有 `v2_status` 字段**，不参与 V2 关系表。
-
-- 关系目标要写**完整 ID 含类型后缀**：不是 `GX-63D3A03F5C67-100`，而是 `GX-63D3A03F5C67-100-CHAIN`。
-- 即使补全后缀，仍会报 `missing relationship target` —— 因为 legacy 原子不在 `valid_ids` 里。
-- 正确做法：**在「关联原子」小节用文本说明关联**，写在关系表里会过不了校验。
-
-
-
+具体库的历史程序、字段兼容、迁移记录和运行故障处理位于个人适配层；不写进通用规则。清理源或迁移前保留备份，按稳定来源ID维护路径与所有引用，校验后再考虑清理空壳。

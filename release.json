@@ -1,16 +1,16 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.2.12",
-  "date": "2026-09-29",
+  "version": "3.4.0",
+  "date": "2026-10-09",
   "skills": {
     "yl-toolbox": {
-      "version": "3.0.0",
+      "version": "3.4.0",
       "category": "entry",
       "role": "router",
       "license": "MIT"
     },
     "yl-writing": {
-      "version": "3.0.0",
+      "version": "3.3.1",
       "category": "writing",
       "role": "router",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -22,13 +22,13 @@
       "license": "MIT"
     },
     "yl-chekhov-deep-writing": {
-      "version": "3.0.0",
+      "version": "3.3.1",
       "category": "writing",
       "role": "member",
       "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND CC-BY-NC-4.0"
     },
     "yl-write-impact-wechat": {
-      "version": "3.0.0",
+      "version": "3.3.1",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -46,7 +46,7 @@
       "license": "MIT"
     },
     "yl-write-voice-led-wechat": {
-      "version": "3.0.0",
+      "version": "3.3.1",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -64,7 +64,7 @@
       "license": "MIT"
     },
     "yl-knowledge": {
-      "version": "1.0.0",
+      "version": "3.3.0",
       "category": "knowledge",
       "role": "router",
       "license": "MIT"
@@ -82,7 +82,7 @@
       "license": "MIT"
     },
     "yl-knowledge-import": {
-      "version": "1.0.3",
+      "version": "3.3.0",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
@@ -94,7 +94,7 @@
       "license": "MIT"
     },
     "yl-knowledge-distill": {
-      "version": "1.0.6",
+      "version": "3.3.0",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
@@ -112,7 +112,7 @@
       "license": "MIT"
     },
     "yl-knowledge-search": {
-      "version": "1.0.0",
+      "version": "3.3.0",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
@@ -130,7 +130,7 @@
       "license": "MIT"
     },
     "yl-knowledge-check": {
-      "version": "1.0.0",
+      "version": "3.3.0",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
@@ -152,6 +152,12 @@
       "category": "video",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
+    },
+    "yl-ppt": {
+      "version": "1.0.0",
+      "category": "presentation",
+      "role": "member",
+      "license": "MIT"
     }
   }
 }

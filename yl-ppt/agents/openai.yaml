@@ -1,0 +1,4 @@
+interface:
+  display_name: "YL PPT 制作与迭代"
+  short_description: "从逐字稿规划课件，沿用参考风格，处理批注、多版本与用户手调定稿"
+  default_prompt: "使用 $yl-ppt 根据我的原稿和参考演示稿规划并制作 PPT，按当前授权阶段继续。"

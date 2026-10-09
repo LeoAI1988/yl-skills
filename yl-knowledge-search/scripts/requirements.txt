@@ -1,0 +1,6 @@
+# CPU-only local retrieval runtime; models downloaded separately under their license.
+fastembed==0.9.0
+jieba==0.42.1
+PyYAML==6.0.3
+numpy==2.5.3
+onnxruntime==1.30.0

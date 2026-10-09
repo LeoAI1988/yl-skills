@@ -1,5 +1,5 @@
 {
-  "version": "3.2.12",
+  "version": "3.4.0",
   "skills": [
     {
       "name": "yl-channels-analytics",
@@ -20,7 +20,7 @@
     {
       "name": "yl-chekhov-deep-writing",
       "description": "基于可追溯的契诃夫俄文原著、已验证的高层写作机制和受约束的语言外壳，完成中文公众号文章、短视频连续口播、朋友圈、人物故事、观点稿与现实材料改写。用户要求克制而锋利的人性观察、让细节约束判断、保留反例与未尽后果，或明确要求使用契诃夫研究线时使用；不用于逐句仿写、复刻人物情节、冒充中文出版译本或无材料补写现实事实。",
-      "version": "3.0.0",
+      "version": "3.3.1",
       "category": "writing",
       "role": "member",
       "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND CC-BY-NC-4.0"
@@ -28,7 +28,7 @@
     {
       "name": "yl-knowledge",
       "description": "YL 知识管理总入口。构建知识库、同步笔记、导入本人材料或采集本人新文稿时，协调归档、蒸馏、去重、表达、体系和验收；知识检索只读，不启动入库。",
-      "version": "1.0.0",
+      "version": "3.3.0",
       "category": "knowledge",
       "role": "router",
       "license": "MIT"
@@ -44,7 +44,7 @@
     {
       "name": "yl-knowledge-check",
       "description": "验收知识处理的来源覆盖、原句、语义去重、产物及关系，发现只同步未蒸馏、遗漏材料、失效引用和未完成旧项。",
-      "version": "1.0.0",
+      "version": "3.3.0",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
@@ -52,7 +52,7 @@
     {
       "name": "yl-knowledge-distill",
       "description": "从本人完整原文中提炼可复用观点、概念、方法、案例和论述链，逐字回源，并先与现有知识原子做语义去重。",
-      "version": "1.0.6",
+      "version": "3.3.0",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
@@ -67,8 +67,8 @@
     },
     {
       "name": "yl-knowledge-import",
-      "description": "将本地文档、导出笔记、录音录像和逐字稿纳入统一知识处理流程，保留原文件及版本，调用已有解析转写工具后自动衔接蒸馏。",
-      "version": "1.0.3",
+      "description": "将指定本地文档、照片、音视频及逐字稿接入知识库，保留原件、忠实转写和最小清洗正文，自动衔接完整知识处理。",
+      "version": "3.3.0",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
@@ -108,7 +108,7 @@
     {
       "name": "yl-knowledge-search",
       "description": "只读检索本地知识库的原文、知识原子、表达和作品，为问答或写作提供可回源的相关证据与完整上下文。",
-      "version": "1.0.0",
+      "version": "3.3.0",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
@@ -134,6 +134,14 @@
       "description": "采集和复盘微信公众号账号、文章、分发通知、阅读来源及转化，保留全文与历史数据，并将新增本人文稿自动交给知识管理。",
       "version": "1.0.1",
       "category": "analytics",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
+      "name": "yl-ppt",
+      "description": "将逐字稿、文档或已有演示稿制作成可授课的 PPT；规划逐页内容、沿用参考风格、设计关系图，按批注修改并管理商品图等多版本。适用于从原稿做课件或继续修改用户手调的 PPT。",
+      "version": "1.0.0",
+      "category": "presentation",
       "role": "member",
       "license": "MIT"
     },
@@ -172,7 +180,7 @@
     {
       "name": "yl-write-impact-wechat",
       "description": "Use when drafting, revising, or packaging Chinese WeChat Official Account opinion, trend, or marketing articles from recordings, transcripts, notes, or the author's prior writing, especially when the user asks to preserve original phrases, remove generic AI prose, strengthen rapid-fire rhythm, create a high-impact opening, or use a 暴击风格.",
-      "version": "3.0.0",
+      "version": "3.3.1",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -180,7 +188,7 @@
     {
       "name": "yl-write-voice-led-wechat",
       "description": "以用户本人的口述转写、录音或长短视频稿为底板，最大保留原话与思想递进，调用本人知识和表达资产进行修补、润色或扩写成微信公众号文章。用户调用本 Skill 时使用；它是口述底稿成文的总框架，可挂契诃夫、暴击观点两种具体写作框架或自带编辑模式，以及契诃夫风、暴击风等表层风格，不用于从零选题或第三方文章洗稿。",
-      "version": "3.0.0",
+      "version": "3.3.1",
       "category": "writing",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0"
@@ -188,7 +196,7 @@
     {
       "name": "yl-writing",
       "description": "yl 写作分类入口。口述稿转公众号进入口述总框架；写文章、改稿或选择文风时，提供契诃夫、暴击观点两种风格与基座编辑，统一执行公共去 AI 味规则。",
-      "version": "3.0.0",
+      "version": "3.3.1",
       "category": "writing",
       "role": "router",
       "license": "MIT AND CC-BY-NC-4.0"

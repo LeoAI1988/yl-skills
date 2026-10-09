@@ -12,7 +12,7 @@ TEXT_SUFFIXES = {'.md', '.py', '.ps1', '.yaml', '.yml', '.json', '.txt', '.toml'
 ROOT_FILES = ['README.md', 'PRD.md', 'MAINTAINING.md', 'CHANGELOG.md', 'LICENSE',
               'THIRD_PARTY_NOTICES.md', 'AGENTS.md', '.gitignore', 'release.json',
               'install.py', 'build.py', 'yl集群_审核说明.md', 'Skill清单_v2.1.0.md', '版本对齐_v2.1.0.md', 'Skill清单_v2.2.0.md', 'Skill清单_v3.0.0.md']
-ASSET_FILES = ['YL-Skill集群.jpg']
+ASSET_FILES = ['YL-Skill集群.jpg', 'YL-Skill集群_v3.4.0.png']
 
 def digest(data):
     return hashlib.sha256(data).hexdigest()
