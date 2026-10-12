@@ -1,6 +1,6 @@
 # YL Skills · 把自己的思考变成作品
 
-![YL Skills：把思考变成作品，让作品回到知识库](assets/yl-social-preview.png)
+![YL Skill 集群：31 个 Skill、4 大功能板块；v3.7.1 本地版](assets/yl-social-preview-1280x640-v2.jpg)
 
 **面向 Codex、WorkBuddy 等兼容 AI Agent 的中文工作流工具箱：知识管理、内容创作、自动视频剪辑与复盘、PPT。整套安装，按任务调用。**
 
