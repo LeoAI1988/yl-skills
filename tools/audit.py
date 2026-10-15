@@ -3,7 +3,7 @@ import argparse
 import json
 import re
 import zipfile
-from library import ROOT, TEXT_SUFFIXES, ROOT_FILES, ASSET_FILES
+from library import ROOT, TEXT_SUFFIXES, ROOT_FILES, ASSET_FILES, MEMBER_ASSETS
 
 RULES = {
     'email': r'(?<![\w.+-])[\w.+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}',
@@ -47,7 +47,7 @@ def main():
     if args.zip:
         with zipfile.ZipFile(ROOT/'yl-toolbox-cluster.zip') as z:
             # Explicitly reviewed raster assets require visual review, not UTF-8 scanning.
-            assets = {'yl-toolbox-cluster/'+n for n in ASSET_FILES}
+            assets = {'yl-toolbox-cluster/'+n for n in [*ASSET_FILES, *MEMBER_ASSETS]}
             items += [('ZIP::'+n, z.read(n)) for n in z.namelist() if n not in assets]
     hits = scan(items, args.private_term)
     print(json.dumps({'files_scanned': len(items), 'findings': hits,

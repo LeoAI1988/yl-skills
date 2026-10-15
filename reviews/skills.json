@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
-  "version": "3.4.1",
+  "version": "3.7.12",
   "review_method": "Changed/new files reviewed by maintainer; independent isolated forward tests for knowledge and Windows install. Existing unchanged bytes inherit previous reviews. No live cloud/Obsidian or real media quality acceptance claimed.",
   "generated_exclusions": [
     "yl-toolbox/references/catalog.json"
   ],
-  "project_review": "Reviewed requested four-board grouping: media owns writing, video and analytics; office owns PPT. Subcategory preserves writing validation and sync. No capabilities removed; no private data. Poster visually checked for layout, 26 total and 4 boards. Unchanged files retain previous hash-bound reviews.",
+  "project_review": "Reviewed requested four-board grouping: media owns writing, video and analytics; office owns PPT. Subcategory preserves writing validation and sync. No capabilities removed; no private data. Poster visually checked for layout, 26 total and 4 boards. Unchanged files retain previous hash-bound reviews. Version 3.5.0: reviewed new research member registration, README counts, PRD routing and changelog; existing poster explicitly labeled historical. No external publication or private runtime data included. Version 3.5.1: reviewed visual-only parameter/calibration changes and release registration; no private paths/media in core, no external publication. Version 3.5.2: reviewed archive routing, 29-member release registration, generic external archive config and original standard-library helper/tests; no personal paths or runtime media in core. Existing files keep hash-bound prior reviews. Version 3.6.0: reviewed new slice registration, additive router/UI changes, 30-member counts, PRD/README/changelog and original-MIT dependency attribution. Project files not changed retain hash-bound prior review; other concurrent archive member preserved. Version 3.6.1: reviewed archive-only documentation and release/changelog updates; preserves generic parameters and existing scripts, no private data or publication. Version 3.7.0: reviewed course member registration, additive media/video/toolbox routing, 31-member documentation and MIT attribution. Existing byte-unchanged files retain reviews; no remote release or runtime discovery claimed. Version 3.7.0: reviewed course member registration, additive media/video/toolbox routing, 31-member documentation and MIT attribution. Existing byte-unchanged files retain reviews; no remote release or runtime discovery claimed. Version 3.7.1: reviewed input-hash and actual concat/alignment documentation plus version/readme/changelog; no further routing or permission change. 3.7.2: reviewed writing-only release metadata and four meaningful checker tests; no private data or external publication. 3.7.3: reviewed writing-only metadata and approved-sample rule; personal reference external, no publish authorization inferred. 3.7.4 cover update: reviewed cover changelog and member files. Full release registration review is pending because a separate new member is not yet reviewed; previous release.json approval hash retained. No distribution build claimed. 3.7.5: reviewed cover version/changelog and narrowly hash-bound background asset allowlist in library/audit. Other member drift is not approved by this change. 3.7.6: reviewed Douyin member registration, own workbench changelog, and full release registry for generic membership/version fields; other project/member hashes preserved. 3.7.7: reviewed own Douyin member version, schedule/model changelog and registration; other project/member hashes preserved. 3.7.8: reviewed own Douyin member version, drag/preview/reasoning changelog and registration; other project/member hashes preserved. 3.7.9: reviewed own Douyin member version, custom time-window changelog and registration; other project/member hashes preserved. 3.7.10: reviewed own Douyin member version, hour-option changelog and registration; other project/member hashes preserved. 3.7.11: reviewed Douyin integration route versions and changelog; other project hashes preserved. 3.7.12: reviewed Xiaohongshu member registration and changelog, preserving unrelated project review hashes and pending drift. No external distribution published.",
   "project_files": {
-    "README.md": "c29a293774a1ec828693e0a6ee0b6691884829d98abe4a94462ccbc1c9c2e006",
-    "PRD.md": "2003e2dee077bca15363f92ae9181dc84c6da6b438eb2d2a10979842881ed54d",
+    "README.md": "be6384005cf9e0811ace387c60a01d80d0261819b2b694eed83e14ed6bfe3bb1",
+    "PRD.md": "3f47cb7d5fa9bf594dd1f332954ab73afdd2fa3deb6dbc936402351548b5058d",
     "MAINTAINING.md": "9869b54c017fa035fea4a33dfe622ffb4aca629a4214a1fd1ee530463bd7b201",
-    "CHANGELOG.md": "cb3347c6de78b2fa1b6158c8737b0aefb98fc7322f8a295adfbfcecbf99e7cc2",
+    "CHANGELOG.md": "cb2c505e67f7f21f5489cdcc4828af824f85f794436e3bf87761703602878070",
     "LICENSE": "0a9dabde6fca3a8d9010c587bc53c09cc147aa081848fbbdab9f119be3f778f8",
-    "THIRD_PARTY_NOTICES.md": "fe149379e4cf377ffa065def171296568bf12d30cabd33efe0fcddc228d4a81d",
+    "THIRD_PARTY_NOTICES.md": "ef79c2bb2f1125b349815c7176d489e90fc2160c18634706af28e017d4ff541d",
     "AGENTS.md": "6f0c8cf0ced63ada0fc766fcce0150aeab0a32703ce0854b8848c0d3000b5800",
     ".gitignore": "8cf91327b2d9c9d76246d25b403afb942b78441c63c8da06483afb00f68a6e19",
-    "release.json": "d33c1938a2f38954a15bece9d6bd92ff06af473c8a3ecdce55be599a81f209c6",
+    "release.json": "4d0c8b30037d1d320d13bbfb732f43b48571f489a3786c4eb5bdcc4942b8e65e",
     "install.py": "9c72a161d4910d2fe6b43872694130bbd50dc41909aee1dcaf2a9097dd262ffa",
     "build.py": "76ea649fd032691761598b09c290d5bfb2c0bcb7e3c44e5d9ce43c1513098b21",
     "yl集群_审核说明.md": "1efbd9579df44be05b85e97a2e591ed9787aea1475f95c66510b9875312c644b",
@@ -25,9 +25,9 @@
     "Skill清单_v3.0.0.md": "93efa911ac9f7b1c256ffc76126167ac3a9572c5a187e5a12896bf2d21bab3cf",
     "YL-Skill集群.jpg": "c890ad842b624997d170ad75297c748e1ec06337453338e8796bd11e6a673bc4",
     "YL-Skill集群_v3.4.1.png": "f5bd9dc4fbaaa65c3207510ec095ce5cefd1fc6b883b8521a1a6af389b3afc78",
-    "tools/audit.py": "98dbc69d839929ee70968a96b2e164d59bfd5e09858a2959272104679430ced1",
+    "tools/audit.py": "37bd157169ea39c0780906417448d21413e9a1628c58ca2de8434ee730ea139f",
     "tools/check_updates.py": "f5eb4c191ef365c3d5aeb6398beb5739c9f8b2a81e661dbfffa1556798657c61",
-    "tools/library.py": "190913c19c8fd9eba9849b12c8c4329ddeeb4544addc5a0c9a252e229b6b4c9d",
+    "tools/library.py": "83088353634d11a1abbf599ef0bed42590e9c4b6430593a8ddebf59b22be8214",
     "tools/sync_cluster_runtime.py": "e291668932f177de772df0ce484577caee361fbf7dc2d71a5cff64a9a8b85593",
     "tools/sync_writing_foundation.py": "df489422d08f73ff2f0030787b1b8b68a2913a8e652c075065a1d1e6b9085cc1",
     "tools/test_dashboard.py": "91cdea3630b86a82411ffdb6c90f1b0df2765962eb72eb171a4227ede969e31c",
@@ -35,36 +35,41 @@
     "tools/test_ppt.py": "05b96456d86c67caa698e767b7ea5aca48a95ca47d6157f8542c1a9c99599f3f",
     "tools/test_release_updates.py": "77f09513c6d3de4cb7a35805817b08807edfc40ac9f89172ca9d098baef3928b",
     "tools/test_retrieval.py": "31376f391586d3fa5870981185c23b64411b18c2d086d5458ad23c46b1185646",
-    "tools/test_writing.py": "fa618fa91632b5bb976a41b2152a371d6a4d9dabf6de6c09906346a53aaada5a",
+    "tools/test_video_archive.py": "d6f1b285568157884edc96b09b1e7fda1772b1fd78f9c4961013a6d5f28bc3bd",
+    "tools/test_writing.py": "9cfa73d6cfd6fcfb2d382f0ce573c8b635bf0d9da0016f308343cc3b32ac9cc5",
     "tools/verify.py": "0143ac3c9db9e0966db3fde469c1cbad8d81de37c27ff6c9b3574265733e1800",
     "tools/writing_foundation.py": "a082dcc5bb0798c6439a8e2355b5ad953f05e341fb55850c1932ed160cd83e0d"
   },
   "skills": {
     "yl-toolbox": {
-      "review_date": "2026-10-09",
+      "review_date": "2026-10-15",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Reviewed changed routing and interface files: unified media entry dispatches writing/video once, preserves user mode and source-first constraints, no unrelated analytics or login for creation requests. PPT is office. Existing execution methods and permissions unchanged.",
+      "review_note": "3.7.0: read all new/changed files for generic paths, teaching/demo routing, ASR uncertainty, source/voice protection, frozen mapping and once-only speed. Original MIT code/docs; no private media, hotwords, runtime or account. Isolated real FFmpeg render/decode and meaningful rejection cases passed; actual future video quality/listening is not implied. 2026-10-14: registered yl-channels-publisher in the tool directory and added usage examples plus an explicit note that installing the member does not grant publishing authorisation. Read for routing accuracy and authorisation wording; no private data. references/catalog.json is a generated file excluded from review hashes. references/profile.md and profile.example.json carry pre-existing uncommitted changes not made in this round and keep their prior hashes pending their own review. 2026-10-15: read and reviewed full SKILL.md; added explicit Douyin versus Channels publishing routing, local-planning scope and platform clarification; no private data. Only this SKILL.md hash updated; all pre-existing drift in other files remains pending. 3.7.12: reviewed additive Xiaohongshu preparation route and manual final submission; no collection scope expansion. Only SKILL.md hash updated; unrelated existing file drift retained.",
       "changed_files_reviewed": [
-        "SKILL.md"
+        "references/profile.example.json",
+        "references/profile.md"
       ],
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "references/profile.example.json": "bf5f9a815327dd9ca4757d0231341eec0301e62aac464ec00ff58116e816697c",
-        "references/profile.md": "357e2de7fcaf8c1a18cddee1d882b0d380a0e2c5ce28e73f8ba2bab8ae03ea56",
-        "SKILL.md": "73d8e7aa5141ecf11dc9e27668072cfa03f254aa844cf27a7344c7607ce68e1e"
-      }
+        "references/profile.example.json": "124d8837a3362d3697fb8d556196e66821c5e590fa65fad526d66f7a70640009",
+        "references/profile.md": "a142ade12391defdb46003f7a3fdb446a34ab87ec964c50092a6b0356dd565ba",
+        "SKILL.md": "40ac05ca7abff2eb36cf4c74db603af9fdeb2a832bef23fb4dbe71fcb4c92abd"
+      },
+      "review_notes": "Entry routing: publishing examples resolve through yl-media; authorisation boundary stated explicitly; generated catalog excluded from hashes.",
+      "slice_routing_review": "3.6.0: reviewed additive independent-slice dispatch, explicit Remotion preservation, existing short-talking-head/interview/archive routes retained; no permission expansion or private inputs.",
+      "release_3_7_13_review": "3.7.3: reviewed profile.md and blank profile.example.json in full; archive paths remain installer supplied, course sources reused and standard mothers beside finals. Added empty per-platform publishing config references only; no accounts, local paths or data. Unchanged routing files inherit hash-bound reviews."
     },
     "yl-writing": {
-      "review_date": "2026-10-09",
+      "review_date": "2026-10-13",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Reviewed changed routing and interface files: unified media entry dispatches writing/video once, preserves user mode and source-first constraints, no unrelated analytics or login for creation requests. PPT is office. Existing execution methods and permissions unchanged.",
+      "review_note": "2.1.1: reviewed personal approved-sample retrieval, preservation of author edits and voice, non-template use, and plain agent-assisted installation guidance. No private samples or identities in core. Shared copies consistent; unchanged files retain previous reviews.",
       "changed_files_reviewed": [
-        "agents/openai.yaml",
+        "references/writing-foundation.md",
         "SKILL.md"
       ],
       "files": {
@@ -74,39 +79,40 @@
         "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
         "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
         "LICENSES/WRITING-FOUNDATION-NOTICE.md": "1f9e14c610651210fcbdc27bc95b1c7ff40964a2001deac3f651d05913ddc8c9",
-        "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
-        "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
-        "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
-        "references/source-snapshot.json": "e8e277b6584ded57400b26358d907ba1e8793c1e9357ba4a857bb25974c7b51e",
-        "references/writing-foundation.md": "96a9cde2890168fe6ec5cd4206b7761843a442502acb91355c741f4825ccd425",
-        "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
-        "SKILL.md": "524136527bd1309f3ba47869acb6f7c281b79a7ec406c6c965b8f83a0c69c5db",
+        "references/anti-ai-extraction.md": "e812097e9e9560608cbb6468ecc2379a40a4e11f21e21da20a65ab3828ceaa21",
+        "references/anti-ai-rules.md": "6bc708249559d06ddcf363b9fa6a3c8c680297dd217fe1d7d27363b459f1426b",
+        "references/anti-ai-source-inventory.json": "2e3ea67fcb77e716e0a0ffe150669035c969071e98b393b19d6677b4b70c77e6",
+        "references/source-snapshot.json": "ba271db657d4dc1aff77184d357e2948ea9c9456611c5449b78081ba2e5b9d94",
+        "references/writing-foundation.md": "cdd27bf6b83779a20a4152eba12659b85b8a17fd96cbe829856312dae2d2961e",
+        "scripts/check_writing.py": "c838ea888fff315bcee2b323b8ffd7cd12d0c0f14dcee1990343b28514e58190",
+        "SKILL.md": "a3e1e74509dfd43c198058a92e5d1be6eeb2954439680b1f1dbd28f860ba4bcb",
         "VERSION": "efdfae9d0dc9b09f9524df6c401bf7143a882469c6243bfbcb0bbeaefe9aa3c1"
       },
       "retrieval_upgrade_review": "2026-10-08: reviewed original/derived separation, source version and authorship checks, offline model boundaries and complete passage handoff. Retrieval produces candidates requiring Agent review; no full-corpus semantic repair claimed. Unchanged files inherit prior reviews."
     },
     "yl-video": {
-      "review_date": "2026-10-09",
+      "review_date": "2026-10-12",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Reviewed changed routing and interface files: unified media entry dispatches writing/video once, preserves user mode and source-first constraints, no unrelated analytics or login for creation requests. PPT is office. Existing execution methods and permissions unchanged.",
+      "review_note": "3.7.0: read all new/changed files for generic paths, teaching/demo routing, ASR uncertainty, source/voice protection, frozen mapping and once-only speed. Original MIT code/docs; no private media, hotwords, runtime or account. Isolated real FFmpeg render/decode and meaningful rejection cases passed; actual future video quality/listening is not implied.",
       "changed_files_reviewed": [
         "agents/openai.yaml",
         "SKILL.md"
       ],
       "files": {
-        "agents/openai.yaml": "380fe31b379213d703cc61d10bb8a75d7c31eab1808234a29c6ff82bda4f7b78",
+        "agents/openai.yaml": "ee36eeb6bc22c97a3d989049bd74b1e8e588f3d7cd1af055447f7208ceb250d1",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "SKILL.md": "2c5abca7c24169ec23288994e05129f4ef1625470b2dbc8c84f51480bed35872"
-      }
+        "SKILL.md": "d2ae46dc16495ee9e8ec47a9db246ef3164fd342e7ab43b59ce06a828f0169de"
+      },
+      "slice_routing_review": "3.6.0: reviewed additive independent-slice dispatch, explicit Remotion preservation, existing short-talking-head/interview/archive routes retained; no permission expansion or private inputs."
     },
     "yl-chekhov-deep-writing": {
-      "review_date": "2026-10-08",
+      "review_date": "2026-10-13",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Reviewed common source retrieval constraint: full original paragraphs, unatomized text, context and changed positions, explicit degradation, no unrelated enrichment or implicit style authorization. No personal paths, source text or credentials. All unchanged bytes inherit prior review.",
+      "review_note": "2.1.1: reviewed personal approved-sample retrieval, preservation of author edits and voice, non-template use, and plain agent-assisted installation guidance. No private samples or identities in core. Shared copies consistent; unchanged files retain previous reviews.",
       "changed_files_reviewed": [
         "references/writing-foundation.md"
       ],
@@ -137,17 +143,17 @@
         "LICENSES/WRITING-FOUNDATION-NOTICE.md": "1f9e14c610651210fcbdc27bc95b1c7ff40964a2001deac3f651d05913ddc8c9",
         "NOTICE.md": "39dcd504bb612d3dcaf6c90b329e51d825758122f7dbb7501a61f90d4a4a3f80",
         "README.md": "fd02a2c98efb58ba1ea8c4a311379035abca115c5b4dca67473bde4e8a4a88de",
-        "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
-        "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
-        "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
+        "references/anti-ai-extraction.md": "e812097e9e9560608cbb6468ecc2379a40a4e11f21e21da20a65ab3828ceaa21",
+        "references/anti-ai-rules.md": "6bc708249559d06ddcf363b9fa6a3c8c680297dd217fe1d7d27363b459f1426b",
+        "references/anti-ai-source-inventory.json": "2e3ea67fcb77e716e0a0ffe150669035c969071e98b393b19d6677b4b70c77e6",
         "references/corpus.md": "0ec3fa0d6cda86fc472fe1eb3625f791f14743df723a08c1a480426a0cf43a1f",
         "references/language-shell.md": "c302a8dfd878955a070285dce3d70be052d71424435194c47c7401dc8c123dea",
         "references/mechanisms.md": "e3fce3374934b1c24f294b8e0e57716c8707f067eb9174d0277bc590b33279e8",
         "references/media.md": "ec5cd0986d26bd563bd5dc43c63280abb3f8a0ca7cbf871e0ff433294ef9a2ea",
         "references/source-snapshot.json": "c9815418045a3fe3c849e453fb53f27686fb02c48d8558f3b42c1f93add59cb2",
         "references/workflow.md": "971666bafd2289326bf113976c776021c7fc2647a7d49542d23c39ee29e448a5",
-        "references/writing-foundation.md": "96a9cde2890168fe6ec5cd4206b7761843a442502acb91355c741f4825ccd425",
-        "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
+        "references/writing-foundation.md": "cdd27bf6b83779a20a4152eba12659b85b8a17fd96cbe829856312dae2d2961e",
+        "scripts/check_writing.py": "c838ea888fff315bcee2b323b8ffd7cd12d0c0f14dcee1990343b28514e58190",
         "scripts/corpus_utils.py": "3ff8e7137b20fe709afb16d907c265e08a02e389a389516b62510d68301c31cd",
         "scripts/load_runtime_profile.py": "2c388d3e6af0806d3b20ba9e221655639a98de1826ba05265fef91937469efe4",
         "scripts/search_corpus.py": "f57d1c6221d0b541bf74ccb1caf54ceab4995f3542e0a72bee26bc3224f44c37",
@@ -158,11 +164,11 @@
       }
     },
     "yl-write-impact-wechat": {
-      "review_date": "2026-10-08",
+      "review_date": "2026-10-13",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Reviewed common source retrieval constraint: full original paragraphs, unatomized text, context and changed positions, explicit degradation, no unrelated enrichment or implicit style authorization. No personal paths, source text or credentials. All unchanged bytes inherit prior review.",
+      "review_note": "2.1.1: reviewed personal approved-sample retrieval, preservation of author edits and voice, non-template use, and plain agent-assisted installation guidance. No private samples or identities in core. Shared copies consistent; unchanged files retain previous reviews.",
       "changed_files_reviewed": [
         "references/writing-foundation.md"
       ],
@@ -173,16 +179,16 @@
         "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
         "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
         "LICENSES/WRITING-FOUNDATION-NOTICE.md": "1f9e14c610651210fcbdc27bc95b1c7ff40964a2001deac3f651d05913ddc8c9",
-        "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
-        "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
-        "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
+        "references/anti-ai-extraction.md": "e812097e9e9560608cbb6468ecc2379a40a4e11f21e21da20a65ab3828ceaa21",
+        "references/anti-ai-rules.md": "6bc708249559d06ddcf363b9fa6a3c8c680297dd217fe1d7d27363b459f1426b",
+        "references/anti-ai-source-inventory.json": "2e3ea67fcb77e716e0a0ffe150669035c969071e98b393b19d6677b4b70c77e6",
         "references/source-snapshot.json": "52a6c07f0ca4a16724ce73630a63534ac4014b3a737106a92ad7a923dfa3277c",
         "references/sourcing-and-claims.md": "36d6f0e62fe3d678a94a140521f540a2de7dadbd289c084732ed7667bc7ef110",
         "references/staged-delivery.md": "9a3c61fa59801bf656e2e11d1982f950ad2564ad805fc28f1cefe93618b86125",
         "references/style-contract.md": "21e73b0be4590d0a2cfed0edb9356fe3ff16974fa0ec7a4e2f05339ccc9cdd82",
-        "references/writing-foundation.md": "96a9cde2890168fe6ec5cd4206b7761843a442502acb91355c741f4825ccd425",
+        "references/writing-foundation.md": "cdd27bf6b83779a20a4152eba12659b85b8a17fd96cbe829856312dae2d2961e",
         "scripts/build-wechat-html.mjs": "7ccfb50c8d69de9333f872fe8c099dcfcbd6ea722a01e162d689799a6095463a",
-        "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
+        "scripts/check_writing.py": "c838ea888fff315bcee2b323b8ffd7cd12d0c0f14dcee1990343b28514e58190",
         "scripts/validate-wechat-article.mjs": "4cd3fa023670a3a3c6bb8c45671f1ce81324a3716b746f112f66c48d6b3c454a",
         "SKILL.md": "2fa53f2f8dc5ee571e73f945dee23579adbb50800d9dd04277b9794e16f7f5d3",
         "SOURCE.md": "a20d73aa93b8fdf4d6e40b14d2642d1342abddbf757784e6648eb201a8fcec87",
@@ -192,12 +198,14 @@
       }
     },
     "yl-remotion-talking-head-editor": {
-      "review_date": "2026-09-24",
+      "review_date": "2026-10-10",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
-      "changed_files_reviewed": [],
+      "review_note": "Reviewed explicit file-archive handoff, distinct from transcript library writes; existing final review and quality requirements retained.",
+      "changed_files_reviewed": [
+        "SKILL.md"
+      ],
       "files": {
         ".gitignore": "18b75d7bfe3dc025255659764e612bb3501334d820bc480b1ea05c655ab2f13a",
         "agents/openai.yaml": "502c3df67acb2db3342cacaf4fa83262d328daeece6f971f5e29679da4b78497",
@@ -216,7 +224,7 @@
         "references/pause-policy.json": "87e92600c4b88c95b4355a779850b398363f2be255c5d3fdf9f6a3ccdedc630a",
         "references/rendering.md": "53de0b3fd9724b5ab8af5b6f083f3cc913aa73d13ec82f33e647d6ca2ede5b60",
         "references/source-snapshot.json": "ac3859773adddce60143952f057502f8a491ac08965b22785de9901c1e566e00",
-        "references/visual-style.md": "7cbec32df34404268f3c88409979b160d6afc53228312c584c48be6eb6850f4f",
+        "references/visual-style.md": "ff086ec592ceed206aafcd7c3c2c69147c0c8e3bb5227f8086806ff39d3ebd5a",
         "scripts/check_asr_coverage.py": "2220e3d458f8c9aa9d9055445d3a970c5210a00990e1d600af32100840ea6871",
         "scripts/kaipai_enhance.py": "a0f6829dacf17c5018d499764f6f961005f5cdebf66c6daa27b75e923e727b5e",
         "scripts/pause-probe.py": "c8ca46429aa766714816ccede8af1f6b49652b6cf153994219dde80793e3c371",
@@ -225,45 +233,59 @@
         "scripts/validate-talking-head-video.ps1": "a7e85c1d24406bc3aecf92cbda3546b9cf74cdc869d76a2900b4755dc2826b30",
         "scripts/validate-video.py": "15d1156c9b3ed264b2e05844b085d57a4be35158ce5ebba6d820e496c344aba1",
         "scripts/word-audit.py": "d40f96d3ab920affe3d8a79228a772f7ba4dc70250a1c7675aa9409e8c0836fc",
-        "SKILL.md": "062b796e4ee3da546495c481139230dbd6ac97a0455b3d637ee91128225595cc",
+        "SKILL.md": "276a0963de08bab640d5f67f660ae6cb22b00fbb12299cb9c17a9525b5e891c5",
         "tests/test_report_paths.py": "81a7461ff5275269f9e1295e4a3dc58d9c4bfc6bb52f5a002605e74e2f6f0354"
       }
     },
     "yl-short-video-covers": {
-      "review_date": "2026-09-24",
+      "review_date": "2026-10-14",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "V3 source/config separation, scope, automatic local knowledge handoff, original evidence and legacy ability parity semantically reviewed. Unchanged bytes inherit prior review. Tests validate structure/behavior, not live platform, real audio or subjective quality.",
-      "changed_files_reviewed": [],
+      "review_note": "Maintainer explicitly requested the established shared template. Restored the non-personal text-free background from the original self-authored Skill; exact bytes match recorded source snapshot. No portraits, private paths or project examples bundled. Loader, strict asset whitelist, manifest and actual-background pixel validation reviewed; behavioral failure tests passed. Unchanged bytes inherit previous reviews. Isolated full-member copy also passed without personal background paths.",
+      "changed_files_reviewed": [
+        "assets/background-black-yellow-tech-v2.png",
+        "AUDIT.md",
+        "references/bold-mode.md",
+        "references/provenance.md",
+        "references/style-spec.md",
+        "scripts/render_bold_cover.py",
+        "scripts/tech_background.py",
+        "scripts/test_bold_style.py",
+        "scripts/validate_bold_cover.py",
+        "SKILL.md"
+      ],
       "files": {
-        "agents/openai.yaml": "f9b69277cbbd073e1dca09644b2245ad7f6e862f1fe06602b8eb3f9948e48baa",
-        "AUDIT.md": "3c293fafa3ab92c1f4c215984ff7841e5873b11759f5cc0e11fd2b2350781805",
+        "agents/openai.yaml": "92374300fcd4d834ba1a56d55985e730af5e38145fe2cb52c6eb60735c9abcd4",
+        "assets/background-black-yellow-tech-v2.png": "ee53e201a98d2fa9ad66f118f80c8ae1999f6781728c54bb220bd1dd311cb1c2",
+        "AUDIT.md": "d03be604ac7583f4491adf3dfe942f2d4d862c4a0fdd634f00b56eb8db150cad",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
         "references/asset-prompts.md": "c506006a84bed655a8803c32d9a42587537644b48b41738b454841b3c8fc8656",
-        "references/bold-mode.md": "8c30d23121311a3afa61571f656e4113fde31a4e2987759d4c31a7061d47bcd6",
-        "references/outlined-mode.md": "d0c63e6dffeb3539f3b7fccf9f27d6a962c0b741b3f349732611839d13ab3607",
-        "references/provenance.md": "6ec20060abc2497673287e0ce6a9e864fe7de94baa5b29abafb9fc46b91747f8",
+        "references/bold-mode.md": "198445eaa91335d8a221a2ac661ccacbd4a32a3296c6ce0d536cb0f203a96372",
+        "references/outlined-mode.md": "7cbfb5b41d3180fb8ab7a14cc71b4983ce7aacb9c938a6a59eb389581a1ad36f",
+        "references/provenance.md": "42bf341e2ab877022f9331c51e678afb7b83b76ece16bbf1d27d7575adc2643f",
         "references/source-snapshot.json": "5d259527935929e5b8cb5d1fe64062984e41fc4069c23b54ff3a7235f52f3d25",
-        "references/style-spec.md": "926f5f7d8b3869c0740d46f6fb655d3eb217c2c1a7cb5cb3c71f149de59c6423",
+        "references/style-spec.md": "13940f3fed71d0cbf8f5825ad6f7959d99da2bd187456993733ee04059bbdd58",
         "references/translucent-mode.md": "7741d807a6531be9cbcdf3306d51f0c3df1badcd88c41baceb017a284eb1c309",
         "scripts/check_portrait_overlap.py": "4364773fa4197f9b2f556db4e1364a726bb6f8bbd93c518a003ad0bf0c20f41c",
         "scripts/font_utils.py": "55266867f03f5ee70801500c48b35d7f9097975497ece4824f793acdd3d64c2a",
         "scripts/prepare_title_crop.py": "6d08b273d021cc2a62ce2a2b5cd645230cb4af1a06b6ff2f706d0e96d2954b2c",
         "scripts/prepare_video_input.py": "bdd2d538d0eda82ff406ec0c2e9708ca9547feb1c1e69c423eaed7f5bfe76634",
-        "scripts/render_bold_cover.py": "d2c38ad71fbfece3dcaaff34a8e7453cbddd766ab247a8ad18cd535ae25de8fe",
+        "scripts/render_bold_cover.py": "e29e14d28d6b5d900e8ba6b73343df944204902fb3f4871b65ad06b511a37c62",
         "scripts/render_translucent_cover.py": "669dc85eeb13cce223e36f7fb9685353e057b8b33f67ec8063ec03b17c616aca",
-        "scripts/validate_bold_cover.py": "48f8582bd32da1d92ef036fc15fcc00223b2d95b18ec1e61ddaa2c90d47c7f1e",
+        "scripts/tech_background.py": "908d3818dbd7eb19ae62d52989cded606a4501e7d4fd347fe2b495004d30a73b",
+        "scripts/test_bold_style.py": "112b3d06c9abad88c5d37b2a47bf22d4cbbe42aced624bd42c2c05da5c0724ea",
+        "scripts/validate_bold_cover.py": "e475d19e35ec86c83ad2957d7bb523369004fad73f245dc769e0e19bd0a21bb5",
         "scripts/validate_translucent_cover.py": "7ea25801ba8e9189b3e3cae640ad8aa947e0a2f98831f6df57e1bfeacc9f68e6",
-        "SKILL.md": "5afa6bcbbbc29ee482090652bb13a884ad70d41305371dad389f3370bb043214"
+        "SKILL.md": "9481aa0af9ae8f644ebe514d19c629e596f186ec0f4c9d5b4219fa2b76ff8a96"
       }
     },
     "yl-write-voice-led-wechat": {
-      "review_date": "2026-10-08",
+      "review_date": "2026-10-13",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Reviewed common source retrieval constraint: full original paragraphs, unatomized text, context and changed positions, explicit degradation, no unrelated enrichment or implicit style authorization. No personal paths, source text or credentials. All unchanged bytes inherit prior review.",
+      "review_note": "2.1.1: reviewed personal approved-sample retrieval, preservation of author edits and voice, non-template use, and plain agent-assisted installation guidance. No private samples or identities in core. Shared copies consistent; unchanged files retain previous reviews.",
       "changed_files_reviewed": [
         "references/writing-foundation.md"
       ],
@@ -274,19 +296,19 @@
         "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
         "LICENSES/HUMAN-WRITING-MIT.txt": "32ca81a9ae10dda7d18963c9eae733477073906b15ee498d02033c8966dbdcaa",
         "LICENSES/WRITING-FOUNDATION-NOTICE.md": "1f9e14c610651210fcbdc27bc95b1c7ff40964a2001deac3f651d05913ddc8c9",
-        "references/anti-ai-extraction.md": "05aaade53797eb832db0d6ed98c7dd67e0d8654620f6e5b4c5cabe2bc6cf4a94",
-        "references/anti-ai-rules.md": "ff28b3f837e1a0ce59f98e0439b7c5a8bc41943e97297cd311eceae1f50f4272",
-        "references/anti-ai-source-inventory.json": "d63d06c88743b6572f8a53e511f54b998f7a14a98b6b7ab6bb110032a36a70cf",
+        "references/anti-ai-extraction.md": "e812097e9e9560608cbb6468ecc2379a40a4e11f21e21da20a65ab3828ceaa21",
+        "references/anti-ai-rules.md": "6bc708249559d06ddcf363b9fa6a3c8c680297dd217fe1d7d27363b459f1426b",
+        "references/anti-ai-source-inventory.json": "2e3ea67fcb77e716e0a0ffe150669035c969071e98b393b19d6677b4b70c77e6",
         "references/dbs-editorial-foundation.md": "2c9e7ac8208e085916eff4b72a85d4c3e6fe2b1a47db1c9eeb7c3a6a2c0de7fb",
         "references/dbs-source-manifest.json": "40e61cc4dee44910b713703a8ca7f284fe32f268b248af8b6ffdbfa390c88253",
-        "references/edit-card.md": "f8763eb9a1379625f53b2cd942eaec14edcc3b97b90f4331946a05cd91993d2f",
+        "references/edit-card.md": "6557ff6ead884958bb1f8371e5e666cc748779f6745b0e0720ef0fd44ccb1a11",
         "references/knowledge-and-source-contract.md": "a82aff6d632787e1be085beb0754c5ea36a73b000cd86cdbbdc14ed2963e0467",
         "references/source-snapshot.json": "8b0bcc63cc387fc18fb68378dcdcdbbbd379bb698c8af62881ac9c9733325fb9",
         "references/style-adapters.md": "dcb1889b37b791a2dd11e4ad76c09c725a922024325680a3d3b4ca38e3a34e3f",
         "references/style-dependencies.json": "2250b65f496553e322540afebaa386e5cd9e1af00f85e3c3cf9c698b5e5dd452",
-        "references/writing-foundation.md": "96a9cde2890168fe6ec5cd4206b7761843a442502acb91355c741f4825ccd425",
+        "references/writing-foundation.md": "cdd27bf6b83779a20a4152eba12659b85b8a17fd96cbe829856312dae2d2961e",
         "scripts/check_article.py": "74201742f90f261ae1a3982e02ee69e28577b18d08e52cf7618b62c7e4608275",
-        "scripts/check_writing.py": "70d16053747b12fd15b023e04516a362ee2197229cb44213d81e14d8f240479e",
+        "scripts/check_writing.py": "c838ea888fff315bcee2b323b8ffd7cd12d0c0f14dcee1990343b28514e58190",
         "SKILL.md": "54409789d02c6ed3943de4b5c6438dd0e76e4678afdb85d0657c5aae52cbe06f",
         "SOURCE.md": "5d170734e932649e3678d05b638c363098e0127ff3ce04575ddd93fcefaa579a",
         "tests/test_check_article.py": "9919e151cd66669b93b276824b315299e2a60a6a74dc6aaa4fef433f00c826d4",
@@ -340,6 +362,27 @@
         "SOURCE.md": "8df89aeaa6f61643ce368c38fa058e55d991e7e83231d661fe13baa3bda4e8bb"
       },
       "review_notes": "Inspected main-entry delivery contract: product separation, video cohort, full content, display rules, customer consent boundaries and truthful completion states. No private data or personal authorization distributed."
+    },
+    "yl-channels-publisher": {
+      "review_date": "2026-10-15",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "1.0.0: Independent generic video-channel publish workflow derived from one complete real batch run outside the core. No account name or ID, no real post titles, no product names or IDs, no local absolute paths, no schedule times or dates. All page operations through visible UI; no private API or authentication mechanism. Platform default values (location city, auto-captured cover) are explicitly required to be overridden; this is the core method. Selector and coordinate values are historical hints requiring per-run verification.",
+      "changed_files_reviewed": [
+        "agents/openai.yaml",
+        "references/workflow.md"
+      ],
+      "files": {
+        "agents/openai.yaml": "f9870b875fe06b30916a9d44fb091c77b5fc08622da470f813ee06f50706d89c",
+        "LICENSE": "fe1fb4ab17f3d9b4f5a5fb3a7b0d66e56d5d37bde20d7293c566cd6df26d8818",
+        "references/checklist.md": "7c0a27a0bd64169fb624fe3a1ba28068a5ad26dc628e5e11e5e62a611fee96a5",
+        "references/workflow.md": "1ffa0cd2fa9600bb9ba2a24d876e1e416e9453ff3b61767ae9ec60c6c113d26c",
+        "SKILL.md": "4b8a318a387697858adc36f12b728722a8e6cd34fbbec663d632109ec9ad7e32",
+        "SOURCE.md": "3690589618c4314d66c9e93c02d185bd71f832e454245cbcb0ec3672b5b6716d"
+      },
+      "review_notes": "Read every file for identity, credentials, account data, private paths and run logs. Title source rule generalised to 'video top title from review draft'; cover verification generalised to 'matches source cover' instead of any fixed visual style. Publishing stays read-only outside the listed post actions: no deletion, no published-post edits, no order or account changes.",
+      "release_3_7_13_review": "1.0.1: reviewed workflow.md in full, retained title character and scheduling observations, replaced source titles with generic examples, removed automatic cookie clearing and script-click assumptions, generalised cover matching, corrected eight-field check count. Added generated openai.yaml. No private identities, actual titles, credentials or media. Browser operations still require current user scope and tool support; no new live publication test."
     },
     "yl-knowledge": {
       "review_date": "2026-09-24",
@@ -489,13 +532,12 @@
       "retrieval_upgrade_review": "2026-10-08: reviewed original/derived separation, source version and authorship checks, offline model boundaries and complete passage handoff. Retrieval produces candidates requiring Agent review; no full-corpus semantic repair claimed. Unchanged files inherit prior reviews."
     },
     "yl-media": {
-      "review_date": "2026-10-09",
+      "review_date": "2026-10-15",
       "privacy_review": "passed",
       "rights_review": "passed",
       "method_review": "passed",
-      "review_note": "Reviewed changed routing and interface files: unified media entry dispatches writing/video once, preserves user mode and source-first constraints, no unrelated analytics or login for creation requests. PPT is office. Existing execution methods and permissions unchanged.",
+      "review_note": "3.7.0: read all new/changed files for generic paths, teaching/demo routing, ASR uncertainty, source/voice protection, frozen mapping and once-only speed. Original MIT code/docs; no private media, hotwords, runtime or account. Isolated real FFmpeg render/decode and meaningful rejection cases passed; actual future video quality/listening is not implied. 2026-10-14: added video-channel publishing as an independent routing branch (yl-channels-publisher) with its own section; publishing no longer shares the capture branch and requires explicit authorisation. Read the full entry for routing conflicts, no private identity, path or account data. Other files unchanged and inherit the previous review. 2026-10-15: read and reviewed full SKILL.md; added explicit Douyin versus Channels publishing routing, local-planning scope and platform clarification; no private data. Only this SKILL.md hash updated; all pre-existing drift in other files remains pending. 3.7.12: reviewed additive Xiaohongshu preparation route and manual final submission; no collection scope expansion. Only SKILL.md hash updated; unrelated existing file drift retained.",
       "changed_files_reviewed": [
-        "agents/openai.yaml",
         "SKILL.md"
       ],
       "files": {
@@ -503,9 +545,10 @@
         "references/handoff.md": "5e8390dec0f00ff36c350be7c76d6422deccd7a7e6ac19f666db308db1d1ed19",
         "references/ranking.md": "30f81597e4d68ad2e27106dd6cc803ba3fede4b4d04e9d18dd61db4e4326fefa",
         "scripts/ranking.py": "e7d5dd802a1f5f63870ca5604f8fbb663720cb1d034b4a583fcd4f3cf9598c86",
-        "SKILL.md": "a26a6d4e08c534819935adddef0dc910009d4521dddb1d8a8d82147b001a309c"
+        "SKILL.md": "52b8ac211be84ce583fb81f0f3ff059497198441303c33cbcecbb5388bea5cf5"
       },
-      "review_notes": "Changed files semantically inspected: five-dimensional percentiles, product-separated daily chart, missing-data gaps, masked HTML, full transcript display without internal evidence, content-based categorization and host-specific connection verification. Personal data remains external; existing rights notices retained."
+      "review_notes": "Main-entry routing: publishing branch kept separate from capture/analytics; explicit-authorisation rule stated; cover-first and no-location rules surfaced at the router so they are not lost downstream.",
+      "slice_routing_review": "3.6.0: reviewed additive independent-slice dispatch, explicit Remotion preservation, existing short-talking-head/interview/archive routes retained; no permission expansion or private inputs."
     },
     "yl-official-account-analytics": {
       "review_date": "2026-09-24",
@@ -558,6 +601,195 @@
         "scripts/pptx_inspect.py": "2879bab7462a5c83de9dc6c7da7999e456a98fc65ede09062afec66b2539e9e4",
         "SKILL.md": "4a9e21d283fd2e271f8651c5de7a0fafd41a0e690192dd843396c5543f977a70"
       }
+    },
+    "yl-x-topic-research": {
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "files": {
+        "agents/openai.yaml": "0425edf2a4ff65fc55dabd0b8dbd801b37edee9e37aacbe0f9e222f6c013bfb4",
+        "LICENSE": "9df3d4a103986febda021858a1429904f3d26f4be349d2f0780a4583fc70eeab",
+        "references/delivery.md": "01af59d3d7c230d71b8a3dedc6206c7032a5c098f015540f8c3629f57f030681",
+        "SKILL.md": "6d9866313841da45383caea96eaff9c881c7446d12b5910025b0941135a1c456"
+      },
+      "review_notes": "2026-10-10: reviewed every changed/new file for portable inputs, tool availability, source ownership, partial completion, real screenshots and quote/time verification. Original YL research instructions under MIT; no private account, transcript, screenshot, path or credential bundled. Existing unchanged files retain prior hash-bound review. Offline decision cases reviewed; host runtime invocation not claimed."
+    },
+    "yl-youtube-deep-summary": {
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "files": {
+        "agents/openai.yaml": "1fed0e4d9c60ae0524618790f0720d19d819b1c47f47d85c6174e0e63d28577c",
+        "LICENSE": "9df3d4a103986febda021858a1429904f3d26f4be349d2f0780a4583fc70eeab",
+        "references/source-and-quotes.md": "e653716743e03a8bcb80a7576fb781926cbbc1e9aec1d06467dc4c5c1ec24121",
+        "SKILL.md": "b9861e658dcd95ec98001bfc844dd8c8938cba7f052173b6f2d182f200fb0293"
+      },
+      "review_notes": "2026-10-10: reviewed every changed/new file for portable inputs, tool availability, source ownership, partial completion, real screenshots and quote/time verification. Original YL research instructions under MIT; no private account, transcript, screenshot, path or credential bundled. Existing unchanged files retain prior hash-bound review. Offline decision cases reviewed; host runtime invocation not claimed."
+    },
+    "yl-video-archive": {
+      "review_date": "2026-10-15",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "Reviewed every new file: independently implemented MIT local-file archive; status preserved, originals verified before removal, cleanup precheck, scope/link protections, collision refusal and interruption recovery. No private project/media or external services bundled. Isolated behavior tests, not perceptual media acceptance. Version 3.6.1: reviewed two documentation changes: two archive directories, browser page beside batch outputs, temporary receipts consolidated before removal, no hidden copies; no script, rights, source or permission expansion. Unchanged bytes inherit prior review.",
+      "changed_files_reviewed": [
+        "SKILL.md",
+        "SOURCE.md",
+        "agents/openai.yaml",
+        "references/file-plan.md",
+        "scripts/archive_files.py"
+      ],
+      "files": {
+        "agents/openai.yaml": "b657d4e6edd11116a5f737c27a0c145d95d0f92a918773cc8fca07657ca3b9ea",
+        "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
+        "references/file-plan.md": "fac0a3c533050893f43984863f408e83a9b9c91f528516535ec5ef85359a77a9",
+        "scripts/archive_files.py": "e605552bdfe27e259f5128592c38ed095eb79e5258422859fbb06bd5154463cd",
+        "SKILL.md": "b27274e4d1cc3869c78783809ab7cd54c27c34ad68e9e31f9db3341f2d63fdf2",
+        "SOURCE.md": "5588235b7b79defd3e64216931e4e9a0409055403694394c4751d53b0451681b"
+      },
+      "release_3_7_13_review": "3.6.2: reviewed SKILL.md, SOURCE.md, openai.yaml, file-plan.md and complete archive_files.py. Course slices only reference existing course files with hashes, mother copies rejected; standard mothers must stay within their corresponding final directory. Scoped cleanup and source preservation remain enforced. Updated obsolete test fixtures and added source-change, absent-reference, cleanup-overlap and copy-refusal cases: 15 isolated behavioral tests passed. No live media archive or actual listening is claimed."
+    },
+    "yl-remotion-video-slicer": {
+      "review_date": "2026-10-10",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "Read every new file: original MIT instructions/standard-library tools/React templates, external input paths and font/media dependencies, no personal case or SDK bundled. Reviewed source-only speech, independent complete argument, source-mask intersections, staged packaging, versioned outputs, complete AAC copy and explicit human-review pending fields. Synthetic behavior test ran real Remotion PNGs and FFmpeg MP4s with reordered/overlapping frames, four mask boundaries, two packaging versions, AAC equality and stale/overwrite rejection. No live platform, real-material listening or automatic QR detection claimed. Reviewed authorized landscape-title extension: independent layout calibration, optional translucent panel with validated geometry/opacity, opaque text and per-line colors. Synthetic test rerun includes actual rendered alpha between150-165 at62 percent, original mapping/masks, real exports and unchanged AAC; no private screenshot/config stored in core.",
+      "changed_files_reviewed": [
+        "agents/openai.yaml",
+        "LICENSE",
+        "NOTICE.md",
+        "references/editorial.md",
+        "references/manifest.example.json",
+        "references/runtime.md",
+        "scripts/slicer.py",
+        "scripts/test_slicer.py",
+        "SKILL.md",
+        "templates/Layer.tsx",
+        "templates/package.json",
+        "templates/render-layers.mjs"
+      ],
+      "files": {
+        "agents/openai.yaml": "9b3efd75ba3950a7b8ee8e7794c03b7466f89b5ea3064b5e2d007bd673edddc5",
+        "LICENSE": "9df3d4a103986febda021858a1429904f3d26f4be349d2f0780a4583fc70eeab",
+        "NOTICE.md": "6886e7e98bbc016534c418cbbb6d8d377bc63108cfc21442548518185b79e23a",
+        "references/editorial.md": "0f8800e968499cb7f7122c399333d60440c55c87b4e70fa2ec82f1aace5bf82c",
+        "references/manifest.example.json": "ee69a738c8b21ff85df5a1be471354a4bef4a7747e0ebc89bc745cd71dc9e79e",
+        "references/runtime.md": "0cf1f9e28cb14743d35cf8daa0e6f1ec470d3dc6b9c4204f32ce9341d0e4ced8",
+        "scripts/slicer.py": "38e88f63ad96ac2d5bcbc59d416b5eb5c73af5a4be09d49861a190f4e503d5f4",
+        "scripts/test_slicer.py": "a361a13bf052e88dc19ceaeffc08581693a3c2e7ab7da4c33ff80722f33dd561",
+        "SKILL.md": "08fda32662c345ed3e233bde6fefa0ca8b0e6ea92dbaecf7ac48a9f1219d0aa0",
+        "templates/Layer.tsx": "ca1c17ddf71db60d4e8418a351536e3119cc65c5cf23fee600c4cba3694a4da8",
+        "templates/package.json": "8661ab9b0dc96e46e9b1b6ee7cd1691db488d87d3bdff11b9eba2589d125e099",
+        "templates/render-layers.mjs": "5b89d106727507947c28fa429a8b41a2e4386aae3ec37a5b4ec0b7052340ca93"
+      }
+    },
+    "yl-course-video-editor": {
+      "review_date": "2026-10-12",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "files": {
+        "agents/openai.yaml": "4f5f62ff8b693fe3fa0c69182c2311285b9df3c25dd9b1693ca54d3a5abc653d",
+        "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
+        "references/audio.md": "2d2659d0a3e17d1db14f7aae696ffb18a37f35fdd96093569c1ebfb4397be1ce",
+        "references/editorial.md": "c72f275be283f62fa59714918fc2660cfcdef141058903b34659f79eed811786",
+        "references/plan.example.json": "00b2c699048ba255068eea6bebed349f03ca956414bc3589306f44178143f195",
+        "references/runtime.md": "f15930c86fe5f2c4912a24d6aacb976e32d175141e36625d56303fc2ea5ce64e",
+        "scripts/balance_playback.py": "5083197c338cc6456cdfa53527497f539887be729d9e110aff9103baa348b586",
+        "scripts/course_edit.py": "31101cf4d9ab8b87994302d2ce329fea095d0385a271100ca14c6b87abecabde",
+        "scripts/test_course_edit.py": "b30954eac6a00d8ba682afb41ec35b79adc4cb88f99553492463a62b573989fb",
+        "scripts/test_playback_balance.py": "284bad67bebdc99370ea654379abce49be99b95b4026bce8a5d6108d4888b775",
+        "scripts/transcribe_course.py": "12dfc8ed6345d9536768bfe2a2131476d702ae548e5ac389fe1e70c6e8de2312",
+        "SKILL.md": "333700eefd6ffb4cd880c3e8f7d41aac613d12aad904a30c1936793c9d190893",
+        "SOURCE.md": "4bc55bbfbc8996a0cc31ad43e98be1caeb2df561a8c1a7083c6282aabf720f03"
+      },
+      "changed_files_reviewed": [
+        "agents/openai.yaml",
+        "LICENSE",
+        "references/audio.md",
+        "references/editorial.md",
+        "references/plan.example.json",
+        "references/runtime.md",
+        "scripts/balance_playback.py",
+        "scripts/course_edit.py",
+        "scripts/test_course_edit.py",
+        "scripts/test_playback_balance.py",
+        "scripts/transcribe_course.py",
+        "SKILL.md",
+        "SOURCE.md"
+      ],
+      "review_note": "3.7.0: read all new/changed files for generic paths, teaching/demo routing, ASR uncertainty, source/voice protection, frozen mapping and once-only speed. Original MIT code/docs; no private media, hotwords, runtime or account. Isolated real FFmpeg render/decode and meaningful rejection cases passed; actual future video quality/listening is not implied. 1.0.1: reviewed the complete stereo-side audio helper and signal tests; real external PCM matched the project correction exactly. Reviewed corrected-audio SHA input and AAC insertion/tail-boundary documentation. Actual listening remains pending."
+    },
+    "yl-douyin-publisher": {
+      "review_date": "2026-10-15",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "Reviewed small UI option-list change and corresponding documentation: both hour selectors contain 06 through 22 only; ten-minute options retained. JavaScript syntax and actual browser option lists verified. Retained preceding engine review and its 22 behavior checks; no engine or publication changes in this patch. Personal state remains external and existing plan preserved.",
+      "changed_files_reviewed": [
+        "agents/openai.yaml"
+      ],
+      "files": {
+        "agents/openai.yaml": "d3284aeabd3c818016f74727e957eacf81b4b93387427f8a69e0d29d50ceaaa1",
+        "LICENSE": "0a9dabde6fca3a8d9010c587bc53c09cc147aa081848fbbdab9f119be3f778f8",
+        "references/browser-checks.md": "fe76ec9f0259f038ad63165101dd176fd1dc7e7f95dd87e1cd5b4b7057f9abc0",
+        "references/workbench.md": "9375b9420f585576bc0406b38023901b6c0bab4dffe1fcb6b94f8d4bdb6bc535",
+        "scripts/workbench/engine.py": "985cedf7583cb6b322e19d428af8c0a631722543df0792dad6cb972e4c50b10e",
+        "scripts/workbench/runner.py": "2ce39d84d474488031dd321be2b848c200ca818c7ad7a90c6546a0166fe727ce",
+        "scripts/workbench/server.py": "f1a1fda854cae8decb26af7c23d581841d5377d851efb676d6ca78cf72a363db",
+        "scripts/workbench/test_workbench.py": "f7a033b666a3d011fa01afb0fcb217d92bee7c79eb027ed8df92cd3ebd9533ba",
+        "scripts/workbench/web/app.js": "a072915c801818106697f32150c9e089ef2fd09674336e53f7f71bf83e4d0dcd",
+        "scripts/workbench/web/index.html": "fa61c1e549cfed8005d57fdefb304dbbb6686750d4b010d22f2564c831be7eec",
+        "scripts/workbench/web/style.css": "f1f88158090890fca50af57f66abf60d757432a4ac2fc3dab7fb062c27635bd2",
+        "SKILL.md": "4431d83878e45f40ff6fde5bcfa2cde1e42cf6191459eafa84400069c0ac9a7b"
+      },
+      "release_3_7_13_review": "1.4.2: generated and reviewed openai.yaml describing existing local workbench and scoped publishing. All existing implementation bytes match their preceding review. 22 isolated behavioral tests passed; no live publication performed."
+    },
+    "yl-xiaohongshu-publisher": {
+      "review_date": "2026-10-15",
+      "privacy_review": "passed",
+      "rights_review": "passed",
+      "method_review": "passed",
+      "review_note": "Reviewed all 14 member files. Original MIT adaptation of local Douyin workbench; no private paths, identity, credentials or media in core. Independent forward evaluation and code review identified database platform isolation, repeat verification, and stale confirmation issues; corrected with focused tests. 39 isolated behavior tests pass; browser checks cover title/emoji, caption plus topics, tenth/eleventh topic, AI unknown gate, media previews and stale confirmation rejection without executor start. Read-only CLI browser connection reached login page. No live upload/publication acceptance; final platform submission remains manual. Screenshot bytes are structural evidence checks, not independent visual truth verification.",
+      "files": {
+        "agents/openai.yaml": "b5fe99d516f509c4493f6a72ba5e41d50bf98740378d729bdba7acc47d46052d",
+        "LICENSE": "0a9dabde6fca3a8d9010c587bc53c09cc147aa081848fbbdab9f119be3f778f8",
+        "references/browser-checks.md": "eb363a5dbca3bfbcbe9fe9fed8032403a08e1e1381de2cebfa6665ab30c4dd88",
+        "references/platform-rules.md": "e3e0c36b79ef6371fb9ad74a75bbee2a90d524f67f197a48afea1a203ca26ee1",
+        "references/workbench.md": "9ddc410af9bf33b67fd97ad0401e157113ed5a1fc8c8ce8a3ce558bb519026dd",
+        "scripts/workbench/engine.py": "1c535a2ea49325d739202c883c8862c0a1772097f5bc3710c5a04216d040c34d",
+        "scripts/workbench/rules.py": "c37591229bbf975f3e1accfad6f927804c58205617096a2ef0f868e1213ae0b0",
+        "scripts/workbench/runner.py": "6f5925f6213824ee147e8404bce331534eee79775855469e603407ed0f479779",
+        "scripts/workbench/server.py": "a8f842257627ac663053c76208d587286224a708299ed35e10bca29d5b43b1c3",
+        "scripts/workbench/test_workbench.py": "3ba904c072859873ac2dea162ad2c2a92285ed87406f8823c0fbb17754919bc0",
+        "scripts/workbench/web/app.js": "231841b7cfa11bb4a900117c0964099d0d1b7ea5cf786d21e1b9ca7e3ecaab9b",
+        "scripts/workbench/web/index.html": "45bb7009ae49a72145093a0ee6add2f3277f86f1b76817d95d205a8c5725fc95",
+        "scripts/workbench/web/style.css": "356a0c0620b2502016fe652545f71bdaef0f382bfff0cd3e8deacb6618a9f107",
+        "SKILL.md": "7c5f3fb1442806ad8b947ca55a117f4e6dc761ca61271bd4293913ba7cca7ff1"
+      },
+      "changed_files_reviewed": [
+        "references/workbench.md"
+      ],
+      "release_3_7_13_review": "1.0.1: reviewed added generic desktop shortcut guidance in workbench.md: stable external assets, transparent RGBA corners across ICO sizes, preserved launch fields and non-disruptive refresh. No personal icon, nickname or desktop path included. Other bytes inherit prior full-member review; 39 isolated behavioral tests passed; no live upload or submission performed."
     }
+  },
+  "project_review_note": "2026-10-14: release.json updated only to register the new media member (yl-channels-publisher, 1.0.0, category media, role member, license MIT, subcategory publishing). Member count 31 -> 32. Cluster version string left unchanged; no root doc, asset or maintenance script modified in this round.",
+  "repository_extras": {
+    "review_date": "2026-10-15",
+    "note": "Visually reviewed historical generic cluster posters and read the complete public generation record. Version/count labels describe their historical release; no private identity, data, credentials or media. Retained in Git repository as historical artwork, not added to the installable package. Current members are governed by release.json and catalog.",
+    "files": {
+      "YL-Skill集群_v3.0.0.png": "37df84e094eb8b415657b61903bc73eabf9bd692d421304b5dc7065fe9a13a1a",
+      "YL-Skill集群_v3.0.0_制作记录.md": "9d4b5c96c7f51c772c6edc859fb08941537523f1cf9ef7ce101d168a9391485d",
+      "YL-Skill集群_v3.4.1_配色统一版.png": "af6ab986083f1738e269a84178669954e101522daf911e83074ed8547ded74d5",
+      "YL-Skill集群_v3.7.1_31项_20261012.png": "639e83e19d3a9993a54036e934446287d00bd7f1656a4f9cb55b1c80a72f614a",
+      "YL-Skill集群_v3.7.1_31项_20261012_1MB以内.jpg": "e57e7c314ff9c45ad68126891c59917a067c27056b227ab889369c1188aca2ff"
+    }
+  },
+  "release_3_7_13_review": {
+    "date": "2026-10-15",
+    "scope": "All accumulated uncommitted generic cluster changes plus registered Xiaohongshu member. Previously reviewed exact bytes inherit existing file-level reviews; eight drifted files were read and reviewed, with current release documentation and generated metadata reviewed separately.",
+    "method": "Source and public-text privacy pre-screen plus semantic review of drift, routes, examples, attribution, external assets and runtime boundaries. Visually reviewed pending public artwork. Tests cover isolated behavior, not live platform publication or perceptual media quality.",
+    "local_data": "Private profile, account, materials, desktop icon, sqlite state, logs, credentials and .local are excluded."
   }
 }

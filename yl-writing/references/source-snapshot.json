@@ -22,25 +22,28 @@
       "name": "dbs-ai-check",
       "tracking_scope": "listed_files",
       "files": {
-        "SKILL.md": "9d00040c66757ad0ccb7b610b37ca35284600a727968f5f6a066a66aef7e1041"
+        "SKILL.md": "15515598528b6d98ae489cf8add3a9f797a76aafa81994f92ce6e1ff6f7f0b8b"
       },
-      "reviewed_at": "2026-09-21"
+      "reviewed_at": "2026-10-13",
+      "upstream_revision": "f24ea08ae4b50660a1575554eb58903fa6d60f01"
     },
     {
       "name": "dbs-content",
       "tracking_scope": "listed_files",
       "files": {
-        "SKILL.md": "42307b30a084f729153adecc90cfb4ee94147b19edf41f6044ed0748d125e999"
+        "SKILL.md": "14162dc99178abfe5d15817f7d42d909cb9b3d89fa4143f73e55224a6b1ec051"
       },
-      "reviewed_at": "2026-09-21"
+      "reviewed_at": "2026-10-13",
+      "upstream_revision": "f24ea08ae4b50660a1575554eb58903fa6d60f01"
     },
     {
       "name": "dbs-script-flow",
       "tracking_scope": "listed_files",
       "files": {
-        "SKILL.md": "0decea58ba794d52c871472d78f7c22527e89faa778b7e80b48cc91f0140dbad"
+        "SKILL.md": "714fd9f81ed48bb682ec9f537e5cb2efac33b74bd2e6bf638900aed709d87222"
       },
-      "reviewed_at": "2026-09-21"
+      "reviewed_at": "2026-10-13",
+      "upstream_revision": "f24ea08ae4b50660a1575554eb58903fa6d60f01"
     },
     {
       "name": "dbs-hook",

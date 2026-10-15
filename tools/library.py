@@ -34,6 +34,11 @@ def relative_file(value):
             and ':' not in value and not value.startswith('/')
             and all(p not in ('', '.', '..') for p in value.split('/')))
 
+MEMBER_ASSETS = {
+    "yl-short-video-covers/assets/background-black-yellow-tech-v2.png": "ee53e201a98d2fa9ad66f118f80c8ae1999f6781728c54bb220bd1dd311cb1c2"
+}
+
+
 def file_map(folder):
     if is_link(folder):
         raise ValueError('Linked directory: ' + folder.name)
@@ -45,6 +50,12 @@ def file_map(folder):
             continue
         if '__pycache__' in p.parts or p.name.startswith('.env'):
             raise ValueError('Runtime data found: ' + p.name)
+        asset_key = folder.name + '/' + p.relative_to(folder).as_posix()
+        if asset_key in MEMBER_ASSETS:
+            if digest(p.read_bytes()) != MEMBER_ASSETS[asset_key]:
+                raise ValueError('Reviewed asset bytes changed: ' + asset_key)
+            result[p.relative_to(folder).as_posix()] = p.read_bytes()
+            continue
         if p.suffix.lower() not in TEXT_SUFFIXES and p.name not in {
                 'LICENSE', 'NOTICE', 'VERSION', '.gitignore', 'COPYING'}:
             raise ValueError('File type needs review: ' + p.name)

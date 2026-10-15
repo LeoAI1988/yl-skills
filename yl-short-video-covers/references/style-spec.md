@@ -1,57 +1,35 @@
-# Bold Black-White Cover Style with Optional Yellow Accents
+# 科技大字模式：通用输出规范
 
-## Format
+本规范适用于每一位使用者，不是个人外置风格或可选描边变体。半透明原帧模式独立遵循其规则。用户本次明确指定的例外优先，必须记录；不能将一个缩水输出反过来解释成用户例外。
 
-- Canvas: 1080x1440 PNG, RGB or RGBA.
-- Safe area: at least 56 px on every edge.
-- Headline: 3-5 compact lines occupying about 65%-75% of the canvas height.
-- Optional user-supplied portrait: chest-up in the lower-right, recognizable at thumbnail size; normally 70%-84% of canvas height depending on headline density. Use the user or a source-relevant public figure.
+## 画布、背景、图层
 
-## Palette
+- 基准1080×1440，交付PNG；3—5行短标题，上部形成完整文字轮廓。
+- 暗底约#05070A，必须有跨画面的低对比电路走线、节点、芯片和边缘结构。不能只有四角标或一块纯黑。缩略图能辨认底纹，但不抢字。
+- 默认底图固定为 [成熟电路母版](../assets/background-black-yellow-tech-v2.png)。`scripts/tech_background.py`只加载并验证这张底图，不绘制新背景。母版包含密集多层走线、芯片、右侧HUD圆环、点阵和黄色斜线。文件哈希、固定1.05对比度与左侧压暗参数都须保持；“同为电路风”不等于同一模板。缺失时失败，不回退；用户明确要求重新设计时才建立新模板版本。
+- 图层由底至顶：电路纹理→适度压暗→少量装饰→文字外描边与字面→透明人像。
 
-- Background: `#05070A` and `#111820`.
-- Optional accent yellow (only when selected): `#FFC400`.
-- Main text: `#F7F7F5`.
-- Secondary technical marks: steel gray below 45% luminance.
+## 文字
 
-## Typography
+- 正文#F7F7F5，关键词#FFC400。黄色强调1—3词，总强调字数不超过约三分之一（向上取整）；其他字必须白色。“黑底黄字”是这一版本的名称，不是全黄指令。
+- 无黄色矩形底块；水平、共左边，不旋转。保留源文案、语义分行、独立字号和行距，不为填版凭空添加内容。
+- 使用中文超黑体。拉丁词同等粗重，必要时用对应粗体独立渲染，避免细体回退、截断或换行。
+- 黑色外描边约9px。Pillow实现为11px黑描边再绘制2px同色字面，其外侧留下9px；不缩蚀字面。阴影不能充当外描边。
+- 字形占高通常55%—75%，字号按句长变化，邻行字面不得互相压住。短标题仅按源内容补充；用户指定删字或短句时原样保留。
 
-- Prefer Noto Sans SC Bold, Microsoft YaHei Bold, then SimHei.
-- Target 180-320 px heavy type for compact lines. Size lines independently so short hooks can become dramatically larger than long lines.
-- Use Noto Sans SC Bold with a same-color inner stroke to create an extra-heavy visual weight.
-- Apply a small dark stroke or shadow to white and yellow text.
-- Pure black-white mode uses no colored box. Optional yellow mode: a boxed term uses black text on a yellow rectangle with tight padding.
-- Highlight no more than roughly one third of the headline.
-- Rotate selected line blocks by roughly 0.5-2.5 degrees and vary their left offsets. Keep the overall reading order obvious.
-- Keep neighboring glyph bodies visually separate. Shadows may nearly touch, but major strokes from one line must not cover the next line; add 24-64 px of explicit line gap when large four-line layouts collide.
+## 人像
 
-## Composition
+仅在用户选择人像并提供/授权素材时叠加，身份素材不随核心分发。放在右下顶层，完整头脸可见；先排文字后定大小。先重排文字，再移动或缩小人物。逐字遮挡目标≤25%，≥50%失败；不能遮住核心词，也不能让文字盖脸。
 
-- Preserve dark contrast behind the title while retaining low-contrast circuit and grid detail.
-- Default to a plain black background. An explicitly requested technology background may use layered subdued marks across the canvas, brighter near the edges and lower-right.
-- Blend the portrait's black background into the template with a soft top-left mask.
-- Treat headline and portrait as one connected silhouette. Avoid a narrow text column beside an isolated fixed-size person.
-- Fill the top intentionally: begin visible type near the top safe area, or use a wide boxed warning line when the wording would otherwise leave a dead band.
-- Choose portrait scale after headline layout. Increase it for sparse or four-line titles; reduce it for dense five-line titles.
-- Composite the portrait after the headline. Keep the full head and face inside the canvas by default, then let the head or shoulder overlap a small lower-right portion of one or two lines without covering the eyes, core noun, or decisive claim.
-- Use 25% of a character's visible glyph area as the normal portrait-overlap target and 50% as a hard maximum. If any character would be half-covered or more, rebreak the headline to create a portrait corridor, then adjust portrait position, then reduce scale. Never rely on surrounding words to make an obscured character guessable.
-- Require a true transparent edge around the portrait. Do not leave a black cutout patch, halo, cast shadow, or glow behind hair and shoulders.
-- Add only abstract linework and corner marks; do not add unverified data, logos, UI, or decorative English words.
+## 验收
 
-## Quality gate
+用本 Skill 校验器检查尺寸、原文、补充、哈希、水平对齐、强调比例、外描边记录和可见底纹。再真实查看全尺寸及270×360缩略图：
 
-- For source screenshots below 800 px wide, inspect an enlarged top crop and verify each low-resolution character by its strokes.
-- Title manifest matches the screenshot transcription exactly after removing line-break markers.
-- For script or video mode, every primary and supporting hook is traceable to the active source.
-- The title reaches at least 55% of canvas height and normally reaches 65%-75%; three or more lines show deliberate size variation.
-- Portrait placement is recorded in the manifest and visibly responds to headline density rather than repeating a fixed scale.
-- At both full size and 270x360, every overlapped character remains immediately recognizable; no individual character is 50% or more covered by the portrait, and normal overlap stays near or below 25%.
-- The full head and face remain visible unless an intentional close crop was explicitly requested.
-- Portrait subject is recorded in the manifest and is either the user or a person directly relevant to the source.
-- No source-app UI, playback icon, timecode, likes, or subtitles enter the finished cover.
-- If a portrait is used, preserve its supplied identity and plausible facial/hand anatomy.
-- At 270x360 preview size, every title character remains readable.
-- At full size and 270x360, adjacent headline lines do not merge into one ambiguous glyph mass.
-- Original screenshots, photos, training assets, and reference grids remain private inputs and are never delivered as part of the cover.
+1. 实际背景与包内成熟母版一致，芯片/圆环/斜线位置和细节未被简化；四边及留白区有纹路，文字后不过亮。
+2. 白字是主体，黄色有明确词级层次。
+3. 外描边清楚且字面完整，英文和中文同样厚重。
+4. 所有行水平共左边，行间不粘连，原文准确。
+5. 头像顶层、完整头脸、透明边缘自然，关键字没有遮挡。
+6. 当前预览和下载都绑定最新文件。改版保留旧版。
 
-All portrait requirements are conditional on the user supplying and requesting an avatar. Without an avatar, keep a balanced title silhouette and do not reserve an empty portrait column. No font, photograph or identity asset is distributed with this Skill.
+自动检查不能替代目视，也不能证明文案事实；不满足任何适用项不得标为该模式完成。

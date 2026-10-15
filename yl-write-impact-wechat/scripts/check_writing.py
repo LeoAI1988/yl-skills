@@ -92,6 +92,19 @@ ROAD_SIGNS = (
 
 ROAD_STRIP_CHARS = "。！？!? \n"
 
+# Shape candidates only: attribution, genre and actual function need review.
+META_PREFACE_PATTERNS = (
+    re.compile(r"我(?:对[^。！？\n]{1,20})?(?:一直)?有一个(?:很|非常)?明确的(?:理解|认识|判断)"),
+    re.compile(r"我(?:曾经|以前)?用过一个比喻"),
+    re.compile(r"另一个我(?:很|非常)?(?:看重|在意)的[^。！？\n]{0,12}"),
+    re.compile(r"我(?:最|更)?(?:看重|在意|不愿意丢掉)的[，,]?\s*是"),
+    re.compile(r"(?:我想强调的是|我想说的是|这里有必要说明|需要说明的是|值得一提的是)"),
+)
+DEFENSIVE_NOTE_PATTERNS = (
+    re.compile(r"(?:为(?:了)?避免误解|严谨地说|仅供参考)"),
+    re.compile(r"不构成[^。！？\n]{0,12}(?:承诺|保证)"),
+)
+
 FORBIDDEN_PUNCTUATION = {
     "：": "中文冒号",
     ":": "英文冒号",
@@ -410,6 +423,15 @@ def main() -> int:
     failures = []
     warnings = []
 
+    for label, patterns in (("无内容前缀候选", META_PREFACE_PATTERNS),
+                            ("防御性说明候选", DEFENSIVE_NOTE_PATTERNS)):
+        for pattern in patterns:
+            for match in pattern.finditer(prose):
+                warnings.append(
+                    f"{label}，第 {line_number(text, match.start())} 行，{match.group(0)}。"
+                    "回读来源与作用；有效原话、必要条件和正式文体不能自动删。"
+                )
+
     quote_colons = []
     for symbol, label in FORBIDDEN_PUNCTUATION.items():
         matches = list(re.finditer(re.escape(symbol), prose))
@@ -624,7 +646,7 @@ def main() -> int:
         "candidate_count": len(candidates),
         "candidates": [{"id": "C%03d" % (i + 1), "detail": item,
                         "decision": "unresolved"} for i, item in enumerate(candidates)],
-        "limitations": "Heuristics only. Zero hits is not approval. Read H-01..H-12, D-01..D-22 and E-01..E-05; resolve each candidate against sources, genre and function. No AI probability.",
+        "limitations": "Heuristics only. Zero hits is not approval. Read V-01..V-05, H-01..H-16, K-01..K-05, D-01..D-22 and E-01..E-05; resolve each candidate against sources, genre and function. No AI probability.",
         "exit_codes": {"0": "no mechanical candidates; semantic review still required",
                        "1": "candidates need review", "2": "input cannot be checked"}
     }

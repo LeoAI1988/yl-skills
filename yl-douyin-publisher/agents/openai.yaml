@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl 抖音发布工作台"
+  short_description: "多文件夹选片与可视化排期，核对封面、实际画面排重及抖音发布结果"
+  default_prompt: "使用 $yl-douyin-publisher 为我的成片建立本地发布工作台，核对实际画面、已有封面和排期后执行已授权的发布。"

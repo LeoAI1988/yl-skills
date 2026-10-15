@@ -26,6 +26,26 @@ class WritingChecks(unittest.TestCase):
     def test_empty_input_is_not_approval(self):
         self.assertEqual(self.check_text('').returncode, 2)
 
+    def test_meta_preface_is_located_and_never_auto_edited(self):
+        report = json.loads(self.check_text('正文。\n\n我对手艺一直有一个很明确的理解，先修好再收钱。').stdout)
+        hits = [c for c in report['candidates'] if '无内容前缀候选' in c['detail']]
+        self.assertTrue(hits)
+        self.assertTrue(all('第 3 行' in c['detail'] for c in hits))
+        self.assertTrue(all(c['decision']=='unresolved' for c in hits))
+
+    def test_real_voice_and_necessary_conditions_not_blanket_flagged(self):
+        report = json.loads(self.check_text('我昨天修好了一盏灯。基于测试结果，换掉了旧线。断电后再拆外壳。').stdout)
+        self.assertFalse(any('无内容前缀候选' in c['detail'] or '防御性说明候选' in c['detail'] for c in report['candidates']))
+
+    def test_defensive_note_and_quoted_preface_remain_candidates(self):
+        report = json.loads(self.check_text('严谨地说，本结果仅供参考。\n作者说“我曾经用过一个比喻”。').stdout)
+        self.assertTrue(any('防御性说明候选' in c['detail'] for c in report['candidates']))
+        self.assertTrue(any('无内容前缀候选' in c['detail'] for c in report['candidates']))
+
+    def test_meta_examples_in_code_are_not_prose(self):
+        report = json.loads(self.check_text('灯亮了。\n```text\n我曾经用过一个比喻。严谨地说，仅供参考。\n```').stdout)
+        self.assertEqual(report['candidate_count'], 0)
+
     def test_plain_text_still_needs_semantic_review(self):
         result = self.check_text('灯亮了。桌上有一张地图。')
         self.assertEqual(result.returncode, 0)

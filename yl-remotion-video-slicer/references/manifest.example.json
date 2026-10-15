@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "source": "source.mp4",
+  "fps": "30/1",
+  "width": 1920,
+  "height": 1080,
+  "source_frames": 18000,
+  "preview_source": null,
+  "font_file": null,
+  "style": {"font_family": "sans-serif", "font_weight": 900, "font_size": 70, "line_height": 1.2, "color": "#ffffff", "shadow": "4px 4px 0 #000000", "title_left": 100, "title_top": 60, "title_width": 1720},
+  "masks": [{"id": "QrA", "source_start_frame": 0, "source_end_frame": 18000, "rect": [1520, 220, 340, 460], "text": "", "color": "#111111", "text_color": "#ffffff", "font_size": 40}],
+  "clips": [{"id": "Clip01", "topic": "本片主题", "hook_reason": "源内具体判断先行", "ending": "完整结论", "title": {"lines": ["标题第一行", "标题第二行"], "duration_frames": 300}, "segments": [{"source_start_frame": 9000, "source_end_frame": 9150, "text": "填写这一段实际保留的完整原话", "purpose": "hook"}, {"source_start_frame": 3000, "source_end_frame": 4800, "text": "填写完整解释与结尾原话", "purpose": "body"}]}]
+}

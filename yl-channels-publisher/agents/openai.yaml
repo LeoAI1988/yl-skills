@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl 视频号发布"
+  short_description: "按时刻表发布视频号成片，核对封面、标题、商品、位置和定时结果"
+  default_prompt: "使用 $yl-channels-publisher 按我的时刻表发布这些已归档成片，逐条核对自定义封面、商品和定时结果。"

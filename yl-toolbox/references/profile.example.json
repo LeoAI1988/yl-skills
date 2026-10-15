@@ -13,8 +13,32 @@
   "source_roots": [],
   "personal_instructions": [],
   "domains": [],
-  "sources": {"getnote": {"libraries": []}},
+  "sources": {
+    "getnote": {
+      "libraries": []
+    }
+  },
   "excluded_source_ids": [],
   "tools": {},
-  "local_hooks": {}
+  "local_hooks": {},
+  "video": {
+    "archive": {
+      "workspace_root": "",
+      "final_dir": "",
+      "records_dir": "",
+      "timezone": "",
+      "cleanup_process_files": false,
+      "slices_subdir": "切片",
+      "mother_storage": "with_corresponding_final",
+      "course_slices_archive_mother": false
+    }
+  },
+  "publishing": {
+    "douyin": {
+      "config_file": ""
+    },
+    "xiaohongshu": {
+      "config_file": ""
+    }
+  }
 }

@@ -1,58 +1,58 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.4.1",
-  "date": "2026-10-09",
+  "version": "3.7.13",
+  "date": "2026-10-15",
   "skills": {
     "yl-toolbox": {
-      "version": "3.4.1",
+      "version": "3.7.3",
       "category": "entry",
       "role": "router",
       "license": "MIT"
     },
     "yl-writing": {
-      "version": "3.4.1",
+      "version": "3.4.3",
       "category": "media",
       "role": "router",
       "license": "MIT AND CC-BY-NC-4.0",
       "subcategory": "writing"
     },
     "yl-video": {
-      "version": "3.4.1",
+      "version": "3.7.0",
       "category": "media",
       "role": "router",
       "license": "MIT",
       "subcategory": "video"
     },
     "yl-chekhov-deep-writing": {
-      "version": "3.3.1",
+      "version": "3.3.3",
       "category": "media",
       "role": "member",
       "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND CC-BY-NC-4.0",
       "subcategory": "writing"
     },
     "yl-write-impact-wechat": {
-      "version": "3.3.1",
+      "version": "3.3.3",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
       "subcategory": "writing"
     },
     "yl-remotion-talking-head-editor": {
-      "version": "3.0.0",
+      "version": "3.5.2",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
       "subcategory": "video"
     },
     "yl-short-video-covers": {
-      "version": "3.0.0",
+      "version": "3.1.1",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "video"
     },
     "yl-write-voice-led-wechat": {
-      "version": "3.3.1",
+      "version": "3.3.3",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -70,6 +70,13 @@
       "role": "member",
       "license": "MIT",
       "subcategory": "analytics"
+    },
+    "yl-channels-publisher": {
+      "version": "1.0.1",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "publishing"
     },
     "yl-knowledge": {
       "version": "3.3.0",
@@ -144,7 +151,7 @@
       "license": "MIT"
     },
     "yl-media": {
-      "version": "3.4.1",
+      "version": "3.7.2",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -170,6 +177,55 @@
       "role": "member",
       "license": "MIT",
       "subcategory": "presentation"
+    },
+    "yl-x-topic-research": {
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "research"
+    },
+    "yl-youtube-deep-summary": {
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "research"
+    },
+    "yl-video-archive": {
+      "version": "3.6.2",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    "yl-remotion-video-slicer": {
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    "yl-course-video-editor": {
+      "version": "1.0.1",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    "yl-douyin-publisher": {
+      "version": "1.4.2",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "publishing"
+    },
+    "yl-xiaohongshu-publisher": {
+      "version": "1.0.1",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "publishing"
     }
   }
 }

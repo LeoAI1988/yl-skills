@@ -8,6 +8,8 @@ import hashlib
 import json
 from pathlib import Path
 from font_utils import find_chinese_font
+from tech_background import prepared_background, STYLE_VERSION, BACKGROUND_ID, BACKGROUND_SHA256, texture_pixels
+import math
 
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps
 
@@ -46,12 +48,13 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--left-align",
         action="store_true",
+        default=True,
         help="Align every headline line to one visible left edge and disable line rotation",
     )
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--manifest-out", type=Path, help="Private manifest path; defaults beside output")
-    parser.add_argument("--accent", choices=("none", "yellow"), default="none")
-    parser.add_argument("--background", type=Path, help="Optional user-supplied licensed background")
+    parser.add_argument("--accent", choices=("none", "yellow"), default="yellow")
+    parser.add_argument("--background", type=Path, help="Optional byte-identical copy of the approved circuit master")
     parser.add_argument("--avatar", type=Path, help="Optional user-supplied transparent portrait")
     parser.add_argument(
         "--portrait-label",
@@ -263,7 +266,7 @@ def draw_rich_line(
                 text,
                 font=font,
                 fill=fill,
-                stroke_width=7,
+                stroke_width=11,
                 stroke_fill=(0, 0, 0),
             )
             draw.text(
@@ -350,25 +353,30 @@ def render(args: argparse.Namespace) -> dict[str, object]:
     primary_title_plain = "".join(primary_lines)
     supplement_plain = "".join(supplement_lines)
     title_plain = primary_title_plain + supplement_plain
+    if len(yellow) > 3:
+        raise ValueError("Select at most three yellow keywords")
+    if boxed:
+        raise ValueError("Technology cover uses yellow glyphs, not yellow rectangles")
+    if args.line_angles.strip():
+        raise ValueError("Technology cover requires horizontal left-aligned lines")
+    if args.accent == "yellow" and not yellow:
+        raise ValueError("Select 1-3 yellow keywords; white is the main text color")
+    units = [c for c in title_plain if c.isalnum()]
+    marked = set()
+    for term in yellow:
+        offset = 0
+        while (at := title_plain.find(term, offset)) >= 0:
+            marked.update(i for i in range(at, at+len(term)) if title_plain[i].isalnum())
+            offset = at + len(term)
+    if len(marked) > math.ceil(len(units)/3):
+        raise ValueError("Yellow emphasis exceeds approximately one third of the headline")
     for term in boxed | yellow:
         if term not in title_plain:
             raise ValueError(f"Highlighted term is not present in title: {term}")
 
-    background = (
-        cover_resize(Image.open(args.background), (args.width, args.height))
-        if args.background else Image.new("RGB", (args.width, args.height), BLACK)
-    )
-    background = ImageEnhance.Contrast(background).enhance(1.05).convert("RGBA")
-
-    shade = Image.new("RGBA", background.size, (0, 0, 0, 0))
-    shade_draw = ImageDraw.Draw(shade)
-    for x in range(args.width):
-        alpha = round(145 * max(0.0, 1.0 - x / (args.width * 0.78)))
-        shade_draw.line((x, 0, x, args.height), fill=(0, 0, 0, alpha))
-    background = Image.alpha_composite(background, shade)
+    background = prepared_background(args.width, args.height, args.background)
     draw = ImageDraw.Draw(background)
-    if args.accent == "yellow":
-        draw_decorations(draw, args.width, args.height)
+    # Circuit background already contains aligned corner marks.
     font_path = find_font(args.font)
     title_x = 42
     title_y = 72
@@ -478,7 +486,12 @@ def render(args: argparse.Namespace) -> dict[str, object]:
     digest = hashlib.sha256(args.out.read_bytes()).hexdigest()
     manifest = {
         "schemaVersion": 1,
-        "style": "bold-black-white",
+        "style": "outlined-tech",
+        "styleVersion": STYLE_VERSION,
+        "outline": {"align": "outside", "width": 9},
+        "textureVisiblePixels": texture_pixels(final),
+        "yellowCharacterCount": len(marked),
+        "headlineCharacterCount": len(units),
         "accent": args.accent,
         "image": str(args.out.resolve()),
         "width": args.width,
@@ -489,7 +502,8 @@ def render(args: argparse.Namespace) -> dict[str, object]:
         "lines": lines,
         "boxedTerms": sorted(boxed),
         "yellowTerms": sorted(yellow),
-        "background": str(args.background.resolve()) if args.background else "generated-solid-black",
+        "background": BACKGROUND_ID,
+        "backgroundSha256": BACKGROUND_SHA256,
         "avatar": str(args.avatar.resolve()) if args.avatar else None,
         "portraitLabel": args.portrait_label or (args.avatar.stem if args.avatar else ""),
         "avatarPlacement": {

@@ -1,0 +1,4 @@
+interface:
+  display_name: "YouTube详细总结与原话金句"
+  short_description: "基于完整可追溯转录整理长视频，保留论述细节、重要观点和原话出处"
+  default_prompt: "用 $yl-youtube-deep-summary 详细总结这个YouTube视频，保留案例、重要观点和原话金句，保存到当前目录。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl 课程与演示长视频剪辑"
+  short_description: "轻剪课程和屏幕演示长视频，保留教学过程，校正单行字幕并平衡播放声"
+  default_prompt: "使用 $yl-course-video-editor 剪辑这些课程或演示长视频，按章节整理素材，保留原顺序与有效演示，核验字幕、倍速和播放音量。"

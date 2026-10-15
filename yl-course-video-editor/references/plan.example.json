@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "workdir": "/work/course",
+  "output": "/delivery/lesson_v1.mp4",
+  "fps": 30,
+  "speed": 1.1,
+  "size": [1620, 1080],
+  "sources": {"lesson": {"path": "/inputs/lesson.mp4", "sha256": "REPLACE_WITH_SOURCE_SHA256", "asr": "/work/lesson_asr.json"}},
+  "candidates": [{"id": "lesson-gap-0001", "action": "keep", "reason": "Necessary demonstration; reviewed consecutive frames."}],
+  "parts": [{
+    "source": "lesson",
+    "keeps": [[0.0, 4.0], [5.0, 10.0]],
+    "deletions": [{"start": 4.0, "end": 5.0, "reason": "Reviewed failed restart."}],
+    "captions": [{"start": 0.2, "end": 2.8, "text": "这里显示已经核对的字幕"}],
+    "mute": []
+  }],
+  "style": {"font": "Arial", "fontsize": 76, "outline": 3, "margin_v": 70, "max_em": 19.3},
+  "encoder": "libx264"
+}

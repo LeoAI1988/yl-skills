@@ -1,0 +1,4 @@
+interface:
+  display_name: "X热点与短视频选题"
+  short_description: "核验X近期话题、原帖热度和真实截图，整理适合短视频的选题文档"
+  default_prompt: "用 $yl-x-topic-research 检索我的X内容方向近24小时的热门话题，配真实原帖截图并保存选题Markdown。"

@@ -8,6 +8,8 @@ import hashlib
 import json
 import re
 import sys
+import math
+from tech_background import texture_pixels, prepared_background, STYLE_VERSION, BACKGROUND_ID, BACKGROUND_SHA256
 from pathlib import Path
 
 from PIL import Image
@@ -78,6 +80,46 @@ def main() -> None:
         if white_pixels < 350:
             errors.append(f"insufficient white headline pixels: {white_pixels}")
 
+    if manifest.get("style") != "outlined-tech":
+        errors.append("missing outlined technology style; legacy solid-black output is not accepted")
+    if manifest.get("styleVersion") != STYLE_VERSION or manifest.get("background") != BACKGROUND_ID:
+        errors.append("approved mature circuit template identity is required")
+    if manifest.get("backgroundSha256") != BACKGROUND_SHA256:
+        errors.append("background master hash does not match the approved template")
+    if manifest.get("outline") != {"align": "outside", "width": 9}:
+        errors.append("9px outward black outline is required")
+    if manifest.get("boxedTerms"):
+        errors.append("yellow rectangles are not part of this style")
+    if manifest.get("lineAlignment") != "left":
+        errors.append("all lines must share the left edge")
+    if len(manifest.get("yellowTerms", [])) > 3:
+        errors.append("at most three yellow keywords are allowed")
+    title = manifest.get("title", "")
+    marked = set()
+    for term in manifest.get("yellowTerms", []):
+        if not term:
+            errors.append("empty yellow keyword")
+            continue
+        offset = 0
+        while (at := title.find(term, offset)) >= 0:
+            marked.update(i for i in range(at, at+len(term)) if title[i].isalnum())
+            offset = at + len(term)
+    if len(marked) > math.ceil(sum(c.isalnum() for c in title)/3):
+        errors.append("yellow emphasis exceeds one third of headline, rounded up")
+    with Image.open(args.image) as rendered:
+        if texture_pixels(rendered) < 500 * (args.width*args.height)/(1080*1440):
+            errors.append("circuit detail missing or invisible in the lower-left background corridor")
+        # Compare actual exposed pixels to the master, not just manifest labels or texture counts.
+        expected = prepared_background(args.width, args.height).convert("RGB")
+        box = (int(args.width*.03), int(args.height*.79), int(args.width*.28), int(args.height*.94))
+        observed = rendered.convert("RGB").crop(box)
+        reference = expected.crop(box)
+        errors_per_pixel = [max(abs(a-b) for a,b in zip(p,q)) for p,q in zip(observed.getdata(),reference.getdata())]
+        if sum(e <= 2 for e in errors_per_pixel) / len(errors_per_pixel) < .98:
+            errors.append("exposed background pixels differ from the approved master")
+    if any(abs(x.get("angle", 0)) > 0.001 for x in manifest.get("lineStyles", [])):
+        errors.append("rotated text is not part of technology cover style")
+
     if args.expected_title:
         expected = args.expected_title.replace("|", "").replace("\n", "").strip()
         if manifest.get("title") != expected:
@@ -121,8 +163,6 @@ def main() -> None:
         angles = [abs(style.get("angle", 0)) for style in line_styles]
         if len(font_sizes) >= 3 and max(font_sizes) - min(font_sizes) < 12:
             errors.append("headline lacks deliberate font-size variation")
-        if angles and max(angles) < 0.5 and manifest.get("lineAlignment") != "left":
-            errors.append("headline lacks deliberate line-angle variation")
         title_bottom = max(
             style.get("y", 0) + round(style.get("fontSize", 0) * 1.12)
             for style in line_styles

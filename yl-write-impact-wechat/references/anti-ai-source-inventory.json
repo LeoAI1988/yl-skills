@@ -2983,5 +2983,113 @@
       "headings": []
     }
   ],
-  "supplemented_at": "2026-09-16"
+  "supplemented_at": "2026-09-16",
+  "followup_reviews": [
+    {
+      "date": "2026-10-13",
+      "foundation_version": "2.1.0",
+      "scope": "Source preservation, plain expression, empty prefaces, unnecessary qualification and reader-facing content. Other existing sources retain prior dates.",
+      "files": [
+        {
+          "source": "human-writing",
+          "file": "SKILL.md",
+          "sha256": "006b0b1ccfe838719695eef7dde43ccb4fdd48ea3286368b3c649fc7c95a0177",
+          "source_state": "local retired archive; relevant expression sections reviewed, not upstream update",
+          "adopted": [
+            "V-01",
+            "V-02",
+            "V-03",
+            "V-05"
+          ]
+        },
+        {
+          "source": "human-writing",
+          "file": "references/forum-prose.md",
+          "sha256": "20c22ad9c5c5c3f43ebae6bb7d258cfc42916413a82c2f95a0de9239541641dd",
+          "source_state": "local retired archive; relevant expression sections reviewed, not upstream update",
+          "adopted": [
+            "V-01",
+            "V-02",
+            "V-03",
+            "V-05"
+          ]
+        },
+        {
+          "source": "human-writing",
+          "file": "references/revision.md",
+          "sha256": "8724930618a1bf9fef11982a7e30c559426abeaad72f69c07aca8ce878a53bf6",
+          "source_state": "local retired archive; relevant expression sections reviewed, not upstream update",
+          "adopted": [
+            "V-01",
+            "V-02",
+            "V-03",
+            "V-05"
+          ]
+        },
+        {
+          "source": "kazik-writing-clone",
+          "file": "SKILL.md",
+          "sha256": "11bb23e03d8840cdcd691e59b62f7e3bd210511d1664633821c379a730612a67",
+          "source_state": "local retired archive; relevant expression sections reviewed, not upstream update",
+          "adopted": [
+            "V-01",
+            "V-02",
+            "V-03",
+            "V-05"
+          ]
+        },
+        {
+          "source": "kazik-writing-clone",
+          "file": "references/user_voice.md",
+          "sha256": "2855ba23a77b967ea1c264761cb37ce67afa2ef24e78e73a599bcd44c77c2e9c",
+          "source_state": "local retired archive; relevant expression sections reviewed, not upstream update",
+          "adopted": [
+            "V-01",
+            "V-02",
+            "V-03",
+            "V-05"
+          ]
+        },
+        {
+          "source": "dbs-ai-check",
+          "file": "SKILL.md",
+          "sha256": "15515598528b6d98ae489cf8add3a9f797a76aafa81994f92ce6e1ff6f7f0b8b",
+          "upstream_revision": "f24ea08ae4b50660a1575554eb58903fa6d60f01",
+          "official_bytes_verified": true,
+          "adopted": [
+            "D-01-D-22",
+            "E-01",
+            "E-02",
+            "V-01-V-05"
+          ]
+        },
+        {
+          "source": "dbs-content",
+          "file": "SKILL.md",
+          "sha256": "14162dc99178abfe5d15817f7d42d909cb9b3d89fa4143f73e55224a6b1ec051",
+          "upstream_revision": "f24ea08ae4b50660a1575554eb58903fa6d60f01",
+          "official_bytes_verified": true,
+          "adopted": [
+            "D-01-D-22",
+            "E-01",
+            "E-02",
+            "V-01-V-05"
+          ]
+        },
+        {
+          "source": "dbs-script-flow",
+          "file": "SKILL.md",
+          "sha256": "714fd9f81ed48bb682ec9f537e5cb2efac33b74bd2e6bf638900aed709d87222",
+          "upstream_revision": "f24ea08ae4b50660a1575554eb58903fa6d60f01",
+          "official_bytes_verified": true,
+          "adopted": [
+            "D-01-D-22",
+            "E-01",
+            "E-02",
+            "V-01-V-05"
+          ]
+        }
+      ]
+    }
+  ]
 }
