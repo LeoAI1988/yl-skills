@@ -1,7 +1,7 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.7.13",
-  "date": "2026-10-15",
+  "version": "3.7.14",
+  "date": "2026-10-16",
   "skills": [
     {
       "name": "yl-channels-analytics",
@@ -30,8 +30,8 @@
     },
     {
       "name": "yl-channels-publisher",
-      "description": "按安装者给定的时刻表把本地成片批量定时发布到视频号助手，逐条设置标题、描述标签、原创声明、活动、定时与商品挂载，上传成片目录里已做好的自定义封面，并清除平台默认定位。安装者要求视频号发布、批量定时发稿、给视频挂商品、按时间表排期或修正已定时未发作品时使用；不用于剪辑、封面制作或后台数据复盘。",
-      "version": "1.0.1",
+      "description": "按安装者给定的时刻表把本地成片批量定时发布到视频号助手，逐条设置标题、描述标签、原创声明、活动、定时与商品挂载，上传成片目录里已做好的自定义封面，并清除平台默认定位。安装者要求视频号发布、批量定时发稿、给视频挂商品、按时间表排期或修正已定时未发作品时使用；提供发布记录、逐条数据跟踪和复盘大屏，分析复用 yl-channels-analytics；不用于剪辑或封面制作。",
+      "version": "1.1.0",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -40,9 +40,30 @@
         "agents/openai.yaml": "f9870b875fe06b30916a9d44fb091c77b5fc08622da470f813ee06f50706d89c",
         "LICENSE": "fe1fb4ab17f3d9b4f5a5fb3a7b0d66e56d5d37bde20d7293c566cd6df26d8818",
         "references/checklist.md": "7c0a27a0bd64169fb624fe3a1ba28068a5ad26dc628e5e11e5e62a611fee96a5",
-        "references/workflow.md": "1ffa0cd2fa9600bb9ba2a24d876e1e416e9453ff3b61767ae9ec60c6c113d26c",
-        "SKILL.md": "4b8a318a387697858adc36f12b728722a8e6cd34fbbec663d632109ec9ad7e32",
-        "SOURCE.md": "3690589618c4314d66c9e93c02d185bd71f832e454245cbcb0ec3672b5b6716d"
+        "references/workbench-config.example.json": "bc5a8151d0cc179fb80ec0a1d5e7ab8ecf1aef34d8ab946bc16534259f844194",
+        "references/workbench.md": "47c665866a0272d82f382685532cda6ce6991d3f46d2385266e891e0bb7c7934",
+        "references/workflow.md": "6877ed09b0f381c787ddfadff8ce30069cd6a3951df76986e9c897f820d0c6f3",
+        "SKILL.md": "6d4ccec615f17200f61b9ba20b4e5c039b9abf19298a02916d79817d63a192ed",
+        "SOURCE.md": "440140abda34d148a36c95258ae6e0cd0d3d7368cc08735e040583c3944b89fc",
+        "workbench/analytics-store.mjs": "3b4108f6f58a7cf941a609ddf42e67d21f7750bdf66a8f0bdd92781a10882316",
+        "workbench/app.mjs": "6ea7d927d7611a060a96233078a4cf4f0ca322f8f06ad293bc1c575651920d6d",
+        "workbench/configuration.mjs": "b202f6123045238278f3ea60a4f0f5a64b49070188fdf0ea730176572eff545a",
+        "workbench/index.html": "a3b6dd4c531e0f23b1fbac972a94e2fddef3519b1cf51400cfba14cf922d9c8b",
+        "workbench/plan-core.mjs": "7647a2b53f8a5d0104ae8e5b815487c2884716bb3418ab28febb1363da295997",
+        "workbench/portal-api.mjs": "0dc38ea1beaad58922990ca42c5f00aab4984c995623b8f53a76ce9572787ab1",
+        "workbench/portal.css": "178694d4ca76324af3a39cb8d7e7239c1ed306473ef5506bbebba58514b28d44",
+        "workbench/portal.mjs": "e247a671b016f71980007713f4f607a45a1e013e18f14634bd1a689a6cd40a5f",
+        "workbench/publish-history.mjs": "da854721b0a2e46cd85ea76f9fe8ad7e6c90d3c8c3400de82c8f05b0863026c6",
+        "workbench/runtime-service.mjs": "e2e72f0ee4c7a99b7f69be7162f9bfc137af5ce5787ac138bbd6e347f75b066f",
+        "workbench/scripts/capture-contract.md": "51c64e185438959e04a8910c365c975cc1b37c3b99abd43a6371837a3d5bbb8e",
+        "workbench/scripts/import-history.py": "bdfc2319f197b798d30b2cbe99d9a17b259a6104e99c8bb360dd5d7ee18a7598",
+        "workbench/server.mjs": "66622a944a280326bd926bb74c6fa33b77a4d2721eab3a7cad4d1bccded797b2",
+        "workbench/tests/configuration.test.mjs": "2a6b8f2811fd39395fd90cdf5a68ded403270c2ac233699ba43d0ce9c6b9428b",
+        "workbench/tests/history.test.mjs": "76fc4be48d3155df0d9074ca0c175b602444bf485ee1f5bf7c90d73390674151",
+        "workbench/tests/runner.test.mjs": "2ba6c7037514b31cf0130f31b730d30b9e701082b2357103ce02a56e111e55d3",
+        "workbench/tests/runtime-service.test.mjs": "d7d09c21addab295faeabd36788aaca178269bbd6aca0e928bc2517983cd4655",
+        "workbench/tests/test_import.py": "a071f85abcd1357242b3b7b81160d390c410163c56f35434bd1b10d950e092f4",
+        "workbench/workbuddy-runner.mjs": "e233e9224501beef9c226f64f988729a33c65fb7fc4f380c50044b02fb05cb56"
       }
     },
     {
@@ -313,7 +334,7 @@
     {
       "name": "yl-media",
       "description": "YL 自媒体统一入口。写作、视频剪辑、封面、成片母带归档、抖音与视频号发布、小红书发布准备、视频号与公众号采集复盘先由这里分流，按需调用成员，并把本人文稿及复盘结果交回知识库。",
-      "version": "3.7.2",
+      "version": "3.7.3",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -323,7 +344,7 @@
         "references/handoff.md": "5e8390dec0f00ff36c350be7c76d6422deccd7a7e6ac19f666db308db1d1ed19",
         "references/ranking.md": "30f81597e4d68ad2e27106dd6cc803ba3fede4b4d04e9d18dd61db4e4326fefa",
         "scripts/ranking.py": "e7d5dd802a1f5f63870ca5604f8fbb663720cb1d034b4a583fcd4f3cf9598c86",
-        "SKILL.md": "52b8ac211be84ce583fb81f0f3ff059497198441303c33cbcecbb5388bea5cf5"
+        "SKILL.md": "c9e8aa9947125c2cb89ab67fbf168a51c37f97b9dc9d4a375dbcc5deea62f86e"
       }
     },
     {
@@ -472,16 +493,16 @@
     {
       "name": "yl-toolbox",
       "description": "yl 个人精选工具箱入口。用户要求使用 yl 集群、选择 yl 工具，或希望用工具箱完成任务时，按目录选择已安装的相关 Skill 并执行。具体功能可直接调用对应 yl Skill。",
-      "version": "3.7.3",
+      "version": "3.7.4",
       "category": "entry",
       "role": "router",
       "license": "MIT",
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "references/catalog.json": "f9aaeaedad18ae0e3ed997c70ac3930a01067b1629775ce678fd1068e589ba26",
-        "references/profile.example.json": "124d8837a3362d3697fb8d556196e66821c5e590fa65fad526d66f7a70640009",
-        "references/profile.md": "a142ade12391defdb46003f7a3fdb446a34ab87ec964c50092a6b0356dd565ba",
+        "references/catalog.json": "906a9d35bb32ed112a878f27c1a2de11cb2f042c6cdc38afb661d7af63663543",
+        "references/profile.example.json": "63154e27ce81d7007b77af6086b0474ea373ca3e24917b7940ca887d3be5391c",
+        "references/profile.md": "55a6079887104c83fa4f608899685aff61550cc01982a7b56b46e3959149d3f5",
         "SKILL.md": "40ac05ca7abff2eb36cf4c74db603af9fdeb2a832bef23fb4dbe71fcb4c92abd"
       }
     },

@@ -1,21 +1,21 @@
 {
   "schema_version": 1,
-  "version": "3.7.12",
+  "version": "3.7.14",
   "review_method": "Changed/new files reviewed by maintainer; independent isolated forward tests for knowledge and Windows install. Existing unchanged bytes inherit previous reviews. No live cloud/Obsidian or real media quality acceptance claimed.",
   "generated_exclusions": [
     "yl-toolbox/references/catalog.json"
   ],
-  "project_review": "Reviewed requested four-board grouping: media owns writing, video and analytics; office owns PPT. Subcategory preserves writing validation and sync. No capabilities removed; no private data. Poster visually checked for layout, 26 total and 4 boards. Unchanged files retain previous hash-bound reviews. Version 3.5.0: reviewed new research member registration, README counts, PRD routing and changelog; existing poster explicitly labeled historical. No external publication or private runtime data included. Version 3.5.1: reviewed visual-only parameter/calibration changes and release registration; no private paths/media in core, no external publication. Version 3.5.2: reviewed archive routing, 29-member release registration, generic external archive config and original standard-library helper/tests; no personal paths or runtime media in core. Existing files keep hash-bound prior reviews. Version 3.6.0: reviewed new slice registration, additive router/UI changes, 30-member counts, PRD/README/changelog and original-MIT dependency attribution. Project files not changed retain hash-bound prior review; other concurrent archive member preserved. Version 3.6.1: reviewed archive-only documentation and release/changelog updates; preserves generic parameters and existing scripts, no private data or publication. Version 3.7.0: reviewed course member registration, additive media/video/toolbox routing, 31-member documentation and MIT attribution. Existing byte-unchanged files retain reviews; no remote release or runtime discovery claimed. Version 3.7.0: reviewed course member registration, additive media/video/toolbox routing, 31-member documentation and MIT attribution. Existing byte-unchanged files retain reviews; no remote release or runtime discovery claimed. Version 3.7.1: reviewed input-hash and actual concat/alignment documentation plus version/readme/changelog; no further routing or permission change. 3.7.2: reviewed writing-only release metadata and four meaningful checker tests; no private data or external publication. 3.7.3: reviewed writing-only metadata and approved-sample rule; personal reference external, no publish authorization inferred. 3.7.4 cover update: reviewed cover changelog and member files. Full release registration review is pending because a separate new member is not yet reviewed; previous release.json approval hash retained. No distribution build claimed. 3.7.5: reviewed cover version/changelog and narrowly hash-bound background asset allowlist in library/audit. Other member drift is not approved by this change. 3.7.6: reviewed Douyin member registration, own workbench changelog, and full release registry for generic membership/version fields; other project/member hashes preserved. 3.7.7: reviewed own Douyin member version, schedule/model changelog and registration; other project/member hashes preserved. 3.7.8: reviewed own Douyin member version, drag/preview/reasoning changelog and registration; other project/member hashes preserved. 3.7.9: reviewed own Douyin member version, custom time-window changelog and registration; other project/member hashes preserved. 3.7.10: reviewed own Douyin member version, hour-option changelog and registration; other project/member hashes preserved. 3.7.11: reviewed Douyin integration route versions and changelog; other project hashes preserved. 3.7.12: reviewed Xiaohongshu member registration and changelog, preserving unrelated project review hashes and pending drift. No external distribution published.",
+  "project_review": "Reviewed requested four-board grouping: media owns writing, video and analytics; office owns PPT. Subcategory preserves writing validation and sync. No capabilities removed; no private data. Poster visually checked for layout, 26 total and 4 boards. Unchanged files retain previous hash-bound reviews. Version 3.5.0: reviewed new research member registration, README counts, PRD routing and changelog; existing poster explicitly labeled historical. No external publication or private runtime data included. Version 3.5.1: reviewed visual-only parameter/calibration changes and release registration; no private paths/media in core, no external publication. Version 3.5.2: reviewed archive routing, 29-member release registration, generic external archive config and original standard-library helper/tests; no personal paths or runtime media in core. Existing files keep hash-bound prior reviews. Version 3.6.0: reviewed new slice registration, additive router/UI changes, 30-member counts, PRD/README/changelog and original-MIT dependency attribution. Project files not changed retain hash-bound prior review; other concurrent archive member preserved. Version 3.6.1: reviewed archive-only documentation and release/changelog updates; preserves generic parameters and existing scripts, no private data or publication. Version 3.7.0: reviewed course member registration, additive media/video/toolbox routing, 31-member documentation and MIT attribution. Existing byte-unchanged files retain reviews; no remote release or runtime discovery claimed. Version 3.7.0: reviewed course member registration, additive media/video/toolbox routing, 31-member documentation and MIT attribution. Existing byte-unchanged files retain reviews; no remote release or runtime discovery claimed. Version 3.7.1: reviewed input-hash and actual concat/alignment documentation plus version/readme/changelog; no further routing or permission change. 3.7.2: reviewed writing-only release metadata and four meaningful checker tests; no private data or external publication. 3.7.3: reviewed writing-only metadata and approved-sample rule; personal reference external, no publish authorization inferred. 3.7.4 cover update: reviewed cover changelog and member files. Full release registration review is pending because a separate new member is not yet reviewed; previous release.json approval hash retained. No distribution build claimed. 3.7.5: reviewed cover version/changelog and narrowly hash-bound background asset allowlist in library/audit. Other member drift is not approved by this change. 3.7.6: reviewed Douyin member registration, own workbench changelog, and full release registry for generic membership/version fields; other project/member hashes preserved. 3.7.7: reviewed own Douyin member version, schedule/model changelog and registration; other project/member hashes preserved. 3.7.8: reviewed own Douyin member version, drag/preview/reasoning changelog and registration; other project/member hashes preserved. 3.7.9: reviewed own Douyin member version, custom time-window changelog and registration; other project/member hashes preserved. 3.7.10: reviewed own Douyin member version, hour-option changelog and registration; other project/member hashes preserved. 3.7.11: reviewed Douyin integration route versions and changelog; other project hashes preserved. 3.7.12: reviewed Xiaohongshu member registration and changelog, preserving unrelated project review hashes and pending drift. No external distribution published. 3.7.14: reviewed release versions, latest 34-item poster, README/CHANGELOG and the single explicit poster asset registration. No private evidence, credentials or personal paths are included.",
   "project_files": {
-    "README.md": "be6384005cf9e0811ace387c60a01d80d0261819b2b694eed83e14ed6bfe3bb1",
+    "README.md": "0fb45654da3de352c0a7698c0232348604c145ee4ed8ff020705ba08aa7ef430",
     "PRD.md": "3f47cb7d5fa9bf594dd1f332954ab73afdd2fa3deb6dbc936402351548b5058d",
     "MAINTAINING.md": "9869b54c017fa035fea4a33dfe622ffb4aca629a4214a1fd1ee530463bd7b201",
-    "CHANGELOG.md": "cb2c505e67f7f21f5489cdcc4828af824f85f794436e3bf87761703602878070",
+    "CHANGELOG.md": "64e1d71135983d75d57136945ab716186405546b932bd93adc2d057bbc40443d",
     "LICENSE": "0a9dabde6fca3a8d9010c587bc53c09cc147aa081848fbbdab9f119be3f778f8",
     "THIRD_PARTY_NOTICES.md": "ef79c2bb2f1125b349815c7176d489e90fc2160c18634706af28e017d4ff541d",
     "AGENTS.md": "6f0c8cf0ced63ada0fc766fcce0150aeab0a32703ce0854b8848c0d3000b5800",
     ".gitignore": "8cf91327b2d9c9d76246d25b403afb942b78441c63c8da06483afb00f68a6e19",
-    "release.json": "4d0c8b30037d1d320d13bbfb732f43b48571f489a3786c4eb5bdcc4942b8e65e",
+    "release.json": "f40b4baf002f7487667050887e05f6486d5c1bb4d1504e5b060105285bac90b3",
     "install.py": "9c72a161d4910d2fe6b43872694130bbd50dc41909aee1dcaf2a9097dd262ffa",
     "build.py": "76ea649fd032691761598b09c290d5bfb2c0bcb7e3c44e5d9ce43c1513098b21",
     "yl集群_审核说明.md": "1efbd9579df44be05b85e97a2e591ed9787aea1475f95c66510b9875312c644b",
@@ -27,7 +27,7 @@
     "YL-Skill集群_v3.4.1.png": "f5bd9dc4fbaaa65c3207510ec095ce5cefd1fc6b883b8521a1a6af389b3afc78",
     "tools/audit.py": "37bd157169ea39c0780906417448d21413e9a1628c58ca2de8434ee730ea139f",
     "tools/check_updates.py": "f5eb4c191ef365c3d5aeb6398beb5739c9f8b2a81e661dbfffa1556798657c61",
-    "tools/library.py": "83088353634d11a1abbf599ef0bed42590e9c4b6430593a8ddebf59b22be8214",
+    "tools/library.py": "a40ab0f202e2c1a70fc21876dd8dffc2390fa56df354bf3e43bb2ca58763e54a",
     "tools/sync_cluster_runtime.py": "e291668932f177de772df0ce484577caee361fbf7dc2d71a5cff64a9a8b85593",
     "tools/sync_writing_foundation.py": "df489422d08f73ff2f0030787b1b8b68a2913a8e652c075065a1d1e6b9085cc1",
     "tools/test_dashboard.py": "91cdea3630b86a82411ffdb6c90f1b0df2765962eb72eb171a4227ede969e31c",
@@ -38,7 +38,8 @@
     "tools/test_video_archive.py": "d6f1b285568157884edc96b09b1e7fda1772b1fd78f9c4961013a6d5f28bc3bd",
     "tools/test_writing.py": "9cfa73d6cfd6fcfb2d382f0ce573c8b635bf0d9da0016f308343cc3b32ac9cc5",
     "tools/verify.py": "0143ac3c9db9e0966db3fde469c1cbad8d81de37c27ff6c9b3574265733e1800",
-    "tools/writing_foundation.py": "a082dcc5bb0798c6439a8e2355b5ad953f05e341fb55850c1932ed160cd83e0d"
+    "tools/writing_foundation.py": "a082dcc5bb0798c6439a8e2355b5ad953f05e341fb55850c1932ed160cd83e0d",
+    "YL-Skill集群_v3.7.14_34项_智能体安装版.png": "0d0d99160b7dfaa7f5afadb618750db00280d8da7fa68a1db9a6cbda015b8dd8"
   },
   "skills": {
     "yl-toolbox": {
@@ -54,11 +55,11 @@
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "references/profile.example.json": "124d8837a3362d3697fb8d556196e66821c5e590fa65fad526d66f7a70640009",
-        "references/profile.md": "a142ade12391defdb46003f7a3fdb446a34ab87ec964c50092a6b0356dd565ba",
+        "references/profile.example.json": "63154e27ce81d7007b77af6086b0474ea373ca3e24917b7940ca887d3be5391c",
+        "references/profile.md": "55a6079887104c83fa4f608899685aff61550cc01982a7b56b46e3959149d3f5",
         "SKILL.md": "40ac05ca7abff2eb36cf4c74db603af9fdeb2a832bef23fb4dbe71fcb4c92abd"
       },
-      "review_notes": "Entry routing: publishing examples resolve through yl-media; authorisation boundary stated explicitly; generated catalog excluded from hashes.",
+      "review_notes": "Entry routing: publishing examples resolve through yl-media; authorisation boundary stated explicitly; generated catalog excluded from hashes. 3.7.14: reviewed only changed source and routing. Channels workbench has external account/products/tags/data, DPAPI credentials, official OAuth transport, explicit task actions, receipt evidence and recovery. Capture importer uses exact string IDs, immutable hash-checked batches, independent timestamps, unknown/null metrics and no bundled personal history. Offline tests do not certify live OAuth or platform publishing. Unchanged files inherit hash-bound reviews.",
       "slice_routing_review": "3.6.0: reviewed additive independent-slice dispatch, explicit Remotion preservation, existing short-talking-head/interview/archive routes retained; no permission expansion or private inputs.",
       "release_3_7_13_review": "3.7.3: reviewed profile.md and blank profile.example.json in full; archive paths remain installer supplied, course sources reused and standard mothers beside finals. Added empty per-platform publishing config references only; no accounts, local paths or data. Unchanged routing files inherit hash-bound reviews."
     },
@@ -377,11 +378,32 @@
         "agents/openai.yaml": "f9870b875fe06b30916a9d44fb091c77b5fc08622da470f813ee06f50706d89c",
         "LICENSE": "fe1fb4ab17f3d9b4f5a5fb3a7b0d66e56d5d37bde20d7293c566cd6df26d8818",
         "references/checklist.md": "7c0a27a0bd64169fb624fe3a1ba28068a5ad26dc628e5e11e5e62a611fee96a5",
-        "references/workflow.md": "1ffa0cd2fa9600bb9ba2a24d876e1e416e9453ff3b61767ae9ec60c6c113d26c",
-        "SKILL.md": "4b8a318a387697858adc36f12b728722a8e6cd34fbbec663d632109ec9ad7e32",
-        "SOURCE.md": "3690589618c4314d66c9e93c02d185bd71f832e454245cbcb0ec3672b5b6716d"
+        "references/workflow.md": "6877ed09b0f381c787ddfadff8ce30069cd6a3951df76986e9c897f820d0c6f3",
+        "SKILL.md": "6d4ccec615f17200f61b9ba20b4e5c039b9abf19298a02916d79817d63a192ed",
+        "SOURCE.md": "440140abda34d148a36c95258ae6e0cd0d3d7368cc08735e040583c3944b89fc",
+        "references/workbench-config.example.json": "bc5a8151d0cc179fb80ec0a1d5e7ab8ecf1aef34d8ab946bc16534259f844194",
+        "references/workbench.md": "47c665866a0272d82f382685532cda6ce6991d3f46d2385266e891e0bb7c7934",
+        "workbench/analytics-store.mjs": "3b4108f6f58a7cf941a609ddf42e67d21f7750bdf66a8f0bdd92781a10882316",
+        "workbench/app.mjs": "6ea7d927d7611a060a96233078a4cf4f0ca322f8f06ad293bc1c575651920d6d",
+        "workbench/configuration.mjs": "b202f6123045238278f3ea60a4f0f5a64b49070188fdf0ea730176572eff545a",
+        "workbench/index.html": "a3b6dd4c531e0f23b1fbac972a94e2fddef3519b1cf51400cfba14cf922d9c8b",
+        "workbench/plan-core.mjs": "7647a2b53f8a5d0104ae8e5b815487c2884716bb3418ab28febb1363da295997",
+        "workbench/portal-api.mjs": "0dc38ea1beaad58922990ca42c5f00aab4984c995623b8f53a76ce9572787ab1",
+        "workbench/portal.css": "178694d4ca76324af3a39cb8d7e7239c1ed306473ef5506bbebba58514b28d44",
+        "workbench/portal.mjs": "e247a671b016f71980007713f4f607a45a1e013e18f14634bd1a689a6cd40a5f",
+        "workbench/publish-history.mjs": "da854721b0a2e46cd85ea76f9fe8ad7e6c90d3c8c3400de82c8f05b0863026c6",
+        "workbench/runtime-service.mjs": "e2e72f0ee4c7a99b7f69be7162f9bfc137af5ce5787ac138bbd6e347f75b066f",
+        "workbench/scripts/capture-contract.md": "51c64e185438959e04a8910c365c975cc1b37c3b99abd43a6371837a3d5bbb8e",
+        "workbench/scripts/import-history.py": "bdfc2319f197b798d30b2cbe99d9a17b259a6104e99c8bb360dd5d7ee18a7598",
+        "workbench/server.mjs": "66622a944a280326bd926bb74c6fa33b77a4d2721eab3a7cad4d1bccded797b2",
+        "workbench/tests/configuration.test.mjs": "2a6b8f2811fd39395fd90cdf5a68ded403270c2ac233699ba43d0ce9c6b9428b",
+        "workbench/tests/history.test.mjs": "76fc4be48d3155df0d9074ca0c175b602444bf485ee1f5bf7c90d73390674151",
+        "workbench/tests/runner.test.mjs": "2ba6c7037514b31cf0130f31b730d30b9e701082b2357103ce02a56e111e55d3",
+        "workbench/tests/runtime-service.test.mjs": "d7d09c21addab295faeabd36788aaca178269bbd6aca0e928bc2517983cd4655",
+        "workbench/tests/test_import.py": "a071f85abcd1357242b3b7b81160d390c410163c56f35434bd1b10d950e092f4",
+        "workbench/workbuddy-runner.mjs": "e233e9224501beef9c226f64f988729a33c65fb7fc4f380c50044b02fb05cb56"
       },
-      "review_notes": "Read every file for identity, credentials, account data, private paths and run logs. Title source rule generalised to 'video top title from review draft'; cover verification generalised to 'matches source cover' instead of any fixed visual style. Publishing stays read-only outside the listed post actions: no deletion, no published-post edits, no order or account changes.",
+      "review_notes": "Read every file for identity, credentials, account data, private paths and run logs. Title source rule generalised to 'video top title from review draft'; cover verification generalised to 'matches source cover' instead of any fixed visual style. Publishing stays read-only outside the listed post actions: no deletion, no published-post edits, no order or account changes. 3.7.14: reviewed only changed source and routing. Channels workbench has external account/products/tags/data, DPAPI credentials, official OAuth transport, explicit task actions, receipt evidence and recovery. Capture importer uses exact string IDs, immutable hash-checked batches, independent timestamps, unknown/null metrics and no bundled personal history. Offline tests do not certify live OAuth or platform publishing. Unchanged files inherit hash-bound reviews.",
       "release_3_7_13_review": "1.0.1: reviewed workflow.md in full, retained title character and scheduling observations, replaced source titles with generic examples, removed automatic cookie clearing and script-click assumptions, generalised cover matching, corrected eight-field check count. Added generated openai.yaml. No private identities, actual titles, credentials or media. Browser operations still require current user scope and tool support; no new live publication test."
     },
     "yl-knowledge": {
@@ -545,9 +567,9 @@
         "references/handoff.md": "5e8390dec0f00ff36c350be7c76d6422deccd7a7e6ac19f666db308db1d1ed19",
         "references/ranking.md": "30f81597e4d68ad2e27106dd6cc803ba3fede4b4d04e9d18dd61db4e4326fefa",
         "scripts/ranking.py": "e7d5dd802a1f5f63870ca5604f8fbb663720cb1d034b4a583fcd4f3cf9598c86",
-        "SKILL.md": "52b8ac211be84ce583fb81f0f3ff059497198441303c33cbcecbb5388bea5cf5"
+        "SKILL.md": "c9e8aa9947125c2cb89ab67fbf168a51c37f97b9dc9d4a375dbcc5deea62f86e"
       },
-      "review_notes": "Main-entry routing: publishing branch kept separate from capture/analytics; explicit-authorisation rule stated; cover-first and no-location rules surfaced at the router so they are not lost downstream.",
+      "review_notes": "Main-entry routing: publishing branch kept separate from capture/analytics; explicit-authorisation rule stated; cover-first and no-location rules surfaced at the router so they are not lost downstream. 3.7.14: reviewed only changed source and routing. Channels workbench has external account/products/tags/data, DPAPI credentials, official OAuth transport, explicit task actions, receipt evidence and recovery. Capture importer uses exact string IDs, immutable hash-checked batches, independent timestamps, unknown/null metrics and no bundled personal history. Offline tests do not certify live OAuth or platform publishing. Unchanged files inherit hash-bound reviews.",
       "slice_routing_review": "3.6.0: reviewed additive independent-slice dispatch, explicit Remotion preservation, existing short-talking-head/interview/archive routes retained; no permission expansion or private inputs."
     },
     "yl-official-account-analytics": {

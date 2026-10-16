@@ -16,4 +16,4 @@
 
 来源账号、库名、排除来源 ID、领域、身份/表达偏好、本地软件位置属于个人配置。外部配置不能改变本次用户明确指令，也不授予云端写入权限。
 
-发布工作台分别通过 `publishing.douyin.config_file` 与 `publishing.xiaohongshu.config_file` 指向安装者自己的外置配置；账号、素材、数据库、证据和桌面图标不进入核心。空白模板只保留字段，不预填账号或本机位置。平台配置及数据不可混用，配置存在也不授权上传或发表。
+发布工作台分别通过 `publishing.douyin.config_file`、`publishing.channels.config_file` 与 `publishing.xiaohongshu.config_file` 指向安装者自己的外置配置；账号、素材、数据库、证据和桌面图标不进入核心。空白模板只保留字段，不预填账号或本机位置。平台配置及数据不可混用，配置存在也不授权上传或发表。

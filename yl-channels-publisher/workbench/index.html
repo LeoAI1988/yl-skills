@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>视频号发布工作台</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%23ef9b32%22%2F%3E%3Cpath%20d%3D%22M16%2022c14-18%2020%2040%2032%2014M16%2042c14%2018%2020-40%2032-14%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E">
+<style>
+:root{
+  --bg:#f7f8fa; --card:#fff; --line:#e8eaed; --line2:#f0f2f5;
+  --ink:#1a1d21; --ink2:#5b6570; --ink3:#9aa4ae;
+  --brand:#d96c08; --brand-soft:#fff2e1;
+  --ok:#0f9960; --warn:#e8a317; --err:#e5484d;
+  --r:10px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font:14px/1.6 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif;
+  background:var(--bg); color:var(--ink); padding:24px 20px 24px;
+}
+.wrap{max-width:1180px;margin:0 auto}
+
+header{display:flex;align-items:baseline;gap:12px;margin-bottom:20px}
+h1{font-size:19px;font-weight:650;letter-spacing:-.2px}
+.sub{font-size:12.5px;color:var(--ink3)}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin-bottom:14px}
+.card h2{font-size:14px;font-weight:650;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.num{width:19px;height:19px;border-radius:5px;background:var(--brand-soft);color:var(--brand);font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+
+.row{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
+.field{display:flex;flex-direction:column;gap:5px}
+.field>label{font-size:12px;color:var(--ink2);font-weight:550}
+.field.grow{flex:1 1 260px;min-width:0}
+
+input[type=text],input[type=number],input[type=time],select,textarea{
+  font:inherit;color:var(--ink);background:#fff;border:1px solid var(--line);
+  border-radius:7px;padding:7px 10px;height:34px;width:100%;outline:none;transition:.12s;
+}
+textarea{height:auto;padding:9px 10px;line-height:1.7;resize:vertical}
+input:focus,select:focus,textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px rgba(43,108,255,.1)}
+input::placeholder{color:#b9c1c9}
+
+button{font:inherit;height:34px;padding:0 14px;border-radius:7px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:.12s;white-space:nowrap}
+button:hover:not(:disabled){border-color:#c9cfd6;background:#fafbfc}
+button:disabled{opacity:.45;cursor:not-allowed}
+button.primary{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:550}
+button.primary:hover:not(:disabled){background:#bc5803;border-color:#bc5803}
+button.sm{height:28px;padding:0 10px;font-size:12.5px;border-radius:6px}
+
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{height:32px;padding:0 13px;border-radius:7px;border:1px solid var(--line);background:#fff;cursor:pointer;font:inherit;font-size:13px;color:var(--ink2);transition:.12s}
+.chip:hover{border-color:#c9cfd6}
+.chip.on{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:600}
+
+.src{border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin-bottom:10px;background:#fcfcfd}
+.src-head{display:flex;gap:10px;align-items:center}
+.src-head .field{flex:1}
+.src-meta{font-size:12px;color:var(--ink3);margin-top:8px}
+.src-meta b{color:var(--ok);font-weight:600}
+.src-meta .bad{color:var(--warn)}
+
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{text-align:left;font-size:11.5px;font-weight:600;color:var(--ink3);padding:8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.tbl td{padding:8px;border-bottom:1px solid var(--line2);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:none}
+.tbl .tcell{font-variant-numeric:tabular-nums;font-weight:650;font-size:14px;white-space:nowrap}
+.tbl select,.tbl input{height:30px;font-size:12.5px;padding:4px 8px}
+.tbl .idx{width:52px}
+.tbl .idx input{text-align:center;font-variant-numeric:tabular-nums}
+.rowline{font-size:11.5px;color:var(--ink3);margin-top:4px;padding-left:1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tbl .pick{width:34%}
+
+.tag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:4px;background:#f0f2f5;color:var(--ink2);margin-left:5px;font-weight:500}
+.tag.ok{background:#e6f6ee;color:var(--ok)}
+.tag.none{background:#fdf0ee;color:var(--err)}
+.tag.miss{background:#fdf5e3;color:var(--warn)}
+
+.ovr{display:flex;gap:5px}
+.ovr button{flex:1;font-size:11.5px;padding:0 4px;height:26px}
+
+.timeline{display:flex;align-items:center;gap:0;margin:4px 0 0;overflow-x:auto;padding-bottom:4px}
+.tl-item{flex:1;min-width:78px;text-align:center;position:relative;padding:0 4px}
+.tl-time{font-size:14px;font-weight:650;font-variant-numeric:tabular-nums;line-height:1.4}
+.tl-bar{height:3px;background:var(--brand);border-radius:2px;margin:5px 8px 0;opacity:.75}
+.tl-lbl{font-size:11px;color:var(--ink3);margin-top:5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.card:last-of-type{margin-bottom:64px}
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(247,248,250,.92);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 0;display:flex;gap:12px;align-items:center;z-index:20}
+.bar .inner{max-width:1180px;margin:0 auto;width:100%;display:flex;gap:12px;align-items:center;padding:0 20px}
+.bar .sp{flex:1}
+.hint{font-size:12px;color:var(--ink3)}
+.warnbox{background:#fdf5e3;border:1px solid #f5e2ba;border-radius:7px;padding:9px 12px;font-size:12.5px;color:#8a6412;margin-top:10px}
+.hide{display:none!important}
+.empty{color:var(--ink3);font-size:13px;padding:22px 0;text-align:center}
+code{background:#f0f2f5;padding:1px 5px;border-radius:4px;font-size:12px;font-family:ui-monospace,Consolas,monospace}
+.spin{display:inline-block;width:12px;height:12px;border:2px solid var(--line);border-top-color:var(--brand);border-radius:50%;animation:sp .7s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+dialog{border:none;border-radius:12px;padding:0;max-width:640px;width:92%;box-shadow:0 20px 60px rgba(0,0,0,.18)}
+dialog::backdrop{background:rgba(20,25,32,.42)}
+.dlg-h{padding:16px 20px;border-bottom:1px solid var(--line);font-weight:650;display:flex;justify-content:space-between;align-items:center}
+.dlg-b{padding:18px 20px;max-height:62vh;overflow:auto}
+.dlg-f{padding:12px 20px;border-top:1px solid var(--line);display:flex;gap:10px;justify-content:flex-end}
+.kv{display:flex;justify-content:space-between;gap:16px;padding:7px 0;border-bottom:1px solid var(--line2);font-size:13px}
+.kv:last-child{border:none}
+.kv span:first-child{color:var(--ink2)}
+.kv span:last-child{font-weight:550;text-align:right}
+
+header{align-items:center;flex-wrap:wrap}.brand-icon{width:38px;height:38px;object-fit:contain}
+dialog{margin:auto}.tbl .pick{width:32%;max-width:360px}.rowline{max-width:340px}.tbl .order-cell{white-space:nowrap;padding:6px 3px}
+.drag-handle{cursor:grab;font-size:24px;padding:0 6px;border-color:transparent;vertical-align:middle;touch-action:none}
+.drag-handle:active{cursor:grabbing}.move-buttons{display:inline-flex;flex-direction:column;vertical-align:middle;gap:2px}
+.move-buttons button{height:20px;width:24px;padding:0;font-size:12px}.dragging td:not(.tcell){opacity:.4}
+.drop-before td:not(.tcell){box-shadow:inset 0 3px var(--brand);background:var(--brand-soft)}
+.drop-after td:not(.tcell){box-shadow:inset 0 -3px var(--brand);background:var(--brand-soft)}
+.tcell{background:#faf9f7}.preview-video{color:var(--brand)}
+#videoDlg{max-width:900px}#videoPlayer{display:block;width:100%;height:min(65vh,640px);background:#171717;object-fit:contain}
+.video-toolbar{display:flex;gap:8px;align-items:center;padding:12px 18px;flex-wrap:wrap}.video-toolbar select{width:100px}
+#videoName{padding:8px 18px;color:var(--ink2);word-break:break-all;font-size:12px}#videoError{padding:0 18px;color:var(--err)}
+#status{max-width:65%;overflow-wrap:anywhere;color:var(--ink2)}
+.time-picker{display:flex;align-items:center;gap:5px}.time-picker select{width:66px}.time-picker span{color:var(--ink2);font-weight:600}
+.executor-settings{display:flex;align-items:center;flex-wrap:wrap;gap:12px 22px;padding:12px 16px;background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:16px;color:var(--ink2);font-size:12px}
+.executor-settings strong{color:var(--ink);font-weight:600;margin-left:6px}.executor-model{display:flex;align-items:center;gap:9px}.executor-model select{width:190px;font-size:13px}
+.tag-summary{display:flex;gap:8px}.tag-summary input{min-width:0;background:#fcfcfd}.tag-summary button{flex:none}
+.tag-panel{margin-top:14px;padding:16px;background:#fffaf3;border:1px solid #f2e3cd;border-radius:9px}.tag-panel[hidden]{display:none}
+.tag-panel-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:12px}.tag-panel-head .hint{margin-right:auto;color:var(--ink2)}
+.tag-options{display:flex;flex-wrap:wrap;gap:8px}.tag-option{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border:1px solid #e3e5e8;border-radius:7px;background:#fff;cursor:pointer;color:var(--ink2);font-size:13px;overflow-wrap:anywhere}
+.tag-option.is-selected{border-color:#efbc7a;background:#fff4e5;color:#8c470a}.tag-option input{accent-color:var(--brand);width:14px;height:14px;cursor:pointer}.tag-option:focus-within{outline:2px solid var(--brand);outline-offset:2px}
+.tag-add{display:flex;align-items:center;gap:8px;margin-top:16px;max-width:480px}.tag-add input{min-width:0}.tag-add button{flex:none}.tag-message{min-height:20px;font-size:12px;color:var(--ink2);margin-top:6px}
+@media(max-width:850px){.card:has(.tbl){overflow-x:auto}.tbl{min-width:900px}header .sub{width:100%}}
+</style>
+<link rel="stylesheet" href="/portal.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <img class="brand-icon" src="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2216%22%20fill%3D%22%23ef9b32%22%2F%3E%3Cpath%20d%3D%22M16%2022c14-18%2020%2040%2032%2014M16%2042c14%2018%2020-40%2032-14%22%20fill%3D%22none%22%20stroke%3D%22white%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%2F%3E%3C%2Fsvg%3E" alt=""><h1>视频号发布工作台</h1>
+    <span class="sub">发布与内容经营，一处掌握</span>
+  </header>
+
+  <section class="executor-settings" aria-label="发布执行设置">
+    <span>发布驱动<strong>WorkBuddy</strong></span>
+    <div class="executor-model"><label for="executorModel">模型</label><select id="executorModel" aria-label="发布模型"></select></div>
+    <span>思考强度<strong>极致</strong></span>
+    <span>上下文窗口<strong>模型默认</strong></span>
+    <span class="executor-note">模型需与 WorkBuddy 本地助理一致；连接不会自动切换模型。</span>
+  </section>
+
+  <nav class="portal-nav" role="tablist" aria-label="工作台板块">
+    <button type="button" id="tab-publish" role="tab" aria-selected="true" aria-controls="panel-publish" data-panel="publish">发布工作台</button>
+    <button type="button" id="tab-history" role="tab" aria-selected="false" aria-controls="panel-history" data-panel="history" tabindex="-1">发布记录</button>
+    <button type="button" id="tab-tracking" role="tab" aria-selected="false" aria-controls="panel-tracking" data-panel="tracking" tabindex="-1">数据跟踪</button>
+    <button type="button" id="tab-review" role="tab" aria-selected="false" aria-controls="panel-review" data-panel="review" tabindex="-1">复盘大屏</button>
+  </nav>
+
+  <div id="portalRuntime" class="portal-runtime"><span class="portal-dot"></span><span id="portalRuntimeText" role="status" aria-live="polite">正在检查 WorkBuddy 连接…</span><button type="button" id="workbuddySettings" class="sm">连接 WorkBuddy</button></div>
+  <div id="portalJob" class="portal-job" hidden><div><strong id="portalJobTitle"></strong><span id="portalJobState" class="portal-badge" role="status" aria-live="polite"></span></div><p id="portalJobSummary"></p><p id="portalJobHint"></p><div id="portalAcknowledge" class="portal-ack" hidden><label><input type="checkbox" id="portalAckConfirmed">我已在 WorkBuddy 核对，该任务已停止或完成</label><button type="button" id="portalAckButton" class="sm" disabled>解除本地占用</button><p>解除占用不会停止 WorkBuddy，也不会改变任务结果。</p><div id="portalAckNotice" class="portal-feedback" role="status" aria-live="polite"></div></div></div>
+
+  <main id="panel-publish" class="portal-panel" role="tabpanel" aria-labelledby="tab-publish">
+  <!-- 1 成片来源 -->
+  <section class="card">
+    <h2><span class="num">1</span>成片来源文件夹</h2>
+    <div id="srcs"></div>
+    <div class="row" style="margin-top:4px">
+      <button id="addSrc" class="sm">+ 增加文件夹</button>
+      <div class="sp" style="flex:1"></div>
+      <button id="scanBtn" class="primary">扫描文件夹</button>
+    </div>
+  </section>
+
+  <!-- 2 排期 -->
+  <section class="card">
+    <h2><span class="num">2</span>当日排期</h2>
+    <div class="row">
+      <div class="field">
+        <label>发布日期</label>
+        <input type="date" id="date">
+      </div>
+      <div class="field" style="min-width:230px">
+        <label>当天发几条</label>
+        <div class="chips" id="countChips"></div>
+      </div>
+      <div class="field">
+        <label>起始时间</label>
+        <input type="hidden" id="startTime" value="07:30">
+        <div class="time-picker"><select id="startHour" aria-label="起始小时"></select><span>:</span><select id="startMinute" aria-label="起始分钟"></select></div>
+      </div>
+      <div class="field">
+        <label>结束时间</label>
+        <input type="hidden" id="endTime" value="21:00">
+        <div class="time-picker"><select id="endHour" aria-label="结束小时"></select><span>:</span><select id="endMinute" aria-label="结束分钟"></select></div>
+      </div>
+    </div>
+    <div class="timeline" id="timeline"></div>
+    <div class="hint" id="tlHint" style="margin-top:8px"></div>
+  </section>
+
+  <!-- 3 默认设置 -->
+  <section class="card">
+    <h2><span class="num">3</span>默认设置　<span class="sub" style="font-weight:400">常规状态全是默认，只需看个别条目要不要改</span></h2>
+    <div class="row">
+      <div class="field" style="min-width:150px">
+        <label>位置</label>
+        <select id="dLoc"><option>不显示位置</option></select>
+      </div>
+      <div class="field" style="min-width:130px">
+        <label>声明原创</label>
+        <select id="dOrig"><option value="1">勾选</option><option value="0">不勾选</option></select>
+      </div>
+      <div class="field" style="min-width:140px">
+        <label>活动</label>
+        <select id="dAct"><option>不参与活动</option></select>
+      </div>
+      <div class="field grow" style="min-width:210px">
+        <label for="dTags">发布标签（描述 = 标题 + 空格 + 已选标签）</label>
+        <div class="tag-summary"><input type="text" id="dTags" readonly placeholder="未选择标签"><button type="button" id="toggleTags" aria-expanded="false" aria-controls="tagsPanel">展开标签 ▾</button></div>
+      </div>
+    </div>
+    <div id="tagsPanel" class="tag-panel" hidden>
+      <div class="tag-panel-head"><span class="hint" id="tagSelectionCount" aria-live="polite"></span><button type="button" class="sm" id="selectAllTags">全选</button><button type="button" class="sm" id="clearTags">全不选</button></div>
+      <div id="tagOptions" class="tag-options" role="group" aria-label="可选发布标签"></div>
+      <div class="tag-add"><input type="text" id="newTag" aria-label="新标签" placeholder="输入新标签，可带 #" maxlength="80"><button type="button" id="addTag">＋ 添加标签</button></div>
+      <p id="tagMessage" class="tag-message" role="status">新添加的标签会自动勾选。</p>
+    </div>
+  </section>
+
+  <!-- 4 时间点明细 -->
+  <section class="card">
+    <h2><span class="num">4</span>时间点明细　<span class="sub" style="font-weight:400">拖动 ⠿ 调整视频顺序；时间固定，商品与设置随视频移动</span></h2>
+    <table class="tbl">
+      <thead><tr>
+        <th style="width:80px">固定时间</th><th style="width:68px">顺序</th>
+        <th class="pick">视频</th>
+        <th style="width:80px">预览</th><th style="width:78px">封面</th>
+        <th style="width:150px">商品</th>
+        <th style="width:196px">覆盖设置</th>
+      </tr></thead>
+      <tbody id="slots"></tbody>
+    </table>
+    <div id="issues"></div>
+  </section>
+
+  <div class="bar"><div class="inner">
+    <button id="previewBtn">预览清单</button>
+    <button id="saveBtn">保存发布清单</button>
+    <button id="publishBtn" class="primary">立即发布</button>
+    <div class="sp" style="flex:1"></div>
+    <span class="hint" id="status" role="status" aria-live="polite"></span>
+  </div></div>
+  </main>
+
+  <section id="panel-history" class="portal-panel" role="tabpanel" aria-labelledby="tab-history" hidden>
+    <div class="portal-heading"><div><p class="portal-eyebrow">PUBLISHING HISTORY</p><h2>每一轮发布，都有记录</h2><p>查看工作台发布批次与历史作品。已保存的清单会单独标记，只有平台确认的作品才计入已发布。</p></div><button type="button" id="historyRefresh">刷新记录</button></div>
+    <div id="historyStats" class="portal-stats" aria-label="发布记录概况"></div>
+    <div class="portal-note">历史作品按发布日期归组，供查阅和跟踪；这些分组不代表当时的原始发布轮次。</div>
+    <div id="historyNotice" class="portal-feedback" role="status" aria-live="polite"></div>
+    <div id="historyList" class="portal-history-list"></div>
+  </section>
+
+  <section id="panel-tracking" class="portal-panel" role="tabpanel" aria-labelledby="tab-tracking" hidden>
+    <div class="portal-heading"><div><p class="portal-eyebrow">CONTENT TRACKING</p><h2>作品数据，一条条看清</h2><p>汇总工作台发布和历史作品，包含已隐藏内容。数据以最近一次成功采集为准。</p></div><div class="portal-actions"><button type="button" id="trackingReload">重读已有数据</button><button type="button" id="trackingCapture" class="primary" disabled>采集最新数据</button></div></div>
+    <div id="trackingStats" class="portal-stats" aria-label="作品数据概况"></div>
+    <div class="portal-freshness"><span id="trackingTimestamp">最近采集：待加载</span><span id="trackingCoverage"></span></div>
+    <details id="trackingGaps" class="portal-coverage" hidden><summary>采集范围与缺口</summary><div></div></details>
+    <div class="portal-filters">
+      <div class="portal-search"><label class="portal-sr-only" for="trackingSearch">搜索作品标题或主题</label><input id="trackingSearch" type="search" placeholder="搜索作品标题或主题" autocomplete="off"></div>
+      <label>可见状态<select id="trackingVisibility"><option value="all">全部状态</option><option value="public">公开</option><option value="hidden">已隐藏</option><option value="unknown">待确认</option></select></label>
+      <label>内容类型<select id="trackingType"><option value="all">全部类型</option><option value="video">视频</option><option value="image">图文</option></select></label>
+      <label>排序<select id="trackingSort"><option value="publishedAt">发布时间</option><option value="views">播放量</option><option value="follows">新增关注</option><option value="completionPct">完播率</option></select></label>
+      <button type="button" id="trackingDirection" title="切换排序方向" aria-label="当前降序，点击切换升序">↓ 降序</button>
+      <div class="portal-exports"><a href="/api/analytics/export?format=csv" download>导出表格</a><a href="/api/analytics/export?format=json" download>导出完整数据</a></div>
+      <div class="portal-filter-more">
+        <label>发布起始日期<input type="date" id="trackingFrom"></label>
+        <label>发布结束日期<input type="date" id="trackingTo"></label>
+        <label>成交归因<select id="trackingSales"><option value="all">全部作品</option><option value="true">有成交归因</option></select></label>
+        <label>采集范围<select id="trackingCaptureStatus"><option value="all">全部已记录</option><option value="latest">最近采集返回</option><option value="not_in_latest_capture">仅留历史待核</option></select></label>
+        <button type="button" id="trackingReset" class="sm">清除筛选</button>
+      </div>
+    </div>
+    <div id="trackingNotice" class="portal-feedback" role="status" aria-live="polite"></div>
+    <div class="portal-table-shell"><table class="portal-table portal-post-table"><thead><tr><th scope="col">作品</th><th scope="col">发布 / 状态</th><th scope="col">播放</th><th scope="col">点赞</th><th scope="col">评论</th><th scope="col">分享</th><th scope="col">收藏</th><th scope="col">推荐</th><th scope="col">新增关注</th><th scope="col">完播率</th><th scope="col">3 秒留存</th><th scope="col">平均观看</th><th scope="col">视频时长</th><th scope="col">数据采集时间</th></tr></thead><tbody id="trackingRows"></tbody></table></div>
+    <div class="portal-pagination"><span id="trackingPageInfo">加载中…</span><div><button type="button" id="trackingPrevious" disabled>上一页</button><button type="button" id="trackingNext" disabled>下一页</button></div></div>
+    <p class="portal-footnote">“—”表示尚未采集或来源未提供。播放与关注为作品累计值，不等同于当周新增数据；点击作品查看指标全貌与采集历史。</p>
+  </section>
+
+  <section id="panel-review" class="portal-panel" role="tabpanel" aria-labelledby="tab-review" hidden>
+    <div class="portal-heading"><div><p class="portal-eyebrow">PERFORMANCE REVIEW</p><h2>把数据连成判断</h2><p>汇入已有视频号复盘，统一查看内容表现、主题、关注转化与商品归因。</p></div><div class="portal-actions"><button type="button" id="reviewReload">刷新复盘</button><button type="button" id="reviewExpand">宽屏查看</button></div></div>
+    <div class="portal-freshness"><span id="reviewTimestamp">最近采集：待加载</span><span id="reviewCoverage"></span></div>
+    <details id="reviewGaps" class="portal-coverage" hidden><summary>采集范围与缺口</summary><div></div></details>
+    <div id="reviewNotice" class="portal-feedback" role="status" aria-live="polite"></div>
+    <div class="portal-report-shell" id="reviewFrameShell"><iframe id="reviewFrame" title="视频号内容复盘大屏" sandbox="allow-scripts" loading="lazy" referrerpolicy="no-referrer"></iframe><div id="reviewLoading" class="portal-report-loading">正在载入复盘大屏…</div></div>
+    <p class="portal-footnote">复盘基于已采集的证据。缺失指标不会按零处理，尚未完成的归因与采集缺口会保留标记。</p>
+  </section>
+</div>
+
+<dialog id="dlg">
+  <div class="dlg-h"><span id="dlgTitle">发布清单预览</span><button class="sm" id="dlgX">关闭</button></div>
+  <div class="dlg-b" id="dlgBody"></div>
+  <div class="dlg-f">
+    <button class="sm" id="copyBtn">复制 Markdown</button>
+    <button class="sm primary" id="dlgSave">保存</button>
+  </div>
+</dialog>
+
+<dialog id="videoDlg" aria-labelledby="videoTitle">
+  <div class="dlg-h"><span id="videoTitle">视频预览</span><button id="videoClose" class="sm">关闭预览</button></div>
+  <video id="videoPlayer" controls preload="metadata" playsinline></video>
+  <div id="videoName"></div><p id="videoError" role="status"></p>
+  <div class="video-toolbar"><button class="sm" id="videoBack">后退 10 秒</button><button class="sm" id="videoForward">快进 10 秒</button>
+    <label for="videoSpeed">播放速度</label><select id="videoSpeed"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select>
+    <span class="hint">拖动进度条定位 · Esc 关闭</span></div>
+</dialog>
+<dialog id="portalDetail" class="portal-detail" aria-labelledby="portalDetailTitle">
+  <div class="dlg-h"><span id="portalDetailTitle">记录详情</span><button type="button" id="portalDetailClose" class="sm">关闭</button></div>
+  <div id="portalDetailBody" class="dlg-b"></div>
+</dialog>
+<dialog id="workbuddyDialog" class="workbuddy-dialog" aria-labelledby="workbuddyDialogTitle">
+  <div class="dlg-h"><span id="workbuddyDialogTitle">连接 WorkBuddy</span><button type="button" id="workbuddyClose" class="sm">关闭</button></div>
+  <div class="dlg-b">
+    <p class="portal-detail-intro">填写已有 WorkBuddy 开放平台应用的配置，完成一次授权后，即可从工作台发起任务。<a href="https://open.workbuddy.cn/docs/openapi" target="_blank" rel="noopener noreferrer">查看官方接入说明</a>。</p>
+    <p class="portal-footnote workbuddy-callback">请在应用中登记完全相同的授权回调地址：<br><code>http://127.0.0.1:8713/auth/workbuddy/callback</code></p>
+    <div id="workbuddyConnectionState" class="portal-note">正在读取连接状态…</div>
+    <form id="workbuddyConfigForm" autocomplete="off">
+      <div class="field"><label for="workbuddyClientId">应用 Client ID</label><input type="text" id="workbuddyClientId" name="workbuddy-client-id" autocomplete="off" spellcheck="false" required placeholder="填写自己的应用 Client ID"></div>
+      <div class="field"><label for="workbuddyClientSecret">应用 Client Secret</label><input type="password" id="workbuddyClientSecret" name="workbuddy-client-secret" autocomplete="new-password" spellcheck="false" required placeholder="仅用于保存本机连接配置"></div>
+      <div class="field"><label for="workbuddyAssistantModel">WorkBuddy 本地助理当前模型</label><select id="workbuddyAssistantModel"><option>Space Bunny</option><option>GLM 5.3 Flash</option><option>DeepSeek v4.1 Flash</option></select></div>
+      <p class="portal-footnote">请选择 WorkBuddy 里实际使用的模型。官方连接不能自动切换模型；它与顶部的本轮任务模型一致时，才能执行任务。</p>
+      <p class="portal-footnote">凭据仅提交给这台电脑的工作台服务，保存后输入框立即清空。这里不会显示已保存的密钥。</p>
+      <button type="submit" id="workbuddySaveConfig">保存本机配置</button>
+    </form>
+    <div class="workbuddy-authorize"><button type="button" class="primary" id="workbuddyConnect" disabled>生成授权链接</button><button type="button" id="workbuddyCheck" disabled>检查视频号连接</button><button type="button" id="workbuddyRefreshStatus">刷新状态</button><a id="workbuddyAuthorizeLink" target="_blank" rel="noopener noreferrer" hidden>前往 WorkBuddy 授权 ↗</a></div>
+    <p class="portal-footnote">授权完成后，还需只读核对视频号账号、模型和可用工具。此检查不会上传或发布作品，通过后才开放发布与采集。</p>
+    <div id="workbuddyConfigNotice" class="portal-feedback" role="status" aria-live="polite"></div>
+    <p class="portal-footnote">完成授权后，请保持 WorkBuddy 本地助理在线。模型选择作为任务偏好随清单传递，仍需由助理核对。</p>
+  </div>
+</dialog>
+<script type="module" src="/app.mjs"></script>
+<script type="module" src="/portal.mjs"></script>
+</body>
+</html>

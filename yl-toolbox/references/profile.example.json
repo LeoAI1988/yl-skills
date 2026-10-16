@@ -39,6 +39,9 @@
     },
     "xiaohongshu": {
       "config_file": ""
+    },
+    "channels": {
+      "config_file": ""
     }
   }
 }
