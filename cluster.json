@@ -1,6 +1,6 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.14.0",
+  "version": "3.14.1",
   "date": "2026-10-28",
   "skills": [
     {
@@ -613,7 +613,7 @@
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "references/catalog.json": "fb7be49823ca2cad8527b74b8d0655eea87c06118a7c1d5865cdfccdf53e8523",
+        "references/catalog.json": "ce3c93716adced667e2ce44a4d3e9770f3e3dde29c791aa1f3027cd2552d496a",
         "references/profile.example.json": "63154e27ce81d7007b77af6086b0474ea373ca3e24917b7940ca887d3be5391c",
         "references/profile.md": "19c08992d0ebf695ab7b7e8696da33365928b37e153f754fe9b0a152ac471d37",
         "SKILL.md": "ebc55ec5f1566b91d57762aaf4af72e8e4b811a7422f0b9828f8912ce5df766d"
