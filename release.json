@@ -1,23 +1,23 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.7.14",
-  "date": "2026-10-16",
+  "version": "3.14.0",
+  "date": "2026-10-28",
   "skills": {
     "yl-toolbox": {
-      "version": "3.7.4",
+      "version": "3.7.12",
       "category": "entry",
       "role": "router",
       "license": "MIT"
     },
     "yl-writing": {
-      "version": "3.4.3",
+      "version": "3.4.4",
       "category": "media",
       "role": "router",
       "license": "MIT AND CC-BY-NC-4.0",
       "subcategory": "writing"
     },
     "yl-video": {
-      "version": "3.7.0",
+      "version": "3.9.0",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -38,14 +38,14 @@
       "subcategory": "writing"
     },
     "yl-remotion-talking-head-editor": {
-      "version": "3.5.2",
+      "version": "3.5.5",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
       "subcategory": "video"
     },
     "yl-short-video-covers": {
-      "version": "3.1.1",
+      "version": "3.1.2",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -72,7 +72,7 @@
       "subcategory": "analytics"
     },
     "yl-channels-publisher": {
-      "version": "1.1.0",
+      "version": "1.2.2",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -151,7 +151,7 @@
       "license": "MIT"
     },
     "yl-media": {
-      "version": "3.7.3",
+      "version": "3.7.8",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -165,14 +165,14 @@
       "subcategory": "analytics"
     },
     "yl-chatcut-landscape-interview-editor": {
-      "version": "3.0.0",
+      "version": "3.0.1",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
       "subcategory": "video"
     },
     "yl-ppt": {
-      "version": "1.0.1",
+      "version": "1.0.5",
       "category": "office",
       "role": "member",
       "license": "MIT",
@@ -193,39 +193,95 @@
       "subcategory": "research"
     },
     "yl-video-archive": {
-      "version": "3.6.2",
+      "version": "3.6.4",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "video"
     },
     "yl-remotion-video-slicer": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "video"
     },
     "yl-course-video-editor": {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "video"
     },
     "yl-douyin-publisher": {
-      "version": "1.4.2",
+      "version": "1.4.3",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "publishing"
     },
     "yl-xiaohongshu-publisher": {
-      "version": "1.0.1",
+      "version": "1.2.0",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "publishing"
+    },
+    "yl-viral-video-remixer": {
+      "version": "1.0.3",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    "yl-course-summary": {
+      "version": "1.1.2",
+      "category": "office",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video-summary"
+    },
+    "yl-anti-entropy": {
+      "version": "1.0.3",
+      "category": "office",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "file-management"
+    },
+    "yl-c-drive-cleanup": {
+      "version": "1.0.0",
+      "category": "office",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "file-management"
+    },
+    "yl-sales-content-refresh": {
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "analytics"
+    },
+    "yl-ai-dialogue-video": {
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    "yl-article-narration-video": {
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    "yl-wechat-moments": {
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT AND CC-BY-NC-4.0",
+      "subcategory": "writing"
     }
   }
 }

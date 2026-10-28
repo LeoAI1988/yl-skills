@@ -38,11 +38,36 @@ async function publicationFixture(){
   const manifest=path.join(c.root,'plan.md');await fs.writeFile(manifest,'test');
   const job=await c.runner.start({kind:'publish',model:'Space Bunny',manifest,plan:{date:'2026-10-17',rows:[{seq:1,video:path.join(os.tmpdir(),'receipt.mp4'),time:'10:00',goods:'A'}]}});
   const folder=path.join(c.root,'output','workbuddy-jobs',job.id),evidence=path.join(folder,'proof.png');await fs.writeFile(evidence,'fixture');
-  const item={seq:1,video:path.join(os.tmpdir(),'receipt.mp4'),at:'2026-10-17 10:00',goods:'A',state:'scheduled',platformId:'confirmed-platform-id',observedAt:new Date().toISOString(),evidence};
+  const item={seq:1,video:path.join(os.tmpdir(),'receipt.mp4'),at:'2026-10-17 10:00',actualAt:'2026-10-17 10:00',goods:'A',state:'scheduled',platformId:'confirmed-platform-id',observedAt:new Date().toISOString(),evidence};
   const write=async(name,receipt)=>fs.writeFile(path.join(folder,name+'.json'),JSON.stringify({jobId:job.id,kind:'publish',items:[receipt]}));
   return {...c,job,item,write};
 }
 
+test('wrong or absent observed schedule cannot be promoted to a successful publication',async()=>{
+  for(const actualAt of [null,'2026-10-17 13:00','2026-10-18 10:00']){
+    const c=await publicationFixture();await c.write('result',{...c.item,actualAt});
+    const result=await c.runner.poll(c.job.id);
+    assert.equal(result.state,'attention');assert.equal(result.platformVerified,false);
+    assert.equal(result.results[0].state,'unknown');assert.equal(result.results[0].actualAt,actualAt);
+    assert.match(result.results[0].note,/日期或时间/);
+    assert.equal((await c.runner.status()).activeJob.id,c.job.id);
+    // Correcting the receipt for the same task resolves the mismatch, without another submission.
+    const submissions=c.calls.filter(call=>call.options.method==='POST'&&call.url.endsWith('/message')).length;
+    await c.write('result',c.item);
+    assert.equal((await c.runner.poll(c.job.id)).platformVerified,true);
+    assert.equal(c.calls.filter(call=>call.options.method==='POST'&&call.url.endsWith('/message')).length,submissions);
+  }
+});
+test('a later conflicting schedule retains prior facts but keeps the task pending review',async()=>{
+  const c=await publicationFixture();await c.write('progress',c.item);await c.runner.poll(c.job.id);
+  await c.write('result',{...c.item,actualAt:'2026-10-17 13:00'});
+  const result=await c.runner.poll(c.job.id);
+  assert.equal(result.results[0].platformId,c.item.platformId);
+  assert.equal(result.results[0].actualAt,c.item.actualAt);
+  assert.equal(result.results[0].conflictingActualAt,'2026-10-17 13:00');
+  assert.equal(result.platformVerified,false);assert.equal(result.state,'attention');
+  assert.equal((await c.runner.status()).activeJob.id,c.job.id);
+});
 test('unconfigured driver does not invent a queue or expose secrets',async()=>{
   const c=await setup(),s=await c.runner.status();assert.equal(s.available,false);assert.equal(s.capabilities.publish,false);
   await assert.rejects(c.runner.start({kind:'publish'}),e=>e.status===503);assert.equal(c.calls.length,0);
@@ -89,7 +114,7 @@ test('progress matches repeated videos by schedule and rejects missing platform 
   const c=await setup();await authorize(c);await verify(c);const manifest=path.join(c.root,'plan.md');await fs.writeFile(manifest,'test');
   const job=await c.runner.start({kind:'publish',model:'Space Bunny',manifest,plan:{date:'2026-10-17',rows:[{seq:1,video:path.join(os.tmpdir(),'same.mp4'),time:'10:00',goods:'A'},{seq:2,video:path.join(os.tmpdir(),'same.mp4'),time:'12:00',goods:'B'}]}});
   const folder=path.join(c.root,'output','workbuddy-jobs',job.id),evidence=path.join(folder,'proof.png');await fs.writeFile(evidence,'fixture');
-  const item={seq:1,video:path.join(os.tmpdir(),'same.mp4'),at:'2026-10-17 10:00',goods:'A',state:'scheduled',platformId:'real-id-1',observedAt:new Date().toISOString(),evidence};
+  const item={seq:1,video:path.join(os.tmpdir(),'same.mp4'),at:'2026-10-17 10:00',actualAt:'2026-10-17 10:00',goods:'A',state:'scheduled',platformId:'real-id-1',observedAt:new Date().toISOString(),evidence};
   await fs.writeFile(path.join(folder,'progress.json'),JSON.stringify({jobId:job.id,kind:'publish',items:[item]}));
   let result=await c.runner.poll(job.id);assert.equal(result.state,'running');assert.equal(result.results[0].state,'scheduled');assert.equal(result.results[1].state,'unknown');assert.equal('messages' in result,false);
   await fs.writeFile(path.join(folder,'result.json'),JSON.stringify({jobId:job.id,kind:'publish',items:[{...item,seq:2,at:'2026-10-17 12:00',goods:'B',platformId:''}]}));

@@ -8,7 +8,7 @@ Use these prompts only when the user asks to refresh the approved text-free asse
 Use case: identity-preserve
 Asset type: reusable portrait layer for Chinese short-video covers
 Primary request: Create one high-impact editorial chest-up portrait of the same person shown in the user-supplied identity references. Preserve the actual face proportions, age, hairstyle and other distinguishing features. Use only the expression and pose requested by the user.
-Input images: user-supplied identity references approved for this task.
+Input images: the configured default identity reference or existing user-provided portrait assets.
 Scene/backdrop: perfectly flat solid #00ff00 chroma-key background for local removal; no visible room or studio.
 Style/medium: photorealistic editorial portrait with natural skin, glasses, and hands.
 Composition/framing: vertical-friendly chest-up portrait, slightly right of center, complete hair and hand, generous chroma-key padding.

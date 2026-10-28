@@ -1,0 +1,4 @@
+interface:
+  display_name: "爆款二创剪辑"
+  short_description: "同稿多拍按数据选段，母带优先，精剪后统一标题字幕"
+  default_prompt: "使用 $yl-viral-video-remixer 查找同稿的独立拍摄，参考留存数据做混剪，并完成停顿、倍速、字幕和成片核验。"

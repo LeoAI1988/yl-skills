@@ -1,4 +1,4 @@
 interface:
   display_name: "yl 短视频封面"
   short_description: "制作电路纹理黄白描边大字或半透明原帧封面，保持各模式输出一致"
-  default_prompt: "使用 $yl-short-video-covers 根据这份素材制作短视频封面，按已选的科技大字或半透明原帧模式执行；科技大字必须有电路纹理、黄白外描边及水平共左边。"
+  default_prompt: "使用 $yl-short-video-covers 根据这份素材制作短视频封面，按已选的科技大字或半透明原帧模式执行；科技大字必须有电路纹理、黄白外描边及水平共左边，默认使用个人配置头像，不再单独询问人像授权；用户明确要求无头像时省略。"

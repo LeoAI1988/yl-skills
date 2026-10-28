@@ -1,0 +1,6 @@
+interface:
+  display_name: "成交资料全流程更新"
+  short_description: "手动启动后核对新增成交数据，同步文案、金额降序封面总览及达人稿"
+  default_prompt: "使用 $yl-sales-content-refresh，读取新增数据，完整更新成交文案、金额降序封面总览和达人Word稿，并核验三份交付一致。"
+policy:
+  allow_implicit_invocation: false

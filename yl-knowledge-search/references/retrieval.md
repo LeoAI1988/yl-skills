@@ -16,6 +16,8 @@
 
 JSON包含 schema_version 和 sources 数组。每份源记录：source_id、path、title、kind（source/clean_source/work；派生导航使用其他类型）、authorship、review_status、aliases、index。可配置 include_sections、exclude_sections、allowed_spans、raw_source、related_ids。allowed_spans 是原文件物理行号，过滤后不可重新编号。清单由来源登记或已核库适配器生成，不能盲扫工程资料。
 
+默认检索只召回 `source`、`clean_source`、`work`。课程转写、源话重编稿等细分类别放在 `source_subtype`，不要直接用自定义 `kind` 使已登记正文被默认查询过滤。文字清洗质量由 `review_status` 和逐段凭据决定，`clean_source` 只是正文层类型，不等于原音校对完成。手册、工程说明等派生资料保留实际身份；验收必须用默认查询命中新课程/文稿，不能只看索引文档数。
+
 已知排除ID适用于所有入口和旧索引。未知说话者、未校对OCR/ASR保留明确状态；“可搜索”不等于“可直接作为本人引文”。校对后的 clean_verified 或明确确认的 final_confirmed 正文仍需识别内嵌他人引句。完整正文与未提原子的段落均可检索。
 
 ## 命令

@@ -110,7 +110,7 @@ export async function publicationHistory(root, analytics={posts:[]}) {
       let status=event ? safeStatus(event.status) : submittedState;
       if(confirmed.has(status) && !(typeof event?.platformId==='string' && event.platformId && event.observedAt && event.evidence))status='unknown';
       if(confirmed.has(status))matchedIds.add(event.platformId);
-      return {id:`${b.batchId}/${seq}`,seq,title:r.title || '未填写标题',time:r.time,goods:r.goods||null,status,platformId:event?.platformId||null,error:event?.error||null,observedAt:event?.observedAt||null};
+      return {id:`${b.batchId}/${seq}`,seq,title:r.title || '未填写标题',time:r.time,actualAt:event?.actualAt||null,originalActual:event?.originalActual??null,note:event?.note||r.originalReason||null,goods:r.goods||null,status,platformId:event?.platformId||null,error:event?.error||null,observedAt:event?.observedAt||null,video:r.video||null,videoRel:r.videoRel||null,cover:r.cover||null};
     });
     return {id:b.batchId,createdAt:b.createdAt,date:b.plan.date,status:batchStatus(rows),origin:'workbench',count:rows.length,counts:counts(rows),rows,model:b.plan.execution?.model || 'Space Bunny'};
   });

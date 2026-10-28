@@ -159,7 +159,7 @@ accountDaily文件={account,captured_at,range:{start:'YYYY-MM-DD',end:'YYYY-MM-D
 orders文件={account,captured_at,total_orders:N,orders:[{order_id:字符串,status_str:实际状态,is_pay_done:boolean,create_time:'YYYY-MM-DD HH:mm',pay_ts:Unix秒或null,pay_price_fen:整数分,refund_fen:已取得值或null,products:[{product_id:字符串,title,cnt,sale_channel:关联账号或null}]}]}。不得采集或输出任何buyer/buyer_nick/phone/address/customer_note等客户字段。多商品订单不擅自分摊。
 attribution文件={account,captured_at,rows:[{publication_id:经核实平台字符串ID,product_id:字符串,product:名称,orders:整数,amount:人民币元,scope:'platform_window_reference',evidence:官方导出或可见页面核验方式}]}，只能真实视频归因，不能用标题相似度认ID或把全店成交硬分配给视频。
 files增加对应的accountDaily/orders/attribution相对文件名，每个提供层都有同名coverage条目。全部层complete且计数相符才result complete，否则partial，各层时间均为本轮实际采集时间。`;
-    return `${intro}\n${model}\n用户在工作台已确认本批发布。读取 ${path.join(MEMBER,'SKILL.md')} 和 ${job.manifest}；先核对账号、已发作品和定时队列，严格按清单视频/封面/标题/标签/商品/时刻逐条执行，时间过期或结果不明立即停止该条，不改立即发布，不重复提交。每条提交前后都保存progress.json（与最终result.json同样jobId、kind与items结构），保留本批已完成条目。提交后必须回到后台核验并截图。${evidence}\n发布回执另含 items:[{seq:清单行号,video:清单原路径,at:原定日期加时刻YYYY-MM-DD HH:mm,goods:清单商品或null,platformId:真实平台字符串ID或空,observedAt:实际后台核验ISO含时区,state:scheduled|published|reviewing|failed|unknown,evidence:后台截图绝对路径,note:事实}]。同视频不同时间/商品按seq分别回执。无有效截图、ID、实际核验时间或对应关系一律unknown。任务完成不等于发布成功。`;
+    return `${intro}\n${model}\n用户在工作台已确认本批发布。读取 ${path.join(MEMBER,'SKILL.md')} 和 ${job.manifest}；先核对账号、已发作品和定时队列，严格按清单视频/封面/标题/标签/商品/时刻逐条执行，时间过期或结果不明立即停止该条，不改立即发布，不重复提交。每条提交前后都保存progress.json（与最终result.json同样jobId、kind与items结构），保留本批已完成条目。提交后必须回到后台核验并截图。${evidence}\n发布回执另含 items:[{seq:清单行号,video:清单原路径,at:原定日期加时刻YYYY-MM-DD HH:mm,actualAt:从目标作品列表回读的实际完整日期时刻YYYY-MM-DD HH:mm或null,originalActual:实际原创状态布尔值或null,goods:清单商品或null,platformId:真实平台字符串ID或空,observedAt:实际后台核验ISO含时区,state:scheduled|published|reviewing|failed|unknown,evidence:后台截图绝对路径,note:事实}]。同视频不同时间/商品按seq分别回执。无有效截图、ID、实际核验时间或对应关系一律unknown。actualAt不得从计划复制，缺失或与at不符不认定成功。关闭日历面板后主表单日期时间必须与清单完全一致才准提交；辅助框正确不代表已生效。时间不符先核对目标作品，仅在目标卡片内部进入修改，并核对旧预约已覆盖且无重复。原创不足5秒按平台提示不声明并记入note；符合条件则完成确认弹窗。任务完成不等于发布成功。`;
   }
   async function saveJob(job){await fs.mkdir(job.folder,{recursive:true});await fs.writeFile(path.join(job.folder,'job.json'),JSON.stringify(job,null,2),'utf8');}
   async function start({kind,plan,batchId,model,manifest}={}){
@@ -172,7 +172,7 @@ files增加对应的accountDaily/orders/attribution相对文件名，每个提�
       model=model||s.assistantModel;
       if(!model||s.assistantModel!==model)throw fail('请先在 WorkBuddy 本地助理中选好'+(model?' '+model:'模型')+'，并在连接设置中确认同一模型。',409,'WORKBUDDY_MODEL_MISMATCH');
       if(kind==='publish'&&(!Array.isArray(plan?.rows)||!plan.rows.length||!manifest||!(await exists(manifest))))throw fail('本批发布清单不完整，请重新保存。',400);
-      const id=crypto.randomUUID(),folder=path.join(jobRoot,id),job={id,kind,batchId:batchId||null,requestedModel:model||null,manifest:manifest||null,folder,state:'submitting',createdAt:new Date(clock()).toISOString(),platformVerified:false,configurationFingerprint:configurationFingerprint(await vault())};
+      const id=crypto.randomUUID(),folder=path.join(jobRoot,id),job={id,kind,verificationVersion:2,batchId:batchId||null,requestedModel:model||null,manifest:manifest||null,folder,state:'submitting',createdAt:new Date(clock()).toISOString(),platformVerified:false,configurationFingerprint:configurationFingerprint(await vault())};
       jobs.set(id,job);active=id;await saveJob(job);
       if(plan)await fs.writeFile(path.join(folder,'queue.json'),JSON.stringify(plan,null,2),'utf8');
       const v=await access();
@@ -215,24 +215,29 @@ files增加对应的accountDaily/orders/attribution相对文件名，每个提�
             const matches=match(data);if(!matches.length)continue;
             const item=matches.length===1?matches[0]:null;
             const observed=Date.parse(item?.observedAt||''),goodsMatches=!Object.hasOwn(row,'goods')||item?.goods===(row.goods??null);
-            const good=item&&['scheduled','published','reviewing'].includes(item.state)&&typeof item.platformId==='string'&&item.platformId.trim()&&/T.*(?:Z|[+-]\d{2}:\d{2})$/.test(item.observedAt||'')&&observed>=Date.parse(job.createdAt)-60000&&observed<=clock()+60000&&goodsMatches&&await verifiedEvidence(job.folder,item.evidence);
+            const timeMatches=job.verificationVersion!==2&&!Object.hasOwn(item||{},'actualAt')||item?.actualAt===at;
+            const good=item&&timeMatches&&['scheduled','published','reviewing'].includes(item.state)&&typeof item.platformId==='string'&&item.platformId.trim()&&/T.*(?:Z|[+-]\d{2}:\d{2})$/.test(item.observedAt||'')&&observed>=Date.parse(job.createdAt)-60000&&observed<=clock()+60000&&goodsMatches&&await verifiedEvidence(job.folder,item.evidence);
             if(['scheduled','published'].includes(merged?.state)){
               let reviewNote=null;
+              if(!timeMatches&&typeof item?.actualAt==='string'){
+                merged={...merged,timeConflict:true,conflictingActualAt:item.actualAt,reviewNote:'后续回执的实际日期或时间与计划不一致，保留此前事实并等待重新核验。'};
+                continue;
+              }
               if(!good){if(source==='final')reviewNote='最终回执缺少有效核验信息，已保留此前确认的发布结果。';}
               else if(item.platformId!==merged.platformId)reviewNote='回执的平台作品 ID 不一致，已保留此前确认的作品 ID 和发布结果。';
               else if(item.state==='reviewing'||merged.state==='published'&&item.state==='scheduled'){
                 // A stale progress snapshot may legitimately precede the saved final result.
                 if(source==='final')reviewNote='最终回执状态与此前确认结果不一致，已保留此前确认的发布结果。';
-              }else merged={...merged,...item,seq};
+              }else merged={...merged,...item,seq,timeConflict:false,conflictingActualAt:null,reviewNote:undefined};
               if(reviewNote)merged={...merged,reviewNote};
               continue;
             }
             const failed=item?.state==='failed'&&goodsMatches&&merged?.state!=='reviewing';
-            merged=good?{...item,seq}:failed?{seq,video:row.video,at,goods:row.goods??null,state:'failed',platformId:null,verifiedAbsent:item.verifiedAbsent===true&&Number.isFinite(observed)&&observed>=Date.parse(job.createdAt)-60000&&observed<=clock()+60000&&await verifiedEvidence(job.folder,item.evidence),note:'WorkBuddy 回执本条未完成，重试前仍需核对平台。'}:{seq,video:row.video,at,state:'unknown',note:'缺少与清单对应的有效后台回执。'};
+            merged=good?{...item,seq}:failed?{seq,video:row.video,at,goods:row.goods??null,state:'failed',platformId:null,verifiedAbsent:item.verifiedAbsent===true&&Number.isFinite(observed)&&observed>=Date.parse(job.createdAt)-60000&&observed<=clock()+60000&&await verifiedEvidence(job.folder,item.evidence),note:'WorkBuddy 回执本条未完成，重试前仍需核对平台。'}:{seq,video:row.video,at,actualAt:typeof item?.actualAt==='string'?item.actualAt:null,state:'unknown',note:!timeMatches?'平台实际日期或时间缺失／与计划不一致；先核对目标作品，禁止重发。':'缺少与清单对应的有效后台回执。'};
           }
           items.push(merged||{seq,video:row.video,at,state:'unknown',note:'缺少与清单对应的有效后台回执。'});
         }
-        job.results=items;job.platformVerified=items.length>0&&items.every(i=>['scheduled','published'].includes(i.state));job.state=result?(job.platformVerified?'completed':'attention'):'running';
+        job.results=items;job.platformVerified=items.length>0&&items.every(i=>['scheduled','published'].includes(i.state)&&!i.timeConflict);job.state=result?(job.platformVerified?'completed':'attention'):'running';
       }else if(job.kind==='connection-check'&&result){job.state=job.state==='completed'||connection?.folder===job.folder?'completed':'attention';}
       else if(result){job.state=['complete','partial'].includes(result.status)?'completed':'attention';job.captureFiles=Object.values(result.files||{}).filter(f=>typeof f==='string'&&!path.isAbsolute(f)&&inside(job.folder,path.resolve(job.folder,f))).map(f=>path.resolve(job.folder,f));job.capturedAt=result.capturedAt||null;}
       await saveJob(job);if(result&&active===id&&job.state==='completed')active=null;

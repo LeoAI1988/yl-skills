@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl 防熵增"
+  short_description: "排查电脑磁盘膨胀、保留唯一原件和成果，按范围归档、映射与清理冗余"
+  default_prompt: "使用 $yl-anti-entropy 排查指定磁盘或文件夹的膨胀与重复，只保留必要原件和确认成果，按本次要求完成归档清理，日常动作不额外备份。"

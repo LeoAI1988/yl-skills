@@ -16,9 +16,9 @@ import urllib.request
 from pathlib import Path
 from unittest.mock import patch
 import engine
-from engine import Store, times, matching_tags, TZ
+from engine import Store, times, matching_tags, source_title, TZ
 from rules import DEFAULTS, units, compose_caption, normalize_tags
-from runner import Runner, execution, PREPARE_CHECKS, VERIFY_VIEWS
+from runner import Runner, execution, resolve_codex, PREPARE_CHECKS, VERIFY_VIEWS
 
 PNG=base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAusB9Y9Zl1sAAAAASUVORK5CYII=')
 
@@ -32,6 +32,43 @@ class Checks(unittest.TestCase):
         for asset in self.s.get('assets'):
             self.s.edit(asset['id'],{'title':'已确认标题','settings':{'ai_declaration':'none'}})
     def tearDown(self):self.tmp.cleanup()
+    def test_batch_edit_is_atomic_and_preserves_other_fields(self):
+        assets=self.s.get('assets');revision=self.s.preparation_revision()
+        edits=[{'id':a['id'],'patch':{'title':'批量标题','settings':{'ai_declaration':'contains_ai'}}} for a in assets]
+        edits[-1]['patch']['title']='字'*21
+        with self.assertRaises(ValueError):self.s.edit_many(edits,revision)
+        self.assertEqual(self.s.get('assets'),assets)
+        edits[-1]['patch']['title']='批量标题'
+        updated=self.s.edit_many(edits,revision)
+        self.assertEqual(len(updated),3)
+        for old,new in zip(assets,updated):
+            self.assertEqual(new['cover'],old['cover'])
+            self.assertEqual(new['settings']['visibility'],old['settings']['visibility'])
+            self.assertEqual(new['settings']['ai_declaration'],'contains_ai')
+            self.assertIn('title_source_original',new)
+        with self.assertRaisesRegex(ValueError,'变化'):self.s.edit_many(edits,revision)
+    def test_batch_locked_item_rejects_entire_batch(self):
+        assets=self.s.get('assets');assets[-1]['state']='awaiting_manual';self.s.set('assets',assets)
+        with self.assertRaisesRegex(ValueError,'锁定'):
+            self.s.edit_many([{'id':a['id'],'patch':{'title':'新标题'}} for a in assets])
+        self.assertEqual(self.s.get('assets'),assets)
+    def test_source_title_boundaries_and_conflicts(self):
+        video=self.media/'clip1.mp4'
+        (self.media/'clip10.md').write_text('# 其他视频标题',encoding='utf-8')
+        self.assertEqual(source_title(video)[0],'')
+        review=self.media/'clip1-审查稿.md'
+        review.write_text('# 内部审查稿\n- 发布标题：真实标题\n内部备注',encoding='utf-8')
+        self.assertEqual(source_title(video)[0],'真实标题')
+        (self.media/'clip1.md').write_text('# 另一个标题',encoding='utf-8')
+        self.assertEqual(source_title(video)[0],'')
+    def test_codex_upgrade_path_fallback(self):
+        appdata=self.root/'appdata';new=appdata/'OpenAI'/'Codex'/'bin'/'new-version'/'codex.exe'
+        new.parent.mkdir(parents=True);new.write_bytes(b'test only')
+        with patch('runner.shutil.which',return_value=None),patch.dict('runner.os.environ',{'LOCALAPPDATA':str(appdata)}):
+            config={'codex':str(self.root/'old-version'/'codex.exe')}
+            self.assertEqual(resolve_codex(config),str(new))
+            self.assertEqual(resolve_codex({'codex':sys.executable}),sys.executable)
+            new.unlink();self.assertIsNone(resolve_codex(config))
     def plan(self,count=1,limit=None):
         ids=[a['id'] for a in self.s.get('assets')][:limit]
         return self.s.arrange(ids,(engine.now().date()+dt.timedelta(days=1)).isoformat(),count)
@@ -316,6 +353,20 @@ class Checks(unittest.TestCase):
             else:self.fail('Local test server did not start')
             token=re.search(r'name="csrf-token" content="([^"]+)"',html)[1]
             headers={'Origin':base,'X-CSRF-Token':token,'Content-Type':'application/json'}
+            payload=json.dumps({'account':'must not be saved'}).encode()
+            for bad_headers,code in [({**headers,'X-CSRF-Token':'old-service-token'},'csrf_expired'),({**headers,'Origin':'https://foreign.invalid'},'origin_rejected'),({**headers,'Host':'foreign.invalid'},'origin_rejected')]:
+                with self.assertRaises(urllib.error.HTTPError) as denied:
+                    urllib.request.urlopen(urllib.request.Request(base+'/api/account',data=payload,headers=bad_headers))
+                self.assertEqual(denied.exception.code,403)
+                self.assertEqual(json.load(denied.exception)['code'],code);denied.exception.close()
+                with urllib.request.urlopen(base+'/api/state') as response:self.assertEqual(json.load(response)['account'],self.config['account'])
+            with urllib.request.urlopen(base+'/api/session') as response:
+                self.assertEqual(json.load(response)['csrf_token'],token)
+                self.assertEqual(response.headers['Cache-Control'],'no-store')
+                self.assertIsNone(response.headers.get('Access-Control-Allow-Origin'))
+            with self.assertRaises(urllib.error.HTTPError) as denied:
+                urllib.request.urlopen(urllib.request.Request(base+'/api/session',headers={'Origin':'https://foreign.invalid'}))
+            self.assertEqual(denied.exception.code,403);denied.exception.close()
             with urllib.request.urlopen(base+'/api/health') as response:self.assertEqual(json.load(response)['app'],'yl-xiaohongshu-workbench')
             with urllib.request.urlopen(base+'/api/state') as response:self.assertEqual(json.load(response)['limits']['tags'],10)
             asset=self.s.get('assets')[0];request=urllib.request.Request(base+'/media?id='+asset['id'],headers={'Range':'bytes=1-4'})

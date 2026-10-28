@@ -8,11 +8,11 @@ ROOT = Path(__file__).resolve().parents[1]
 NAME = re.compile(r"yl-[a-z0-9]+(?:-[a-z0-9]+)*")
 VERSION = re.compile(r"(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)")
 TEXT_SUFFIXES = {'.md', '.py', '.ps1', '.yaml', '.yml', '.json', '.txt', '.toml',
-                 '.js', '.mjs', '.ts', '.tsx', '.jsx', '.css', '.html', '.sh', '.csv'}
+                 '.js', '.mjs', '.cjs', '.ts', '.tsx', '.jsx', '.css', '.html', '.sh', '.csv'}
 ROOT_FILES = ['README.md', 'PRD.md', 'MAINTAINING.md', 'CHANGELOG.md', 'LICENSE',
               'THIRD_PARTY_NOTICES.md', 'AGENTS.md', '.gitignore', 'release.json',
               'install.py', 'build.py', 'yl集群_审核说明.md', 'Skill清单_v2.1.0.md', '版本对齐_v2.1.0.md', 'Skill清单_v2.2.0.md', 'Skill清单_v3.0.0.md']
-ASSET_FILES = ['YL-Skill集群.jpg', 'YL-Skill集群_v3.4.1.png', 'YL-Skill集群_v3.7.14_34项_智能体安装版.png']
+ASSET_FILES = ['YL-Skill集群_v3.14.0_42项_智能体安装版.png']
 
 def digest(data):
     return hashlib.sha256(data).hexdigest()

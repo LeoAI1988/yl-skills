@@ -31,7 +31,7 @@ export function createRuntimeService({root,driver,ingest=ingestCapture,summary=a
         if(job.kind==='publish'){
           for(const item of job.results||[]){
             const status=['published','scheduled','failed'].includes(item.state)?item.state:'unknown';
-            const receipt={batchId:job.batchId,seq:item.seq,status,platformId:item.platformId||null,observedAt:item.observedAt||null,evidence:item.evidence||null,error:item.reviewNote?'后续回执存在差异，已保留此前核验的发布结果；请核对 WorkBuddy 中的说明。':status==='failed'?'本条执行失败，请核对 WorkBuddy 中的结果。':status==='unknown'?'本条尚未取得完整后台回执。':null};
+            const receipt={batchId:job.batchId,seq:item.seq,status,platformId:item.platformId||null,observedAt:item.observedAt||null,evidence:item.evidence||null,actualAt:item.actualAt||null,originalActual:typeof item.originalActual==='boolean'?item.originalActual:null,note:item.note||null,error:item.timeConflict?('后续回执时间冲突：'+item.conflictingActualAt+'；此前核验时间：'+item.actualAt+'。请核对目标作品。'):item.reviewNote?'后续回执存在差异，已保留此前核验的发布结果；请核对 WorkBuddy 中的说明。':status==='failed'?'本条执行失败，请核对 WorkBuddy 中的结果。':status==='unknown'?(item.note||'本条尚未取得完整后台回执。'):null};
             const key=digest(receipt);
             if(integration.receipts?.[item.seq]===key)continue;
             await appendReceipt(root,{...receipt,receiptId:job.id+'/'+item.seq+'/'+key});

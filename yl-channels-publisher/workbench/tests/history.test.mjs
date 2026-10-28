@@ -6,7 +6,7 @@ import path from 'node:path';
 import {saveBatch,appendReceipt,publicationHistory} from '../publish-history.mjs';
 import {createWorkbenchServer} from '../server.mjs';
 
-const plan={date:'2099-12-01',count:2,rows:[{seq:1,title:'这是一条真实标题',video:'one.mp4',cover:'one.png',time:'08:00'},{seq:2,title:'这是第二条标题',video:'two.mp4',cover:'two.png',time:'10:00'}]};
+const plan={date:'2099-12-01',count:2,rows:[{seq:1,title:'这是一条真实标题',video:'one.mp4',videoRel:'one.mp4',cover:'one.png',time:'08:00'},{seq:2,title:'这是第二条标题',video:'two.mp4',videoRel:'two.mp4',cover:'two.png',time:'10:00'}]};
 test('历史轮次持久保存，未取得回执不推断发布成功',async()=>{
   const root=await fs.mkdtemp(path.join(os.tmpdir(),'channels-history-'));
   try{
@@ -24,6 +24,10 @@ test('历史轮次持久保存，未取得回执不推断发布成功',async()=>
     assert.equal(h.summary.historicalPosts,1);
     assert.equal(h.batches.find(b=>b.origin==='historical').rows[0].visibility,'hidden');
     assert.equal(h.batches.find(b=>b.id===first.id).rows[0].platformId,'99999999999999999999');
+    // 历史行带视频与封面路径，供排期页识别已发布/已排期的成片
+    assert.equal(h.batches.find(b=>b.id===first.id).rows[0].video,'one.mp4');
+    assert.equal(h.batches.find(b=>b.id===first.id).rows[0].videoRel,'one.mp4');
+    assert.equal(h.batches.find(b=>b.id===first.id).rows[0].cover,'one.png');
     // A process reopening the same root gets the same record identities.
     assert.equal((await publicationHistory(root)).batches.find(b=>b.id===first.id).rows[0].status,'scheduled');
     await appendReceipt(root,{batchId:first.id,seq:1,status:'unknown'});

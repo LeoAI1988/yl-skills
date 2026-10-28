@@ -87,7 +87,8 @@ button.sm{height:28px;padding:0 10px;font-size:12.5px;border-radius:6px}
 
 .card:last-of-type{margin-bottom:64px}
 .bar{position:fixed;left:0;right:0;bottom:0;background:rgba(247,248,250,.92);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 0;display:flex;gap:12px;align-items:center;z-index:20}
-.bar .inner{max-width:1180px;margin:0 auto;width:100%;display:flex;gap:12px;align-items:center;padding:0 20px}
+.bar .inner{max-width:1180px;margin:0 auto;width:100%;display:flex;flex-wrap:wrap;gap:12px;align-items:center;padding:0 20px}
+.publish-readiness{flex-basis:100%;margin:0;font-size:13px;line-height:1.5;color:var(--ink2)}
 .bar .sp{flex:1}
 .hint{font-size:12px;color:var(--ink3)}
 .warnbox{background:#fdf5e3;border:1px solid #f5e2ba;border-radius:7px;padding:9px 12px;font-size:12.5px;color:#8a6412;margin-top:10px}
@@ -144,7 +145,7 @@ dialog{margin:auto}.tbl .pick{width:32%;max-width:360px}.rowline{max-width:340px
     <div class="executor-model"><label for="executorModel">模型</label><select id="executorModel" aria-label="发布模型"></select></div>
     <span>思考强度<strong>极致</strong></span>
     <span>上下文窗口<strong>模型默认</strong></span>
-    <span class="executor-note">模型需与 WorkBuddy 本地助理一致；连接不会自动切换模型。</span>
+    <span class="executor-note">保存清单后在 WorkBuddy 对话中启动；模型要求随清单传递。</span>
   </section>
 
   <nav class="portal-nav" role="tablist" aria-label="工作台板块">
@@ -244,9 +245,11 @@ dialog{margin:auto}.tbl .pick{width:32%;max-width:360px}.rowline{max-width:340px
   <div class="bar"><div class="inner">
     <button id="previewBtn">预览清单</button>
     <button id="saveBtn">保存发布清单</button>
-    <button id="publishBtn" class="primary">立即发布</button>
+    <button id="publishBtn" class="primary" aria-describedby="publishReadiness">保存并交给 WorkBuddy</button>
+    <button id="directPublishBtn" hidden disabled>网页直连发布</button>
     <div class="sp" style="flex:1"></div>
     <span class="hint" id="status" role="status" aria-live="polite"></span>
+    <p id="publishReadiness" class="publish-readiness" role="status" aria-live="polite">保存清单后，复制启动指令到 WorkBuddy 执行；无需开放平台授权。</p>
   </div></div>
   </main>
 
@@ -303,6 +306,11 @@ dialog{margin:auto}.tbl .pick{width:32%;max-width:360px}.rowline{max-width:340px
   </div>
 </dialog>
 
+<dialog id="handoffDialog" aria-labelledby="handoffTitle">
+  <div class="dlg-h"><span id="handoffTitle">在 WorkBuddy 启动发布</span><button type="button" class="sm" id="handoffClose">关闭</button></div>
+  <div class="dlg-b"><p id="handoffSummary"></p><p id="handoffNotice" role="status"></p><label for="handoffText">发送给 WorkBuddy 的启动指令</label><textarea id="handoffText" readonly rows="13" style="width:100%;box-sizing:border-box;margin-top:12px;padding:12px;font:13px/1.7 system-ui"></textarea></div>
+  <div class="dlg-f"><button type="button" class="primary" id="handoffCopy">复制启动指令</button></div>
+</dialog>
 <dialog id="videoDlg" aria-labelledby="videoTitle">
   <div class="dlg-h"><span id="videoTitle">视频预览</span><button id="videoClose" class="sm">关闭预览</button></div>
   <video id="videoPlayer" controls preload="metadata" playsinline></video>

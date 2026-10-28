@@ -1,6 +1,7 @@
 """Prepare one note; only a later read-only verification can confirm publication."""
 import datetime as dt
 import json
+import os
 import re
 import shutil
 import subprocess
@@ -10,7 +11,7 @@ from pathlib import Path
 from engine import now, TZ
 from rules import BLOCKING_JOB_STATES, LIMITS, compose_caption, validate
 
-MODELS={'gpt-6-astra':'GPT-Astra','gpt-6.1-sol':'GPT-6.1 Sol'}
+MODELS={'gpt-6-astra':'GPT-Astra','gpt-6-sol':'GPT-6','gpt-6.1-sol':'GPT-6.1 Sol'}
 DEFAULT_MODEL='gpt-6-astra'
 EFFORTS={'medium':'中','high':'高','xhigh':'极高'}
 SUCCESS_STATES={'scheduled','published'}
@@ -19,9 +20,20 @@ VERIFY_VIEWS={'scheduled','reviewing','published','drafts'}
 
 def execution(model=None,reasoning_effort=None):
     model=model or DEFAULT_MODEL;reasoning_effort=reasoning_effort or 'high'
-    if model not in MODELS:raise ValueError('请选择 GPT-Astra 或 GPT-6.1 Sol')
+    if model not in MODELS:raise ValueError('请选择 GPT-Astra、GPT-6 或 GPT-6.1 Sol')
     if reasoning_effort not in EFFORTS:raise ValueError('推理强度请选择中、高或极高')
     return dict(driver='Codex',model=model,reasoning_effort=reasoning_effort)
+
+def resolve_codex(config):
+    """Desktop updates replace versioned binaries; ignore stale configured paths."""
+    for value in [config.get('codex'), shutil.which('codex')]:
+        if value and Path(value).is_file():return str(Path(value))
+    local=os.environ.get('LOCALAPPDATA')
+    if local:
+        root=Path(local)/'OpenAI'/'Codex'/'bin'
+        candidates=[p for p in root.glob('*/codex.exe') if p.is_file()]
+        if candidates:return str(max(candidates,key=lambda p:p.stat().st_mtime))
+    return None
 
 class Runner:
     def __init__(self,store):
@@ -30,19 +42,35 @@ class Runner:
         for job in jobs:
             if job['state'] in ['running','stopping']:
                 job.update(state='attention',message='上次执行中断，请先只读核对平台；不要重复上传')
+                if job.get('batch'):
+                    for result in job.get('results',[]):
+                        a=next(a for a in assets if a['id']==result['asset_id'])
+                        if result['state']=='queued' and result['asset_id']!=job.get('current_asset_id'):
+                            result.update(state='not_started',note='执行中断前尚未轮到本篇；未上传');a['state']='ready'
+                        elif result['state']=='preparing':
+                            result.update(state='not_uploaded',note='本地匹配意外中断；尚未上传');a['state']='ready'
+                        elif result['state'] in ['queued','connecting','checking','uploading','filling','submitting','verifying']:
+                            result.update(state='unknown',note='执行意外中断，需要核对当前篇，不能直接重传')
+                            if not result.get('previous_confirmed'):a['state']='unknown'
+                    continue
                 for asset in assets:
                     if asset['id'] in job['items'] and asset['state'] in ['queued','uploading','awaiting_manual']:asset['state']='unknown'
         self.s.set('jobs',jobs);self.s.set('assets',assets)
     def health(self):
-        path=self.s.config.get('codex') or shutil.which('codex')
-        return dict(available=bool(path and Path(path).is_file()),message='单条准备，用户在小红书最后提交；完成后只读核验',running=self.active,mode='prepare_single',default=execution(),models=[{'id':k,'name':v} for k,v in MODELS.items()],reasoning_efforts=[{'id':k,'name':v} for k,v in EFFORTS.items()])
+        path=resolve_codex(self.s.config)
+        return dict(available=bool(path and Path(path).is_file()),message='整批确认，逐条提交并核验；异常即停',running=self.active,mode='batch_publish',batch_supported=True,default=execution(),models=[{'id':k,'name':v} for k,v in MODELS.items()],reasoning_efforts=[{'id':k,'name':v} for k,v in EFFORTS.items()])
     def _attempt(self,job,manifest,mode):
         folder=Path(job['folder'])/'attempts'/uuid.uuid4().hex[:12];folder.mkdir(parents=True)
         context={**manifest,'mode':mode,'attempt_started_at':now().isoformat()}
         (folder/'queue.json').write_text(json.dumps(context,ensure_ascii=False,indent=2),encoding='utf-8')
         job.update(mode=mode,attempt_folder=str(folder),attempt_started_at=context['attempt_started_at']);return folder
-    def start(self,slots,model=None,reasoning_effort=None,expected_revision=None):
+    def start(self,slots,model=None,reasoning_effort=None,expected_revision=None,mode='prepare',auto_prepare=False):
+        if mode=='batch_publish':
+            from batch_runner import BatchPublisher
+            return BatchPublisher(self).start(slots,execution(model,reasoning_effort),expected_revision,auto_prepare)
+        if mode!='prepare':raise ValueError('执行模式无效')
         with self.s.lock:
+            if getattr(self.s,'dedup_busy',False):raise ValueError('本地查重中，请等完成后再发布')
             executor=execution(model,reasoning_effort)
             if not expected_revision or expected_revision!=self.s.preparation_revision():raise ValueError('准备明细已变化或缺少确认版本，请重新打开确认页核对后再准备')
             if self.active or any(j['state'] in BLOCKING_JOB_STATES for j in self.s.get('jobs',[])):raise ValueError('当前作品尚待手工提交或核验；完成并核验后才能准备下一条')
@@ -53,6 +81,8 @@ class Runner:
             if len(rows)!=1:raise ValueError('请选择有效的单条排期')
             row=rows[0];asset=assets[row['asset_id']]
             if asset['state']!='ready':raise ValueError('作品已锁定或待核验，请勿重复准备')
+            from dedup import require_unchanged
+            require_unchanged(asset)
             normalized=validate(asset,for_execution=True)
             at=dt.datetime.strptime(row['at'],'%Y-%m-%d %H:%M').replace(tzinfo=TZ);policy=self.s.schedule_policy();current=now()
             if not current+dt.timedelta(minutes=policy['lead_minutes'])<=at<=current+dt.timedelta(days=policy['window_days']):raise ValueError(f"该时刻不满足本地预检窗口（提前{policy['lead_minutes']}分钟至{policy['window_days']}天）；请调整，后台仍需现场确认")
@@ -89,8 +119,19 @@ state=scheduled|published|reviewing|failed|unknown。scheduled/published/reviewi
 准备好后截图并返回state=awaiting_manual，checks中account/video/fields/schedule_window/ai_declaration各为实际核对后的true。请用户到小红书最后检查并提交，再回本地只读核验。不得返回scheduled/published，不得声称已建定时发布。准备过程可用uploading，不能完成用unknown。平台自行自动保存要如实报告，不主动保存草稿。
 '''
     def command(self,job,folder):
-        exe=self.s.config.get('codex') or shutil.which('codex');saved=job.get('executor',{});executor=execution(saved.get('model'),saved.get('reasoning_effort'))
+        exe=resolve_codex(self.s.config)
+        if not exe:raise ValueError('未找到本机 Codex，请检查安装')
+        saved=job.get('executor',{});executor=execution(saved.get('model'),saved.get('reasoning_effort'))
+        current=next((j for j in self.s.get('jobs',[]) if j['id']==job['id']),job)
+        browser_thread=current.get('browser_thread_id')
+        if browser_thread:
+            uuid.UUID(browser_thread)
+            return [exe,'exec','resume',browser_thread,'--model',executor['model'],'-c',f'model_reasoning_effort="{executor["reasoning_effort"]}"','--json','--skip-git-repo-check','--output-last-message',str(folder/'summary.txt'),'-']
         return [exe,'exec','--model',executor['model'],'-c',f'model_reasoning_effort="{executor["reasoning_effort"]}"','--json','--skip-git-repo-check','-C',str(folder),'--output-last-message',str(folder/'summary.txt'),'-']
+
+    def resume(self,ident):
+        from batch_runner import BatchPublisher
+        return BatchPublisher(self).resume(ident)
     def run(self,job,folder,mode='prepare'):
         try:
             args=self.command(job,folder)
@@ -173,6 +214,9 @@ state=scheduled|published|reviewing|failed|unknown。scheduled/published/reviewi
             self.cancel=True;self.update(self.active,state='stopping',message='正在停止；随后需只读核对平台与仍打开的编辑页')
             if self.process:self.process.terminate()
     def verify(self,ident):
+        if next(j for j in self.s.get('jobs') if j['id']==ident).get('batch'):
+            from batch_runner import BatchPublisher
+            return BatchPublisher(self).verify(ident)
         with self.s.lock:
             if self.active:raise ValueError('请等当前任务完成')
             if not self.health()['available']:raise ValueError('未找到本机Codex，请先安装并登录')

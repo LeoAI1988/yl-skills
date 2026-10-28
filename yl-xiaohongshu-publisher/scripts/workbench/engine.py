@@ -42,6 +42,24 @@ def matching_tags(title, body, pool, seed):
         if score and tag.casefold() not in {t.casefold() for _,t in ranked}:ranked.append((score,tag))
     return [t for _,t in sorted(ranked,key=lambda x:(-x[0],x[1]))[:10]]
 
+def source_title(video):
+    """Only use unambiguous, name-bound manuscripts, never a nearby clip's title."""
+    candidates=[];body=''
+    for path in sorted(video.parent.glob('*.md')):
+        if path.stem!=video.stem and not any(path.stem.startswith(video.stem+s) for s in ['-','_']):continue
+        content=path.read_text(encoding='utf-8-sig',errors='replace')
+        if not body:body=content[:20000]
+        explicit=re.findall(r'^\s*(?:[-*]\s*)?(?:\*\*)?(?:发布标题|原始标题|成片标题|视频顶部标题)(?:\*\*)?\s*[:：]\s*(.+?)\s*$',content,re.M)
+        values=[v.strip().strip('*').strip().strip('「」“”') for v in explicit]
+        if not values:
+            first=content.splitlines()[0].lstrip('#').strip() if content else ''
+            if first and not any(x in first for x in ['审查','归档','修改方案','最终版']):values=[first]
+        candidates.extend((v,path.name) for v in values if v)
+    unique={value for value,_ in candidates}
+    if len(unique)==1:
+        value=next(iter(unique));return value,'原稿：'+next(p for v,p in candidates if v==value),body
+    return '',('多个原稿标题不一致，请核对' if unique else '待核对视频顶部标题'),body
+
 class Store:
     def __init__(self, config):
         if config.get('platform')!='xiaohongshu':raise ValueError('配置必须明确platform=xiaohongshu，不能复用其他平台配置')
@@ -118,7 +136,7 @@ class Store:
         with self.lock:
             plan=self.get('plan',[])
             assets=[{**a,'caption':a.get('caption',''),**annotations(a)} for a in self.get('assets',[])]
-            return dict(assets=assets,folders=self.get('folders',[]),plan=plan,plan_revision=self.plan_revision(plan),preparation_revision=self.preparation_revision(),preferences=self.preferences(),jobs=self.get('jobs',[]),account=self.account(),tag_pool=self.config.get('tag_pool',[]),collections=self.config.get('collections',[]),limits=LIMITS,schedule_policy=self.schedule_policy(),mode='prepare_single',server_time=now().isoformat())
+            return dict(dedup_status=self.get('dedup_status',{}),dedup_groups=self.get('dedup_groups',[]),dedup_busy=getattr(self,'dedup_busy',False),assets=assets,folders=self.get('folders',[]),plan=plan,plan_revision=self.plan_revision(plan),preparation_revision=self.preparation_revision(),preferences=self.preferences(),jobs=self.get('jobs',[]),account=self.account(),preparation_defaults={'ai_declaration':self.config.get('ai_declaration_default','unknown')},tag_pool=self.config.get('tag_pool',[]),collections=self.config.get('collections',[]),limits=LIMITS,schedule_policy=self.schedule_policy(),mode='batch_publish',server_time=now().isoformat())
     @staticmethod
     def plan_revision(rows):return hashlib.sha256(json.dumps(rows,sort_keys=True).encode()).hexdigest()
     def preparation_revision(self):
@@ -159,12 +177,8 @@ class Store:
                 if match:
                     stem=p.stem[:match.start()];versions=[x for x in paths if x.parent==p.parent and re.match(re.escape(stem)+r'[_-]v\d+$',x.stem,re.I)]
                     if p!=max(versions,key=lambda x:int(re.search(r'v(\d+)$',x.stem,re.I)[1])):continue
-                ident='V-'+hashlib.sha256(str(p).casefold().encode()).hexdigest()[:12];body='';title='';source='待核对视频顶部标题'
-                candidates=list(p.parent.glob(p.stem+'*.md'))
-                for q in candidates:
-                    content=q.read_text(encoding='utf-8-sig',errors='replace');body=content[:20000]
-                    first=content.splitlines()[0].strip().lstrip('#').strip() if content else ''
-                    if first and not any(x in first for x in ['审查','归档','修改方案','最终版']):title=first;source=q.name+' 首行标题';break
+                ident='V-'+hashlib.sha256(str(p).casefold().encode()).hexdigest()[:12]
+                title,source,body=source_title(p)
                 prefix=re.match(r'\d+[-_]\d+',p.name);covers=[x for x in p.parent.iterdir() if x.suffix.lower() in IMAGES and ('封面' in x.name or 'cover' in x.name.lower())]
                 if prefix:covers=[x for x in covers if x.name.startswith(prefix[0])]
                 elif len([x for x in paths if x.parent==p.parent])>1:covers=[x for x in covers if x.stem.startswith(p.stem)]
@@ -174,27 +188,42 @@ class Store:
                 if same_size:
                     with p.open('rb') as f:a['sha256']=hashlib.file_digest(f,'sha256').hexdigest()
                     for other in same_size:
-                        if not other.get('sha256'):
-                            with Path(other['video']).open('rb') as f:other['sha256']=hashlib.file_digest(f,'sha256').hexdigest()
+                        # Retain a recorded submission digest if its source was replaced.
+                        with Path(other['video']).open('rb') as f:current_sha=hashlib.file_digest(f,'sha256').hexdigest()
+                        if other['state'] not in {'scheduled','published','reviewing','history','duplicate'} or not other.get('sha256'):other['sha256']=current_sha
                         if a['sha256']==other['sha256']:
-                            a.update(state='excluded',dedup='相同视频文件',dedup_evidence='与 '+other['id']+' 文件字节完全一致');break
+                            a.update(state='excluded',dedup='相同视频文件',dedup_evidence='与 '+other['id']+' 文件字节完全一致',duplicate_of=other['id'],dedup_signature=[str(p.resolve()).casefold(),p.stat().st_size,p.stat().st_mtime_ns]);break
                 assets.append(a);added.append(a)
             self.set('assets',assets);folders=self.get('folders')
             if str(root) not in folders:folders.append(str(root));self.set('folders',folders)
             return {'added':len(added),'found':len(paths)}
     def edit(self,ident,patch):
+        return self.edit_many([{'id':ident,'patch':patch}])[0]
+    def edit_many(self,items,expected=None):
+        """Validate the entire batch before a single database write."""
         with self.lock:
-            assets=self.get('assets');a=next(x for x in assets if x['id']==ident)
-            if a['state']!='ready':raise ValueError('这条作品已锁定，不能修改')
-            a=dict(a)
-            for key in ['title','caption','cover','selected','tags','settings']:
-                if key not in patch:continue
-                value=patch[key]
-                if key=='cover' and value and (not Path(value).is_file() or Path(value).suffix.lower() not in IMAGES):raise ValueError('封面文件不存在或格式不支持')
-                if key=='settings':value={**a.get('settings',DEFAULTS),**value}
-                a[key]=value
-            a.update(validate(a));assets=[a if x['id']==ident else x for x in assets]
-            self.set('assets',assets);return {**a,**annotations(a)}
+            if expected is not None and expected!=self.preparation_revision():raise ValueError('内容或排期已变化，请重新打开批量设置后保存')
+            if not isinstance(items,list) or not items:raise ValueError('请选择要设置的作品')
+            ids=[item['id'] for item in items]
+            if len(ids)!=len(set(ids)):raise ValueError('同一作品不能重复设置')
+            assets=self.get('assets');byid={a['id']:a for a in assets};updated={}
+            for item in items:
+                ident=item['id'];patch=item['patch']
+                if ident not in byid:raise ValueError('作品已变化，请刷新')
+                a=dict(byid[ident])
+                if a['state']!='ready':raise ValueError('这条作品已锁定，不能修改')
+                for key in ['title','caption','cover','selected','tags','settings']:
+                    if key not in patch:continue
+                    value=patch[key]
+                    if key=='cover' and value and (not Path(value).is_file() or Path(value).suffix.lower() not in IMAGES):raise ValueError('封面文件不存在或格式不支持')
+                    if key=='settings':value={**a.get('settings',DEFAULTS),**value}
+                    if key=='title' and value!=a.get('title'):
+                        a['title_source_original']=a.get('title_source_original') or a.get('title_source','')
+                        a['title_source']='手动确认标题；原始出处：'+(a['title_source_original'] or '未提供')
+                    a[key]=value
+                a.update(validate(a));updated[ident]=a
+            self.set('assets',[updated.get(a['id'],a) for a in assets])
+            return [{**updated[i],**annotations(updated[i])} for i in ids]
     def arrange(self,ids,start_date,count,start_time=None,end_time=None):
         with self.lock:
             if any(x['state'] in BLOCKING_JOB_STATES for x in self.get('jobs',[])):raise ValueError('当前作品尚待手工提交或核验，请先完成当前流程')

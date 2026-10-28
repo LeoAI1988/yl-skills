@@ -1,4 +1,4 @@
-import {moveSlot, localDate, validatePlan, toMarkdown, EXECUTION_MODELS} from './plan-core.mjs';
+import {moveSlot, localDate, validatePlan, toMarkdown, EXECUTION_MODELS, publishAvailability, workBuddyHandoff, originalDecision, pickAvailability, normPath} from './plan-core.mjs';
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s??'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -12,9 +12,31 @@ const state = {
   defaults: { loc:'不显示位置', orig:true, act:'不参与活动', tags:'' },
   goods: [...(preferences.products||[]),'不挂商品'],
   goodsUsed: new Set(),
+  publishedPaths: new Set(),
 };
 
 const TAGS = (preferences.tags||[]).map(t=>t.startsWith('#')?t:'#'+t).join(' ');
+const AVAIL_LABEL = {taken:'（本批已选）', published:'（已发布/已排期）'};
+const AVAIL_TITLE = {taken:'已在本批其他时间点选用', published:'已在既往清单中发布或排期，避免重复发布'};
+const durationCache=new Map();
+function ensureDurations(){
+  for(const slot of state.slots){
+    const video=slot.video,url=video?.previewUrl;if(!url||durationCache.has(url))continue;
+    durationCache.set(url,{pending:true,duration:null});
+    const probe=document.createElement('video');probe.preload='metadata';
+    let done=false;
+    const finish=value=>{
+      if(done)return;done=true;clearTimeout(timer);
+      const duration=Number.isFinite(value)&&value>0?value:null;
+      durationCache.set(url,{pending:false,duration});
+      probe.removeAttribute('src');probe.load();
+      if(state.slots.some(s=>s.video?.previewUrl===url))renderSlots();
+    };
+    const timer=setTimeout(()=>finish(null),12000);
+    probe.onloadedmetadata=()=>finish(probe.duration);probe.onerror=()=>finish(null);probe.src=url;
+  }
+}
+function originalFor(slot){return originalDecision(slot.orig??state.defaults.orig,durationCache.get(slot.video?.previewUrl)?.duration);}
 
 /* ---------- 时间轴 ---------- */
 function parseTime(s){ const [h,m]=s.split(':').map(Number); return h*60+m; }
@@ -86,11 +108,20 @@ function renderSlots(){
   const groups = state.sources
     .map((s,i)=>({ i, id:s.id, ok: s.res?.ok, name: (s.path||'').split(/[\\\/]/).filter(Boolean).pop()||`文件夹 ${i+1}`, items: (s.res?.items)||[] }))
     .filter(g=>g.ok && g.items.length);
-  const opts = groups.length
-    ? groups.map(g=>`<optgroup label="文件夹 ${g.i+1} · ${esc(g.name)}（${g.items.length} 条）">${
-        g.items.map(v=>`<option value="${vkey(g.id, v.idx)}">${esc(v.name.replace(/\.[^.]+$/,''))}${v.cover?'':'　⚠ 无封面'}</option>`).join('')
-      }</optgroup>`).join('')
-    : '<option value="">— 先扫描文件夹 —</option>';
+  // 同一批次其他时间点已选用、或既往清单中已发布/已排期的视频置灰不可选，避免重复发布
+  const optionsFor = i => {
+    const taken = state.slots.filter((o,j)=>j!==i && o.video).map(o=>o.video.full);
+    const current = state.slots[i]?.video?.full || null;
+    return groups.length
+      ? groups.map(g=>`<optgroup label="文件夹 ${g.i+1} · ${esc(g.name)}（${g.items.length} 条）">${
+          g.items.map(v=>{
+            const avail = pickAvailability(v.full,{currentFull:current,takenFulls:taken,publishedPaths:state.publishedPaths});
+            const label = esc(v.name.replace(/\.[^.]+$/,'')) + (v.cover?'':'　⚠ 无封面') + (avail?AVAIL_LABEL[avail]:'');
+            return `<option value="${vkey(g.id, v.idx)}"${avail?' disabled':''}${avail?` title="${AVAIL_TITLE[avail]}"`:''}>${label}</option>`;
+          }).join('')
+        }</optgroup>`).join('')
+      : '<option value="">— 先扫描文件夹 —</option>';
+  };
 
   $('#slots').innerHTML = state.slots.map((s,i)=>{
     const ovr = s.orig===null&&s.loc===null&&s.act===null&&s.goods==='默认'&&s.title===null;
@@ -98,9 +129,9 @@ function renderSlots(){
     return `<tr data-i="${i}">
       <td class="tcell">${s.time}</td>
       <td class="order-cell"><button class="drag-handle" draggable="true" aria-label="拖动第 ${i+1} 条调整顺序，也可按 Alt 加上下方向键" title="拖动调整顺序 · Alt + ↑ / ↓">⠿</button><div class="move-buttons"><button class="move-up" aria-label="上移第 ${i+1} 条" ${i===0?'disabled':''}>↑</button><button class="move-down" aria-label="下移第 ${i+1} 条" ${i===state.slots.length-1?'disabled':''}>↓</button></div></td>
-      <td class="pick"><select class="sPick"><option value="">— 选择视频 —</option>${opts}</select>
+      <td class="pick"><select class="sPick"><option value="">— 选择视频 —</option>${optionsFor(i)}</select>
         <div class="rowline">${s.video ? esc(title) : '<span style="color:#c3cad2">未选</span>'}</div></td>
-      <td><button class="sm preview-video" ${s.video?'':'disabled'}>▶ 预览</button></td>
+      <td><button class="sm preview-video" ${s.video?'':'disabled'}>▶ 预览</button>${s.video?`<div class="rowline">${originalFor(s).durationSeconds===null?(durationCache.get(s.video.previewUrl)?.pending?'读取时长…':'时长待核对'):esc(originalFor(s).durationSeconds.toFixed(2))+' 秒'}</div><div class="rowline">${esc(originalFor(s).originalReason)}</div>`:''}</td>
       <td>${s.video ? (s.video.cover?'<span class="tag ok">已匹配</span>':'<span class="tag miss">缺</span>') : '<span class="tag none">—</span>'}</td>
       <td><select class="sGoods">${['默认',...state.goods].map(g=>`<option ${g===s.goods?'selected':''}>${esc(g)}</option>`).join('')}</select></td>
       <td><div class="ovr"><button class="sm ovrBtn" data-a="reset">${ovr?'跟随默认':'已改'}</button><button class="sm ovrBtn" data-a="edit">调整…</button></div></td>
@@ -113,6 +144,7 @@ function renderSlots(){
 
   renderTimeline();
   renderIssues();
+  ensureDurations();
 }
 function vkey(si, vi){ return si + '|' + vi; }
 function curKey(s){ return s.video ? vkey(s.video.sourceId, s.video.idx) : ''; }
@@ -121,11 +153,34 @@ function renderIssues(){
   const miss = state.slots.filter(s=>!s.video).length;
   const noCov = state.slots.filter(s=>s.video && !s.video.cover).length;
   const noIdx = state.slots.filter(s=>s.video && s.video.srcIdx>0).length;
+  const seen = new Map();
+  for (const s of state.slots) if (s.video) { const k = normPath(s.video.full); seen.set(k, (seen.get(k)||0)+1); }
+  const dup = [...seen.values()].filter(n=>n>1).reduce((a,n)=>a+n-1,0);
+  const pubSel = state.slots.filter(s=>s.video && state.publishedPaths.has(normPath(s.video.full))).length;
   const parts = [];
   if (miss) parts.push(`<b>${miss}</b> 个时间点还没选视频`);
   if (noCov) parts.push(`<b>${noCov}</b> 条选中视频没匹配到封面，发布前需手动补`);
   if (noIdx) parts.push(`有 ${noIdx} 条引用的是第 2/3 个文件夹`);
+  if (dup) parts.push(`<b>${dup}</b> 个时间点重复选了同一条视频`);
+  if (pubSel) parts.push(`<b>${pubSel}</b> 条选中视频已在既往清单中发布或排期，需人工核对`);
   $('#issues').innerHTML = parts.length ? `<div class="warnbox">${parts.join('　·　')}</div>` : (state.slots.length?`<div class="hint" style="margin-top:10px">✓ ${state.slots.length} 个时间点均已配齐视频与封面</div>`:'');
+}
+
+/* ---------- 已发布/已排期路径 ---------- */
+// 浏览器路径执行发布不回写回执，按既往清单行状态判定：planned/queued/running/published/scheduled 均视为已占用
+const PUBLISHED_ROW_STATES = new Set(['planned','queued','running','published','scheduled']);
+async function refreshPublished(){
+  try{
+    const h = await fetch('/api/history').then(r=>r.ok?r.json():null);
+    const paths = new Set();
+    for(const b of h?.batches||[]){
+      if(b.origin!=='workbench') continue;
+      for(const row of b.rows||[]){
+        if(PUBLISHED_ROW_STATES.has(row.status) && row.video) paths.add(normPath(row.video));
+      }
+    }
+    state.publishedPaths = paths;
+  }catch{ state.publishedPaths = new Set(); }
 }
 
 /* ---------- 交互 ---------- */
@@ -154,16 +209,19 @@ $('#scanBtn').onclick = async () => {
     if(!r.ok || !Array.isArray(data.results)) throw new Error(data.error || '扫描服务返回异常');
     let k = 0;
     state.sources.forEach(s => { if (s.path.trim() && data.results[k]) s.res = data.results[k++]; });
-    // 自动分配视频到空时间点：优先有封面的成片
+    await refreshPublished();
+    // 自动分配视频到空时间点：优先有封面的成片；已发布/已排期与本批已选的不再自动占用
     const pool = allVideos();
     state.slots.forEach(s => { if(s.video) { const found = pool.find(v=>v.full===s.video.full && v.sourceId===s.video.sourceId); s.video=found || null; if(!found) s.title=null; } });
-    const used = new Set(state.slots.filter(s=>s.video).map(s=>s.video.full));
-    const ready = pool.filter(v=>v.cover&&!used.has(v.full)), bare = pool.filter(v=>!v.cover&&!used.has(v.full));
+    const used = new Set(state.slots.filter(s=>s.video).map(s=>normPath(s.video.full)));
+    const ready = pool.filter(v=>v.cover&&!used.has(normPath(v.full))&&!state.publishedPaths.has(normPath(v.full)));
+    const bare = pool.filter(v=>!v.cover&&!used.has(normPath(v.full))&&!state.publishedPaths.has(normPath(v.full)));
     const pickOrder = [...ready, ...bare];
     state.slots.forEach(s => { if (!s.video && pickOrder.length) { s.video = pickOrder.shift(); s.srcIdx = s.video.srcIdx; } });
     renderSources(); renderSlots();
     const bad = state.sources.filter(s=>s.res && !s.res.ok);
-    $('#status').textContent = bad.length ? '部分文件夹读取失败' : `扫描完成 · ${allVideos().length} 条成片`;
+    const pubCount = allVideos().filter(v=>state.publishedPaths.has(normPath(v.full))).length;
+    $('#status').textContent = bad.length ? '部分文件夹读取失败' : `扫描完成 · ${allVideos().length} 条成片${pubCount?` · ${pubCount} 条已发布/已排期已置灰`:''}`;
   } catch (err) {
     $('#status').textContent = '扫描失败：' + err.message;
   }
@@ -190,7 +248,10 @@ $('#slots').addEventListener('change', e => {
     s.title = null;
     if (!t.value) { s.video = null; s.srcIdx = 0; }
     else {
-      s.video = allVideos().find(v => vkey(v.sourceId,v.idx)===t.value) || null;
+      const picked = allVideos().find(v => vkey(v.sourceId,v.idx)===t.value) || null;
+      // 已发布/已排期或本批其他时间点已选用的视频不接受选择（下拉已置灰，此处双保险）
+      const blocked = picked ? pickAvailability(picked.full,{takenFulls:state.slots.filter((o,j)=>j!==i&&o.video).map(o=>o.video.full),publishedPaths:state.publishedPaths}) : null;
+      s.video = blocked ? s.video : picked;
     }
   }
   if (t.classList.contains('sGoods')) s.goods = t.value;
@@ -280,7 +341,7 @@ $('#newTag').onkeydown=e=>{if(e.key==='Enter'&&!e.isComposing){e.preventDefault(
 renderTagChoices();
 $('#executorModel').innerHTML=EXECUTION_MODELS.map(name=>`<option value="${esc(name)}">${esc(name)}</option>`).join('');
 $('#executorModel').value='Space Bunny';
-$('#dOrig').onchange = e => state.defaults.orig = e.target.value==='1';
+$('#dOrig').onchange = e => {state.defaults.orig=e.target.value==='1';renderSlots();};
 $('#dLoc').onchange = e => state.defaults.loc = e.target.value;
 $('#dAct').onchange = e => state.defaults.act = e.target.value;
 
@@ -300,7 +361,7 @@ function buildPlan(){
       title: (s.title || s.video?.draftTitle || '').replace(/／/g,' ').trim() || null,
       goods: (goods==='默认'||goods==='不挂商品') ? null : goods,
       loc: s.loc ?? d.loc,
-      original: s.orig ?? d.orig,
+      ...originalFor(s),
       activity: s.act ?? d.act,
       tags: d.tags,
     };
@@ -317,34 +378,39 @@ function showPreview(){
   const md = toMarkdown(plan);
   $('#dlgTitle').textContent = '发布清单预览';
   $('#dlgBody').innerHTML = `<pre style="white-space:pre-wrap;font:12.5px/1.75 ui-monospace,Consolas,monospace;background:#f7f8fa;padding:14px;border-radius:8px;border:1px solid var(--line)">${esc(md)}</pre>`;
-  $('#dlgSave').onclick = async () => { if(await savePlan(plan, md)) $('#dlg').close(); };
+  $('#dlgSave').onclick = () => savePlan(plan, md);
   $('#copyBtn').onclick = () => { navigator.clipboard.writeText(md); $('#copyBtn').textContent='已复制'; setTimeout(()=>$('#copyBtn').textContent='复制 Markdown',1500); };
   $('#dlg').showModal();
 }
 async function savePlan(plan, md){
   const errors = validatePlan(plan);
   if(errors.length) { $('#status').textContent = '请先补齐：' + errors.join('；'); return false; }
-  $('#saveBtn').disabled = true; $('#dlgSave').disabled = true;
+  $('#saveBtn').disabled = true; $('#dlgSave').disabled = true; $('#publishBtn').disabled=true;
   try {
     const r = await fetch('/api/save', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({plan})});
     const result = await r.json();
     if(!r.ok || !result.ok) throw new Error(result.error || '保存失败');
-    $('#status').textContent = '清单已保存，可在“发布记录”查看本轮排期（尚未发布）。';
+    $('#status').textContent = '清单已保存；复制启动指令到 WorkBuddy 后执行，尚未发布。';
+    if($('#dlg').open)$('#dlg').close();
+    $('#handoffText').value=workBuddyHandoff(result,plan);
+    $('#handoffSummary').textContent=`${plan.date} · ${plan.rows.length} 条 · 清单已保存`;
+    $('#handoffNotice').textContent='在 WorkBuddy 新对话中粘贴并发送下方指令。此步骤无需网页授权。';
+    $('#handoffDialog').showModal();
     window.dispatchEvent(new CustomEvent('publication-saved',{detail:{id:result.id}}));
     return true;
   } catch(err) { $('#status').textContent = '保存失败：' + err.message; return false; }
-  finally { $('#saveBtn').disabled=false; $('#dlgSave').disabled=false; }
+  finally { $('#saveBtn').disabled=false; $('#dlgSave').disabled=false; updatePublishAvailability(); }
 }
 async function publishPlan(plan){
   updatePublishAvailability();
-  if(!workBuddyReady || publishing){$('#status').textContent=$('#publishBtn').title;return false;}
+  if(!workBuddyReady || publishing){$('#status').textContent=$('#directPublishBtn').title;return false;}
   const errors = validatePlan(plan);
   if(errors.length) { $('#status').textContent = '请先补齐：' + errors.join('；'); return false; }
   publishing=true;
   awaitingPublishStatus=true;
   updatePublishAvailability();
-  const btnText = $('#publishBtn').textContent;
-  $('#publishBtn').textContent = '排队中…';
+  const btnText = $('#directPublishBtn').textContent;
+  $('#directPublishBtn').textContent = '排队中…';
   try {
     const r = await fetch('/api/publish', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({plan})});
     const result = await r.json();
@@ -354,19 +420,19 @@ async function publishPlan(plan){
     window.dispatchEvent(new CustomEvent('publication-saved',{detail:{id:result.id}}));
     return true;
   } catch(err) { $('#status').textContent = '排队失败：' + err.message; return false; }
-  finally { publishing=false;awaitingPublishStatus=true;$('#publishBtn').textContent = btnText;updatePublishAvailability();window.dispatchEvent(new CustomEvent('workbuddy-status-requested')); }
+  finally { publishing=false;awaitingPublishStatus=true;$('#directPublishBtn').textContent = btnText;updatePublishAvailability();window.dispatchEvent(new CustomEvent('workbuddy-status-requested')); }
 }
 let workBuddyReady=false,workBuddyRuntime=null,publishing=false,awaitingPublishStatus=false;
 function updatePublishAvailability(){
-  const connected=Boolean(workBuddyRuntime?.available&&workBuddyRuntime.capabilities?.publish);
-  const busy=Boolean(workBuddyRuntime?.activeJob);
-  const modelMatches=Boolean(workBuddyRuntime?.assistantModel&&workBuddyRuntime.assistantModel===$('#executorModel').value);
-  workBuddyReady=connected&&!busy&&modelMatches&&!awaitingPublishStatus;
-  $('#publishBtn').disabled=!workBuddyReady||publishing;
-  $('#publishBtn').title=publishing?'正在提交本轮发布任务':busy?'已有 WorkBuddy 任务，请先核对本轮结果':awaitingPublishStatus?'正在核对最新任务状态':connected&&!modelMatches?'顶部模型须与 WorkBuddy 本地助理当前模型一致':workBuddyReady?'按已确认排期启动发布':(workBuddyRuntime?.message||'请先连接 WorkBuddy');
+  const gate=publishAvailability(workBuddyRuntime,$('#executorModel').value,{publishing,awaitingStatus:awaitingPublishStatus});
+  workBuddyReady=gate.ready;
+  $('#directPublishBtn').disabled=!gate.ready;
+  $('#directPublishBtn').hidden=!gate.ready;
+  $('#directPublishBtn').title=gate.reason;
+  $('#publishBtn').disabled=publishing||Boolean(workBuddyRuntime?.activeJob)||awaitingPublishStatus||$('#saveBtn').disabled;
+  $('#publishReadiness').textContent=$('#publishBtn').disabled?gate.reason:'保存清单后，复制启动指令到 WorkBuddy 执行；无需开放平台授权。';
 }
-$('#publishBtn').disabled=true;
-$('#publishBtn').title='正在检查 WorkBuddy 连接';
+updatePublishAvailability();
 window.addEventListener('workbuddy-runtime',e=>{
   workBuddyRuntime=e.detail||null;
   awaitingPublishStatus=false;
@@ -375,12 +441,22 @@ window.addEventListener('workbuddy-runtime',e=>{
 $('#executorModel').addEventListener('change',updatePublishAvailability);
 $('#previewBtn').onclick = showPreview;
 $('#saveBtn').onclick = () => { const p = buildPlan(); savePlan(p, toMarkdown(p)); };
-$('#publishBtn').onclick = () => {
-  if(!workBuddyReady||publishing){$('#status').textContent=$('#publishBtn').title;return;}
+$('#publishBtn').onclick = () => { const p=buildPlan();savePlan(p,toMarkdown(p)); };
+$('#directPublishBtn').onclick = () => {
+  updatePublishAvailability();
+  if(!workBuddyReady||publishing){
+    $('#status').textContent=$('#directPublishBtn').title;
+    return;
+  }
   const check=validatePlan(buildPlan());
   if(check.length){$('#status').textContent='请先补齐：'+check.join('；');return;}
   if(!confirm('将由 WorkBuddy 按当前清单逐条核对，并提交到视频号的定时发布队列。\n\n确认本轮清单与目标账号后开始？')) return;
   publishPlan(buildPlan());
+};
+$('#handoffClose').onclick=()=>$('#handoffDialog').close();
+$('#handoffCopy').onclick=async()=>{
+  try{await navigator.clipboard.writeText($('#handoffText').value);$('#handoffNotice').textContent='已复制。请打开 WorkBuddy，新建对话并粘贴发送。';}
+  catch{$('#handoffText').focus();$('#handoffText').select();$('#handoffNotice').textContent='浏览器未允许自动复制，已选中指令，请按 Ctrl+C 复制。';}
 };
 $('#dlgX').onclick = () => $('#dlg').close();
 
@@ -477,3 +553,4 @@ for (const prefix of ['start', 'end']) {
 const d = new Date(); d.setDate(d.getDate()+1);
 $('#date').value = localDate(d);
 renderSources(); syncSlots();
+refreshPublished().then(renderSlots);

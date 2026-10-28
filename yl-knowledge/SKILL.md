@@ -13,7 +13,7 @@ description: YL 知识管理总入口。构建知识库、同步笔记、导入�
 
 所有成员位于同级目录，调用前读取其完整 SKILL.md。步骤不受总工具箱“最多两个辅助成员”限制，但不加载本次无关成员。
 
-1. 来源接收：云笔记用 `yl-knowledge-sync`，本地文件用 `yl-knowledge-import`；平台由 `yl-media` 采集后交接。
+1. 来源接收：云笔记用 `yl-knowledge-sync`，本地文件用 `yl-knowledge-import`；平台由 `yl-media` 采集后交接。任务包含本地新增文稿时，先运行已核实的 `local_hooks.local_source_discovery`（若已配置），或本地导入成员的发现器；再把无边车新稿、变更稿与原有待处理队列合并检查。
 2. `yl-knowledge-ingest`：原文、归属、版本、重复与正式位置。
 3. `yl-knowledge-distill` 与 `yl-knowledge-expressions`：读完整原文，先查旧对象再提炼；不能用摘要代替原话。
 4. `yl-knowledge-organize`：更新思想树、作品关系和完整论述，保留跨领域关联。

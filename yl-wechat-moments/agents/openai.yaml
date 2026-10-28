@@ -1,0 +1,4 @@
+interface:
+  display_name: "朋友圈文案与配图"
+  short_description: "从本人原文保留完整论述，写朋友圈短文、制作配图并沿认可版本局部回改"
+  default_prompt: "使用 $yl-wechat-moments，把这篇原文写成约300字的朋友圈文案，保留我的原话和论述推进，并按需要制作配图。"

@@ -1,6 +1,42 @@
 {
-  "version": "3.7.14",
+  "version": "3.14.0",
   "skills": [
+    {
+      "name": "yl-ai-dialogue-video",
+      "description": "把本人原稿或历史短视频改成数字分身双人剧情短片，完成受众与场景判断、问答分镜、统一形象参考、分段生成、本地精剪、字幕和原帧封面。适用于不用真人出镜的师生问答、剧情演绎及其局部回改。",
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    {
+      "name": "yl-anti-entropy",
+      "description": "防熵增：独立排查磁盘和文件夹膨胀，识别重复文件、缓存、发布暂存、已定稿工程与过程文件，并按范围归档清理。用户说电脑越来越满、查哪些能删、只保留唯一文件、非必要不备份或整理成果时使用；也汇总各专项的收尾规则，不要求先开展剪辑、发布或PPT任务。",
+      "version": "1.0.3",
+      "category": "office",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "file-management"
+    },
+    {
+      "name": "yl-article-narration-video",
+      "description": "将已定稿的本人文章或观点稿制作成无真人出镜的旁白图解视频及配套封面，完成视频版文稿、音色试听、可理解的分镜、字幕时间轴、封面设计、成片验收和局部回改。适用于文章转科普讲解视频；真人口播精剪或数字人对话另走对应成员。",
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    {
+      "name": "yl-c-drive-cleanup",
+      "description": "排查并按授权清理 Windows C盘的可再生缓存、更新安装包、已卸载软件更新残留、临时渲染文件及完整哈希一致的重复备份，核验保留文件与实际释放空间。用户要求C盘清理、系统盘瘦身、删除圈选更新残留或继续既有C盘清单时使用；只排查不删除，不扩展到软件卸载、聊天数据或系统设置修改。",
+      "version": "1.0.0",
+      "category": "office",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "file-management"
+    },
     {
       "name": "yl-channels-analytics",
       "description": "按需采集和复盘用户授权的视频号后台作品、留存、粉丝、逐字稿及可选微信小店成交数据，并生成结构固定的复盘大屏。用户要求视频号运营复盘、批量抓取后台数据、分析爆款和普通作品表现、核对带货归因、制作复盘大屏时使用；可读取后台导出文件离线分析。",
@@ -12,8 +48,8 @@
     },
     {
       "name": "yl-channels-publisher",
-      "description": "按安装者给定的时刻表把本地成片批量定时发布到视频号助手，逐条设置标题、描述标签、原创声明、活动、定时与商品挂载，上传成片目录里已做好的自定义封面，并清除平台默认定位。安装者要求视频号发布、批量定时发稿、给视频挂商品、按时间表排期或修正已定时未发作品时使用；提供发布记录、逐条数据跟踪和复盘大屏，分析复用 yl-channels-analytics；不用于剪辑或封面制作。",
-      "version": "1.1.0",
+      "description": "按安装者给定的时刻表把本地成片批量定时发布到视频号助手，逐条设置标题、描述标签、原创声明、活动、定时与商品挂载，上传成片目录里已做好的自定义封面，并清除平台默认定位；完成后默认核验并自动清理本批暂存副本。安装者要求视频号发布、批量定时发稿、给视频挂商品、按时间表排期或修正已定时未发作品时使用；提供发布记录、逐条数据跟踪和复盘大屏，分析复用 yl-channels-analytics；不用于剪辑或封面制作。",
+      "version": "1.2.2",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -22,7 +58,7 @@
     {
       "name": "yl-chatcut-landscape-interview-editor",
       "description": "用 ChatCut Desktop 剪横屏访谈、个人 IP 独白和长口播复盘。先做全文逻辑删改，再按原声精剪、字幕包装与本地导出；支持全自动和半自动多轮红线定稿。横屏访谈只走本 Skill，不调用旧 Remotion 横屏流程。",
-      "version": "3.0.0",
+      "version": "3.0.1",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -38,9 +74,18 @@
       "subcategory": "writing"
     },
     {
+      "name": "yl-course-summary",
+      "description": "将课程、访谈、讲座、演示或观点分享等长视频及其字幕、逐字稿整理成可回源的总结，保留论述推进、关键观点、论据、案例与原话；操作内容整理为实操教程，交付 Markdown、PDF 和阅读目录。适用于长视频总结、分章笔记及课后手册；不负责视频剪辑或制作 PPT。",
+      "version": "1.1.2",
+      "category": "office",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video-summary"
+    },
+    {
       "name": "yl-course-video-editor",
       "description": "剪辑课程、教程及带屏幕演示的长视频，按教学章节整理素材，轻剪口误和无效等待，保留演示、原顺序与讲师人声，校正单行字幕、统一倍速并平衡课内播放音量。适用于录屏加讲师窗口、软件实操和课程批量剪辑。",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -49,7 +94,7 @@
     {
       "name": "yl-douyin-publisher",
       "description": "核对本地成片与抖音已发作品的实际画面，排除重复，按时刻表定时发布，并使用已有封面、来源标题、相关标签和合集。支持本地多文件夹发布工作台、均分排期及中断后的核验。用于抖音发布和排期，不用于视频号发布或剪辑。",
-      "version": "1.4.2",
+      "version": "1.4.3",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -153,8 +198,8 @@
     },
     {
       "name": "yl-media",
-      "description": "YL 自媒体统一入口。写作、视频剪辑、封面、成片母带归档、抖音与视频号发布、小红书发布准备、视频号与公众号采集复盘先由这里分流，按需调用成员，并把本人文稿及复盘结果交回知识库。",
-      "version": "3.7.3",
+      "description": "YL 自媒体统一入口。写作、朋友圈图文、定稿文章转旁白图解视频、数字分身剧情短视频、视频剪辑、封面、成片归档、平台发布、视频号与公众号采集复盘先由这里分流，并把本人文稿及复盘结果交回知识库。",
+      "version": "3.7.8",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -171,8 +216,8 @@
     },
     {
       "name": "yl-ppt",
-      "description": "YL 办公板块的 PPT 制作与迭代。将逐字稿、文档或已有演示稿制作成课件，规划逐页内容、沿用参考风格、设计关系图，处理批注和多版本，保留用户手调。",
-      "version": "1.0.1",
+      "description": "YL 办公与管理板块的 PPT 制作与迭代。将逐字稿、文档或已有演示稿制作成课件，规划逐页内容、沿用参考风格、设计关系图，处理批注和多版本，保留用户手调。",
+      "version": "1.0.5",
       "category": "office",
       "role": "member",
       "license": "MIT",
@@ -181,7 +226,7 @@
     {
       "name": "yl-remotion-talking-head-editor",
       "description": "Edit Chinese talking-head footage with built-in mandatory content, script-flow and opening analysis, word-accurate mistake and hesitation removal, stable fixed-size captions, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Cards are off unless explicitly requested; preserve the original voice and export the complete final spoken transcript.",
-      "version": "3.5.2",
+      "version": "3.5.5",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -190,16 +235,25 @@
     {
       "name": "yl-remotion-video-slicer",
       "description": "将长口播、课程、述品或访谈切成多条独立短视频。按完整论述选题，用源内高能原句强化前3到5秒，允许跨段调序和跨片重叠；用Remotion保留可编辑工程，按授权添加标题、字幕及二维码遮盖，导出并核验。适用于长视频切片、批量短片和切片后补包装；单条口播去停顿精剪另用对应成员。",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "video"
     },
     {
+      "name": "yl-sales-content-refresh",
+      "description": "用户要求启动成交资料更新、更新历史成交视频、成交封面总览或达人文案时，核对本地新增数据并完整更新成交文案、金额降序封面汇总图和达人Word稿，执行三份交付一致性验收。仅用户启动时运行，不后台监控、不自动发布。",
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "analytics"
+    },
+    {
       "name": "yl-short-video-covers",
-      "description": "从截图、文案、视频或原帧制作1080×1440短视频封面。科技大字模式固定电路纹理黑底、白字为主、黄色关键词、外描边、水平共左边，可加用户授权人像；另有半透明原帧无叠加头像模式。",
-      "version": "3.1.1",
+      "description": "从截图、文案、视频或原帧制作1080×1440短视频封面。科技大字模式固定电路纹理黑底、白字为主、黄色关键词、外描边、水平共左边，默认读取个人配置头像；另有半透明原帧无叠加头像模式。",
+      "version": "3.1.2",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -215,8 +269,8 @@
     },
     {
       "name": "yl-video",
-      "description": "yl 自媒体板块的视频子入口，由 yl-media 分流进入。处理课程与演示长视频、长视频独立切片、真人口播、ChatCut 横屏访谈、短视频封面及成片母带归档，按任务依赖调用成员。",
-      "version": "3.7.0",
+      "description": "yl 自媒体板块的视频子入口，由 yl-media 分流进入。处理定稿文章转旁白图解视频、数字分身剧情短视频、课程与演示长视频、长视频独立切片、真人口播、横屏访谈、封面及成片归档，按任务依赖调用成员。",
+      "version": "3.9.0",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -224,12 +278,30 @@
     },
     {
       "name": "yl-video-archive",
-      "description": "归档已确定的视频成片、封面和自包含审查稿，课程切片复用主课程源文件，常规母带与对应成品同目录保存；核验后按授权清理冗余。用于视频归档、成片母带整理和剪辑收尾清理。",
-      "version": "3.6.2",
+      "description": "归档已确定的视频成片、封面和自包含审查稿，并将最终文稿接入本地知识库完成蒸馏、表达与检索验收；复用正式来源，核验后清理本批工程和过程文件。用于视频定稿归档及剪辑收尾。",
+      "version": "3.6.4",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "video"
+    },
+    {
+      "name": "yl-viral-video-remixer",
+      "description": "将历史爆款或成交文案的两次以上独立拍摄做成新的口播混剪。按全文和实际画面归并同稿，优先找母带，参考三秒留存选开头、完播表现选主体，完成停顿精剪、分段倍速、统一标题字幕与本地归档。适用于同稿多拍二创，不用于仅复制同一拍摄的不同导出版本。",
+      "version": "1.0.3",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    {
+      "name": "yl-wechat-moments",
+      "description": "把本人公众号文章、口述稿或已有文稿压缩成保留原话与完整论述的朋友圈文案，并按需求制作配图、沿认可版本局部改图。适用于朋友圈短文和图文整套；不代发朋友圈，不把原文改成金句摘要。",
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT AND CC-BY-NC-4.0",
+      "subcategory": "writing"
     },
     {
       "name": "yl-write-impact-wechat",
@@ -251,8 +323,8 @@
     },
     {
       "name": "yl-writing",
-      "description": "yl 自媒体板块的写作子入口，由 yl-media 分流进入。处理口述稿转公众号、写文章、改稿或已指定文风，保留原稿并执行公共写作约束。",
-      "version": "3.4.3",
+      "description": "yl 自媒体板块的写作子入口，由 yl-media 分流进入。处理口述稿转公众号、朋友圈文案与配图、写文章、改稿或已指定文风，保留原稿并执行公共写作约束。",
+      "version": "3.4.4",
       "category": "media",
       "role": "router",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -269,8 +341,8 @@
     },
     {
       "name": "yl-xiaohongshu-publisher",
-      "description": "小红书视频笔记发布工作台，支持多文件夹选片、已有封面、标题正文与最多十个话题校验、本地排期、逐篇辅助填表及人工提交后的只读核验。用于明确指定的小红书视频发布准备；不用于图文笔记、评论互动或后台数据采集。",
-      "version": "1.0.1",
+      "description": "小红书视频笔记发布工作台，支持多文件夹选片、已发拦截与本地抽帧查重、每日全选、标题正文与最多十个话题校验、批量设置、页面内自动匹配标题封面、整批确认后依次定时提交及结果核验。重复项单独跳过，其余继续；登录风控或提交结果不明时暂停。用于用户明确授权的小红书视频发布；不用于图文笔记、评论互动或后台数据采集。",
+      "version": "1.2.0",
       "category": "media",
       "role": "member",
       "license": "MIT",

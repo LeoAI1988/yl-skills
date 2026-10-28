@@ -12,11 +12,13 @@ from pathlib import Path
 from urllib.parse import urlparse, parse_qs
 from engine import Store, times, matching_tags
 from runner import Runner
+from dedup import DedupService, review_revision
+from autofill import prepare
 
 WEB=Path(__file__).parent/'web'
 
 def serve(config):
-    store=Store(config);runner=Runner(store);token=secrets.token_urlsafe(32)
+    store=Store(config);runner=Runner(store);dedup=DedupService(store);token=secrets.token_urlsafe(32)
     port=int(config.get('port',18767));origin=f'http://127.0.0.1:{port}'
     scans={};scan_lock=threading.Lock()
     class Handler(BaseHTTPRequestHandler):
@@ -34,7 +36,11 @@ def serve(config):
             u=urlparse(self.path);q=parse_qs(u.query)
             try:
                 if u.path=='/api/health':return self.send(200,dict(app='yl-xiaohongshu-workbench',**runner.health()))
-                if u.path=='/api/state':return self.send(200,dict(**store.snapshot(),executor=runner.health(),scans=scans))
+                if u.path=='/api/session':
+                    if self.headers.get('Origin') not in (None,origin):
+                        return self.send(403,{'code':'origin_rejected','error':'页面地址与工作台不一致，请使用当前工作台地址打开'})
+                    return self.send(200,{'csrf_token':token})
+                if u.path=='/api/state':return self.send(200,dict(**store.snapshot(),dedup_revision=review_revision(store),executor=runner.health(),scans=scans))
                 if u.path=='/api/times':
                     pref=store.preferences()
                     return self.send(200,times(q.get('count',['1'])[0],q.get('start_time',[pref['start_time']])[0],q.get('end_time',[pref['end_time']])[0]))
@@ -54,7 +60,7 @@ def serve(config):
                 if u.path=='/icon.png' and config.get('icon'):return self.media(Path(config['icon']))
                 if u.path=='/':
                     return self.send(200,(WEB/'index.html').read_text(encoding='utf-8').replace('__CSRF__',token),'text/html; charset=utf-8')
-                if u.path in ['/app.js','/style.css']:
+                if u.path in ['/app.js','/batch.js','/jobs.js','/style.css']:
                     p=WEB/u.path.lstrip('/');return self.send(200,p.read_bytes(),('text/javascript' if p.suffix=='.js' else 'text/css')+'; charset=utf-8')
                 self.send(404,{'error':'未找到'})
             except (KeyError,StopIteration,FileNotFoundError):self.send(404,{'error':'文件不存在'})
@@ -83,38 +89,46 @@ def serve(config):
                         self.wfile.write(chunk);left-=len(chunk)
             except (ConnectionError,BrokenPipeError):pass
         def do_POST(self):
-            if not self.host_ok() or self.headers.get('Origin')!=origin or self.headers.get('X-CSRF-Token')!=token:
-                return self.send(403,{'error':'请从本机工作台操作'})
+            if not self.host_ok() or self.headers.get('Origin')!=origin:
+                return self.send(403,{'code':'origin_rejected','error':'页面地址与工作台不一致，请使用当前工作台地址打开'})
+            if self.headers.get('X-CSRF-Token')!=token:
+                return self.send(403,{'code':'csrf_expired','error':'工作台连接已更新，请刷新页面后重试；本次操作尚未执行'})
             try:
                 length=int(self.headers.get('Content-Length','0'))
                 if not 0<length<2_000_000:raise ValueError('请求大小不正确')
                 body=json.loads(self.rfile.read(length));path=urlparse(self.path).path;result={}
-                if path=='/api/scan':
-                    folder=body['folder'].strip()
-                    with scan_lock:
-                        if any(s['state']=='running' for s in scans.values()):raise ValueError('正在扫描，请等当前扫描结束')
-                        sid=secrets.token_hex(6);scans[sid]={'state':'running','folder':folder}
-                    def run_scan():
-                        try:scans[sid].update(state='done',**store.scan(folder))
-                        except Exception as e:scans[sid].update(state='failed',error=str(e))
-                    threading.Thread(target=run_scan,daemon=True).start();result={'id':sid}
-                elif path=='/api/folder/remove':store.remove_folder(body['folder'])
-                elif path=='/api/select':store.select(body['ids'],body['selected'])
-                elif path=='/api/account':result=store.set_account(body['account'])
-                elif path=='/api/edit':result=store.edit(body['id'],body['patch'])
-                elif path=='/api/tags':
-                    a=next(a for a in store.get('assets') if a['id']==body['id']);result={'tags':matching_tags(body.get('title',a['title']),body.get('caption',a.get('caption','')),config.get('tag_pool',[]),'stable')}
-                elif path=='/api/arrange':result=store.arrange(body['ids'],body['date'],body['count'],body.get('start_time'),body.get('end_time'))
-                elif path=='/api/plan':store.update_plan(body['rows'],body['revision'])
-                elif path=='/api/plan/replace':store.replace_video(body['slot'],body['asset_id'],body['revision'])
-                elif path=='/api/plan/move':store.move_video(body['source'],body['target'],body['placement'],body['revision'])
-                elif path=='/api/publish':
-                    if body.get('confirmed') is not True:raise ValueError('请先确认仅准备本条表单，最后由你到小红书提交')
-                    result=runner.start(body['slots'],body.get('model'),body.get('reasoning_effort'),expected_revision=body.get('revision'))
-                elif path=='/api/stop':runner.stop()
-                elif path=='/api/verify':result=runner.verify(body['id'])
-                elif path=='/api/release':result=runner.release(body['id'])
-                else:return self.send(404,{'error':'未知操作'})
+                if path=='/api/prepare-fields':
+                    result=prepare(store,body['ids'],body.get('revision'),body.get('ai'),body.get('model'))
+                    return self.send(200,{'ok':True,'result':result})
+                with store.lock:
+                    if getattr(store,'dedup_busy',False) and path not in ['/api/stop']:
+                        raise ValueError('查重进行中，请等完成后再修改或发布')
+                    if path=='/api/scan':result=dedup.start(folder=body['folder'].strip())
+                    elif path=='/api/dedup':result=dedup.start(group=body.get('group'))
+                    elif path=='/api/dedup/clear':result=dedup.clear_review(body['group'],body.get('id'),body.get('revision'))
+                    elif path=='/api/folder/remove':store.remove_folder(body['folder'])
+                    elif path=='/api/select':store.select(body['ids'],body['selected'])
+                    elif path=='/api/account':result=store.set_account(body['account'])
+                    elif path=='/api/edit':result=store.edit(body['id'],body['patch'])
+                    elif path=='/api/edit/batch':
+                        if not body.get('revision'):raise ValueError('缺少内容版本，请重新打开批量设置')
+                        result=store.edit_many(body['items'],body['revision'])
+                    elif path=='/api/tags':
+                        a=next(a for a in store.get('assets') if a['id']==body['id']);result={'tags':matching_tags(body.get('title',a['title']),body.get('caption',a.get('caption','')),config.get('tag_pool',[]),'stable')}
+                    elif path=='/api/arrange':result=store.arrange(body['ids'],body['date'],body['count'],body.get('start_time'),body.get('end_time'))
+                    elif path=='/api/plan':store.update_plan(body['rows'],body['revision'])
+                    elif path=='/api/plan/replace':store.replace_video(body['slot'],body['asset_id'],body['revision'])
+                    elif path=='/api/plan/move':store.move_video(body['source'],body['target'],body['placement'],body['revision'])
+                    elif path=='/api/publish':
+                        if body.get('confirmed') is not True:raise ValueError('请先检查并确认本次执行明细')
+                        result=runner.start(body['slots'],body.get('model'),body.get('reasoning_effort'),expected_revision=body.get('revision'),mode=body.get('mode','prepare'),auto_prepare=body.get('auto_prepare') is True)
+                    elif path=='/api/stop':runner.stop()
+                    elif path=='/api/verify':result=runner.verify(body['id'])
+                    elif path=='/api/resume':
+                        if body.get('confirmed') is not True:raise ValueError('缺少原批次恢复授权')
+                        result=runner.resume(body['id'])
+                    elif path=='/api/release':result=runner.release(body['id'])
+                    else:return self.send(404,{'error':'未知操作'})
                 self.send(200,{'ok':True,'result':result})
             except Exception as e:self.send(400,{'error':str(e)})
     http=ThreadingHTTPServer(('127.0.0.1',port),Handler)

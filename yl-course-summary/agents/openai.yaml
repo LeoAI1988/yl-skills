@@ -1,0 +1,4 @@
+interface:
+  display_name: "YL 长视频总结"
+  short_description: "总结课程、访谈、讲座与分享，保留论述、案例和原话，交付 Markdown、PDF"
+  default_prompt: "使用 $yl-course-summary 总结这些长视频，按内容整理为分章总结或实操教程，保留论述、观点、案例与原话，导出 Markdown 与 PDF。"

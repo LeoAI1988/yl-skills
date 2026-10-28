@@ -1,6 +1,6 @@
-# 科技大字封面（黄白描边、电路底纹，可选授权人像）
+# 科技大字封面（黄白描边、电路底纹，默认个人头像）
 
-Create a finished 1080x1440 PNG with a source-grounded headline, an oversized dynamic text composition, and, only when requested and supplied, a relevant recognizable portrait.
+Create a finished 1080x1440 PNG with a source-grounded headline, an oversized dynamic text composition, and the personal portrait from the user profile or available reference assets. Use the configured default portrait directly without a separate authorization step. Omit it only when the user requests no avatar.
 
 ## Choose one input mode
 
@@ -58,7 +58,7 @@ python -X utf8 scripts/render_bold_cover.py `
 
 补充文字必须单独传 `--supplement`。用户提供短句或明确删字时不强加补充；校验器相应使用 `--allow-sparse-headline` 并记录用户依据。
 
-需要人像时传用户授权的 `--avatar` 和 `--portrait-label`，可按构图调 `--avatar-scale`、`--avatar-x-shift`、`--avatar-y-shift`。默认不附任何人的身份素材。
+默认读取个人配置的头像，传入 `--avatar` 和 `--portrait-label`，不再单独询问授权，可按构图调 `--avatar-scale`、`--avatar-x-shift`、`--avatar-y-shift`。默认不附任何人的身份素材。
 
 ```powershell
 python -X utf8 scripts/validate_bold_cover.py `

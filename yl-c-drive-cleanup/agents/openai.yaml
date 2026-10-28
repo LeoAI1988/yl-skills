@@ -1,0 +1,4 @@
+interface:
+  display_name: "YL C盘清理"
+  short_description: "排查C盘缓存、更新残留与重复备份，按授权安全清理并核对实际释放空间"
+  default_prompt: "使用 $yl-c-drive-cleanup 排查C盘，识别缓存、更新残留和重复备份，按本次授权清理，保留原始文件与正式成果并核对实际释放空间。"

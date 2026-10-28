@@ -1,4 +1,4 @@
 interface:
   display_name: "yl 视频成片与母带归档"
-  short_description: "归档最终成片、封面与完整审查稿，课程真源复用、常规母带同目录保存并核验清理"
-  default_prompt: "使用 $yl-video-archive 按我的归档规则整理本批成片和母带，核验后完成已授权的过程文件清理。"
+  short_description: "归档最终成片、封面与完整审查稿，课程及爆款真源复用、其他母带同目录保存并核验清理"
+  default_prompt: "使用 $yl-video-archive 整理本批成片和母带，核验后默认清理本批临时副本与可再生缓存，保留正式资产和未完成依赖。"

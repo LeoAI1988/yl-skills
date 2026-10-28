@@ -1,0 +1,4 @@
+interface:
+  display_name: "数字分身剧情短视频"
+  short_description: "本人原话改双人问答，统一形象分段生成，本地精剪调速、字幕与封面"
+  default_prompt: "使用 $yl-ai-dialogue-video，把我的原稿和当前形象做成双人剧情短视频，保留原话并完成分镜、生成、本地精剪及封面。"

@@ -58,3 +58,9 @@ description: 核对本地成片与抖音已发作品的实际画面，排除重�
 每条至少记录 `id`、`video`、`date_basis`、`title_source`、`cover`、`dedup_status`、`dedup_evidence`、`scheduled_at`、`timezone`、`tags`、`collection`、`status`、`platform_id`、`verified_at`。无法获取的平台字段留空，勿猜测。排除条目单列表格，不能占用发布时间。
 
 计划表中待核内容必须可见。若平台失败不影响本地排期，继续完成能做的工作并报告具体未完成项；不要制造成功状态。
+
+## 防熵增收尾
+
+发布复用唯一正式成片及现有封面，日常发布不备份成品。确需上传暂存才接入本批文件；平台完整接收并核验目标作品/定时后清理暂存，失败、结果不明及后续条目仍需使用的文件保留到依赖结束。
+
+通用原则与独立磁盘排查汇总见 [yl-anti-entropy](../yl-anti-entropy/SKILL.md)；本成员上面的专项归档/清理步骤继续保留。

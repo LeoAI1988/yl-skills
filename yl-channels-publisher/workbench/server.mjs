@@ -21,11 +21,13 @@ const MIME = { '.svg':'image/svg+xml', '.html':'text/html; charset=utf-8', '.css
 // 成片名里除了标题还会挂状态词和版本号，而且两者可能交替出现：
 //   1-3-实战营_最终版_v7.mp4
 //   1-3-实战营_YL剪辑待审_v2_CFR.mp4      ← 状态在版本号前面，还有 CFR 后缀
+//   01_做容易的事_剪辑版_v8.mp4           ← 二次剪辑批次的统一状态词
 // 封面命名也不统一：
 //   4-2-课程-体系_封面_v2.png
 //   1-3-实战营_黑底黄字人像封面_v5.png    ← 「封面」前带修饰词
+//   封面.png                              ← 通用名，文件名里没有标题（述品视频逐条目录常见）
 // 统一归一化成「序号-标题」，才能把视频和封面配上。
-const STATUS_SUFFIX = /(?:YL剪辑待审|待审|预览|审核版|最终版|final|成片|cut|CFR)/i;
+const STATUS_SUFFIX = /(?:YL剪辑待审|待审|预览|审核版|最终版|final|成片|cut|CFR|剪辑版)/i;
 
 export function baseKey(name) {
   let stem = path.parse(name).name;
@@ -41,11 +43,23 @@ export function baseKey(name) {
 }
 const version = name => +(name.match(/[_-]v(\d+)(?=\.[^.]+$)/i)?.[1] || 0);
 
-// 封面可能和成片同目录，也可能被批量收进成片目录下的封面子目录（如 切片/4-1/封面_20261016_v1/）。
-// 同目录优先，其次子目录；同层内版本号高的优先。
-function coverCandidates(v, files) {
+// 通用名封面：文件名剥掉版本号后只剩「封面 / cover」，没有标题，无法按名字配对。
+// 只有当它与成片同目录、且该目录按 baseKey 归并后只有这一条成片时，归属才唯一，
+// 才允许自动匹配；一个目录里有多条不同成片时保持缺封面，留给人工确认，不猜。
+function isGenericCover(name) {
+  const stem = path.parse(name).name.replace(/[_-]?v?\d+$/i, '').replace(/^[_-]+|[_-]+$/g, '');
+  return /^(?:封面|cover)$/i.test(stem);
+}
+
+// 封面可能和成片同目录，也可能被批量收进成片目录下的封面子目录（如 切片/4-1/封面_20261016_v1/），
+// 还可能只叫「封面.png」这类通用名（见 isGenericCover）。
+// 同目录优先，其次子目录；同层内版本号高的优先；同名可配对时通用名封面不参与，避免覆盖精确匹配。
+function coverCandidates(v, files, siblingVideoKeys) {
   const images = files.filter(f =>
     IMAGE_EXT.has(f.ext) && /封面|cover/i.test(f.name) && baseKey(f.name) === baseKey(v.name));
+  if (!images.length && siblingVideoKeys === 1) {
+    images.push(...files.filter(f => f.dir === v.dir && IMAGE_EXT.has(f.ext) && isGenericCover(f.name)));
+  }
   const rank = f => f.dir === v.dir ? 0 : 1;
   return images.sort((a, b) => rank(a) - rank(b) || version(b.name) - version(a.name));
 }
@@ -103,6 +117,13 @@ export async function scanOne(inputPath) {
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(v);
   }
+  // 每个目录里按 baseKey 归并后的成片条数：同一成片的多个版本算一条，
+  // 通用名封面只在「目录里只有一条成片」时才自动匹配。
+  const videoKeysByDir = new Map();
+  for (const v of allVideos) {
+    if (!videoKeysByDir.has(v.dir)) videoKeysByDir.set(v.dir, new Set());
+    videoKeysByDir.get(v.dir).add(baseKey(v.name));
+  }
   const picked = [];
   for (const group of groups.values()) {
     const declared = group.filter(v => documents.some(d => d.dir === v.dir && d.finals.includes(v.name.toLowerCase())));
@@ -112,7 +133,7 @@ export async function scanOne(inputPath) {
   picked.sort((a,b) => Number(!/_最终版|_final/i.test(a.name))-Number(!/_最终版|_final/i.test(b.name)) || a.name.localeCompare(b.name, 'zh-CN', {numeric:true}));
 
   const items = picked.map((v,i) => {
-    const covers = coverCandidates(v, files);
+    const covers = coverCandidates(v, files, videoKeysByDir.get(v.dir)?.size || 0);
     // 没有独立封面文件时，退到同目录的预览图（切片类目录常见：切片预览.jpg 里每个切片一格）
     const previews = covers.length ? [] : files.filter(f => f.dir === v.dir && IMAGE_EXT.has(f.ext) && /预览|preview|contact|sheet/i.test(f.name));
     const doc = relatedDraft(v, documents, allVideos);

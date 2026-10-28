@@ -1,4 +1,4 @@
 interface:
   display_name: "小红书发布工作台"
-  short_description: "选片排期、标题正文与十个话题校验，逐篇准备并由本人最终提交"
-  default_prompt: "使用 $yl-xiaohongshu-publisher 为这批成片建立小红书发布准备队列，保留原话和已有封面，由我逐篇在平台提交。"
+  short_description: "多选排期、批量设置，一次确认整批提交，显示每篇进度和核验结果"
+  default_prompt: "使用 $yl-xiaohongshu-publisher 为这批成片建立小红书发布队列，保留原话和已有封面，先展示整批内容与排期供我确认，获授权后顺序提交并核验。"
