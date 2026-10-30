@@ -83,6 +83,10 @@ Windows 用 Junction，其余系统用符号链接。维护者可使用根安装
 
 整包为多许可源码集合，不能统称无限制商用 MIT。写作公共层及部分剪辑方法含 CC BY-NC 4.0，契诃夫语料有逐文件授权，详见 [第三方声明](THIRD_PARTY_NOTICES.md) 及各成员原有 LICENSE/NOTICE。用户创作物不因使用工具自动改授源码许可。
 
-分享整个 `yl-toolbox-cluster.zip`，不要分拆散装成员。公开仓库 [LeoAI1988/yl-skills](https://github.com/LeoAI1988/yl-skills)，本地构建不自动推送或发布。最新 34 项海报（可交给智能体按图中说明整包安装）：
+分享整个 `yl-toolbox-cluster.zip`，不要分拆散装成员。公开仓库 [LeoAI1988/yl-skills](https://github.com/LeoAI1988/yl-skills)，本地构建不自动推送或发布。v3.14.1 当前提供黑金版与彩色信息图版宣传海报（42 项），可交给智能体按图中说明整包安装：
 
-![YL Skill 集群 v3.7.14](YL-Skill集群_v3.7.14_34项_智能体安装版.png)
+![YL Skill 集群 v3.14.1 彩色清晰版](YL-Skill集群_v3.14.1_42项_彩色清晰版.png)
+
+![YL Skill 集群 v3.14.1 黑金版](YL-Skill集群_v3.14.1_42项_智能体安装版.png)
+
+历史版本：![YL Skill 集群 v3.7.14（34 项）](YL-Skill集群_v3.7.14_34项_智能体安装版.png)

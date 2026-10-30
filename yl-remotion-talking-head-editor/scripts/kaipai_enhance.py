@@ -381,7 +381,7 @@ def effective_preset(task, overrides):
     if (not re.fullmatch(r"/[A-Za-z0-9_/-]{1,160}", endpoint)
             or not isinstance(task_type, str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,40}", task_type)):
         raise GateError("服务端任务类型或路径无法安全核验，未提交。")
-    if task == "hdvideoallinone" and (endpoint != "/v1/hdvideoallinone_async" or task_type != "mtlab"):
+    if task == "hdvideoallinone" and (endpoint != "/v1/hdvideoallinone_async" or task_type not in {"mtlab", "speedup"}):
         raise GateError("服务端 hdvideoallinone 预设已改变；需先重新核验接口，未提交。")
     snapshot = {"taskName": task, "task": endpoint, "taskType": task_type, "params": merged}
     snapshot["sha256"] = hashlib.sha256(json.dumps(snapshot, sort_keys=True,

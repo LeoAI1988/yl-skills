@@ -1,5 +1,5 @@
 {
-  "version": "3.14.1",
+  "version": "3.14.5",
   "skills": [
     {
       "name": "yl-ai-dialogue-video",
@@ -226,7 +226,7 @@
     {
       "name": "yl-remotion-talking-head-editor",
       "description": "Edit Chinese talking-head footage with built-in mandatory content, script-flow and opening analysis, word-accurate mistake and hesitation removal, stable fixed-size captions, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Cards are off unless explicitly requested; preserve the original voice and export the complete final spoken transcript.",
-      "version": "3.5.5",
+      "version": "3.5.6",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -253,7 +253,7 @@
     {
       "name": "yl-short-video-covers",
       "description": "从截图、文案、视频或原帧制作1080×1440短视频封面。科技大字模式固定电路纹理黑底、白字为主、黄色关键词、外描边、水平共左边，默认读取个人配置头像；另有半透明原帧无叠加头像模式。",
-      "version": "3.1.2",
+      "version": "3.1.6",
       "category": "media",
       "role": "member",
       "license": "MIT",

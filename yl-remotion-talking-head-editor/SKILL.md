@@ -128,3 +128,7 @@ description: Edit Chinese talking-head footage with built-in mandatory content, 
 确认结果后，保留唯一初始母带、确认成片、封面及必要说明/已有逐字稿，清理本批候选、构建与中间工程；日常修订不备份旧输出。未确认时保留审核所需候选，不把机器验收当用户定稿。
 
 通用原则与独立磁盘排查汇总见 [yl-anti-entropy](../yl-anti-entropy/SKILL.md)；本成员上面的专项归档/清理步骤继续保留。
+
+## 多轮修订
+
+收到局部反馈或重做时先读 [修订操作与证据合同](references/revision-contract.md)，区分原声删除、字幕纠字、复制开头、移动、倍速及封面；逐项核销后更新真实预览绑定。

@@ -1,7 +1,7 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.14.1",
-  "date": "2026-10-28",
+  "version": "3.14.5",
+  "date": "2026-10-30",
   "skills": {
     "yl-toolbox": {
       "version": "3.7.12",
@@ -38,14 +38,14 @@
       "subcategory": "writing"
     },
     "yl-remotion-talking-head-editor": {
-      "version": "3.5.5",
+      "version": "3.5.6",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
       "subcategory": "video"
     },
     "yl-short-video-covers": {
-      "version": "3.1.2",
+      "version": "3.1.6",
       "category": "media",
       "role": "member",
       "license": "MIT",

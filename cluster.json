@@ -1,7 +1,7 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.14.1",
-  "date": "2026-10-28",
+  "version": "3.14.5",
+  "date": "2026-10-30",
   "skills": [
     {
       "name": "yl-ai-dialogue-video",
@@ -475,7 +475,7 @@
     {
       "name": "yl-remotion-talking-head-editor",
       "description": "Edit Chinese talking-head footage with built-in mandatory content, script-flow and opening analysis, word-accurate mistake and hesitation removal, stable fixed-size captions, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Cards are off unless explicitly requested; preserve the original voice and export the complete final spoken transcript.",
-      "version": "3.5.5",
+      "version": "3.5.6",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -498,18 +498,21 @@
         "references/kaipai-enhance.md": "3f9e12b5322502d922c4bdd0fe1cd2af4412f1b590a2bf03e10dfffa62cff244",
         "references/pause-policy.json": "87e92600c4b88c95b4355a779850b398363f2be255c5d3fdf9f6a3ccdedc630a",
         "references/rendering.md": "e4b0ce7ccc3b0dadc1ce3765f80a748f1d7e975054bfb98f1f9e53fb666d0201",
+        "references/revision-contract.md": "3380b6ba2a5e7a399bfa157f6df7426ee90387a2c67f47e90822811ca6a27cd4",
         "references/source-snapshot.json": "ac3859773adddce60143952f057502f8a491ac08965b22785de9901c1e566e00",
         "references/visual-style.md": "c8655b289fcd67eba56b5c3df183235ca63eaeb3978cddc18a8cfdb0ff68c3df",
         "scripts/check_asr_coverage.py": "2220e3d458f8c9aa9d9055445d3a970c5210a00990e1d600af32100840ea6871",
-        "scripts/kaipai_enhance.py": "a0f6829dacf17c5018d499764f6f961005f5cdebf66c6daa27b75e923e727b5e",
+        "scripts/kaipai_enhance.py": "90972e3cfa31920c3494b2dc0426a09ed78709962e72374ebc29878264dd797c",
         "scripts/pause-probe.py": "c8ca46429aa766714816ccede8af1f6b49652b6cf153994219dde80793e3c371",
         "scripts/render-static-overlays.py": "0c5e108f88490602c551a961523c8f6fe03a477d2ceea29d771eee372606624e",
         "scripts/review_final.py": "9bd41f6ba51fcd78b991965e64df1144d6531fad6911825e849bac8b122c0088",
+        "scripts/test_revision_contract.py": "071188c5bd69ea5b1a04f286202cdd1da7c2c726f761a2b6ac594221be5c5a03",
         "scripts/validate-talking-head-video.ps1": "a7e85c1d24406bc3aecf92cbda3546b9cf74cdc869d76a2900b4755dc2826b30",
         "scripts/validate-video.py": "15d1156c9b3ed264b2e05844b085d57a4be35158ce5ebba6d820e496c344aba1",
         "scripts/validate-visual-contract.py": "0520880526ad9847fafdb568024b70417ceb9c4a9a479ac32a0e5199e93b1015",
+        "scripts/verify_revision_contract.py": "3bc5a2e0231e91396e592167bc9a5a8d8c8d414953b5ba9b84b6ad35dc1e6068",
         "scripts/word-audit.py": "d40f96d3ab920affe3d8a79228a772f7ba4dc70250a1c7675aa9409e8c0836fc",
-        "SKILL.md": "cdcfff5f2a698eb8ecaec236c4f9aae56f78c193fa334cc2570948ea1300606a",
+        "SKILL.md": "2fc7a81bfad3fa161672d07a979fd6179e0e842e0cad0f4e0cfcf1f986f8d7d9",
         "tests/test_report_paths.py": "81a7461ff5275269f9e1295e4a3dc58d9c4bfc6bb52f5a002605e74e2f6f0354"
       }
     },
@@ -555,7 +558,7 @@
     {
       "name": "yl-short-video-covers",
       "description": "从截图、文案、视频或原帧制作1080×1440短视频封面。科技大字模式固定电路纹理黑底、白字为主、黄色关键词、外描边、水平共左边，默认读取个人配置头像；另有半透明原帧无叠加头像模式。",
-      "version": "3.1.2",
+      "version": "3.1.6",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -566,23 +569,23 @@
         "AUDIT.md": "d03be604ac7583f4491adf3dfe942f2d4d862c4a0fdd634f00b56eb8db150cad",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
         "references/asset-prompts.md": "3f6e4604ebccd3948ef210c215079e157894bb9a3e0945b2809baec8228ee476",
-        "references/bold-mode.md": "c56bb4964c1a0217d50622477e09c9f00de3fb296d79a3d46ccb25804da6fb45",
+        "references/bold-mode.md": "12e70921c3b2f5f83f7e9b5629b8a547ce76f286cda5fa77f5eb1a063ad8ca93",
         "references/outlined-mode.md": "7cbfb5b41d3180fb8ab7a14cc71b4983ce7aacb9c938a6a59eb389581a1ad36f",
         "references/provenance.md": "42bf341e2ab877022f9331c51e678afb7b83b76ece16bbf1d27d7575adc2643f",
         "references/source-snapshot.json": "5d259527935929e5b8cb5d1fe64062984e41fc4069c23b54ff3a7235f52f3d25",
-        "references/style-spec.md": "36846a160d9f0a57694d1ae5a0704ea4cd1223eea17690cfdb0ccc85fcdb7aea",
-        "references/translucent-mode.md": "7741d807a6531be9cbcdf3306d51f0c3df1badcd88c41baceb017a284eb1c309",
+        "references/style-spec.md": "f07ae271911d0b73632ece89fa8756285b7b08cf6f6ccdede7e1c8d683df1c7e",
+        "references/translucent-mode.md": "bbb461b79991c4af44b34dbb38ee5d6bd40073706916f6e60c9300a583d966b5",
         "scripts/check_portrait_overlap.py": "4364773fa4197f9b2f556db4e1364a726bb6f8bbd93c518a003ad0bf0c20f41c",
         "scripts/font_utils.py": "55266867f03f5ee70801500c48b35d7f9097975497ece4824f793acdd3d64c2a",
         "scripts/prepare_title_crop.py": "6d08b273d021cc2a62ce2a2b5cd645230cb4af1a06b6ff2f706d0e96d2954b2c",
         "scripts/prepare_video_input.py": "bdd2d538d0eda82ff406ec0c2e9708ca9547feb1c1e69c423eaed7f5bfe76634",
-        "scripts/render_bold_cover.py": "e29e14d28d6b5d900e8ba6b73343df944204902fb3f4871b65ad06b511a37c62",
+        "scripts/render_bold_cover.py": "c7179d525a7636ffb80c8c38b6457bc01419af5e92d011c35375fc257e9401f8",
         "scripts/render_translucent_cover.py": "669dc85eeb13cce223e36f7fb9685353e057b8b33f67ec8063ec03b17c616aca",
         "scripts/tech_background.py": "908d3818dbd7eb19ae62d52989cded606a4501e7d4fd347fe2b495004d30a73b",
-        "scripts/test_bold_style.py": "112b3d06c9abad88c5d37b2a47bf22d4cbbe42aced624bd42c2c05da5c0724ea",
-        "scripts/validate_bold_cover.py": "e475d19e35ec86c83ad2957d7bb523369004fad73f245dc769e0e19bd0a21bb5",
+        "scripts/test_bold_style.py": "c6a96bb7ee0d3d83b396029878dcbe00bb1705c895abd521ae00d40d398889f6",
+        "scripts/validate_bold_cover.py": "ecfa383d5a571c4de7a08c8d7e20a8bc2a602aef33e7ea763ced9e177e9f527a",
         "scripts/validate_translucent_cover.py": "7ea25801ba8e9189b3e3cae640ad8aa947e0a2f98831f6df57e1bfeacc9f68e6",
-        "SKILL.md": "d1d84d374d45b421aa2073932c4fc2690500f835b551e544d0cb655daac5f1d4"
+        "SKILL.md": "ef8a5b405b80543a31b512b0d417b149b0844a743b157129187814ab8aa7befd"
       }
     },
     {
@@ -613,7 +616,7 @@
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "references/catalog.json": "ce3c93716adced667e2ce44a4d3e9770f3e3dde29c791aa1f3027cd2552d496a",
+        "references/catalog.json": "08a7bc9b99d907a51f9f7764633de7b45d7cd96bbe735be93b1506fae3b6554b",
         "references/profile.example.json": "63154e27ce81d7007b77af6086b0474ea373ca3e24917b7940ca887d3be5391c",
         "references/profile.md": "19c08992d0ebf695ab7b7e8696da33365928b37e153f754fe9b0a152ac471d37",
         "SKILL.md": "ebc55ec5f1566b91d57762aaf4af72e8e4b811a7422f0b9828f8912ce5df766d"

@@ -25,7 +25,7 @@ When a transcript already exists in the work directory, pass `--reuse-transcript
 4. Prefer a compact setup-and-verdict or object-and-conflict structure, such as `跟风做内容|死路一条` or `观众是人|不是数据`.
 5. Preserve the wording of a user-supplied title. When punctuation only marks the place of a line break, let the line break replace it visually.
 6. Use `|` to mark deliberate line breaks.
-7. Do not add an explanatory supplement merely to fill space. Do not transfer the dense black-yellow-cover habit of using extra words as layout blocks; the empty space is part of this style.
+7. Do not add an explanatory supplement merely to fill space. Both cover modes favor two concise lines and at most three; empty space does not require additional copy.
 8. Do not add unsupported claims, decorative English, episode numbers, quotation marks, or a subtitle.
 
 ## Choose the frame

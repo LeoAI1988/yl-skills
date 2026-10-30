@@ -31,7 +31,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--allow-sparse-headline",
         action="store_true",
-        help="Allow a short script/video headline only when the user explicitly requests it.",
+        help="Deprecated compatibility flag; concise headlines are accepted by default.",
     )
     parser.add_argument("--width", type=int, default=1080)
     parser.add_argument("--height", type=int, default=1440)
@@ -62,6 +62,9 @@ def main() -> None:
         raise SystemExit(1)
 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    lines = manifest.get("lines", [])
+    if not 1 <= len(lines) <= 4 or any(not isinstance(line, str) or not line.strip() for line in lines):
+        errors.append("headline must contain 1-4 non-empty lines including supplement; prefer three semantic lines")
     with Image.open(args.image) as image:
         if image.size != (args.width, args.height):
             errors.append(f"dimensions {image.size} != {(args.width, args.height)}")
@@ -95,6 +98,8 @@ def main() -> None:
     if len(manifest.get("yellowTerms", [])) > 3:
         errors.append("at most three yellow keywords are allowed")
     title = manifest.get("title", "")
+    if "".join(lines) != title:
+        errors.append("line text does not reconstruct exact headline")
     marked = set()
     for term in manifest.get("yellowTerms", []):
         if not term:
@@ -107,15 +112,35 @@ def main() -> None:
     if len(marked) > math.ceil(sum(c.isalnum() for c in title)/3):
         errors.append("yellow emphasis exceeds one third of headline, rounded up")
     with Image.open(args.image) as rendered:
-        if texture_pixels(rendered) < 500 * (args.width*args.height)/(1080*1440):
-            errors.append("circuit detail missing or invisible in the lower-left background corridor")
-        # Compare actual exposed pixels to the master, not just manifest labels or texture counts.
+        # Exclude measured visible text and portrait bounds, rather than reserving
+        # a fixed corridor that can legitimately contain large lower-left words.
+        from PIL import ImageDraw, ImageChops
         expected = prepared_background(args.width, args.height).convert("RGB")
-        box = (int(args.width*.03), int(args.height*.79), int(args.width*.28), int(args.height*.94))
-        observed = rendered.convert("RGB").crop(box)
-        reference = expected.crop(box)
-        errors_per_pixel = [max(abs(a-b) for a,b in zip(p,q)) for p,q in zip(observed.getdata(),reference.getdata())]
-        if sum(e <= 2 for e in errors_per_pixel) / len(errors_per_pixel) < .98:
+        sample = Image.new("L", expected.size, 255)
+        draw = ImageDraw.Draw(sample)
+        boxes = [style.get("actualBounds") for style in manifest.get("lineStyles", [])]
+        portrait = manifest.get("avatarPlacement", {}).get("visibleBounds")
+        if manifest.get("avatar") and not portrait:
+            errors.append("portrait visible bounds missing")
+        if portrait: boxes.append(portrait)
+        for box in boxes:
+            if (not isinstance(box, list) or len(box) != 4
+                    or any(not isinstance(v, (int, float)) or not math.isfinite(v) for v in box)):
+                errors.append("measured visible bounds missing or invalid")
+                continue
+            x0,y0,x1,y1 = box
+            if not (0 <= x0 < x1 <= args.width and 0 <= y0 < y1 <= args.height):
+                errors.append("visible bounds exceed canvas")
+                continue
+            draw.rectangle((max(0,x0-3),max(0,y0-3),min(args.width-1,x1+3),min(args.height-1,y1+3)), fill=0)
+        samples = sample.histogram()[255]
+        if samples < args.width * args.height * .12:
+            errors.append("insufficient exposed background for verification")
+        diff = ImageChops.difference(rendered.convert("RGB"), expected)
+        channels = diff.split()
+        worst = ImageChops.lighter(ImageChops.lighter(channels[0],channels[1]),channels[2])
+        bad = ImageChops.multiply(worst.point(lambda v: 255 if v > 2 else 0),sample).histogram()[255]
+        if samples and bad / samples > .02:
             errors.append("exposed background pixels differ from the approved master")
     if any(abs(x.get("angle", 0)) > 0.001 for x in manifest.get("lineStyles", [])):
         errors.append("rotated text is not part of technology cover style")
@@ -136,52 +161,26 @@ def main() -> None:
                 f"supplement {manifest.get('supplement', '')!r} != {expected_supplement!r}"
             )
 
-    if args.source_mode in {"script", "video"} and not args.allow_sparse_headline:
-        primary = manifest.get("primaryTitle", manifest.get("title", ""))
-        supplement = manifest.get("supplement", "")
-        primary_units = visible_content_units(primary)
-        total_units = primary_units + visible_content_units(supplement)
-        line_count = len(manifest.get("lines", []))
-        if primary_units <= 12 and not supplement.strip():
-            errors.append(
-                "short script/video primary title requires a source-grounded supplement"
-            )
-        if total_units < 16:
-            errors.append(
-                f"combined script/video headline is underfilled: content_units={total_units}"
-            )
-        if primary_units <= 12 and line_count < 4:
-            errors.append(
-                f"short script/video headline needs at least four meaningful lines: lines={line_count}"
-            )
-
     line_styles = manifest.get("lineStyles")
     if line_styles:
         if len(line_styles) != len(manifest.get("lines", [])):
             errors.append("line style count does not match line count")
         font_sizes = [style.get("fontSize", 0) for style in line_styles]
         angles = [abs(style.get("angle", 0)) for style in line_styles]
-        if len(font_sizes) >= 3 and max(font_sizes) - min(font_sizes) < 12:
-            errors.append("headline lacks deliberate font-size variation")
         title_bottom = max(
             style.get("y", 0) + round(style.get("fontSize", 0) * 1.12)
             for style in line_styles
         )
-        if title_bottom < round(args.height * 0.55):
-            errors.append(f"headline footprint is too shallow: bottom={title_bottom}")
+        bounds = [style.get("actualBounds") for style in line_styles]
+        if len({b[0] for b in bounds if isinstance(b,list) and len(b)==4}) > 1:
+            errors.append("visible headline lines do not share left edge")
+        for style in line_styles:
+            if style.get("portraitOverlapRatio", 0) >= .5:
+                errors.append("portrait obscures headline")
         if args.check_line_overlap:
-            for current, following in zip(line_styles, line_styles[1:]):
-                current_size = current.get("fontSize", 0)
-                following_size = following.get("fontSize", 0)
-                current_glyph_bottom = current.get("y", 0) + round(current_size * 1.22)
-                following_glyph_top = following.get("y", 0) + round(following_size * 0.20)
-                overlap = current_glyph_bottom - following_glyph_top
-                allowed = round(min(current_size, following_size) * 0.08)
-                if overlap > allowed:
-                    errors.append(
-                        "headline lines overlap too heavily: "
-                        f"{current.get('text')!r} -> {following.get('text')!r}, pixels={overlap}"
-                    )
+            for a,b in zip(bounds,bounds[1:]):
+                if isinstance(a,list) and isinstance(b,list) and len(a)==len(b)==4 and a[3] > b[1]:
+                    errors.append("visible headline line bounds overlap")
     digest = hashlib.sha256(args.image.read_bytes()).hexdigest()
     if manifest.get("sha256") != digest:
         errors.append("image hash does not match manifest")

@@ -51,6 +51,7 @@ def parse_args() -> argparse.Namespace:
         default=True,
         help="Align every headline line to one visible left edge and disable line rotation",
     )
+    parser.add_argument("--line-layout", type=Path, help="External JSON list of {fontSize, top} per line; visible top/bounds in pixels; no group shrinking")
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--manifest-out", type=Path, help="Private manifest path; defaults beside output")
     parser.add_argument("--accent", choices=("none", "yellow"), default="yellow")
@@ -64,7 +65,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--avatar-scale",
         type=float,
-        help="Optional portrait height as a canvas ratio; defaults from headline density",
+        help="Optional portrait height as a canvas ratio; default 0.52 for a compact lower-right bust",
     )
     parser.add_argument(
         "--avatar-x-shift",
@@ -79,6 +80,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--width", type=int, default=1080)
     parser.add_argument("--height", type=int, default=1440)
     parser.add_argument("--font", type=Path)
+    parser.add_argument("--title-top", type=int, default=190,
+                        help="Headline layout top in pixels; default leaves generous top breathing room")
     return parser.parse_args()
 
 
@@ -332,8 +335,8 @@ def draw_decorations(draw: ImageDraw.ImageDraw, width: int, height: int) -> None
 def render(args: argparse.Namespace) -> dict[str, object]:
     if args.width <= 0 or args.height <= 0:
         raise ValueError("Canvas dimensions must be positive")
-    if args.avatar_scale is not None and not 0.55 <= args.avatar_scale <= 0.92:
-        raise ValueError("avatar scale must stay between 0.55 and 0.92")
+    if args.avatar_scale is not None and not 0.40 <= args.avatar_scale <= 0.92:
+        raise ValueError("avatar scale must stay between 0.40 and 0.92")
     if args.avatar_x_shift is not None and not 0.0 <= args.avatar_x_shift <= 0.30:
         raise ValueError("avatar x shift must stay between 0.0 and 0.30")
     if args.avatar_y_shift is not None and not 0.0 <= args.avatar_y_shift <= 0.30:
@@ -343,8 +346,8 @@ def render(args: argparse.Namespace) -> dict[str, object]:
     primary_lines = [line.strip() for line in args.title.split("|") if line.strip()]
     supplement_lines = [line.strip() for line in args.supplement.split("|") if line.strip()]
     lines = primary_lines + supplement_lines
-    if not 1 <= len(lines) <= 5:
-        raise ValueError("Use between 1 and 5 non-empty title lines including supplement")
+    if not 1 <= len(lines) <= 4:
+        raise ValueError("Use 1-4 non-empty lines including supplement; prefer three semantic lines, keep copy concise")
 
     boxed = {term.strip() for term in args.boxed_terms.split(",") if term.strip()}
     yellow = {term.strip() for term in args.yellow_terms.split(",") if term.strip()} - boxed
@@ -379,7 +382,9 @@ def render(args: argparse.Namespace) -> dict[str, object]:
     # Circuit background already contains aligned corner marks.
     font_path = find_font(args.font)
     title_x = 42
-    title_y = 72
+    title_y = args.title_top
+    if not 0 <= title_y <= round(args.height * 0.30):
+        raise ValueError("title top must stay within the upper 30 percent of the canvas")
     max_width = args.width - 78
     max_title_bottom = round(args.height * 0.74)
 
@@ -404,10 +409,26 @@ def render(args: argparse.Namespace) -> dict[str, object]:
         fit_line_font(draw, font_path, line, boxed, yellow, round(max_width * ratio))
         for line, ratio in zip(lines, width_ratios)
     ]
+    # Shorter copy still needs an obvious hierarchy; equal-length lines must
+    # not silently become two identical-size blocks.
+    if len(fonts) > 1 and max(font.size for font in fonts) / min(font.size for font in fonts) < 1.18:
+        fonts[0] = ImageFont.truetype(str(font_path), size=max(102, round(fonts[0].size * 0.82)))
+    explicit = None
+    if getattr(args, "line_layout", None):
+        explicit = json.loads(args.line_layout.read_text(encoding="utf-8-sig"))
+        if not isinstance(explicit, list) or len(explicit) != len(lines):
+            raise ValueError("line layout must have one object per exact title line")
+        for entry in explicit:
+            if (not isinstance(entry, dict) or not isinstance(entry.get("fontSize"), int)
+                    or not 102 <= entry["fontSize"] <= 640
+                    or not isinstance(entry.get("top"), (int, float))
+                    or not math.isfinite(entry["top"]) or entry["top"] < 0):
+                raise ValueError("line layout requires fontSize 102-640 and finite nonnegative visible top")
+        fonts = [ImageFont.truetype(str(font_path), size=e["fontSize"]) for e in explicit]
     advances = [round(font.size * 0.91) + args.line_gap for font in fonts]
     available_height = max_title_bottom - title_y
     total_advance = sum(advances[:-1]) + round(fonts[-1].size * 1.12)
-    if total_advance > available_height:
+    if not explicit and total_advance > available_height:
         shrink = available_height / total_advance
         fonts = [
             ImageFont.truetype(str(font_path), size=max(102, round(font.size * shrink)))
@@ -418,6 +439,7 @@ def render(args: argparse.Namespace) -> dict[str, object]:
     line_offsets = [0, 18, 2, 30, 12]
     cursor_y = title_y
     rendered_line_data: list[dict[str, object]] = []
+    text_masks = []
     for index, (line, font, angle, width_ratio) in enumerate(zip(lines, fonts, angles, width_ratios)):
         line_image = render_line_image(line, font, boxed, yellow, angle)
         if args.left_align:
@@ -434,10 +456,21 @@ def render(args: argparse.Namespace) -> dict[str, object]:
                 f"Left-aligned line is too wide for the canvas: {line}. "
                 "Lower its --line-widths ratio."
             )
-        paste_y = cursor_y - max(18, font.size // 5)
+        paste_y = round(explicit[index]["top"]) if explicit else cursor_y - max(18, font.size // 5)
+        if not explicit and rendered_line_data:
+            paste_y = max(paste_y, rendered_line_data[-1]["actualBounds"][3] + 8)
+        if paste_y < 0 or paste_y + line_image.height > args.height:
+            raise ValueError("visible headline bounds exceed canvas; reflow without silently shrinking")
+        bounds = [x, paste_y, x + line_image.width, paste_y + line_image.height]
+        if rendered_line_data and bounds[1] < rendered_line_data[-1]["actualBounds"][3]:
+            raise ValueError("visible headline line bounds overlap; adjust tops or line gap")
+        mask = Image.new("L", background.size, 0)
+        mask.paste(line_image.getchannel("A"), (x, paste_y))
+        text_masks.append(mask)
         background.alpha_composite(line_image, (x, paste_y))
         rendered_line_data.append(
             {
+                "actualBounds": bounds,
                 "text": line,
                 "fontSize": font.size,
                 "angle": angle,
@@ -454,31 +487,34 @@ def render(args: argparse.Namespace) -> dict[str, object]:
     headline_coverage = title_bottom / args.height
     if args.avatar_scale is not None:
         avatar_scale = args.avatar_scale
-    elif len(lines) >= 5:
-        avatar_scale = 0.74
-    elif headline_coverage < 0.63:
-        avatar_scale = 0.82
     else:
-        avatar_scale = 0.78
+        avatar_scale = 0.52
     avatar_x_shift = (
         args.avatar_x_shift
         if args.avatar_x_shift is not None
-        else (0.12 if avatar_scale >= 0.78 else 0.14)
+        else 0.14
     )
     avatar_y_shift = (
         args.avatar_y_shift
         if args.avatar_y_shift is not None
-        else (0.15 if avatar_scale >= 0.78 else 0.16)
+        else 0.02
     )
 
-    # Put the portrait in the foreground so the head and shoulder can overlap the
-    # lower-right edge of the headline. Its scale follows headline density instead
-    # of using one fixed portrait size for every cover.
+    # Keep the portrait in the lower-right foreground. The default is a starting
+    # point; visible bounds are recorded because cutout aspect ratios differ.
     if args.avatar:
-        background = Image.alpha_composite(
-            background,
-            avatar_layer(args.avatar, background.size, avatar_scale, avatar_x_shift, avatar_y_shift),
-        )
+        portrait = avatar_layer(args.avatar, background.size, avatar_scale, avatar_x_shift, avatar_y_shift)
+        portrait_bbox = portrait.getchannel("A").point(lambda x: 255 if x >= 32 else 0).getbbox()
+        from PIL import ImageChops
+        portrait_mask = portrait.getchannel("A").point(lambda x: 255 if x >= 32 else 0)
+        for style, mask in zip(rendered_line_data, text_masks):
+            ink = mask.point(lambda x: 255 if x >= 32 else 0)
+            count = sum(ink.histogram()[1:])
+            overlap = ImageChops.multiply(ink, portrait_mask)
+            style["portraitOverlapRatio"] = sum(overlap.histogram()[1:]) / max(count, 1)
+            if style["portraitOverlapRatio"] >= .5:
+                raise ValueError("portrait obscures at least half a headline line; reflow or move portrait")
+        background = Image.alpha_composite(background, portrait)
 
     args.out.parent.mkdir(parents=True, exist_ok=True)
     final = background.convert("RGB")
@@ -511,7 +547,9 @@ def render(args: argparse.Namespace) -> dict[str, object]:
             "xShift": avatar_x_shift,
             "yShift": avatar_y_shift,
             "headlineCoverage": round(headline_coverage, 4),
+            "visibleBounds": list(portrait_bbox) if args.avatar and portrait_bbox else None,
         },
+        "titleTop": title_y,
         "font": str(font_path.resolve()),
         "lineStyles": rendered_line_data,
         "lineAlignment": "left" if args.left_align else "dynamic",
