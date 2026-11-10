@@ -7,7 +7,6 @@ SHARED_FILES = (
     'references/anti-ai-extraction.md',
     'references/anti-ai-source-inventory.json',
     'scripts/check_writing.py',
-    'LICENSES/DBS-CC-BY-NC-4.0.txt',
     'LICENSES/HUMAN-WRITING-MIT.txt',
     'LICENSES/WRITING-FOUNDATION-NOTICE.md',
 )

@@ -46,4 +46,4 @@ SDK、模型、字体、凭证、源视频、转写、checkpoint、日志和输�
 
 ## 方法归属
 
-内容、逐字稿衔接与开头诊断的方法来源于 dontbesilent 的 DBS 对应模块，具体适配见 [内容分析](content-analysis.md)。该上游采用 CC BY-NC 4.0；本成员的工作流文档保留其署名与非商业条件，自制脚本采用 MIT，准确范围见 [来源与许可](../NOTICE.md)。Remotion、美图开拍、FFmpeg 与 Noto Sans SC 为相应项目／服务名称；软件、字体、SDK 和服务按各自许可使用，不声称官方背书。
+当前内容剪辑方案依据 YL 的源片、EDL 与成片复核接口编写，采用 MIT。历史归属见 [来源与许可](../NOTICE.md)。Remotion、美图开拍、FFmpeg 与 Noto Sans SC 的软件、字体和服务依各自许可使用。

@@ -1,19 +1,19 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.16.1",
+  "version": "3.17.0",
   "date": "2026-11-10",
   "skills": {
     "yl-toolbox": {
-      "version": "3.7.14",
+      "version": "3.7.15",
       "category": "entry",
       "role": "router",
       "license": "MIT"
     },
     "yl-writing": {
-      "version": "3.4.4",
+      "version": "3.5.0",
       "category": "media",
       "role": "router",
-      "license": "MIT AND CC-BY-NC-4.0",
+      "license": "MIT",
       "subcategory": "writing"
     },
     "yl-video": {
@@ -24,24 +24,24 @@
       "subcategory": "video"
     },
     "yl-chekhov-deep-writing": {
-      "version": "3.3.3",
+      "version": "3.4.0",
       "category": "media",
       "role": "member",
-      "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0 AND CC-BY-NC-4.0",
+      "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0",
       "subcategory": "writing"
     },
     "yl-write-impact-wechat": {
-      "version": "3.3.3",
+      "version": "3.4.0",
       "category": "media",
       "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0",
+      "license": "MIT",
       "subcategory": "writing"
     },
     "yl-remotion-talking-head-editor": {
-      "version": "3.5.8",
+      "version": "3.6.0",
       "category": "media",
       "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0",
+      "license": "MIT",
       "subcategory": "video"
     },
     "yl-short-video-covers": {
@@ -52,10 +52,10 @@
       "subcategory": "video"
     },
     "yl-write-voice-led-wechat": {
-      "version": "3.3.3",
+      "version": "3.4.0",
       "category": "media",
       "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0",
+      "license": "MIT",
       "subcategory": "writing"
     },
     "yl-skill-sync": {
@@ -165,10 +165,10 @@
       "subcategory": "analytics"
     },
     "yl-chatcut-landscape-interview-editor": {
-      "version": "3.0.1",
+      "version": "3.1.0",
       "category": "media",
       "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0",
+      "license": "MIT",
       "subcategory": "video"
     },
     "yl-ppt": {
@@ -277,10 +277,10 @@
       "subcategory": "video"
     },
     "yl-wechat-moments": {
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "media",
       "role": "member",
-      "license": "MIT AND CC-BY-NC-4.0",
+      "license": "MIT",
       "subcategory": "writing"
     },
     "yl-knowledge-cloud-sync": {

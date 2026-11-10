@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-10",
+  "current_file": "source-editing.md",
+  "current_license": "MIT",
+  "requirements": [
+    "author source preservation",
+    "edit-card.md",
+    "knowledge-and-source-contract.md",
+    "revision scope and final-text verification"
+  ],
+  "historical_files": {
+    "dbs-editorial-foundation.md": "2c9e7ac8208e085916eff4b72a85d4c3e6fe2b1a47db1c9eeb7c3a6a2c0de7fb",
+    "dbs-source-manifest.json": "40e61cc4dee44910b713703a8ca7f284fe32f268b248af8b6ffdbfa390c88253"
+  },
+  "historical_author": "dontbesilent",
+  "historical_license": "CC-BY-NC-4.0",
+  "historical_url": "https://github.com/LeoAI1988/yl-skills/tree/v3.16.1/yl-write-voice-led-wechat",
+  "license_url": "https://github.com/dontbesilent2025/dbskill/blob/8b8e33f1ecaed8cee606fe950c4426b525ead314/LICENSE",
+  "compatibility": {
+    "dbs": "editorial"
+  }
+}

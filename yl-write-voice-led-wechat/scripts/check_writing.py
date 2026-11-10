@@ -646,7 +646,7 @@ def main() -> int:
         "candidate_count": len(candidates),
         "candidates": [{"id": "C%03d" % (i + 1), "detail": item,
                         "decision": "unresolved"} for i, item in enumerate(candidates)],
-        "limitations": "Heuristics only. Zero hits is not approval. Read V-01..V-05, H-01..H-16, K-01..K-05, D-01..D-22 and E-01..E-05; resolve each candidate against sources, genre and function. No AI probability.",
+        "limitations": "Heuristics only. Zero hits is not approval. Read V-01..V-05, H-01..H-16 and K-01..K-05; resolve each candidate against sources, genre and function. No AI probability.",
         "exit_codes": {"0": "no mechanical candidates; semantic review still required",
                        "1": "candidates need review", "2": "input cannot be checked"}
     }

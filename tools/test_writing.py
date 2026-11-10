@@ -114,5 +114,24 @@ class WritingChecks(unittest.TestCase):
                 self.assertTrue((ROOT/name/'SKILL.md').is_file())
                 self.assertIn(name, read_json(ROOT/'release.json')['skills'])
 
+    def test_current_editorial_entry_uses_replacement_with_legacy_alias(self):
+        folder = ROOT/'yl-write-voice-led-wechat'
+        entry = (folder/'SKILL.md').read_text(encoding='utf-8')
+        self.assertIn('(references/source-editing.md)', entry)
+        self.assertTrue((folder/'references/source-editing.md').is_file())
+        self.assertFalse((folder/'references/dbs-editorial-foundation.md').exists())
+        self.assertFalse((folder/'references/dbs-source-manifest.json').exists())
+        values = read_json(folder/'references/style-dependencies.json')
+        self.assertEqual(values['aliases']['dbs'], 'editorial')
+
+    def test_current_foundation_keeps_mit_notice_and_current_review_pointer(self):
+        rules = (ROOT/'yl-writing/references/anti-ai-rules.md').read_text(encoding='utf-8')
+        self.assertNotIn('## DBS', rules)
+        self.assertNotIn('| D-01 |', rules)
+        self.assertIn('HUMAN-WRITING-MIT.txt', (ROOT/'yl-writing/LICENSES/WRITING-FOUNDATION-NOTICE.md').read_text(encoding='utf-8'))
+        report = json.loads(self.check_text('灯亮了。桌上有地图。').stdout)
+        self.assertIn('V-01..V-05', report['limitations'])
+        self.assertNotIn('D-01..D-22', report['limitations'])
+
 if __name__ == '__main__':
     unittest.main()

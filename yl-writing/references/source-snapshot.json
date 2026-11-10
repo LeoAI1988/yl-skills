@@ -19,6 +19,21 @@
       "reviewed_at": "2026-09-21"
     },
     {
+      "name": "kazik-writing-clone",
+      "tracking_scope": "listed_files",
+      "baseline_note": "Inherited pre-2.0 daily-source baseline for future comparison; not a new daily-file audit. Current extraction uses public 1.2.0 fingerprints in anti-ai-source-inventory.json.",
+      "files": {
+        "references/evidence_and_images.md": "579ad6d8fe6268f7d9d97f5f62c89eecfb72c813c0cbb16190daa60ccedf8923",
+        "references/style_examples.md": "7cb9714af99db792e906b55befc13020e6929c737145a9df5311624df54b4d31",
+        "references/user_voice.md": "2855ba23a77b967ea1c264761cb37ce67afa2ef24e78e73a599bcd44c77c2e9c",
+        "SKILL.md": "11bb23e03d8840cdcd691e59b62f7e3bd210511d1664633821c379a730612a67"
+      },
+      "reviewed_at": "2026-09-21"
+    }
+  ],
+  "baseline_note": "Reviewed 2.1.0 comparison baseline. Public adaptations retained; see root alignment report. Fingerprints are not bundled source content.",
+  "historical_sources": [
+    {
       "name": "dbs-ai-check",
       "tracking_scope": "listed_files",
       "files": {
@@ -100,19 +115,7 @@
         "SKILL.md": "30a8367a1c4008734a7b6b477e890e90aa70d03054b6ba5b3fde6cf9734377f4"
       },
       "reviewed_at": "2026-09-21"
-    },
-    {
-      "name": "kazik-writing-clone",
-      "tracking_scope": "listed_files",
-      "baseline_note": "Inherited pre-2.0 daily-source baseline for future comparison; not a new daily-file audit. Current extraction uses public 1.2.0 fingerprints in anti-ai-source-inventory.json.",
-      "files": {
-        "references/evidence_and_images.md": "579ad6d8fe6268f7d9d97f5f62c89eecfb72c813c0cbb16190daa60ccedf8923",
-        "references/style_examples.md": "7cb9714af99db792e906b55befc13020e6929c737145a9df5311624df54b4d31",
-        "references/user_voice.md": "2855ba23a77b967ea1c264761cb37ce67afa2ef24e78e73a599bcd44c77c2e9c",
-        "SKILL.md": "11bb23e03d8840cdcd691e59b62f7e3bd210511d1664633821c379a730612a67"
-      },
-      "reviewed_at": "2026-09-21"
     }
   ],
-  "baseline_note": "Reviewed 2.1.0 comparison baseline. Public adaptations retained; see root alignment report. Fingerprints are not bundled source content."
+  "historical_sources_note": "Replaced in 3.17.0; fingerprints retained for provenance. These sources are not active update targets or runtime dependencies."
 }

@@ -1,16 +1,21 @@
-This Skill is a multi-license distribution.
+MIT License
 
-1. SKILL.md and references/*.md contain workflow adaptations based in part on
-   dontbesilent's DBS material. These documents are distributed under Creative
-   Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
-   Preserve the upstream attribution and adaptation notices. Commercial use
-   requires separate permission for that material.
-   See LICENSES/DBS-CC-BY-NC-4.0.txt and NOTICE.md.
+Copyright (c) 2026 yl Skill Cluster contributors
 
-2. Original yl Python and PowerShell helper code, UI metadata and integration
-   metadata are distributed under the MIT License in LICENSES/MIT.txt.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-3. Third-party SDKs, fonts, models and external services are not bundled and
-   remain subject to their own terms. Installation conveys no service credits.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-The complete Skill cannot be described as an unrestricted MIT-only package.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

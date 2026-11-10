@@ -20,9 +20,5 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-
-
-Public writing foundation added in cluster 1.1.0:
-The separate derived writing foundation documents are CC BY-NC 4.0.
-The Human Writing-derived checker remains MIT. Existing material retains
-its preceding license; see LICENSES/WRITING-FOUNDATION-NOTICE.md for file scope.
+Current shared writing foundation and Human Writing-derived checker: MIT.
+See LICENSES/WRITING-FOUNDATION-NOTICE.md for scope and historical notices.

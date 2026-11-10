@@ -1,9 +1,7 @@
 # 来源与公开适配
 
-本成员来自维护者授权分享的 `write-voice-led-wechat` 日常方法，公开调用名为 `yl-write-voice-led-wechat`。保留原稿冻结、逐段保留清单、缺口检索、编辑证据卡、就地修补/沿骨架扩写、风格适配、八项 DBS 编辑复核、原稿对照及回改流程。
+本成员维护原稿冻结、原段保留、缺口检索、编辑证据卡、局部修补、沿原稿扩写、风格适配和作者回改流程，采用 MIT。用户的素材、路径、固定结尾与个人偏好由安装者配置。
 
-改动：外部风格改为固定同级 yl 成员；保留契诃夫与暴击框架；2.0.0 退役卡兹克与 Human Writing 独立入口，适用方法纳入公共基座；自带编辑模式内化 DBS，不要求安装 DBS；资产接口改为安装者提供；私人 CTA 改为可选文件；删除作者身份、私人路径、真实工程记录与历史实验输出。保留原入口显式调用策略。
+2026-11-10 根据上述接口编写 [原稿编辑流程](references/source-editing.md)，替换旧版八组 DBS 编辑摘编和带摘录来源表。新流程使用原稿到成稿的实际改动记录及合成例子。历史文件哈希、署名和许可位置保存在 [来源记录](references/editorial-provenance.json)。[历史版本](https://github.com/LeoAI1988/yl-skills/tree/v3.16.1)
 
-`references/dbs-source-manifest.json` 保留原编辑底座摘编时的来源段落、短摘录和指纹，原文件路径改为来源名称加相对文件名。它记录既有摘编来源，不宣称等于未来 DBS 版本。`references/source-snapshot.json` 是此次公开适配的只读比对起点。
-
-共同去 AI 味规则来自 Human Writing 与 dontbesilent DBS，随包本地读取。版权与改编范围见 `LICENSE` 和 `LICENSES/WRITING-FOUNDATION-NOTICE.md`。不分发用户资料、原始录音或私人知识库；测试全部采用合成文本。
+公共写作层保留 Human Writing 的 MIT 方法和检查器署名，详见 [公共层许可](LICENSES/WRITING-FOUNDATION-NOTICE.md)。风格依赖按各自许可分发，契诃夫语料保留原许可。测试使用合成文本。
