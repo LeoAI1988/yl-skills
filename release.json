@@ -1,10 +1,10 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.17.0",
+  "version": "3.17.2",
   "date": "2026-11-10",
   "skills": {
     "yl-toolbox": {
-      "version": "3.7.15",
+      "version": "3.7.17",
       "category": "entry",
       "role": "router",
       "license": "MIT"
@@ -79,86 +79,86 @@
       "subcategory": "publishing"
     },
     "yl-knowledge": {
-      "version": "3.3.0",
+      "version": "3.3.1",
       "category": "knowledge",
       "role": "router",
       "license": "MIT"
     },
     "yl-knowledge-build": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-sync": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-import": {
-      "version": "3.3.0",
+      "version": "3.3.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-ingest": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-distill": {
-      "version": "3.3.0",
+      "version": "3.3.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-expressions": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-organize": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-search": {
-      "version": "3.3.0",
+      "version": "3.3.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-obsidian": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-review-sync": {
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-check": {
-      "version": "3.3.0",
+      "version": "3.3.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-media": {
-      "version": "3.7.9",
+      "version": "3.7.10",
       "category": "media",
       "role": "router",
       "license": "MIT",
       "subcategory": "entry"
     },
     "yl-official-account-analytics": {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "media",
       "role": "member",
       "license": "MIT",

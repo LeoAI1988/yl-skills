@@ -1,9 +1,10 @@
 Scope: This MIT license covers the original yl integration code and materials.
 The distribution is multi-license. It does not relicense third-party materials.
-In particular, the talking-head editing workflow documents incorporate DBS
-material under CC BY-NC 4.0. The separate common writing foundation documents
-and voice-led DBS editorial documents also retain CC BY-NC 4.0.
-Chekhov materials retain their own licenses; the Human-derived checker is MIT.
+Current member materials use MIT, Apache-2.0, CC BY 4.0 and CC BY-SA 4.0
+as specified in their individual notices. Chekhov code, explanations and
+transcriptions retain their respective licenses. Historical DBS extracts
+in version 3.16.1 and earlier remain governed by their original CC BY-NC
+4.0 license; those historical conditions do not relicense current files.
 See THIRD_PARTY_NOTICES.md and each member's LICENSE for the applicable scope.
 
 MIT License

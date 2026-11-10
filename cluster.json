@@ -1,6 +1,6 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.17.0",
+  "version": "3.17.2",
   "date": "2026-11-10",
   "skills": [
     {
@@ -285,7 +285,7 @@
     {
       "name": "yl-knowledge",
       "description": "YL 知识管理总入口。构建知识库、同步笔记、导入本人材料或采集本人新文稿时，协调归档、蒸馏、去重、表达、体系和验收；知识检索只读，不启动入库。",
-      "version": "3.3.0",
+      "version": "3.3.1",
       "category": "knowledge",
       "role": "router",
       "license": "MIT",
@@ -298,7 +298,7 @@
     {
       "name": "yl-knowledge-build",
       "description": "新建本地知识库及阅读文件夹体系，或接入用户现有知识库；首次设置时提供沿用现有结构与创建推荐结构两个选择。",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT",
@@ -309,7 +309,7 @@
     {
       "name": "yl-knowledge-check",
       "description": "验收知识处理的来源覆盖、原句、语义去重、产物及关系，发现只同步未蒸馏、遗漏材料、失效引用和未完成旧项。",
-      "version": "3.3.0",
+      "version": "3.3.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT",
@@ -334,7 +334,7 @@
     {
       "name": "yl-knowledge-distill",
       "description": "从本人完整原文中提炼可复用观点、概念、方法、案例和论述链，逐字回源，并先与现有知识原子做语义去重。",
-      "version": "3.3.0",
+      "version": "3.3.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT",
@@ -346,7 +346,7 @@
     {
       "name": "yl-knowledge-expressions",
       "description": "从本人语料中提取可复用原话、比喻、金句、口头表达及完整论述节奏，维护表达资产与来源和观点的关联。",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT",
@@ -357,7 +357,7 @@
     {
       "name": "yl-knowledge-import",
       "description": "将指定本地文档、照片、音视频及逐字稿接入知识库，保留原件、忠实转写和最小清洗正文，自动衔接完整知识处理。",
-      "version": "3.3.0",
+      "version": "3.3.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT",
@@ -370,7 +370,7 @@
     {
       "name": "yl-knowledge-ingest",
       "description": "对接收到的语料完成作者归属、版本、正式位置和重复判断，保留唯一正文与来源记录，并把本人可提炼内容交给知识蒸馏。",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT",
@@ -381,7 +381,7 @@
     {
       "name": "yl-knowledge-obsidian",
       "description": "将同一 Markdown 知识库接入 Obsidian，维护双链、原生视图和关系图；环境允许时操作软件并区分文件验收与真实界面验收。",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT",
@@ -392,7 +392,7 @@
     {
       "name": "yl-knowledge-organize",
       "description": "将知识原子与作品组织成可阅读的领域观点树、概念关联和完整论述，保持一个知识体系及跨来源、跨领域连接。",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT",
@@ -403,7 +403,7 @@
     {
       "name": "yl-knowledge-review-sync",
       "description": "接收自媒体复盘结果，更新作品历史表现、选题数据与统一排名，并将新增本人文稿自动交给蒸馏流程。",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT",
@@ -414,7 +414,7 @@
     {
       "name": "yl-knowledge-search",
       "description": "只读检索本地知识库的原文、知识原子、表达和作品，为问答或写作提供可回源的相关证据与完整上下文。",
-      "version": "3.3.0",
+      "version": "3.3.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT",
@@ -428,7 +428,7 @@
     {
       "name": "yl-knowledge-sync",
       "description": "将配置的 Get 或其他笔记来源同步到本地，并自动衔接归档、蒸馏、去重、表达和思想体系更新；不止于下载，不修改云端笔记。",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "knowledge",
       "role": "member",
       "license": "MIT",
@@ -462,7 +462,7 @@
     {
       "name": "yl-media",
       "description": "YL 自媒体统一入口。写作、朋友圈图文、定稿文章转旁白图解视频、数字分身剧情短视频、视频剪辑、封面、成片归档、平台发布、视频号与公众号采集复盘先由这里分流，并把本人文稿及复盘结果交回知识库。",
-      "version": "3.7.9",
+      "version": "3.7.10",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -478,7 +478,7 @@
     {
       "name": "yl-official-account-analytics",
       "description": "采集和复盘微信公众号账号、文章、分发通知、阅读来源及转化，保留全文与历史数据，并将新增本人文稿自动交给知识管理。",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -646,14 +646,14 @@
     {
       "name": "yl-toolbox",
       "description": "yl 个人精选工具箱入口。用户要求使用 yl 集群、选择 yl 工具，或希望用工具箱完成任务时，按目录选择已安装的相关 Skill 并执行。具体功能可直接调用对应 yl Skill。",
-      "version": "3.7.15",
+      "version": "3.7.17",
       "category": "entry",
       "role": "router",
       "license": "MIT",
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "references/catalog.json": "2d12fffd79d0ad2c5c0f4f5327f8fa4ef03c0f37e9da8059a94cf64c20e92ed4",
+        "references/catalog.json": "b2c4d7e891ae00e2c48f9f953df4620b05c27722b47e9b82bfbf2e4fee5a99cd",
         "references/profile.example.json": "2cf3cabb44770000c35dac8d6dcee9e4b34f0ce305379cf70f4222ee17063b0d",
         "references/profile.md": "668e1e34c1336ccb63420d8472e4126a542f1afea52d24668a818d0ebd9fa798",
         "SKILL.md": "9e1052f0dbadd3ff9a5dd6ecaeb8c9f3a4f835b9c74d582b784cf8cb56f0d0e2"
