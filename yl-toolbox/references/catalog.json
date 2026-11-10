@@ -1,5 +1,5 @@
 {
-  "version": "3.14.5",
+  "version": "3.16.1",
   "skills": [
     {
       "name": "yl-ai-dialogue-video",
@@ -125,6 +125,14 @@
       "license": "MIT"
     },
     {
+      "name": "yl-knowledge-cloud-sync",
+      "description": "将已授权的核心知识正文增量同步到安装者配置的私有知识服务，按归属、隐私和版本状态筛选，验证内容哈希与云端清单。适用于手动同步新增或修改的思想、作品、选题、表达和原子，不替代本地知识蒸馏。",
+      "version": "1.0.1",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    {
       "name": "yl-knowledge-distill",
       "description": "从本人完整原文中提炼可复用观点、概念、方法、案例和论述链，逐字回源，并先与现有知识原子做语义去重。",
       "version": "3.3.0",
@@ -197,9 +205,18 @@
       "license": "MIT"
     },
     {
+      "name": "yl-long-video-multi-topic-editor",
+      "description": "把超长口播、访谈、讲座或混合主题素材，重组为多个不同主题、不同论证线、低重叠的独立短视频。覆盖全文分题、详细剪辑脚本、跨段调序、逐字精剪、多轮意见、字幕封面、可选开拍增强及双版本交付；适用于从长素材重新策划内容，不用于按章节顺切或单条短口播修剪。",
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    {
       "name": "yl-media",
       "description": "YL 自媒体统一入口。写作、朋友圈图文、定稿文章转旁白图解视频、数字分身剧情短视频、视频剪辑、封面、成片归档、平台发布、视频号与公众号采集复盘先由这里分流，并把本人文稿及复盘结果交回知识库。",
-      "version": "3.7.8",
+      "version": "3.7.9",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -225,8 +242,8 @@
     },
     {
       "name": "yl-remotion-talking-head-editor",
-      "description": "Edit Chinese talking-head footage with built-in mandatory content, script-flow and opening analysis, word-accurate mistake and hesitation removal, stable fixed-size captions, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Cards are off unless explicitly requested; preserve the original voice and export the complete final spoken transcript.",
-      "version": "3.5.6",
+      "description": "Edit Chinese talking-head footage with content and opening analysis, word-accurate cleanup, fixed-size captions, semantic matching of available demo footage, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Match relevant visuals by default, aim for the first insert around three seconds, and end on the speaker. Preserve original narration and export the complete spoken transcript. Text cards require an explicit request.",
+      "version": "3.5.8",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -235,7 +252,7 @@
     {
       "name": "yl-remotion-video-slicer",
       "description": "将长口播、课程、述品或访谈切成多条独立短视频。按完整论述选题，用源内高能原句强化前3到5秒，允许跨段调序和跨片重叠；用Remotion保留可编辑工程，按授权添加标题、字幕及二维码遮盖，导出并核验。适用于长视频切片、批量短片和切片后补包装；单条口播去停顿精剪另用对应成员。",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -253,7 +270,7 @@
     {
       "name": "yl-short-video-covers",
       "description": "从截图、文案、视频或原帧制作1080×1440短视频封面。科技大字模式固定电路纹理黑底、白字为主、黄色关键词、外描边、水平共左边，默认读取个人配置头像；另有半透明原帧无叠加头像模式。",
-      "version": "3.1.6",
+      "version": "3.1.8",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -269,8 +286,8 @@
     },
     {
       "name": "yl-video",
-      "description": "yl 自媒体板块的视频子入口，由 yl-media 分流进入。处理定稿文章转旁白图解视频、数字分身剧情短视频、课程与演示长视频、长视频独立切片、真人口播、横屏访谈、封面及成片归档，按任务依赖调用成员。",
-      "version": "3.9.0",
+      "description": "yl 自媒体板块的视频子入口，由 yl-media 分流进入。处理文章旁白图解、数字分身剧情、课程与演示、超长素材多主题重组、普通切片、真人口播、横屏访谈、封面及成片归档，按任务依赖调用成员。",
+      "version": "3.10.0",
       "category": "media",
       "role": "router",
       "license": "MIT",

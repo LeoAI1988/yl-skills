@@ -1,0 +1,4 @@
+interface:
+  display_name: "YL 超长素材多主题精剪"
+  short_description: "从超长素材策划不同主题与论证线，完成低重叠精剪、多轮反馈和双版本交付"
+  default_prompt: "使用 $yl-long-video-multi-topic-editor 通读这批超长素材，规划不同主题和逻辑线的短视频，再按我的范围完成精剪和交付。"

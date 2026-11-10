@@ -1,6 +1,6 @@
 ---
 name: yl-remotion-talking-head-editor
-description: Edit Chinese talking-head footage with built-in mandatory content, script-flow and opening analysis, word-accurate mistake and hesitation removal, stable fixed-size captions, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Cards are off unless explicitly requested; preserve the original voice and export the complete final spoken transcript.
+description: Edit Chinese talking-head footage with content and opening analysis, word-accurate cleanup, fixed-size captions, semantic matching of available demo footage, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Match relevant visuals by default, aim for the first insert around three seconds, and end on the speaker. Preserve original narration and export the complete spoken transcript. Text cards require an explicit request.
 ---
 
 # 真人口播 Remotion 剪辑
@@ -36,6 +36,7 @@ description: Edit Chinese talking-head footage with built-in mandatory content, 
 
 - [ ] 确定并记录全自动/半自动模式，锁定源片、用户要求、参考标准和旧版保护记录。
 - [ ] 完成内化的三项内容分析、开头/调序判断及所有必剪清单。
+- [ ] 逐段检索展示素材并完成语义匹配，合适的画面落实到展示计划；记录未采用原因、首个画面时间、同批复用情况及结尾口播区间。
 - [ ] 全片检测停顿并自主裁决，字词删减、停顿收紧及调序全部落实同一 EDL，待处理为零。
 - [ ] 前五秒逐字精修；全部新切点、全片原声与最终长空白复查通过。
 - [ ] 本次启用的字幕、标题、卡片和封面完成；实际倍速、音画同步及固定字号/位置已验证。
@@ -53,9 +54,11 @@ description: Edit Chinese talking-head footage with built-in mandatory content, 
 - **判断必做，调序按需要**：比较原顺序与可实现的剪辑方案。原序最好就保留并写清理由；需要调整才调整。确认的错话、无信息啰嗦、重复字词及失败起句必须剪净，不能用“保留个人口语”放行。
 - **精度到字词内部**：逐字逐词定位与复核，既修句间，也修词内因思考、犹豫造成的过长间隔。用有浮动区间的自然节奏，不把每个字独立切碎；前五秒逐字重点精修。详见 [剪辑工作流](references/editing-workflow.md)。
 - **参考样式逐项核对**：用户要求严格参考时，按 [视觉标准](references/visual-style.md) 的原帧校准流程，一并核对字号、真实字重、颜色、阴影、标题/字幕位置。批次统一要求落实到实际渲染，不沿用旧版细字或低位字幕。个人样式绑定从 profile.video.visual_style_file 读取。
+- **字幕相对位移须更新唯一配置**：用户要求字幕向上/向下半字高时，以当前固定字体与字号的实际字形包围盒高度换算像素，统一调整字幕基线及字形顶部，记录调整前后绝对位置。将个人数值写入个人视觉配置；后续直接读取新绝对位置，不再次累加位移。只改字幕位置时冻结剪点、倍速、原声、字幕正文和顶部标题；重新生成文字层并查看真实成片。
 - **字幕稳定**：整条先选固定字幕区；同一条字幕字号、字重、行距、描边与标点规则固定。长句分行或按语义分页，禁止逐句缩字号。只有个别连续镜头可以少量位置避让，不得逐句跳位。
 - **标题整组缩放必须落到成片**：用户指定“标题整体放大1.1倍”等比例时，以本轮已认可标题为基准，一次换算字号和行距，记录目标比例及像素取整值，整批读取同一版个人视觉配置；下一轮直接用已更新值，不重复乘倍率。超宽标题保留原文按语义换行并检查人物遮挡，不裁字或偷偷缩回。只改标题时冻结字幕、EDL、原声和各条既有倍速，详见视觉标准。
 - **卡片默认关闭**：用户没有强调卡片就为 0 张；明确说加卡片时自行选择全片 1–3 张，不逐分钟累计，不再追问数量。顶部标题与独立封面不算重点卡片。
+- **展示画面默认匹配**。每次完整口播剪辑必读 [演示素材插入流程](references/broll-workflow.md)，先在配置的展示素材库中逐段匹配讲解。有合适素材的讲解段均安排插入，找不到合适画面时保留真人口播。尽量在成片开头约 3 秒出现首个相关画面，后续随讲解继续穿插，最后回到真人口播完整收束。真实录屏、成果视频和已有说明图片按展示轨管理，重点文字卡片继续按上条管理。
 - **清晰度不得降低**：从原片直接导出，默认保留有效分辨率，不为加快渲染擅自降尺寸、换低质编码或使用有损代理。最终必须与同一源时刻对照，达到无可见细节损失；可适度增强，不能用涂抹或锐化光晕换取“清晰”观感。
 - **开拍前先校正色彩**：按真实源片识别 HLG/SDR，在字幕叠加前完成必要的 HDR→SDR 转换。开拍只接收经过核验的 SDR BT.709 剪辑版；自动检查输入、API 原始输出和交付文件的解码帧、码流与容器色彩标记。不把强贴 BT.709、全局提亮或减红加蓝当作色彩转换。
 - **技术通过不等于精剪完成**：内容、原声节奏、字幕稳定性、主观画质和技术检查分别验收。无法实际听审时记录“原声听审未完成”，继续可做工作，但只能交待审版，不能宣称已完成精剪验收。
@@ -77,6 +80,7 @@ description: Edit Chinese talking-head footage with built-in mandatory content, 
 
 1. **锁定范围**：只处理用户点名的视频。记录源片、已批准封面及需保护的旧版哈希；输出新版本，不覆盖源片。
 2. **分析参考和原片**：检查真实分辨率、旋转、帧率/PTS、HDR、声音及整段转写；抽查参考视频节奏、字幕和标题。
+   同步读取展示素材目录，按讲解逐段检索和抽帧检查，形成语义匹配表；优先查找开头约 3 秒可用的画面，预留末句回到真人。素材选择由执行者完成，沿用当前模式的审核节点。
 3. **生成逐字稿修改方案**（每条一份文档，格式见 [剪辑工作流·审查稿规范](references/editing-workflow.md)；半自动一并交付本次所有视频的方案，全自动内部留档后继续）：
    - **原始逐字稿**：转写如实全文，含全部语气词；
    - **调整标记稿**：同一全文加标记——删除的词/字/句直接 ~~画删除线~~，调整顺序的句子加粗并标注原位置与新位置；ASR 识别错误用“识别原文 → 修正文字”标出，注明为文字纠正或需剪原声口误，不混淆两者；
@@ -101,6 +105,10 @@ description: Edit Chinese talking-head footage with built-in mandatory content, 
 本批验收与预览结束后，默认交给 [视频归档](../yl-video-archive/SKILL.md)，按 [去重收尾](../yl-video-archive/references/completion-cleanup.md) 自动清理本批临时副本、未采用导出及项目可再生构建/渲染缓存，包含 `node_modules/.cache/webpack`，不依赖个人约定或额外清理口令。原片、最终版本、用户要求交付的工程及未确认期间仍需听审/回改的材料继续保留；历史批次与用户明确保留的版本不自动删。媒体归档与最终文稿入库蒸馏分别验收，用户要求归档时须一并完成；本轮“不要开拍”直接作为归档边界沿用。
 
 ## 修订与版本边界
+
+### 口播中插入录屏、演示或成果视频
+
+完整口播剪辑默认执行 [演示素材插入流程](references/broll-workflow.md)，在阶段 1 匹配素材，阶段 2 按已落实的口播 EDL 编排展示，阶段 4 合成后复验。用户点名的插入位置优先；仅改字幕、标题等局部修订遵守其范围。以口播原声为主时间轴，演示视频静音，独立记录选段、顺序、速度与缩放；切入演示时默认隐藏开头标题，切回口播不自动重显。语速变化须从原片一次应用，并同步重映射字幕、演示与标题退场点。具体标题、倍率、插入短语和源路径来自本次任务及个人配置。
 
 - 已明确授权的局部修订直接完成并验证，不重复索要视觉确认。只有依赖缺失且无法推断的信息才阻塞相应工作。
 - 仅改字幕样式、标题或卡片时，冻结 EDL、字幕正文/时间、语速和原声音轨；优先复用已匹配该 EDL 的无字增强底片，本地重新合成，复制已确认 AAC，并核对声音一致性。已剪辑/倍速的底片不得再次应用 EDL 和倍速。没有可用无字增强底片时，从原片重导本地版本，明确该版未复用开拍增强；若要重新增强，核实新增调用和费用授权，不把历史增强状态沿用到新版。用户要求改字幕错字或同步时，仅解冻所授权的正文/时间字段，不顺带重剪口播。

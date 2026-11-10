@@ -1,10 +1,10 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.14.5",
-  "date": "2026-10-30",
+  "version": "3.16.1",
+  "date": "2026-11-10",
   "skills": {
     "yl-toolbox": {
-      "version": "3.7.12",
+      "version": "3.7.14",
       "category": "entry",
       "role": "router",
       "license": "MIT"
@@ -17,7 +17,7 @@
       "subcategory": "writing"
     },
     "yl-video": {
-      "version": "3.9.0",
+      "version": "3.10.0",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -38,14 +38,14 @@
       "subcategory": "writing"
     },
     "yl-remotion-talking-head-editor": {
-      "version": "3.5.6",
+      "version": "3.5.8",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
       "subcategory": "video"
     },
     "yl-short-video-covers": {
-      "version": "3.1.6",
+      "version": "3.1.8",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -151,7 +151,7 @@
       "license": "MIT"
     },
     "yl-media": {
-      "version": "3.7.8",
+      "version": "3.7.9",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -200,7 +200,7 @@
       "subcategory": "video"
     },
     "yl-remotion-video-slicer": {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -282,6 +282,19 @@
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
       "subcategory": "writing"
+    },
+    "yl-knowledge-cloud-sync": {
+      "version": "1.0.1",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    "yl-long-video-multi-topic-editor": {
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
     }
   }
 }

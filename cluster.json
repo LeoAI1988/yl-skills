@@ -1,7 +1,7 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.14.5",
-  "date": "2026-10-30",
+  "version": "3.16.1",
+  "date": "2026-11-10",
   "skills": [
     {
       "name": "yl-ai-dialogue-video",
@@ -320,6 +320,20 @@
       }
     },
     {
+      "name": "yl-knowledge-cloud-sync",
+      "description": "将已授权的核心知识正文增量同步到安装者配置的私有知识服务，按归属、隐私和版本状态筛选，验证内容哈希与云端清单。适用于手动同步新增或修改的思想、作品、选题、表达和原子，不替代本地知识蒸馏。",
+      "version": "1.0.1",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT",
+      "files": {
+        "LICENSE": "9df3d4a103986febda021858a1429904f3d26f4be349d2f0780a4583fc70eeab",
+        "references/protocol.md": "576eea0b6baf431050da7a21acb2ceb6f59c2c56f5e823c16dc1e742c6e19778",
+        "scripts/sync.py": "79006a1708ae9350ccb5f4372e9ecd39e3c37887ff9a70de1a71bbf544eec67e",
+        "SKILL.md": "023327c2b8d0eb93ff480e49fa884b04a9724730455b11fe821e82b610a5a1b4"
+      }
+    },
+    {
       "name": "yl-knowledge-distill",
       "description": "从本人完整原文中提炼可复用观点、概念、方法、案例和论述链，逐字回源，并先与现有知识原子做语义去重。",
       "version": "3.3.0",
@@ -427,9 +441,30 @@
       }
     },
     {
+      "name": "yl-long-video-multi-topic-editor",
+      "description": "把超长口播、访谈、讲座或混合主题素材，重组为多个不同主题、不同论证线、低重叠的独立短视频。覆盖全文分题、详细剪辑脚本、跨段调序、逐字精剪、多轮意见、字幕封面、可选开拍增强及双版本交付；适用于从长素材重新策划内容，不用于按章节顺切或单条短口播修剪。",
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video",
+      "files": {
+        "agents/openai.yaml": "80b320eed954f1a2309353e07e7d320e9cb67a302e4e4947b2c3181316e817a7",
+        "LICENSE": "9df3d4a103986febda021858a1429904f3d26f4be349d2f0780a4583fc70eeab",
+        "NOTICE.md": "a56048dedc2ece072b4386faefee11d0c2bd29c30b49416c3edcd6e72190fe3f",
+        "references/contracts.md": "63fe4078ca398935a63132383ff5a3577cc2713aff1d1b24498b50563ed691b6",
+        "references/planning.md": "5ee0b51be0ed998d7e948e26f110e4010cddd3c528299918540564785efb5237",
+        "references/refinement.md": "119a9050b1000d26b9f664d9752e7661b4f037db86d22c6b0864660212d55e41",
+        "references/runtime.md": "eba6860cb099ed0f5cc017703aacd574ee1180ee071ad07825648623a20e7aa3",
+        "scripts/multitopic.py": "af6d0447f46e035280f29cba4bde158d2fcf8b1e183c8c9999a6af29ffc6685a",
+        "scripts/test_multitopic.py": "25a2a268fab89b7d0416e5cfc2010f1bed60e2b8467aeffcd0ec47045b11665d",
+        "SKILL.md": "1ccc72f17684c389e23db5402688c524746cb4ce4ae80295e67ff948226ecc94"
+      }
+    },
+    {
       "name": "yl-media",
       "description": "YL 自媒体统一入口。写作、朋友圈图文、定稿文章转旁白图解视频、数字分身剧情短视频、视频剪辑、封面、成片归档、平台发布、视频号与公众号采集复盘先由这里分流，并把本人文稿及复盘结果交回知识库。",
-      "version": "3.7.8",
+      "version": "3.7.9",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -439,7 +474,7 @@
         "references/handoff.md": "5e8390dec0f00ff36c350be7c76d6422deccd7a7e6ac19f666db308db1d1ed19",
         "references/ranking.md": "184507ac58d15a1c03754086c79cec652e8b28457f73d26d48d1b184999f4774",
         "scripts/ranking.py": "056a2922363ea541f1b10a66317e7d2ed0147ce220fb125a333508bcb9ef65fc",
-        "SKILL.md": "7b5b3d7c8f959fc10c0a723e85412b9dc1f59ccb0648dd94f40125bbcc05a638"
+        "SKILL.md": "a336081954b5e39c3df598b94ea57ae5ffdd26cffe57b48d671d2d1053302a3e"
       }
     },
     {
@@ -474,8 +509,8 @@
     },
     {
       "name": "yl-remotion-talking-head-editor",
-      "description": "Edit Chinese talking-head footage with built-in mandatory content, script-flow and opening analysis, word-accurate mistake and hesitation removal, stable fixed-size captions, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Cards are off unless explicitly requested; preserve the original voice and export the complete final spoken transcript.",
-      "version": "3.5.6",
+      "description": "Edit Chinese talking-head footage with content and opening analysis, word-accurate cleanup, fixed-size captions, semantic matching of available demo footage, and source-quality export. Use for local talking-head editing or revisions in the user's approved style. Match relevant visuals by default, aim for the first insert around three seconds, and end on the speaker. Preserve original narration and export the complete spoken transcript. Text cards require an explicit request.",
+      "version": "3.5.8",
       "category": "media",
       "role": "member",
       "license": "MIT AND CC-BY-NC-4.0",
@@ -488,8 +523,9 @@
         "LICENSES/DBS-CC-BY-NC-4.0.txt": "e90691446fd4c9fc7f89d29ac6aa86ece59755f8b4cae9966fd8bfe846887df7",
         "LICENSES/MIT.txt": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
         "NOTICE.md": "7c1090affd5ed8dd3a085fa7055ccc884615ceb4940af08faab21c620fbcd75d",
-        "references/acceptance.md": "d8d3aa1ca5188075da68061c1ef8bd371a686c3c855da07309626bcf19da9fc8",
+        "references/acceptance.md": "ebdb91a0902e6c92750a352f86b07ef048e9249169cbd1a65f19f23186b0b15f",
         "references/approved-example.md": "e6c2999a1d03557860fe10841b8096a9f5cfb0132ccf95a854da2be8b1727e35",
+        "references/broll-workflow.md": "d9ae44ab5dbb3840d08aa1f5eebbf2764dce5e2206285e7f4ef53b73492bbafa",
         "references/content-analysis.md": "156989a6e48657f460371b5355f77472b88914b56e3849184ff0612c21c3cda1",
         "references/editing-workflow.md": "67a40730ad0841a7df496342829b13ab1a7cdc49d6d8ea76ae72eeecb654b3a3",
         "references/execution-contract.md": "fc6b21d32d6e0622bd848c7bd935a7a90ef6cf141c58da8dd95f653d25ee8358",
@@ -500,7 +536,7 @@
         "references/rendering.md": "e4b0ce7ccc3b0dadc1ce3765f80a748f1d7e975054bfb98f1f9e53fb666d0201",
         "references/revision-contract.md": "3380b6ba2a5e7a399bfa157f6df7426ee90387a2c67f47e90822811ca6a27cd4",
         "references/source-snapshot.json": "ac3859773adddce60143952f057502f8a491ac08965b22785de9901c1e566e00",
-        "references/visual-style.md": "c8655b289fcd67eba56b5c3df183235ca63eaeb3978cddc18a8cfdb0ff68c3df",
+        "references/visual-style.md": "ae9e5dee36b3f3894b7834f48a52de3cdf4082e0e8c82768fe1920aebe40bc27",
         "scripts/check_asr_coverage.py": "2220e3d458f8c9aa9d9055445d3a970c5210a00990e1d600af32100840ea6871",
         "scripts/kaipai_enhance.py": "90972e3cfa31920c3494b2dc0426a09ed78709962e72374ebc29878264dd797c",
         "scripts/pause-probe.py": "c8ca46429aa766714816ccede8af1f6b49652b6cf153994219dde80793e3c371",
@@ -510,16 +546,16 @@
         "scripts/validate-talking-head-video.ps1": "a7e85c1d24406bc3aecf92cbda3546b9cf74cdc869d76a2900b4755dc2826b30",
         "scripts/validate-video.py": "15d1156c9b3ed264b2e05844b085d57a4be35158ce5ebba6d820e496c344aba1",
         "scripts/validate-visual-contract.py": "0520880526ad9847fafdb568024b70417ceb9c4a9a479ac32a0e5199e93b1015",
-        "scripts/verify_revision_contract.py": "3bc5a2e0231e91396e592167bc9a5a8d8c8d414953b5ba9b84b6ad35dc1e6068",
+        "scripts/verify_revision_contract.py": "e7a824cdbc14edb65768ec1d606ae1772ca9f23380b352ae74d18da2b7df1e67",
         "scripts/word-audit.py": "d40f96d3ab920affe3d8a79228a772f7ba4dc70250a1c7675aa9409e8c0836fc",
-        "SKILL.md": "2fc7a81bfad3fa161672d07a979fd6179e0e842e0cad0f4e0cfcf1f986f8d7d9",
+        "SKILL.md": "7955abd1761225aa77e9f78467aa83bdb79c7d4f8959091833186fc79c16e1b9",
         "tests/test_report_paths.py": "81a7461ff5275269f9e1295e4a3dc58d9c4bfc6bb52f5a002605e74e2f6f0354"
       }
     },
     {
       "name": "yl-remotion-video-slicer",
       "description": "将长口播、课程、述品或访谈切成多条独立短视频。按完整论述选题，用源内高能原句强化前3到5秒，允许跨段调序和跨片重叠；用Remotion保留可编辑工程，按授权添加标题、字幕及二维码遮盖，导出并核验。适用于长视频切片、批量短片和切片后补包装；单条口播去停顿精剪另用对应成员。",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -533,7 +569,7 @@
         "references/runtime.md": "0cf1f9e28cb14743d35cf8daa0e6f1ec470d3dc6b9c4204f32ce9341d0e4ced8",
         "scripts/slicer.py": "38e88f63ad96ac2d5bcbc59d416b5eb5c73af5a4be09d49861a190f4e503d5f4",
         "scripts/test_slicer.py": "a361a13bf052e88dc19ceaeffc08581693a3c2e7ab7da4c33ff80722f33dd561",
-        "SKILL.md": "e6fde5a1c127fd73d6de734553f17ffed913b73a5f74f3ace049fcd2d015ae28",
+        "SKILL.md": "c9ae6f77042785f7a46c87fc1b2178e1a24e9752143a021e85340b6df236ff5e",
         "templates/Layer.tsx": "ca1c17ddf71db60d4e8418a351536e3119cc65c5cf23fee600c4cba3694a4da8",
         "templates/package.json": "8661ab9b0dc96e46e9b1b6ee7cd1691db488d87d3bdff11b9eba2589d125e099",
         "templates/render-layers.mjs": "5b89d106727507947c28fa429a8b41a2e4386aae3ec37a5b4ec0b7052340ca93"
@@ -558,7 +594,7 @@
     {
       "name": "yl-short-video-covers",
       "description": "从截图、文案、视频或原帧制作1080×1440短视频封面。科技大字模式固定电路纹理黑底、白字为主、黄色关键词、外描边、水平共左边，默认读取个人配置头像；另有半透明原帧无叠加头像模式。",
-      "version": "3.1.6",
+      "version": "3.1.8",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -566,26 +602,30 @@
       "files": {
         "agents/openai.yaml": "f30de92c70b1fa964dd7cc01ea1cf5f97db8c03f1e6e0d2f49ccf25477935532",
         "assets/background-black-yellow-tech-v2.png": "ee53e201a98d2fa9ad66f118f80c8ae1999f6781728c54bb220bd1dd311cb1c2",
+        "assets/fixed-portrait-layout-reference.svg": "f8620edf5afab3e7ceaa8c8e6918285088220b4ef2b47cb4ee93dda20295dc9b",
         "AUDIT.md": "d03be604ac7583f4491adf3dfe942f2d4d862c4a0fdd634f00b56eb8db150cad",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
         "references/asset-prompts.md": "3f6e4604ebccd3948ef210c215079e157894bb9a3e0945b2809baec8228ee476",
-        "references/bold-mode.md": "12e70921c3b2f5f83f7e9b5629b8a547ce76f286cda5fa77f5eb1a063ad8ca93",
+        "references/bold-mode.md": "646a58aad32af1f29e7e28a97a8821e175f49428c59dd5d0e445e5acd2d97a86",
+        "references/fixed-portrait-layout.md": "cdb8c797a4bcbd653e897da0a94d38546853fa4bed9c28feadbdd205df7cf1b3",
         "references/outlined-mode.md": "7cbfb5b41d3180fb8ab7a14cc71b4983ce7aacb9c938a6a59eb389581a1ad36f",
         "references/provenance.md": "42bf341e2ab877022f9331c51e678afb7b83b76ece16bbf1d27d7575adc2643f",
         "references/source-snapshot.json": "5d259527935929e5b8cb5d1fe64062984e41fc4069c23b54ff3a7235f52f3d25",
-        "references/style-spec.md": "f07ae271911d0b73632ece89fa8756285b7b08cf6f6ccdede7e1c8d683df1c7e",
+        "references/style-spec.md": "3d5359f474f94ddf2bec9581b8d3583e241f84d73cd76e6b38263387eb17f95e",
         "references/translucent-mode.md": "bbb461b79991c4af44b34dbb38ee5d6bd40073706916f6e60c9300a583d966b5",
-        "scripts/check_portrait_overlap.py": "4364773fa4197f9b2f556db4e1364a726bb6f8bbd93c518a003ad0bf0c20f41c",
+        "scripts/check_portrait_overlap.py": "8150c28c449e69b64301ead55ad3562d3c2c58786bfead01257cef40c0894cda",
+        "scripts/fixed_portrait.py": "9f1ac6f27a2c3daf898105bfe8552558d40d70911c47b6a050af8fe55523ea31",
         "scripts/font_utils.py": "55266867f03f5ee70801500c48b35d7f9097975497ece4824f793acdd3d64c2a",
         "scripts/prepare_title_crop.py": "6d08b273d021cc2a62ce2a2b5cd645230cb4af1a06b6ff2f706d0e96d2954b2c",
         "scripts/prepare_video_input.py": "bdd2d538d0eda82ff406ec0c2e9708ca9547feb1c1e69c423eaed7f5bfe76634",
-        "scripts/render_bold_cover.py": "c7179d525a7636ffb80c8c38b6457bc01419af5e92d011c35375fc257e9401f8",
+        "scripts/render_bold_cover.py": "fd705e3a364aa4e4eb6a254d1aaade845b75be33ebf23ff774b187e0d345a468",
         "scripts/render_translucent_cover.py": "669dc85eeb13cce223e36f7fb9685353e057b8b33f67ec8063ec03b17c616aca",
         "scripts/tech_background.py": "908d3818dbd7eb19ae62d52989cded606a4501e7d4fd347fe2b495004d30a73b",
         "scripts/test_bold_style.py": "c6a96bb7ee0d3d83b396029878dcbe00bb1705c895abd521ae00d40d398889f6",
-        "scripts/validate_bold_cover.py": "ecfa383d5a571c4de7a08c8d7e20a8bc2a602aef33e7ea763ced9e177e9f527a",
+        "scripts/test_fixed_portrait.py": "0692c3c7d33c06c0b491654d30d32d7471cfbce6f86c9398d9ec417378484f7d",
+        "scripts/validate_bold_cover.py": "14cf707db32a7ba1067df18455d1e206866116e236055e484b7996233d7c7518",
         "scripts/validate_translucent_cover.py": "7ea25801ba8e9189b3e3cae640ad8aa947e0a2f98831f6df57e1bfeacc9f68e6",
-        "SKILL.md": "ef8a5b405b80543a31b512b0d417b149b0844a743b157129187814ab8aa7befd"
+        "SKILL.md": "a92435f3eb2f922f36c97c90511f816d1ce94e71c1ff3da26c7f199841f46d14"
       }
     },
     {
@@ -609,23 +649,23 @@
     {
       "name": "yl-toolbox",
       "description": "yl 个人精选工具箱入口。用户要求使用 yl 集群、选择 yl 工具，或希望用工具箱完成任务时，按目录选择已安装的相关 Skill 并执行。具体功能可直接调用对应 yl Skill。",
-      "version": "3.7.12",
+      "version": "3.7.14",
       "category": "entry",
       "role": "router",
       "license": "MIT",
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "references/catalog.json": "08a7bc9b99d907a51f9f7764633de7b45d7cd96bbe735be93b1506fae3b6554b",
-        "references/profile.example.json": "63154e27ce81d7007b77af6086b0474ea373ca3e24917b7940ca887d3be5391c",
-        "references/profile.md": "19c08992d0ebf695ab7b7e8696da33365928b37e153f754fe9b0a152ac471d37",
-        "SKILL.md": "ebc55ec5f1566b91d57762aaf4af72e8e4b811a7422f0b9828f8912ce5df766d"
+        "references/catalog.json": "3e49c342ff24c9034666084e32789f6ee9ffafe7b756ac1afe5d7e51c2dd288a",
+        "references/profile.example.json": "2cf3cabb44770000c35dac8d6dcee9e4b34f0ce305379cf70f4222ee17063b0d",
+        "references/profile.md": "668e1e34c1336ccb63420d8472e4126a542f1afea52d24668a818d0ebd9fa798",
+        "SKILL.md": "9e1052f0dbadd3ff9a5dd6ecaeb8c9f3a4f835b9c74d582b784cf8cb56f0d0e2"
       }
     },
     {
       "name": "yl-video",
-      "description": "yl 自媒体板块的视频子入口，由 yl-media 分流进入。处理定稿文章转旁白图解视频、数字分身剧情短视频、课程与演示长视频、长视频独立切片、真人口播、横屏访谈、封面及成片归档，按任务依赖调用成员。",
-      "version": "3.9.0",
+      "description": "yl 自媒体板块的视频子入口，由 yl-media 分流进入。处理文章旁白图解、数字分身剧情、课程与演示、超长素材多主题重组、普通切片、真人口播、横屏访谈、封面及成片归档，按任务依赖调用成员。",
+      "version": "3.10.0",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -633,7 +673,7 @@
       "files": {
         "agents/openai.yaml": "ee36eeb6bc22c97a3d989049bd74b1e8e588f3d7cd1af055447f7208ceb250d1",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "SKILL.md": "2b01c86694e5f6fd845ccf66eec51580e8f41fd483b9ec0434070f2935f24da5"
+        "SKILL.md": "3ac5cc352ea95fa1513193a8d173089ac8ce5088206e4d719a04b56ea271e57b"
       }
     },
     {

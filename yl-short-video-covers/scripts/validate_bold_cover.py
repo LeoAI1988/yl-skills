@@ -19,6 +19,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--image", required=True, type=Path)
     parser.add_argument("--manifest", type=Path, help="Private manifest path; defaults beside image")
+    parser.add_argument("--portrait-layout", type=Path, help="Independent external fixed portrait layout to verify")
     parser.add_argument("--expected-title")
     parser.add_argument("--expected-primary-title")
     parser.add_argument("--expected-supplement")
@@ -62,6 +63,23 @@ def main() -> None:
         raise SystemExit(1)
 
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    fixed = manifest.get("fixedPortrait")
+    if args.portrait_layout and not fixed:
+        errors.append("independent fixed portrait expectation requires fixedPortrait evidence")
+    if fixed:
+        if not args.portrait_layout:
+            errors.append("fixed portrait requires --portrait-layout as an independent expectation")
+        else:
+            try:
+                from fixed_portrait import fixed_portrait_layer
+                _, expected = fixed_portrait_layer(manifest["avatar"], (args.width, args.height), args.portrait_layout)
+                for key in ("layoutSha256", "avatarSha256", "x", "y", "width", "height", "approvedRightCropPx", "pixelMaskSha256", "referenceSha256"):
+                    if fixed.get(key) != expected.get(key):
+                        errors.append("fixed portrait differs: " + key)
+                if len(manifest.get("lines", [])) < expected["minTitleLines"]:
+                    errors.append("title has fewer lines than the user's fixed template requires")
+            except (ValueError, OSError, KeyError) as error:
+                errors.append("fixed portrait invalid: " + str(error))
     lines = manifest.get("lines", [])
     if not 1 <= len(lines) <= 4 or any(not isinstance(line, str) or not line.strip() for line in lines):
         errors.append("headline must contain 1-4 non-empty lines including supplement; prefer three semantic lines")

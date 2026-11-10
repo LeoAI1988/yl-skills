@@ -10,7 +10,7 @@
 
 - 总入口 `yl-toolbox`。
 - 知识管理：`yl-knowledge`＋11项职责，从建库到检查。
-- 自媒体：`yl-media` 是统一入口，下设写作、视频、平台发布、采集复盘及外部资料研究，共24项。写作通过 `yl-writing`，朋友圈文案、配图和局部改图进入 `yl-wechat-moments`，视频通过 `yl-video`；定稿文章转无真人出镜的旁白图解视频进入 `yl-article-narration-video`，数字分身双人剧情进入 `yl-ai-dialogue-video`，保留本人原话、锁定形象、分段生成并本地精剪；完整课程与带演示画面的长视频进入 `yl-course-video-editor`，多条独立切片进入 `yl-remotion-video-slicer`，同稿多拍按数据二创进入 `yl-viral-video-remixer`，单条精剪保留既有成员，成片母带归档进入 `yl-video-archive`。抖音和视频号分别进入 `yl-douyin-publisher`、`yl-channels-publisher`；小红书进入 `yl-xiaohongshu-publisher`，逐篇准备并保留用户最终提交。复盘进入视频号/公众号成员；成交证据与资料增量更新进入 `yl-sales-content-refresh`；X选题进入 `yl-x-topic-research`，YouTube详细总结进入 `yl-youtube-deep-summary`，外部作者材料不自动蒸馏成本人观点。
+- 自媒体：`yl-media` 是统一入口，下设写作、视频、平台发布、采集复盘及外部资料研究，共25项。写作通过 `yl-writing`，朋友圈文案、配图和局部改图进入 `yl-wechat-moments`，视频通过 `yl-video`；定稿文章转无真人出镜的旁白图解视频进入 `yl-article-narration-video`，数字分身双人剧情进入 `yl-ai-dialogue-video`，保留本人原话、锁定形象、分段生成并本地精剪；完整课程与带演示画面的长视频进入 `yl-course-video-editor`，超长素材多主题、多逻辑线重组和多轮精剪进入 `yl-long-video-multi-topic-editor`，普通独立切片进入 `yl-remotion-video-slicer`，同稿多拍按数据二创进入 `yl-viral-video-remixer`，单条精剪保留既有成员，成片母带归档进入 `yl-video-archive`。抖音和视频号分别进入 `yl-douyin-publisher`、`yl-channels-publisher`；小红书进入 `yl-xiaohongshu-publisher`，逐篇准备并保留用户最终提交。复盘进入视频号/公众号成员；成交证据与资料增量更新进入 `yl-sales-content-refresh`；X选题进入 `yl-x-topic-research`，YouTube详细总结进入 `yl-youtube-deep-summary`，外部作者材料不自动蒸馏成本人观点。
 - 办公与管理：`yl-ppt` 负责原稿到课件、批注迭代与多版本管理；`yl-course-summary` 负责长视频总结：课程与演示转实操教程，访谈、讲座与分享按话题保留论述、论据和案例，交付Markdown/PDF及按需目录和合集；`yl-anti-entropy` 独立处理磁盘膨胀排查、唯一性、映射、归档和工程清场；`yl-c-drive-cleanup` 负责Windows C盘缓存、更新残留、临时渲染与重复备份的专项排查及按授权清理。长视频总结按交付结果路由，视频输入不自动进入剪辑分支；防熵增不要求先开展专项任务。
 - 部署：`yl-skill-sync`，整包更新及指定宿主映射。
 

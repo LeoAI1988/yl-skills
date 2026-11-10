@@ -57,6 +57,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--accent", choices=("none", "yellow"), default="yellow")
     parser.add_argument("--background", type=Path, help="Optional byte-identical copy of the approved circuit master")
     parser.add_argument("--avatar", type=Path, help="Optional user-supplied transparent portrait")
+    parser.add_argument("--portrait-layout", type=Path, help="External fixed portrait layout; overrides adaptive portrait position/scale")
     parser.add_argument(
         "--portrait-label",
         default="",
@@ -333,6 +334,11 @@ def draw_decorations(draw: ImageDraw.ImageDraw, width: int, height: int) -> None
 
 
 def render(args: argparse.Namespace) -> dict[str, object]:
+    if getattr(args, "portrait_layout", None):
+        if not args.avatar:
+            raise ValueError("Fixed portrait layout requires the matching avatar")
+        if any(getattr(args, name, None) is not None for name in ("avatar_scale", "avatar_x_shift", "avatar_y_shift")):
+            raise ValueError("Fixed portrait layout forbids separate position or scale overrides")
     if args.width <= 0 or args.height <= 0:
         raise ValueError("Canvas dimensions must be positive")
     if args.avatar_scale is not None and not 0.40 <= args.avatar_scale <= 0.92:
@@ -502,8 +508,18 @@ def render(args: argparse.Namespace) -> dict[str, object]:
 
     # Keep the portrait in the lower-right foreground. The default is a starting
     # point; visible bounds are recorded because cutout aspect ratios differ.
+    fixed_evidence = None
     if args.avatar:
-        portrait = avatar_layer(args.avatar, background.size, avatar_scale, avatar_x_shift, avatar_y_shift)
+        if getattr(args, "portrait_layout", None):
+            from fixed_portrait import fixed_portrait_layer
+            portrait, fixed_evidence = fixed_portrait_layer(args.avatar, background.size, args.portrait_layout)
+            avatar_scale = fixed_evidence["height"] / args.height
+            avatar_x_shift = (fixed_evidence["x"] - (args.width - fixed_evidence["width"])) / args.width
+            avatar_y_shift = (fixed_evidence["y"] - (args.height - fixed_evidence["height"])) / args.height
+            if len(lines) < fixed_evidence["minTitleLines"]:
+                raise ValueError("Title has fewer lines than the user's fixed layout allows")
+        else:
+            portrait = avatar_layer(args.avatar, background.size, avatar_scale, avatar_x_shift, avatar_y_shift)
         portrait_bbox = portrait.getchannel("A").point(lambda x: 255 if x >= 32 else 0).getbbox()
         from PIL import ImageChops
         portrait_mask = portrait.getchannel("A").point(lambda x: 255 if x >= 32 else 0)
@@ -549,6 +565,7 @@ def render(args: argparse.Namespace) -> dict[str, object]:
             "headlineCoverage": round(headline_coverage, 4),
             "visibleBounds": list(portrait_bbox) if args.avatar and portrait_bbox else None,
         },
+        "fixedPortrait": fixed_evidence,
         "titleTop": title_y,
         "font": str(font_path.resolve()),
         "lineStyles": rendered_line_data,

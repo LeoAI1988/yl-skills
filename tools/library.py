@@ -37,7 +37,8 @@ def relative_file(value):
             and all(p not in ('', '.', '..') for p in value.split('/')))
 
 MEMBER_ASSETS = {
-    "yl-short-video-covers/assets/background-black-yellow-tech-v2.png": "ee53e201a98d2fa9ad66f118f80c8ae1999f6781728c54bb220bd1dd311cb1c2"
+    "yl-short-video-covers/assets/background-black-yellow-tech-v2.png": "ee53e201a98d2fa9ad66f118f80c8ae1999f6781728c54bb220bd1dd311cb1c2",
+    "yl-short-video-covers/assets/fixed-portrait-layout-reference.svg": "f8620edf5afab3e7ceaa8c8e6918285088220b4ef2b47cb4ee93dda20295dc9b"
 }
 
 

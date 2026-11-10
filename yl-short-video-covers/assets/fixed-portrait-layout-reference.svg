@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="540" height="720" viewBox="0 0 1080 1440">
+<rect width="1080" height="1440" fill="#10141a"/>
+<rect x="42" y="160" width="968" height="580" fill="none" stroke="#ffc400" stroke-width="4" stroke-dasharray="16 12"/>
+<text x="70" y="240" fill="white" font-size="46" font-family="sans-serif">TITLE: 3–4 LINES</text>
+<rect x="406" y="788" width="734" height="650" fill="none" stroke="#78c7ff" stroke-width="4"/>
+<ellipse cx="773" cy="1030" rx="145" ry="190" fill="#718096"/>
+<path d="M436 1440 Q451 1240 641 1225 L905 1225 Q1096 1240 1111 1440Z" fill="#718096"/>
+<text x="350" y="760" fill="#78c7ff" font-size="36" font-family="sans-serif">FIXED POSITION + SCALE</text>
+<path d="M1077 1170 L1077 1430" stroke="#ffc400" stroke-width="6"/>
+<text x="70" y="1350" fill="white" font-size="32" font-family="sans-serif">Approved shoulder crop only</text>
+</svg>

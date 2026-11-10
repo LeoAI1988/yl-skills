@@ -112,7 +112,8 @@ def main() -> int:
         bbox = alpha.getbbox()
         if bbox:
             source = source.crop(bbox)
-    target_h = int(height * float(placement["scale"]))
+    fixed = manifest.get("fixedPortrait")
+    target_h = int(fixed["height"]) if fixed else int(height * float(placement["scale"]))
     target_w = round(source.width * target_h / source.height)
     source = source.resize((target_w, target_h), Image.Resampling.LANCZOS)
     alpha = source.getchannel("A")
@@ -126,8 +127,8 @@ def main() -> int:
         portrait_mask = portrait_mask.filter(ImageFilter.MaxFilter(size=9)).filter(
             ImageFilter.GaussianBlur(radius=1.0)
         )
-    pos_x = width - target_w + int(width * float(placement["xShift"]))
-    pos_y = height - target_h + int(height * float(placement["yShift"]))
+    pos_x = int(fixed["x"]) if fixed else width - target_w + int(width * float(placement["xShift"]))
+    pos_y = int(fixed["y"]) if fixed else height - target_h + int(height * float(placement["yShift"]))
     portrait = Image.new("1", (width, height), 0)
     portrait.paste(portrait_mask.point(lambda v: 255 if v > 128 else 0), (pos_x, pos_y))
 

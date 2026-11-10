@@ -24,7 +24,9 @@ def verify(c):
         require(Decimal(str(k['appliedRate'])) == rate, 'keep rate mismatch')
         require(Decimal(str(k.get('existingRate', 1))) == 1, 'rate compounded on already sped source')
     source_frames = sum(k['sourceEndFrame'] - k['sourceStartFrame'] for k in keeps)
-    source_fps = Decimal(str(edl.get('sourceFps', edl['fps'])))
+    # Keep coordinates may be on an explicitly normalized frame grid even
+    # when the original video is VFR and sourceFps is a rational average.
+    source_fps = Decimal(str(edl.get('frameGridFps', edl.get('sourceFps', edl['fps']))))
     projected = Decimal(source_frames) / source_fps / rate * Decimal(str(edl['fps']))
     require(abs(float(projected) - edl['outputFrames']) <= .500001, 'EDL length inconsistent with source ranges and rate')
     ids = set()

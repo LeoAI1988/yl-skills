@@ -22,6 +22,9 @@
   "tools": {},
   "local_hooks": {},
   "video": {
+    "broll": {
+      "material_roots": []
+    },
     "archive": {
       "workspace_root": "",
       "final_dir": "",

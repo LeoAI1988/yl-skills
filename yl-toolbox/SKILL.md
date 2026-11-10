@@ -31,6 +31,7 @@ description: yl 个人精选工具箱入口。用户要求使用 yl 集群、选
 - “把这几段课程和演示录屏按课剪出来”：`yl-media → yl-video → yl-course-video-editor`，轻剪、保留演示、校正单行字幕、一次倍速及单独平衡播放声。
 - “用 yl 工具箱把这段真人口播剪好”：`yl-media → yl-video`，再进入口播剪辑工具；未选模式时由成员询问。
 - “用Remotion把长视频切成6至10条独立短片，二维码遮盖，先不加字幕”：`yl-media → yl-video → yl-remotion-video-slicer`，复用已有授权与完整源稿，保留每条独立时间轴。
+- “把超长素材重新设计成多个不同主题、不同逻辑线的短视频，少重叠，先给详细方案”：`yl-media → yl-video → yl-long-video-multi-topic-editor`，先做全文地图和全批分线，再按范围完成精剪、反馈、封面、可选增强及未增强/增强双版本交付。
 - “用 yl 剪横屏访谈，先给完整删改稿”：`yl-media → yl-video → yl-chatcut-landscape-interview-editor`，沿用半自动模式，收集本轮全部红线后执行。
 - “用 yl 工具箱，全自动剪这个视频”：沿用全自动选择，执行完整精剪、适用的增强和验收，不重复询问已选模式。
 - “这批改完归档，不需要开拍”：`yl-media → yl-video → yl-video-archive`，先完成已明确修改，再归档最终成片、审查稿及原始母带，按现有规则核验清理。
