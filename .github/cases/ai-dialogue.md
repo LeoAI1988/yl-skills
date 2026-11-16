@@ -6,8 +6,6 @@
 
 我用自己的历史原稿，做了这条庭院对话。《普通人的捷径》最终长 **27.625 秒**，两个人物、三轮问答、字幕和封面都有实际成片。
 
-[![数字分身剧情动态预览](../assets/cases/dialogue-result.gif)](https://github.com/user-attachments/assets/ab23328f-22db-4317-829a-1f522f19044f)
-
 https://github.com/user-attachments/assets/ab23328f-22db-4317-829a-1f522f19044f
 
 ## “0 Token”这条路线怎样成立

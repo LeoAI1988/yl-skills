@@ -19,8 +19,6 @@ YL 读完整段素材，找出主线，把精彩的原句放到合适的位置�
 | [![无稿原片，点击查看视频](assets/cases/talking-source.jpg)](https://github.com/user-attachments/assets/c77203df-4bed-46af-ad5d-495f44256658) | [![最终成片，点击查看视频](assets/cases/talking-result.jpg)](https://github.com/user-attachments/assets/e1639a7b-6a87-43e9-ab9c-5c1144ad3e38) |
 | 原片 00:18–01:05，保留当时的起句、停顿和重复 | 完整成片 3:32，保留我的原声 |
 
-https://github.com/user-attachments/assets/e1639a7b-6a87-43e9-ab9c-5c1144ad3e38
-
 原来在四十多秒处才说到的判断，被提到开头。开场之后，接上“为什么我改变了看法”，再讲工具、随手记录、知识回流和发布反馈。每次调序都能回到原话和源时间，想改某一句也能继续改。
 
 [查看完整过程、逐句对照和可复制指令](cases/talking-head.md)
@@ -43,10 +41,10 @@ https://github.com/user-attachments/assets/e1639a7b-6a87-43e9-ab9c-5c1144ad3e38
 
 | 四条短片 | 完整时长 | 本页展示 |
 | --- | --- | --- |
-| Bot 这么火，为什么我的重活仍然交给 Codex | 1:37 | [前 18 秒](https://github.com/user-attachments/assets/d4a27f08-d491-4d5d-b6a1-69a6ce08742c) |
-| 我在 Bot 里，给自己配了四个员工 | 1:14 | [前 18 秒](https://github.com/user-attachments/assets/da1a0db3-9024-4a2d-802e-ad231b39aa67) |
-| 叫它 AI 助理，得先有眼力见 | 1:05 | [前 18 秒](https://github.com/user-attachments/assets/2b3d6975-f038-4887-ad08-5b3c3cffba8a) |
-| 你是董事长，Codex 是总经理 | 1:20 | [前 18 秒](https://github.com/user-attachments/assets/8aafea74-a111-481d-9d97-795a893d61dd) |
+| Bot 这么火，为什么我的重活仍然交给 Codex | 1:37 | [前 18 秒](cases/long-video.md#播放四条短片) |
+| 我在 Bot 里，给自己配了四个员工 | 1:14 | [前 18 秒](cases/long-video.md#播放四条短片) |
+| 叫它 AI 助理，得先有眼力见 | 1:05 | [前 18 秒](cases/long-video.md#播放四条短片) |
+| 你是董事长，Codex 是总经理 | 1:20 | [前 18 秒](cases/long-video.md#播放四条短片) |
 
 先通读全文，找出不同的问题和论证，把材料分给各条视频，再分别安排开头、过程和结尾。原声选段、字幕、展示画面和封面都跟着各自的结构走。
 
@@ -60,7 +58,7 @@ https://github.com/user-attachments/assets/e1639a7b-6a87-43e9-ab9c-5c1144ad3e38
 
 这里的 **0 Token 路线**采用视频平台网页的免费生成额度，本地完成剪辑。可用额度和模型以制作时的账号页面为准，策划与操作占用的 Agent 模型额度按宿主计算。
 
-[![数字分身剧情前八秒预览](assets/cases/dialogue-result.gif)](https://github.com/user-attachments/assets/ab23328f-22db-4317-829a-1f522f19044f)
+[![数字分身剧情前八秒预览](assets/cases/dialogue-result.gif)](cases/ai-dialogue.md)
 
 [看完整样片、对白来源和制作步骤](cases/ai-dialogue.md)
 
