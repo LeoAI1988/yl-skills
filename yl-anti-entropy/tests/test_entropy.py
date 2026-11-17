@@ -56,6 +56,30 @@ class EntropyTests(unittest.TestCase):
         with self.assertRaises(ValueError): self.make_plan()
         self.assertTrue(self.copy.exists())
 
+    def test_removed_scope_root_still_writes_completed_receipt(self):
+        work = self.root / 'confirmed-work'
+        work.mkdir()
+        (work / 'render.bin').write_bytes(b'generated')
+        original_hash = m.sha(self.original)
+        final_hash = m.sha(self.final)
+        self.make_plan(
+            actions=[{'kind': 'process_tree', 'path': str(work), 'result_confirmed': True}],
+            roots=[str(work)],
+        )
+
+        result = m.execute(self.plan, self.receipt)
+
+        self.assertFalse(work.exists())
+        self.assertEqual(result['state'], 'COMPLETED')
+        self.assertEqual(m.read(self.receipt), result)
+        self.assertEqual(result['completed'][0]['files'], 1)
+        self.assertEqual(result['completed'][0]['logical_bytes'], len(b'generated'))
+        self.assertEqual(set(result['free_before']), {str(work)})
+        self.assertEqual(set(result['free_after']), {str(work)})
+        self.assertIsInstance(result['free_after'][str(work)], int)
+        self.assertEqual(m.sha(self.original), original_hash)
+        self.assertEqual(m.sha(self.final), final_hash)
+
     def test_apply_without_execute_does_not_mutate(self):
         self.make_plan()
         call = subprocess.run([sys.executable, '-B', str(Path(m.__file__)), 'apply', '--plan', str(self.plan), '--receipt', str(self.receipt)],

@@ -19,6 +19,31 @@ def sha(path):
     return h.hexdigest()
 
 
+def numeric_split_candidates(caps):
+    """Locate decimal, version and percentage tokens crossing display boundaries."""
+    stream = ''
+    boundaries = []
+    for page_index, caption in enumerate(caps):
+        if page_index:
+            boundaries.append((len(stream), page_index, 'page'))
+        for line_index, line in enumerate(caption['text'].splitlines()):
+            if line_index:
+                boundaries.append((len(stream), page_index, 'line'))
+            stream += re.sub(r'\s+', '', line)
+    findings = []
+    pattern = r'[vV]?\d+(?:[.．]\d+)+(?:[%％])?|\d+[%％]'
+    for token in re.finditer(pattern, stream):
+        for position, page_index, boundary_type in boundaries:
+            if token.start() < position < token.end():
+                findings.append({
+                    'type': 'numeric_token_split', 'token': token.group(),
+                    'boundary': boundary_type, 'page_index': page_index,
+                    'at': caps[page_index]['startMs'] / 1000,
+                    'text': caps[page_index]['text'],
+                })
+    return findings
+
+
 def candidates(caps):
     if not isinstance(caps, list):
         raise ValueError('Captions must be an array')
@@ -36,6 +61,8 @@ def candidates(caps):
             offsets.append(len(stream)); times.append(start / 1000); stream += t
         if end - start >= 8000:
             out.append({'type': 'caption_freeze', 'at': start / 1000, 'text': c['text']})
+
+    out.extend(numeric_split_candidates(caps))
 
     def time_at(i):
         return times[bisect.bisect_right(offsets, i) - 1]

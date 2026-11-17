@@ -9,9 +9,35 @@ import tempfile
 import unittest
 
 from library import ROOT, read_json
-from writing_foundation import SHARED_FILES, HOOK, validate
+from writing_foundation import SHARED_FILES, HOOK, INDEPENDENT_HOOK, validate, uses_shared_foundation
 
 class WritingChecks(unittest.TestCase):
+    def test_independent_member_rejects_shared_copy_and_missing_contract(self):
+        with tempfile.TemporaryDirectory(prefix='yl-independent-writing-') as tmp:
+            root = Path(tmp)
+            for rel in SHARED_FILES:
+                target = root/'yl-writing'/rel
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text('shared fixture', encoding='utf-8')
+            folder = root/'yl-independent-example'
+            (folder/'references').mkdir(parents=True)
+            (folder/'SKILL.md').write_text(INDEPENDENT_HOOK, encoding='utf-8')
+            (folder/'references/voice.md').write_text('Independent voice review', encoding='utf-8')
+            release = {'skills': {'yl-independent-example': {
+                'category': 'media', 'subcategory': 'writing', 'writing_foundation': 'independent'}}}
+            validate(root, release)
+            (folder/SHARED_FILES[0]).write_text('unwanted inherited copy', encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'shared foundation copies'):
+                validate(root, release)
+            (folder/SHARED_FILES[0]).unlink()
+            (folder/'SKILL.md').write_text('Missing reference', encoding='utf-8')
+            with self.assertRaisesRegex(ValueError, 'direct-call contract'):
+                validate(root, release)
+
+    def test_unknown_foundation_strategy_is_rejected(self):
+        with self.assertRaisesRegex(ValueError, 'Unknown writing foundation'):
+            uses_shared_foundation({'writing_foundation': 'unreviewed'})
+
     def check_text(self, value, skill='yl-writing'):
         with tempfile.TemporaryDirectory(prefix='yl-writing-input-') as name:
             path = Path(name)/'article.md'
@@ -46,6 +72,19 @@ class WritingChecks(unittest.TestCase):
         report = json.loads(self.check_text('灯亮了。\n```text\n我曾经用过一个比喻。严谨地说，仅供参考。\n```').stdout)
         self.assertEqual(report['candidate_count'], 0)
 
+    def test_delivery_explanations_are_reviewed_without_editing(self):
+        value = ('模型生成后做了程序回读检查，桌面端还没有打开验收。\n'
+                 '前面是第一版模型，两张图对应不同阶段。')
+        report = json.loads(self.check_text(value).stdout)
+        hits = [c for c in report['candidates'] if '工程交代候选' in c['detail']]
+        self.assertEqual(len(hits), 3)
+        self.assertTrue(all(c['decision'] == 'unresolved' for c in hits))
+
+    def test_necessary_safety_instruction_and_delivery_code_are_not_blanket_flagged(self):
+        value = '维修前请切断电源。\n```text\n程序回读检查，两张图对应不同阶段。\n```'
+        report = json.loads(self.check_text(value).stdout)
+        self.assertFalse(any('工程交代候选' in c['detail'] for c in report['candidates']))
+
     def test_plain_text_still_needs_semantic_review(self):
         result = self.check_text('灯亮了。桌上有一张地图。')
         self.assertEqual(result.returncode, 0)
@@ -73,6 +112,8 @@ class WritingChecks(unittest.TestCase):
         for member, config in release['skills'].items():
             if config['category'] != 'writing' and config.get('subcategory') != 'writing':
                 continue
+            if not uses_shared_foundation(config):
+                continue
             with self.subTest(member=member), tempfile.TemporaryDirectory(prefix='yl-writing-standalone-') as tmp:
                 folder = Path(tmp)/member
                 shutil.copytree(ROOT/member, folder)
@@ -90,7 +131,8 @@ class WritingChecks(unittest.TestCase):
             for name, config in release['skills'].items():
                 if config['category'] == 'writing' or config.get('subcategory') == 'writing':
                     folder = work/name
-                    for rel in (*SHARED_FILES, 'SKILL.md'):
+                    refs = (*SHARED_FILES, 'SKILL.md') if uses_shared_foundation(config) else ('SKILL.md', 'references/voice.md')
+                    for rel in refs:
                         target = folder/rel
                         target.parent.mkdir(parents=True, exist_ok=True)
                         shutil.copyfile(ROOT/name/rel, target)

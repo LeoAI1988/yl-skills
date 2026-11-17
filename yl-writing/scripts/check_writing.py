@@ -104,6 +104,11 @@ DEFENSIVE_NOTE_PATTERNS = (
     re.compile(r"(?:为(?:了)?避免误解|严谨地说|仅供参考)"),
     re.compile(r"不构成[^。！？\n]{0,12}(?:承诺|保证)"),
 )
+DELIVERY_NOTE_PATTERNS = (
+    re.compile(r"(?:程序|数据)(?:回读|读回)(?:检查|校验)"),
+    re.compile(r"桌面端[^。！？\n]{0,16}(?:没有|尚未|还未|未)[^。！？\n]{0,10}验收"),
+    re.compile(r"(?:两张图|图纸|两版)[^。！？\n]{0,16}(?:对应|属于)[^。！？\n]{0,8}不同阶段"),
+)
 
 FORBIDDEN_PUNCTUATION = {
     "：": "中文冒号",
@@ -424,7 +429,8 @@ def main() -> int:
     warnings = []
 
     for label, patterns in (("无内容前缀候选", META_PREFACE_PATTERNS),
-                            ("防御性说明候选", DEFENSIVE_NOTE_PATTERNS)):
+                            ("防御性说明候选", DEFENSIVE_NOTE_PATTERNS),
+                            ("工程交代候选", DELIVERY_NOTE_PATTERNS)):
         for pattern in patterns:
             for match in pattern.finditer(prose):
                 warnings.append(

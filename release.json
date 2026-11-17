@@ -1,16 +1,16 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.17.2",
-  "date": "2026-11-10",
+  "version": "3.20.1",
+  "date": "2026-11-17",
   "skills": {
     "yl-toolbox": {
-      "version": "3.7.17",
+      "version": "3.9.0",
       "category": "entry",
       "role": "router",
       "license": "MIT"
     },
     "yl-writing": {
-      "version": "3.5.0",
+      "version": "3.6.0",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -24,21 +24,21 @@
       "subcategory": "video"
     },
     "yl-chekhov-deep-writing": {
-      "version": "3.4.0",
+      "version": "3.4.1",
       "category": "media",
       "role": "member",
       "license": "Apache-2.0 AND CC-BY-4.0 AND CC-BY-SA-4.0",
       "subcategory": "writing"
     },
     "yl-write-impact-wechat": {
-      "version": "3.4.0",
+      "version": "3.4.1",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "writing"
     },
     "yl-remotion-talking-head-editor": {
-      "version": "3.6.0",
+      "version": "3.7.2",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -52,7 +52,7 @@
       "subcategory": "video"
     },
     "yl-write-voice-led-wechat": {
-      "version": "3.4.0",
+      "version": "3.4.1",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -151,7 +151,7 @@
       "license": "MIT"
     },
     "yl-media": {
-      "version": "3.7.10",
+      "version": "3.8.0",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -172,7 +172,7 @@
       "subcategory": "video"
     },
     "yl-ppt": {
-      "version": "1.0.5",
+      "version": "1.0.6",
       "category": "office",
       "role": "member",
       "license": "MIT",
@@ -193,7 +193,7 @@
       "subcategory": "research"
     },
     "yl-video-archive": {
-      "version": "3.6.4",
+      "version": "3.6.5",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -242,7 +242,7 @@
       "subcategory": "video-summary"
     },
     "yl-anti-entropy": {
-      "version": "1.0.3",
+      "version": "1.0.4",
       "category": "office",
       "role": "member",
       "license": "MIT",
@@ -277,7 +277,7 @@
       "subcategory": "video"
     },
     "yl-wechat-moments": {
-      "version": "1.1.0",
+      "version": "1.1.1",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -295,6 +295,28 @@
       "role": "member",
       "license": "MIT",
       "subcategory": "video"
+    },
+    "yl-skill-maintainer": {
+      "version": "1.0.0",
+      "category": "tooling",
+      "role": "member",
+      "license": "MIT"
+    },
+    "yl-data-driven-copy": {
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT AND CC-BY-4.0",
+      "subcategory": "writing",
+      "writing_foundation": "independent"
+    },
+    "yl-case-to-article": {
+      "version": "1.0.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "writing",
+      "writing_foundation": "independent"
     }
   }
 }

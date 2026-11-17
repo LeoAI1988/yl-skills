@@ -20,6 +20,8 @@ python tools/check_updates.py --source "chekhov-deep-writing=该来源 Skill 目
 
 ## 合并与审核
 
+更新方法、吸收实践经验或检查现有技能结构时，使用 [技能更新与优化](yl-skill-maintainer/SKILL.md) 梳理目标和执行链，再完成本节的版本、审核与构建。当前有效规则在对应步骤维护，历史变更记入已有 CHANGELOG。
+
 1. 阅读并核对改动，保留个人配置和原件；只维护这套通用核心。历史散装版仅做迁移参考，功能迁入并验收后退出活动入口。
 2. 保留完整方法、有效通用案例、合法署名和必要脚本。私人案例改为安装者输入接口，不能替换成虚构事实。
 3. 更新成员版本、快照、CHANGELOG、引用。新增成员登记到 `release.json`。
@@ -51,6 +53,8 @@ python tools/verify.py
 新类别先确认独立使用场景，再新增 `yl-分类` 入口。分类只负责选择交接，成员保留完整规则。文章只有一个主风格，组合须有不同贡献。
 
 ## 公共写作层更新
+
+独立重建的写作成员可在发行登记中设置 `writing_foundation: independent`。这类成员在自身入口明确引用 `references/voice.md`，自行维护来源、原声与事实复核，并通过对应真实输入验证。同步器只处理 shared 成员，构建同时检查 independent 成员的自包含入口和旧公共文件混入。该选择随成员审核登记，用于独立方法的稳定维护。
 
 共同规则只先改 `yl-writing/references/writing-foundation.md`、`anti-ai-rules.md`、`anti-ai-extraction.md`、来源清单及 `scripts/check_writing.py`。来源比对范围见 `yl-writing/references/source-snapshot.json`；新来源先提取并复核，不复制私人校准或案例。
 

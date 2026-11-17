@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl · 案例整理成文章"
+  short_description: "从真实项目和口述素材还原过程，结合前后对照与数据写成案例文章"
+  default_prompt: "使用 $yl-case-to-article 查找这个案例的完整材料与操作记录，保留我的表达，讲清痛点、目的、过程、效果、用法和使用场景，整理成文章并附真实证据。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "数据驱动爆款文案"
+  short_description: "从本人成交母稿、双账号表现与表达资产，续写或融合新素材生成口播文案"
+  default_prompt: "用 $yl-data-driven-copy 读取最新数据，从我的成交母稿和知识表达资产写一篇新的口播文案。"

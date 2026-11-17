@@ -1,7 +1,7 @@
 """Check common writing copies; --apply copies reviewed canonical edits locally."""
 import argparse
 from library import ROOT, NAME, read_json
-from writing_foundation import SHARED_FILES, validate
+from writing_foundation import SHARED_FILES, validate, uses_shared_foundation
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
@@ -9,7 +9,8 @@ def main():
     args = parser.parse_args()
     release = read_json(ROOT/'release.json')
     members = [name for name, item in release['skills'].items()
-               if item['category']=='writing' or item.get('subcategory')=='writing']
+               if (item['category']=='writing' or item.get('subcategory')=='writing')
+               and uses_shared_foundation(item)]
     if any(not NAME.fullmatch(name) or (ROOT/name).is_symlink() or
            bool(getattr((ROOT/name).stat(), 'st_file_attributes', 0) & 0x400)
            for name in members):

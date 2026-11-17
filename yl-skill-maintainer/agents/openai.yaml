@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl · 技能更新与优化"
+  short_description: "统筹更新与检查技能，合并重复规则，清理过时内容并验证执行完整性"
+  default_prompt: "使用 $yl-skill-maintainer 检查并优化指定技能，围绕原目标整合新要求、合并重复与冲突、清理过时内容并完成验证。"

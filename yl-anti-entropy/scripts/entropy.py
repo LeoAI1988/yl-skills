@@ -419,7 +419,11 @@ def execute(plan_path, receipt):
     for a in plan['actions']:
         if a['kind'] == 'duplicate' and a.get('mode') == 'shortcut':
             create_shortcut(Path(a['path'] + '.lnk'), Path(a['keep']))
-    disks = {r: shutil.disk_usage(r).free for r in plan['scope_roots']}
+    # Scope roots may themselves be removed. Their parents are outside all
+    # deletion targets; mount points must still be measured on their own volume.
+    disk_paths = {r: absolute(r) if os.path.ismount(r) else absolute(r).parent
+                  for r in plan['scope_roots']}
+    disks = {r: shutil.disk_usage(p).free for r, p in disk_paths.items()}
     done, failures = [], []
     for action in plan['actions']:
         try:
@@ -439,7 +443,7 @@ def execute(plan_path, receipt):
         if a['kind'] == 'duplicate' and sha(absolute(a['keep'])) != a['sha256']:
             failures.append({'path': a['keep'], 'error': 'Retained original changed'})
     result = {'state': 'PARTIAL' if failures else 'COMPLETED', 'completed': done, 'failures': failures,
-              'free_before': disks, 'free_after': {r: shutil.disk_usage(r).free for r in plan['scope_roots']},
+              'free_before': disks, 'free_after': {r: shutil.disk_usage(p).free for r, p in disk_paths.items()},
               'backup_created': False, 'disposal': 'Permanent removal; no Recycle Bin copy. Logical bytes are not guaranteed allocated bytes.'}
     dump(receipt, result)
     return result

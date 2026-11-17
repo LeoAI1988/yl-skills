@@ -39,3 +39,9 @@
 `yl-ppt` 的工作流文档与只读 PPTX 检查脚本为本库独立实现，采用 MIT。包内不含任何商业幻灯片运行时、宿主内置 Skill 原文、私人课程、参考 PPT、商品图片、二维码或字体。各宿主的生成、图像及渲染工具另按其许可和可用性使用；共享工作流不承诺跨宿主具备相同工具。
 
 `yl-course-summary` 根据课程配套实操手册流程独立编写，工作流、模板和 PDF 导出代码采用 MIT。不分发真实课程、原逐字稿、讲师身份、字体或宿主 Skill 原文；ReportLab、pypdf 及安装者提供的字体另按其实际许可使用。
+
+## 数据驱动文案的表达复核
+
+`yl-data-driven-copy/references/voice.md` 的限定句信息作用与事实强度复核参考 Yila contributors 的 Awesome Defensive Writing 清晰表达参考，经过中文口播场景的重组和改写，采用 CC BY 4.0。技能其他新编实现采用 MIT。来源及许可正文保存在该成员的 NOTICE.md 和 LICENSES 目录。
+
+[上游项目](https://github.com/Yila-AI/awesome-defensive-writing) · [许可范围](https://github.com/Yila-AI/awesome-defensive-writing/blob/main/LICENSE.md)

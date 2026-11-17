@@ -10,7 +10,7 @@
 
 - 总入口 `yl-toolbox`。
 - 知识管理：`yl-knowledge`＋11项职责，从建库到检查。
-- 自媒体：`yl-media` 是统一入口，下设写作、视频、平台发布、采集复盘及外部资料研究，共25项。写作通过 `yl-writing`，朋友圈文案、配图和局部改图进入 `yl-wechat-moments`，视频通过 `yl-video`；定稿文章转无真人出镜的旁白图解视频进入 `yl-article-narration-video`，数字分身双人剧情进入 `yl-ai-dialogue-video`，保留本人原话、锁定形象、分段生成并本地精剪；完整课程与带演示画面的长视频进入 `yl-course-video-editor`，超长素材多主题、多逻辑线重组和多轮精剪进入 `yl-long-video-multi-topic-editor`，普通独立切片进入 `yl-remotion-video-slicer`，同稿多拍按数据二创进入 `yl-viral-video-remixer`，单条精剪保留既有成员，成片母带归档进入 `yl-video-archive`。抖音和视频号分别进入 `yl-douyin-publisher`、`yl-channels-publisher`；小红书进入 `yl-xiaohongshu-publisher`，逐篇准备并保留用户最终提交。复盘进入视频号/公众号成员；成交证据与资料增量更新进入 `yl-sales-content-refresh`；X选题进入 `yl-x-topic-research`，YouTube详细总结进入 `yl-youtube-deep-summary`，外部作者材料不自动蒸馏成本人观点。
+- 自媒体：`yl-media` 是统一入口，下设写作、视频、平台发布、采集复盘及外部资料研究，共27项。写作通过 `yl-writing`，朋友圈文案、配图和局部改图进入 `yl-wechat-moments`，视频通过 `yl-video`；定稿文章转无真人出镜的旁白图解视频进入 `yl-article-narration-video`，数字分身双人剧情进入 `yl-ai-dialogue-video`，保留本人原话、锁定形象、分段生成并本地精剪；完整课程与带演示画面的长视频进入 `yl-course-video-editor`，超长素材多主题、多逻辑线重组和多轮精剪进入 `yl-long-video-multi-topic-editor`，普通独立切片进入 `yl-remotion-video-slicer`，同稿多拍按数据二创进入 `yl-viral-video-remixer`，单条精剪保留既有成员，成片母带归档进入 `yl-video-archive`。抖音和视频号分别进入 `yl-douyin-publisher`、`yl-channels-publisher`；小红书进入 `yl-xiaohongshu-publisher`，逐篇准备并保留用户最终提交。复盘进入视频号/公众号成员；成交证据与资料增量更新进入 `yl-sales-content-refresh`；X选题进入 `yl-x-topic-research`，YouTube详细总结进入 `yl-youtube-deep-summary`，外部作者材料不自动蒸馏成本人观点。
 - 办公与管理：`yl-ppt` 负责原稿到课件、批注迭代与多版本管理；`yl-course-summary` 负责长视频总结：课程与演示转实操教程，访谈、讲座与分享按话题保留论述、论据和案例，交付Markdown/PDF及按需目录和合集；`yl-anti-entropy` 独立处理磁盘膨胀排查、唯一性、映射、归档和工程清场；`yl-c-drive-cleanup` 负责Windows C盘缓存、更新残留、临时渲染与重复备份的专项排查及按授权清理。长视频总结按交付结果路由，视频输入不自动进入剪辑分支；防熵增不要求先开展专项任务。
 - 部署：`yl-skill-sync`，整包更新及指定宿主映射。
 
@@ -46,3 +46,5 @@ Get 已实现只读连接器与本地增量状态；Notion/飞书借助已有授
 `yl-anti-entropy` 汇总跨专项的只读磁盘排查、哈希排重、唯一实体/分类映射和归档清场；各专项保留原有收尾步骤并对齐，不删除其功能。日常产出、修订、归档和发布不额外备份；唯一原始输入与唯一确认成果是重新制作兜底，结果确认后清理对应历轮工程、缓存、候选和中间件，不另建工程归档。必要正式源码/PPTX及用户明确交付保持。
 
 仅排查不删除；合理清理按本轮范围与证据执行，未知/唯一文件继续查。目录逻辑大小、硬链接、近期时间分布与真实磁盘可用空间分别核对；无同口径基线不宣称净增长。工具不关闭无关进程、不改系统设置、不触发云端/平台操作。数据与报告在核心之外，结果只留必要摘要，避免清理工具自身膨胀。
+
+数据驱动文案由 `yl-data-driven-copy` 独立承担成交母稿续写和新素材融合，使用本人完整原稿、知识原子与表达资产。该成员显式采用 `3.0-raw-follows` 排序规则，并保留各自的成交证据。个人数据、模式卡与生成历史存放于核心外。
