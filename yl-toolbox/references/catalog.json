@@ -1,5 +1,5 @@
 {
-  "version": "3.32.0",
+  "version": "3.32.1",
   "skills": [
     {
       "name": "yl-ai-dialogue-video",
@@ -323,8 +323,8 @@
     },
     {
       "name": "yl-remotion-video-slicer",
-      "description": "编排长口播、课程、述品或访谈的普通多条切片。按完整论述选段，用 Remotion 保留可编辑节点、源帧映射及二维码遮盖，支持已剪切片补包装。跨段文案重构、口播原声精剪、横竖版式与图解可按需组合。",
-      "version": "1.1.0",
+      "description": "从长口播、课程、述品或访谈中挑出最值得独立传播的片段。用源内最抓人的原话开场，逐句剪紧气口与铺垫，保全论述和落点。用 Remotion 保存可编辑节点与源帧映射，支持指定选段、二维码遮盖及已剪切片补包装。",
+      "version": "1.1.1",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -367,7 +367,7 @@
     {
       "name": "yl-video",
       "description": "YL 视频入口，按产物组合口播基础剪辑、长稿逻辑重构、横竖屏字幕标题、横竖屏重点图解及课程、访谈、多条切片、封面和归档。也可直接处理已有剪辑或单一图层。",
-      "version": "3.14.1",
+      "version": "3.14.2",
       "category": "media",
       "role": "router",
       "license": "MIT",

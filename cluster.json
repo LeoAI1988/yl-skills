@@ -1,6 +1,6 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.32.0",
+  "version": "3.32.1",
   "date": "2026-11-27",
   "skills": [
     {
@@ -680,22 +680,22 @@
     },
     {
       "name": "yl-remotion-video-slicer",
-      "description": "编排长口播、课程、述品或访谈的普通多条切片。按完整论述选段，用 Remotion 保留可编辑节点、源帧映射及二维码遮盖，支持已剪切片补包装。跨段文案重构、口播原声精剪、横竖版式与图解可按需组合。",
-      "version": "1.1.0",
+      "description": "从长口播、课程、述品或访谈中挑出最值得独立传播的片段。用源内最抓人的原话开场，逐句剪紧气口与铺垫，保全论述和落点。用 Remotion 保存可编辑节点与源帧映射，支持指定选段、二维码遮盖及已剪切片补包装。",
+      "version": "1.1.1",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "video",
       "files": {
-        "agents/openai.yaml": "9b3efd75ba3950a7b8ee8e7794c03b7466f89b5ea3064b5e2d007bd673edddc5",
+        "agents/openai.yaml": "89087ee8f69102302f71ba87c547ad853eec40eed76faf0bcb80f2c25a6b04a1",
         "LICENSE": "9df3d4a103986febda021858a1429904f3d26f4be349d2f0780a4583fc70eeab",
         "NOTICE.md": "6886e7e98bbc016534c418cbbb6d8d377bc63108cfc21442548518185b79e23a",
-        "references/editorial.md": "0f8800e968499cb7f7122c399333d60440c55c87b4e70fa2ec82f1aace5bf82c",
+        "references/editorial.md": "6b52e3bef126fb5807c2d36abdc7dbd92b04f9b74d1c7f53cbf327b98e9f1fd6",
         "references/manifest.example.json": "08197dc34fc540cf354c477108d70435240a78bf6c70cf5fd20f464a1f415bc8",
         "references/runtime.md": "e6f29456ef86fa8fc8f9d5fec4775100d8e7fa4e7bfb1ac9751dbe08a791ee1b",
         "scripts/slicer.py": "97f7a478bd373ade17893416fd571ba2e69e5977ef5ba6826ca54511c17616a3",
         "scripts/test_slicer.py": "d83a9e49d3a3cc1c911332bd4c6b4e7f74455cb5e3e79ff037d57199bb93b73c",
-        "SKILL.md": "3bead50a33a68b7d1c6fd36e876156ded4c352dad600754814bd1c6fe5c6ed2c",
+        "SKILL.md": "30ada903f6ecbc14b8033e878e03bf05f2453a2fc1074bd15955d2ff6a315b05",
         "templates/Layer.tsx": "ef1b4dddf9a38a01b92735d0fb128b3d6847dc1cd1d6b1d69e5a1d861ea0fca0",
         "templates/package.json": "8661ab9b0dc96e46e9b1b6ee7cd1691db488d87d3bdff11b9eba2589d125e099",
         "templates/render-layers.mjs": "5b89d106727507947c28fa429a8b41a2e4386aae3ec37a5b4ec0b7052340ca93"
@@ -798,7 +798,7 @@
       "files": {
         "agents/openai.yaml": "cfbf826e4ebaa27cffb2a1dbf41c9105373cd4fd276108f195e86914b41aceb6",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "references/catalog.json": "81e73f164c175c4c23938c0ccfa94131c3a6d3641eca43508e56f6e144bbe98b",
+        "references/catalog.json": "4d45c2ec65bfe87ebbf0f6c43442abcccea27a01cc11eaf1501577596b5e8905",
         "references/profile.example.json": "82f550b9808fcc1d542de37ccc7844b0bd8945f105c1df5f9c1141010378c2cb",
         "references/profile.md": "d217d0772a1c6e75815618c9c2c484a839b18199ef50c807e0e0b7686eb676df",
         "SKILL.md": "73a56a1550a9e9154067c40ddeadf5ccbec74a358fbc8d06b1f05f9645bac668"
@@ -807,7 +807,7 @@
     {
       "name": "yl-video",
       "description": "YL 视频入口，按产物组合口播基础剪辑、长稿逻辑重构、横竖屏字幕标题、横竖屏重点图解及课程、访谈、多条切片、封面和归档。也可直接处理已有剪辑或单一图层。",
-      "version": "3.14.1",
+      "version": "3.14.2",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -815,7 +815,7 @@
       "files": {
         "agents/openai.yaml": "a5c2d9bb011cdc991704f37f823de329267d181e57f873c13950d90a07af56d3",
         "LICENSE": "d26ac124b1bf6babe6e8093d5ea277aa264a10887787516a9c657635f74810b7",
-        "SKILL.md": "48b4932e3645ac4e612b4dba57ecca30c57805067ad500ba66da57b55f3e3c20"
+        "SKILL.md": "774b7d397c8b4274b4423e9360717b8921404ad035a113398d2947d4afd171be"
       }
     },
     {

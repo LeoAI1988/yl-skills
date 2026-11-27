@@ -1,4 +1,4 @@
 interface:
   display_name: "yl 长视频切片剪辑"
-  short_description: "把长视频剪成多条独立短片，强化源内开头，支持标题和二维码遮盖"
-  default_prompt: "使用 $yl-remotion-video-slicer 把这段长视频剪成多个独立完整的短片，优先源内高能句开头，按我的要求处理标题、原字幕和二维码，交付成片与可编辑工程。"
+  short_description: "从长视频挑出最值得传播的片段，用强原话开场，剪紧停顿，保留完整论述"
+  default_prompt: "使用 $yl-remotion-video-slicer 从长视频挑出最值得独立传播的片段，比较原开头和中后段的强句，把最抓人的原话放到第一句。剪紧停顿和重复铺垫，保留递进与收尾，按我的要求处理标题、原字幕和二维码，交付成片与可编辑工程。"
