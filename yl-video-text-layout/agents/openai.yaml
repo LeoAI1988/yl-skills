@@ -1,0 +1,4 @@
+interface:
+  display_name: "YL · 视频字幕与标题版式"
+  short_description: "按人物、演示区域和画幅选择横屏或竖屏标题及字幕样式"
+  default_prompt: "使用 $yl-video-text-layout 为这条视频排画内标题和字幕，沿用时间轴和已有音轨。"

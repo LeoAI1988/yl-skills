@@ -338,7 +338,7 @@ def passage_authorship(info, start, end):
     return 'unreviewed', False
 
 
-def search(profile, cfg, root, out, query, mode='hybrid', limit=8, include_views=False):
+def search(profile, cfg, root, out, query, mode='hybrid', limit=8, include_views=False, *, source_ids=None, source_kinds=None):
     if not query.strip() or len(query) > 2000:
         raise ValueError('Query must contain 1..2000 characters')
     started = time.monotonic()
@@ -353,8 +353,11 @@ def search(profile, cfg, root, out, query, mode='hybrid', limit=8, include_views
     eligible_docs = {sid for sid, r in docs.items() if sid in current_manifest
                      and current_manifest[sid] == json.loads(r['row_json'])
                      and source_allowed(current_manifest[sid], profile, root)[0]}
-    where = '' if include_views else " WHERE kind IN ('source','clean_source','work')"
-    blocks = {r['id']: dict(r) for r in db.execute('SELECT * FROM blocks' + where) if r['doc_id'] in eligible_docs}
+    if source_ids is not None:
+        eligible_docs.intersection_update(source_ids)
+    kinds = tuple(sorted(SOURCE_KINDS if source_kinds is None else source_kinds))
+    where = '' if include_views else ' WHERE kind IN (' + ','.join('?' for _ in kinds) + ')'
+    blocks = {r['id']: dict(r) for r in db.execute('SELECT * FROM blocks' + where, () if include_views else kinds) if r['doc_id'] in eligible_docs}
     lexical, semantic, exact = [], [], []
     semantic_scores = {}
     if mode != 'semantic':
@@ -383,7 +386,7 @@ def search(profile, cfg, root, out, query, mode='hybrid', limit=8, include_views
             name = model_key(cfg)
             with closing(vector_db(out, True)) as vectors:
                 by_hash = {r['input_hash']: np.frombuffer(r['data'], dtype=np.float32) for r in vectors.execute('SELECT * FROM vectors WHERE model=?', (name,))}
-            candidates = [bid for bid,r in blocks.items() if r['input_hash'] in by_hash and (include_views or r['kind'] in SOURCE_KINDS)]
+            candidates = [bid for bid,r in blocks.items() if r['input_hash'] in by_hash]
             if candidates:
                 matrix = np.vstack([by_hash[blocks[x]['input_hash']] for x in candidates])
                 scores = matrix @ q

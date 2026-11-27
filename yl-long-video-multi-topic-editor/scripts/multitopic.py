@@ -179,13 +179,38 @@ def audit(plan):
             pairs.append(pair)
             if threshold is not None and shared > 0 and ratio > threshold:
                 warnings.append({"kind": "source_overlap", **pair})
+    baseline_comparisons = []
+    baseline_ids = set()
+    for edit in plan.get("comparison_edits", []):
+        name = identifier(edit["id"])
+        if name in baseline_ids or name in seen or not edit.get("segments"):
+            raise ValueError("Comparison edit needs a distinct ID and nonempty source intervals")
+        baseline_ids.add(name)
+        intervals = {}
+        for part in edit["segments"]:
+            source = part["source"]
+            start = integer(part["start_us"], "comparison start")
+            end = integer(part["end_us"], "comparison end", 1)
+            if source not in sources or not start < end <= sources[source]:
+                raise ValueError("Unknown or invalid comparison source interval")
+            intervals.setdefault(source, []).append((start, end))
+        baseline = {source: union(parts) for source, parts in intervals.items()}
+        for clip in clips:
+            shared = sum(intersection(parts, baseline.get(source, []))
+                         for source, parts in uses[clip["id"]].items()) / 1_000_000
+            ratio = shared / clip["unique_source_seconds"]
+            match = dict(clip=clip["id"], comparison=name, shared_source_seconds=shared,
+                         share_of_clip_unique_source=ratio)
+            baseline_comparisons.append(match)
+            if threshold is not None and shared and ratio > threshold:
+                warnings.append(dict(kind="comparison_overlap", **match))
     original = {c["id"]: c for c in plan["clips"]}
     for pair in pairs:
         for field in ("question", "thesis", "opening", "ending"):
             if normalized(original[pair["a"]][field]) == normalized(original[pair["b"]][field]):
                 warnings.append({"kind": "identical_" + field, "a": pair["a"], "b": pair["b"]})
     return {"status": "COMPUTABLE_CHECKS_PASS", "fps": str(fps), "clips": clips,
-            "pairs": pairs, "warnings": warnings, "semantic_review": "NOT_AUTOMATED",
+            "pairs": pairs, "comparison_edits": baseline_comparisons, "warnings": warnings, "semantic_review": "NOT_AUTOMATED",
             "actual_listening": "NOT_PERFORMED"}
 
 

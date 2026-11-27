@@ -92,6 +92,7 @@ def validate(data):
         x, y, w, h = [integer(v, 'title_panel.rect', 0 if i < 2 else 1) for i, v in enumerate(panel['rect'])]
         if x+w > data['width'] or y+h > data['height']:
             raise ValueError('Title panel outside frame')
+        integer(panel.get('featherPx', 0), 'title_panel.featherPx')
         opacity = panel.get('opacity', 0.6)
         if type(opacity) not in (int, float) or not 0 <= opacity <= 1:
             raise ValueError('Title panel opacity must be between zero and one')

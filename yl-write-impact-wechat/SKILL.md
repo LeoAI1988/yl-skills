@@ -34,7 +34,7 @@ description: Use when drafting, revising, or packaging Chinese WeChat Official A
 交付必须分两阶段：
 
 1. **阶段A：文字定稿。** 只创建和维护一份正文 Markdown。
-2. **阶段B：完整包装。** 仅在用户明确确认文字定稿后，制作配图、完整排版 HTML、发布说明和事实说明。
+2. **阶段B：完整包装。** 用户确认文字或明确要求一并包装时，锁定当前文本，制作独立封面、所需配图和排版 HTML。要求存入草稿箱时接着完成微信写入与回读。
 
 违反阶段门槛，就是违反本 Skill。赶时间、节省步骤、用户最终肯定会同意，都不是提前做图或 HTML 的理由。
 
@@ -54,7 +54,7 @@ description: Use when drafting, revising, or packaging Chinese WeChat Official A
    ```
 
    按任务篇幅修改 `--max-chars`。校验失败则继续修改同一份 Markdown。
-8. 等待明确放行。可接受信号包括“文字定稿”“文案没问题，开始排版”“可以做图和 HTML”。“继续”“先这样”“我看看”不构成放行。
+8. 按本次授权衔接包装。用户交来定稿并要求排版或入草稿箱时，直接使用该版本。仍在讨论文字、只要求记录意见时，等作者明确要求再改。
 
 ## 阶段B：定稿后完整包装
 
@@ -62,20 +62,20 @@ description: Use when drafting, revising, or packaging Chinese WeChat Official A
 
 1. 冻结已确认正文；只从这一份 Markdown 派生其他交付物。
 2. 封面涉及真实人物时，优先寻找有公开来源的真人照片并记录原始链接；只做裁切、色调、明暗、背景和标题排版，不伪造人物、篡改面部或用AI生成图冒充真人照片。需要生成或编辑位图时，使用当前环境已提供的图片工具；没有工具时交付可复用设计规格并如实说明图片状态，不假装已生成图片。
-3. 正文默认不插装饰性AI配图。只有必要的真实聊天截图、公开资料图、数据图或用户明确要求的视觉证据才插入正文；否则只保留封面，优先保证阅读流畅。
-4. 将最终图片引用加入 Markdown，再生成离线一键复制 HTML：
+3. 给需要视觉解释的原段配资料图、数据图或原创示意图。按本次和个人规则选择图源；概念对照图分别画清两侧的对象、关系和变化。整篇无此需要时可只配独立封面。
+4. 将正文配图按阅读顺序加入 Markdown，独立封面通过参数传入，生成离线 HTML：
 
    ```powershell
-   node scripts/build-wechat-html.mjs --input ARTICLE.md --output ARTICLE.html
+   node scripts/build-wechat-html.mjs --input ARTICLE.md --output ARTICLE.html --cover assets/cover.png
    ```
 
 5. 执行成品校验：
 
    ```powershell
-   node scripts/validate-wechat-article.mjs --phase package --md ARTICLE.md --html ARTICLE.html --max-chars 1800
+   node scripts/validate-wechat-article.mjs --phase package --md ARTICLE.md --html ARTICLE.html --cover assets/cover.png --max-chars 1800
    ```
 
-6. 实际打开 HTML，点击复制，粘贴检查标题、段落、加粗、图片、顺序和固定结尾。
+6. 检查封面下载、标题和正文各自的复制范围。用户要求入草稿时，按[微信草稿写入与回读](references/official-account-draft.md)逐篇继续。区分本地校验、接口回读和微信编辑器目视检查。
 
 默认排版合同：
 

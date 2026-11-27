@@ -35,7 +35,7 @@ python -B scripts/slicer.py verify slice-v1/Remotion --ffmpeg ffmpeg --ffprobe f
 - `preview_source`：可选等帧率、等帧数、等画幅的代理；用于Studio。准备前核对等时映射；正式导出始终读取source。工程public中复制预览媒体，计划磁盘空间；仅原片时会复制原片，不修改原件。
 - `segments.text`：这一段实际保留的完整原话；转写必须人工回源，不填摘要。脚本生成按成片顺序的完整顺读稿，标题和解释单列。
 - `title`：可不传/为null。lines保留明确分行，duration_frames控制出场。默认模板为全行同色；需要局部黄字、SVG基线或其他样式时按个人视觉规范编辑Layer后重新prepare/绑定。`font_file`真实字体外置，不捆绑；字重匹配其真实字重。
-- 横版标题独立按目标画布排版；不能仅把竖版标题按高度缩小后直接使用。按用户标注确定标题区域、实际字高、安全边距和换行，长短标题同批核对。`style.title_panel`可传`rect:[x,y,w,h]`、`color`、`opacity`、`radius`添加半透明底板，底板透明度不影响文字；`line_colors`逐行设色，`title_align`控制居中。具体尺寸、字体和底板参数从个人层或本轮参考取得，不作为所有横片的强制默认。
+- 字幕标题的横竖画幅参数取自[字幕标题版式](../../yl-video-text-layout/SKILL.md)。横屏先按视线或空白选侧，将 `title.regionLTRB` 换为模板的 `title_left`、`title_top`、`title_width` 和排字范围。按实测字面加内边距填写 `style.title_panel.rect`（像素 x、y、宽、高），把 `backdrop.alpha` 传 `opacity`，`backdrop.featherPx` 原值传入同名字段。模板只柔化底板，文字保持清晰。旧工程未设 `featherPx` 时沿用原底板。`line_colors` 逐行设色，`title_align` 在已选侧的区域内对齐。
 - `masks`：源帧区间及源像素rect，多处/移动码用多个互相可解释的矩形区间。color必须不透明#RRGGBB。text为用户要求的替换文案，默认为空。静态遮挡不支持追踪算法；Agent须视觉确定区间并检查全覆盖。
 - `approved_audio`：仅包装修订时指定`path`与`timeline_sha256`。先运行validate得到指纹，确认它对应被批准旧成片实际段落，不是将任意旧音轨填上当前指纹。旧AAC至少要核验起止、时长及段落；最终逐包比对，不再次编码。初次导出则按源段裁声、concat并编码AAC一次。
 

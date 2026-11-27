@@ -94,6 +94,29 @@ def allowed_source(cfg, root, value):
         raise ValueError('Register a decoded text artifact, preserving the original separately')
     return p
 
+def body_first(cfg):
+    settings=cfg.get('personal_library',{})
+    return settings.get('enabled') is True and settings.get('generate_atoms') is False
+
+def publish_canonical(cfg, root, receipt, source_id):
+    """A configured, local adapter publishes only human-reviewed source ranges."""
+    if not body_first(cfg) or receipt['ownership'] not in {'user_owned','mixed'}:
+        return None
+    if receipt.get('atoms') or receipt['disposition']!='no_new_atoms':
+        raise ValueError('Body-first ingestion needs no_new_atoms and no new atom artifacts')
+    canonical=receipt.get('canonical') or {}
+    if not canonical.get('title') or not canonical.get('path') or not canonical.get('source_sha256'):
+        raise ValueError('Body-first receipt needs the reviewed canonical title, path and SHA256')
+    path=allowed_source(cfg,root,canonical['path'])
+    if receipt['ownership']=='mixed' and not canonical.get('allowed_spans'):
+        raise ValueError('Mixed canonical needs reviewed personal spans')
+    import importlib.util
+    spec=importlib.util.spec_from_file_location('yl_personal_library',cfg['personal_library']['adapter'])
+    adapter=importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(adapter)
+    request={**canonical,'authorship':'user_owned','source_id':canonical.get('source_id') or source_id,'source_path':str(path)}
+    return adapter.PersonalLibrary(cfg).register(request)['item']
+
 def register(cfg, root, file, source_id, origin, ownership='unknown'):
     if not source_id or len(source_id) > 300:
         raise ValueError('Stable source ID required')
@@ -125,7 +148,8 @@ def register(cfg, root, file, source_id, origin, ownership='unknown'):
             sid for sid,item in state['sources'].items() if sid != source_id and item['sha256'] == digest]
         atomic_json(state_path(cfg, root), state)
     return {'status': 'needs_semantic_processing', 'id': source_id,
-            'new_version': digest, 'previous_versions': len(history)}
+            'new_version': digest, 'previous_versions': len(history),
+            **({'processing_plan':'canonical_body_quotes_map','generate_atoms':False} if body_first(cfg) else {})}
 
 def compact(value):
     return re.sub(r'\s+', ' ', value).strip()
@@ -202,6 +226,8 @@ def record(cfg, root, source_id, receipt):
         if not current.is_file() or sha(current.read_bytes()) != row['sha256']:
             raise ValueError('Live source changed; register new version before recording')
         evidence = validate_receipt(root, row, receipt)
+        canonical_result=publish_canonical(cfg,root,receipt,source_id)
+        if canonical_result:row['canonical']=canonical_result
         old = row.get('receipt')
         if old:
             row.setdefault('receipt_history', []).append(old)
@@ -213,6 +239,7 @@ def record(cfg, root, source_id, receipt):
 def inspect(cfg, root):
     state = state_load(cfg, root)
     pending, errors = [], []
+    canonical_rows=None
     for sid, row in state['sources'].items():
         try:
             live = Path(row['path'])
@@ -221,12 +248,26 @@ def inspect(cfg, root):
             elif row['status'] != 'processed':
                 pending.append({'id': sid, 'reason': row.get('reason', 'pending')})
             else:
+                canonical=row.get('canonical')
+                if canonical and body_first(cfg):
+                    if canonical_rows is None:
+                        canonical_rows={r['source_id']:r for r in read_json(cfg['retrieval']['manifest'])['sources']}
+                    registered=canonical_rows.get(canonical['source_id'])
+                    if not registered:raise ValueError('Canonical source missing from retrieval manifest')
+                    if registered.get('index',True):
+                        body=allowed_source(cfg,root,registered['path']).read_text('utf-8-sig')
+                        if sha(body.encode())!=canonical['hash']:
+                            pending.append({'id':sid,'reason':'canonical_corrected_after_receipt'})
+                    elif registered.get('reason')!='removed_by_owner':
+                        pending.append({'id':sid,'reason':'canonical_no_longer_retrievable'})
                 evidence = validate_receipt(root, row, row['receipt'])
                 if evidence != row.get('artifacts'):
                     pending.append({'id': sid, 'reason': 'artifact_changed_recheck_required'})
         except (ValueError, OSError, KeyError) as exc:
             errors.append({'id': sid, 'reason': str(exc)})
     for check in cfg.get('legacy_checks', []):
+        if body_first(cfg) and check.get('scope')=='historical_atom_network':
+            continue
         try:
             data=read_json(check['path'])
             value=data if not check.get('field') else data.get(check['field'])

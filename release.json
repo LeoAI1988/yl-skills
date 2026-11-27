@@ -1,10 +1,10 @@
 {
   "name": "yl-toolbox-cluster",
-  "version": "3.20.1",
-  "date": "2026-11-17",
+  "version": "3.32.0",
+  "date": "2026-11-27",
   "skills": {
     "yl-toolbox": {
-      "version": "3.9.0",
+      "version": "3.12.0",
       "category": "entry",
       "role": "router",
       "license": "MIT"
@@ -17,7 +17,7 @@
       "subcategory": "writing"
     },
     "yl-video": {
-      "version": "3.10.0",
+      "version": "3.14.1",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -31,28 +31,28 @@
       "subcategory": "writing"
     },
     "yl-write-impact-wechat": {
-      "version": "3.4.1",
+      "version": "3.5.0",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "writing"
     },
     "yl-remotion-talking-head-editor": {
-      "version": "3.7.2",
+      "version": "3.11.1",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "video"
     },
     "yl-short-video-covers": {
-      "version": "3.1.8",
+      "version": "3.3.1",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "video"
     },
     "yl-write-voice-led-wechat": {
-      "version": "3.4.1",
+      "version": "3.5.0",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -79,7 +79,7 @@
       "subcategory": "publishing"
     },
     "yl-knowledge": {
-      "version": "3.3.1",
+      "version": "3.4.0",
       "category": "knowledge",
       "role": "router",
       "license": "MIT"
@@ -91,43 +91,43 @@
       "license": "MIT"
     },
     "yl-knowledge-sync": {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-import": {
-      "version": "3.3.1",
+      "version": "3.3.2",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-ingest": {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-distill": {
-      "version": "3.3.1",
+      "version": "3.3.2",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-expressions": {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-organize": {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-search": {
-      "version": "3.3.1",
+      "version": "3.3.2",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
@@ -139,19 +139,19 @@
       "license": "MIT"
     },
     "yl-knowledge-review-sync": {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-knowledge-check": {
-      "version": "3.3.1",
+      "version": "3.3.2",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-media": {
-      "version": "3.8.0",
+      "version": "3.9.0",
       "category": "media",
       "role": "router",
       "license": "MIT",
@@ -165,7 +165,7 @@
       "subcategory": "analytics"
     },
     "yl-chatcut-landscape-interview-editor": {
-      "version": "3.1.0",
+      "version": "3.2.0",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -193,21 +193,21 @@
       "subcategory": "research"
     },
     "yl-video-archive": {
-      "version": "3.6.5",
+      "version": "3.6.7",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "video"
     },
     "yl-remotion-video-slicer": {
-      "version": "1.0.2",
+      "version": "1.1.0",
       "category": "media",
       "role": "member",
       "license": "MIT",
       "subcategory": "video"
     },
     "yl-course-video-editor": {
-      "version": "1.0.2",
+      "version": "1.1.0",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -284,13 +284,13 @@
       "subcategory": "writing"
     },
     "yl-knowledge-cloud-sync": {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "category": "knowledge",
       "role": "member",
       "license": "MIT"
     },
     "yl-long-video-multi-topic-editor": {
-      "version": "1.0.0",
+      "version": "1.3.0",
       "category": "media",
       "role": "member",
       "license": "MIT",
@@ -317,6 +317,60 @@
       "license": "MIT",
       "subcategory": "writing",
       "writing_foundation": "independent"
+    },
+    "yl-landscape-video-layout": {
+      "version": "1.1.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    "yl-video-emphasis-graphics": {
+      "version": "1.2.1",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    "yl-project-cases": {
+      "version": "1.0.1",
+      "category": "knowledge",
+      "role": "member",
+      "license": "MIT"
+    },
+    "yl-video-text-layout": {
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video",
+      "version": "1.0.0"
+    },
+    "yl-long-video-script-structure": {
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video",
+      "version": "1.0.0"
+    },
+    "yl-openai-api-credits": {
+      "version": "1.1.1",
+      "category": "office",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "api-credits"
+    },
+    "yl-presenter-board-style": {
+      "version": "1.1.0",
+      "category": "media",
+      "role": "member",
+      "license": "MIT",
+      "subcategory": "video"
+    },
+    "yl-multi-end-update": {
+      "version": "1.0.0",
+      "category": "tooling",
+      "role": "member",
+      "license": "MIT"
     }
   }
 }

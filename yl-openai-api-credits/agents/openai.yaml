@@ -1,0 +1,4 @@
+interface:
+  display_name: "YL · OpenAI API 赠额"
+  short_description: "通过组织 API 额度转写、绘图、编辑封面和分析素材，取回结果并汇报可用余额"
+  default_prompt: "用 $yl-openai-api-credits 调用我的 OpenAI API 赠额完成这项任务。"

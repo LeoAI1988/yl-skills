@@ -5,6 +5,10 @@ description: 将指定本地文档、照片、音视频及逐字稿接入知识�
 
 # 本地资料接入
 
+### 已配置的正文优先流程
+
+先读取本次 profile。仅当 `personal_library.enabled=true` 且 `generate_atoms=false` 时，执行 [共同合同中的正文优先分支](../yl-knowledge/references/contract.md#正文优先分支)。此模式覆盖下文“必须蒸馏/更新原子”的默认流程：新增只登记校订正文、归属与版本，接金句候选/拒收、关系、检索及验收。跳过原子扫描、补卡、重建及其验收钩子。未启用时沿用下文原有流程。
+
 读同级 `yl-knowledge/references/contract.md`、个人配置及 `yl-knowledge-distill/references/objects.md`。只处理用户指定来源，不全盘扫描。
 
 先清点每份文件、每张照片、每段音视频；原件保持不变。使用已有可用解析/转写工具。图片按实际版面连读，跨页句子不能按左右页截断；录音须保留时间位置。另一份OCR/ASR结果一致不等于已对照原件。

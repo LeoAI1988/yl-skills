@@ -5,6 +5,10 @@ description: YL 知识管理总入口。构建知识库、同步笔记、导入�
 
 # YL 知识管理
 
+### 已配置的正文优先流程
+
+先读取本次 profile。仅当 `personal_library.enabled=true` 且 `generate_atoms=false` 时，执行 [共同合同中的正文优先分支](../yl-knowledge/references/contract.md#正文优先分支)。此模式覆盖下文“必须蒸馏/更新原子”的默认流程：新增只登记校订正文、归属与版本，接金句候选/拒收、关系、检索及验收。跳过原子扫描、补卡、重建及其验收钩子。未启用时沿用下文原有流程。
+
 整套安装，按职责分工，按任务加载。用户说“同步”“导入”“整理进知识库”，默认授权本地完整处理，不要求再说“蒸馏”。外部账号写入、发布、收费服务和后台监控不是此授权的一部分。
 
 先完整读取 [共同规则](references/contract.md) 和 [个人配置约定](../yl-toolbox/references/profile.md)，定位知识库与当前未完成队列。已有库先读其导航和规则；不要为新 Skill 另建平行知识库。初始化需要选择沿用现有结构或新建推荐结构，进入 `yl-knowledge-build`。
@@ -21,7 +25,7 @@ description: YL 知识管理总入口。构建知识库、同步笔记、导入�
 6. `yl-knowledge-obsidian`：已配置时刷新阅读；未安装不阻断 Markdown 交付。
 7. `yl-knowledge-check`：以本次材料清单和未完成旧项验收，不以文件数、空扫描队列或无报错替代完成证明。
 
-只查询用 `yl-knowledge-search`；纯指标更新用 `yl-knowledge-review-sync`。正文哈希未变不重复提炼；新增或修订正文必须完成上述流程。中断保留进度，下次从未完成处继续，不自动创建定时任务。
+项目案例的归档、更新或只读查询转入 [项目案例](../yl-project-cases/SKILL.md)。查询原文、观点和表达用 `yl-knowledge-search`；纯指标更新用 `yl-knowledge-review-sync`。正文哈希未变不重复提炼；新增或修订正文必须完成上述流程。中断保留进度，下次从未完成处继续，不自动创建定时任务。
 
 本版脚本负责确定性的来源登记、变更检测、原句验证、状态和检索；语义判断仍由执行本 Skill 的 Agent 完成。没有调用模型的脚本不能声称自己已经自动做过语义蒸馏。
 

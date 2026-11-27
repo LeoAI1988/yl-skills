@@ -65,3 +65,7 @@
 项目另存反馈账本，至少含 `mode`（record_only/apply_authorized）、`items[].id/clip/baseline_batch/baseline_stage/user_text/source_anchor/action/status/supersedes/evidence`。机器检查、听审、视觉检查与用户批准分开；不能只把状态改为通过。
 
 最终证据同时绑定实际视频、字幕、时间轴、原声音轨、封面和增强输入/回片。源文件不因片名、阶段或批次变动而换 ID。当前快照是可用资产目录，技术/主观验收缺项在回执中明确保存。
+
+## 已有完整版的对照输入
+
+审计计划可在顶层加入 `comparison_edits` 数组。每项使用独立的 `id` 和 `segments`；每个区间使用与新切片一致的 `source`、`start_us`、`end_us`。它们仅作源素材对照，不列作要交付的新片。输出的 `comparison_edits` 逐条记录 `shared_source_seconds` 和 `share_of_clip_unique_source`。帧数、倍速或重复播放次数均不改变分母。

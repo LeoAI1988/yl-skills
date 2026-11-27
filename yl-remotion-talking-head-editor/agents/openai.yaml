@@ -1,4 +1,4 @@
 interface:
-  display_name: "yl · 真人口播 Remotion 剪辑"
-  short_description: "逐字精剪与相关实景穿插，优先第2～3秒进入主题画面，完成字幕及画质验收"
-  default_prompt: "使用 $yl-remotion-talking-head-editor 剪辑我提供的真人口播，按模式完成精剪、相关实景与演示画面、字幕、增强及验收，优先在第2～3秒切入强相关镜头。"
+  display_name: "YL · 真人口播基础剪辑"
+  short_description: "逐字精剪、原声与气口、一次变速、时间轴和成片审片，可组合其他视频技能"
+  default_prompt: "使用 $yl-remotion-talking-head-editor 剪辑这段真人口播，复用已确认的原话、模式和时间轴，按本次需要组合文案重构、版式或图解。"

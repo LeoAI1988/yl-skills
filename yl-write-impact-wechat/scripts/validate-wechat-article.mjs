@@ -55,6 +55,7 @@ function parseArguments(argv) {
     if (flag === "--phase") options.phase = value;
     if (flag === "--md") options.md = value;
     if (flag === "--html") options.html = value;
+    if (flag === "--cover") options.cover = value;
     if (flag === "--cta-file") options.ctaFile = value;
     if (flag === "--max-chars") options.maxChars = Number(value);
     if (flag.startsWith("--")) index += 1;
@@ -63,7 +64,7 @@ function parseArguments(argv) {
 }
 
 function markdownImages(markdown) {
-  return [...markdown.matchAll(/!\[[^\]]*\]\(([^\s)]+)(?:\s+[^)]*)?\)/g)].map((match) => match[1]);
+  return [...markdown.matchAll(/!\[[^\]]*\]\(([^)\n]+)\)/g)].map((match) => match[1].trim());
 }
 
 function embeddedImages(html) {
@@ -146,7 +147,26 @@ function validate(options) {
   }
 
   const embedded = embeddedImages(html);
-  check(images.length > 0, "package_phase_must_contain_markdown_images");
+  const articleMarkup = html.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i)?.[1] ?? "";
+  check((articleMarkup.match(/<img\b/gi) ?? []).length === embedded.length, "body_contains_nonembedded_image");
+  if (options.cover) {
+    const outside = html.replace(/<article\b[^>]*>[\s\S]*?<\/article>/i, "");
+    const previews = [...outside.matchAll(/<img\b[^>]*>/gi)].map(([tag]) => tag);
+    const downloads = [...outside.matchAll(/<a\b[^>]*>/gi)].map(([tag]) => tag).filter(tag => /\sdownload(?:\s|=|>)/i.test(tag));
+    try {
+      const cover = readFileSync(resolve(dirname(options.md), options.cover));
+      const matchesCover = (tag, attr) => {
+        const encoded = tag.match(new RegExp(`\\s${attr}\\s*=\\s*["']data:image/[^;,]+;base64,([^"']+)["']`, "i"))?.[1];
+        return encoded && Buffer.from(encoded, "base64").equals(cover);
+      };
+      check(previews.some(tag => matchesCover(tag, "src")), "cover_preview_missing_or_different");
+      check(downloads.some(tag => matchesCover(tag, "href")), "cover_download_missing_or_different");
+    } catch {
+      check(false, "cover_file_not_readable");
+    }
+  } else {
+    check(images.length > 0, "package_phase_must_contain_markdown_images");
+  }
   check(embedded.length === images.length, "embedded_image_count_mismatch");
 
   let imageHashesMatch = embedded.length === images.length;

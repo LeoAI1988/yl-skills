@@ -32,13 +32,13 @@
 
 文字放行后，按顺序执行：
 
-1. 冻结正文和标题。
-2. 规划封面；只有必要的真实资料证据才规划正文图片。
+1. 冻结最新手改的标题、正文和结尾。固定结尾从本次输入或安装者个人规则读取，有手改时以确认版本为准。
+2. 完整包装包含独立封面。按本次和安装者的公众号成品风格拟定醒目标题，另为需要说明的概念、过程或证据规划正文图。
 3. 获取或生成并检查最终图片。
-4. 把最终图片引用写回同一份 Markdown。
+4. 把正文图引用写回同一份 Markdown，按插入位置核对。独立封面走构建参数。旧图或备选图即使在同一目录，也只使用定稿实际引用的图片。
 5. 从该 Markdown 生成一键复制 HTML。
 6. 生成发布说明和事实说明。
-7. 运行自动校验并完成一次真实复制粘贴检查。
+7. 核对正文、封面下载和图片。实际执行过的复制粘贴、编辑器预览和接口回读分别记录。用户要求入草稿时继续完成[微信草稿写入与回读](official-account-draft.md)。
 
 ## 配图合同
 
@@ -61,7 +61,7 @@ Alt：
 
 - 视觉服务本篇主题，不复用无关文章的家族传记、复古纸张或旧照片分格风格。
 - 封面涉及真实人物时，优先使用公开真人照片，保存来源链接；只调整裁切、色调、明暗、背景和标题排版，不篡改面部，不用AI生成肖像冒充真人。
-- 正文默认不使用装饰性AI配图，只在真实聊天截图、公开资料图、数据图等确有证据或解释价值时插图；没有必要素材时只保留封面。
+- 正文图可以是资料图、数据图或原创示意图。对照关系、模块依赖和前后变化优先画清楚对象及连线，让读者从图中看懂这一段。素材选择以作者要求为准。
 - 不涉及真人的AI科技封面可使用黑色、警报红、电光蓝、数据流、速度感和危机感。
 - 图片口号取自正文核心判断，必须呼应上下文，不另造一套观点。
 - 口号使用醒目、清晰、美观的大字；用户指定时采用白色大字。
@@ -73,7 +73,7 @@ Alt：
 在 Skill 根目录运行：
 
 ```powershell
-node scripts/build-wechat-html.mjs --input ARTICLE.md --output ARTICLE.html
+node scripts/build-wechat-html.mjs --input ARTICLE.md --output ARTICLE.html --cover assets/cover.png
 # 可选：追加 --cta-file CTA.txt，读取安装者确认的结尾
 ```
 
@@ -83,7 +83,7 @@ node scripts/build-wechat-html.mjs --input ARTICLE.md --output ARTICLE.html
 - 使用内联样式生成公众号正文。
 - 将二级小标题设置为约22px、900字重。
 - 指定 `--cta-file CTA.txt` 时，校验正文以该 CTA 结尾并将对应段落设置为红色、加粗，与上文额外拉开约一行。未提供时不插入或强制任何固定 CTA。
-- 在正文外提供“复制公众号全文”按钮。
+- 传入 `--cover` 时，在正文外预览并下载同一份独立封面，分别提供“复制标题”和“复制正文”。封面路径相对 Markdown 所在目录，也支持绝对路径。省略该参数时保留旧版全文复制行为。
 - 同时复制 `text/html` 和 `text/plain`，并提供回退复制。
 
 只允许本地图片路径。远程图片、缺失图片和不支持的格式必须先处理。
@@ -99,7 +99,7 @@ node scripts/validate-wechat-article.mjs --phase text --md ARTICLE.md --max-char
 阶段B：
 
 ```powershell
-node scripts/validate-wechat-article.mjs --phase package --md ARTICLE.md --html ARTICLE.html --max-chars 2500
+node scripts/validate-wechat-article.mjs --phase package --md ARTICLE.md --html ARTICLE.html --cover assets/cover.png --max-chars 2500
 ```
 
 调整 `--max-chars` 以符合当轮明确篇幅。

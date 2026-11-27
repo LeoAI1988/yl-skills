@@ -67,6 +67,7 @@ def main():
     for mutate in (lambda d: d['clips'][0]['segments'][0].update(source_end_frame=181),
                    lambda d: d['masks'][0].update(color='#11111188'),
                    lambda d: d['style']['title_panel'].update(opacity=2),
+                   lambda d: d['style']['title_panel'].update(featherPx=-1),
                    lambda d: d['clips'][0].update(id='../bad'),
                    lambda d: d['clips'][0]['segments'][0].update(text='')):
         bad = copy.deepcopy(data); mutate(bad)
@@ -113,6 +114,7 @@ def main():
         assert sum(abs(x-y) for x,y in zip(left,right)) / len(left) < 8, 'Wrong reordered source frame'
     # Packaging revision copies approved AAC; no extra captions, title can be added/removed independently.
     revision = copy.deepcopy(data)
+    revision['style']['title_panel']['featherPx'] = 16
     for c, old in zip(revision['clips'], d['clips']):
         c['approved_audio'] = {'path': str(output / 'exports' / (c['id'] + '.mp4')),
                                'timeline_sha256': old['timeline_sha256']}
@@ -122,6 +124,11 @@ def main():
     slicer.prepare(revision_manifest, root / 'v2', a.ffprobe)
     p2 = root / 'v2' / 'Remotion'; attach_modules(p2, a.modules)
     subprocess.run([a.node, 'render-layers.mjs'], cwd=p2, env=render_env, check=True)
+    soft_layer = slicer.run([a.ffmpeg, '-v', 'error', '-i', p2/'layers/Clip01-Title.png',
+                             '-frames:v', '1', '-pix_fmt', 'rgba', '-f', 'rawvideo', '-'])
+    # At y=50 the title text is absent. Blur must span both sides of the left panel edge at x=8.
+    alpha = [soft_layer[(50*320+x)*4+3] for x in (0, 8, 24)]
+    assert 0 < alpha[0] < alpha[1] < alpha[2] <= 165, ('Missing feather', alpha)
     assert slicer.export(p2, a.ffmpeg, a.ffprobe)['technical'] == 'passed'
     for c in d['clips']:
         assert slicer.audio_packets(output / 'exports' / (c['id'] + '.mp4'), a.ffprobe) == slicer.audio_packets(root / 'v2' / 'exports' / (c['id'] + '.mp4'), a.ffprobe)

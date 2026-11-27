@@ -32,7 +32,8 @@ export const Layer = ({title, mask, styleConfig = {}, font}: any) => {
       width: styleConfig.title_panel.rect[2], height: styleConfig.title_panel.rect[3],
       backgroundColor: styleConfig.title_panel.color ?? '#000000',
       opacity: styleConfig.title_panel.opacity ?? 0.6,
-      borderRadius: styleConfig.title_panel.radius ?? 0}} />}
+      borderRadius: styleConfig.title_panel.radius ?? 0,
+      filter: styleConfig.title_panel.featherPx ? `blur(${styleConfig.title_panel.featherPx / 2}px)` : undefined}} />}
     <div style={{...common, left: styleConfig.title_left ?? 80,
       top: styleConfig.title_top ?? 50, width: styleConfig.title_width ?? '90%',
       fontSize: styleConfig.font_size ?? 64, textAlign: styleConfig.title_align ?? 'left'}}>

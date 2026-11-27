@@ -24,6 +24,25 @@ function runBuilder(args) {
   });
 }
 
+test("a standalone cover is downloadable outside the body with zero inline images", () => {
+  const dir = mkdtempSync(join(tmpdir(), "wechat-cover-"));
+  const md = join(dir, "article.md");
+  const html = join(dir, "article.html");
+  const cover = join(dir, "独立封面.png");
+  writeFileSync(md, "# 封面测试\n\n一段正文。\n");
+  writeFileSync(cover, ONE_PIXEL_PNG);
+  const build = runBuilder(["--input", md, "--output", html, "--cover", cover]);
+  assert.equal(build.status, 0, build.stderr);
+  const validate = () => run(["--phase", "package", "--md", md, "--html", html, "--cover", cover]);
+  const ok = validate();
+  assert.equal(ok.status, 0, ok.stdout);
+  writeFileSync(cover, Buffer.from("different"));
+  const mismatch = validate();
+  assert.equal(mismatch.status, 1);
+  assert.match(mismatch.stdout, /cover_preview_missing_or_different/);
+  assert.match(mismatch.stdout, /cover_download_missing_or_different/);
+});
+
 test("text phase accepts Markdown-only approved shape", () => {
   const dir = mkdtempSync(join(tmpdir(), "impact-text-"));
   const md = join(dir, "article.md");

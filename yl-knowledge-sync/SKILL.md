@@ -5,6 +5,10 @@ description: 将配置的 Get 或其他笔记来源同步到本地，并自动�
 
 # 来源同步
 
+### 已配置的正文优先流程
+
+先读取本次 profile。仅当 `personal_library.enabled=true` 且 `generate_atoms=false` 时，执行 [共同合同中的正文优先分支](../yl-knowledge/references/contract.md#正文优先分支)。此模式覆盖下文“必须蒸馏/更新原子”的默认流程：新增只登记校订正文、归属与版本，接金句候选/拒收、关系、检索及验收。跳过原子扫描、补卡、重建及其验收钩子。未启用时沿用下文原有流程。
+
 先读同级 `yl-knowledge/references/contract.md`、`yl-toolbox/references/profile.md`，再读 [连接器](references/connectors.md)。用户请求同步就要走完整知识流程，不要求用户知道“蒸馏”。
 
 Get：`python -B scripts/getnote_sync.py --profile PROFILE`。API 凭证仅从环境变量读取。配置库名必须精确匹配实时列表，分页到尽头，保留字符串 ID。原始逐字稿优先于 AI 摘要；新正文写入不可覆盖的版本目录。库内身份不等于作者归属。

@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl · 多端更新"
+  short_description: "将同一套 YL 核心同步至已配置的宿主、工作台、客户端和 GitHub"
+  default_prompt: "使用 $yl-multi-end-update 同步已授权的各端，并验证实际安装与发行附件。"

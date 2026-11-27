@@ -1,0 +1,20 @@
+{
+  "fps": "25/1",
+  "sources": [{"id": "demo", "duration_us": 20000000}],
+  "clips": [
+    {
+      "id": "clip-a",
+      "title": "展板怎么换到了门口",
+      "question": "为什么把展板换到门口？",
+      "thesis": "进门时看见，才有人停下来。",
+      "logic": ["先见变化", "交代原先的位置", "在新位置看见结果"],
+      "opening": "我把展板搬到了门口。",
+      "ending": "这回，人一进来就停下了。",
+      "segments": [
+        {"source": "demo", "start_us": 8000000, "end_us": 11000000, "rate": "1", "text": "我把展板搬到了门口。", "purpose": "前置变化"},
+        {"source": "demo", "start_us": 1000000, "end_us": 6000000, "rate": "1", "text": "原来它挂在楼梯后面。人走过去，看不见。", "purpose": "补回原因"},
+        {"source": "demo", "start_us": 13000000, "end_us": 17000000, "rate": "1", "text": "这回，人一进来就停下了。", "purpose": "用结果收束"}
+      ]
+    }
+  ]
+}

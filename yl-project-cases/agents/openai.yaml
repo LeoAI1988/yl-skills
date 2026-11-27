@@ -1,0 +1,4 @@
+interface:
+  display_name: "yl · 项目案例"
+  short_description: "归档、更新、检索真实项目案例并核对来源证据"
+  default_prompt: "使用 $yl-project-cases 查找可复用的项目案例，或将已完成的工作整理成可回源的案例卡。"

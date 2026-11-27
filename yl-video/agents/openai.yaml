@@ -1,4 +1,4 @@
 interface:
-  display_name: "yl 自媒体·视频"
-  short_description: "自媒体下的视频子入口，统筹课程演示、长视频切片、口播、访谈、封面和母带归档"
-  default_prompt: "使用 $yl-media 进入视频分支，再由 $yl-video 根据我的任务选择剪辑、封面或归档工具。"
+  display_name: "YL · 视频"
+  short_description: "自由组合口播剪辑、长稿重构、横竖版式、重点图解和场景剪辑"
+  default_prompt: "使用 $yl-video 按我需要的成片数量、内容结构、画幅和图层选择技能。"

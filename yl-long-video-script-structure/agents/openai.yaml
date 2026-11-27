@@ -1,0 +1,4 @@
+interface:
+  display_name: "YL 长视频文案逻辑重构"
+  short_description: "从全文选择有依据的开头，重排原声段落，交付完整顺读稿和回源映射"
+  default_prompt: "使用 $yl-long-video-script-structure 从我的完整原稿重构视频，沿用已确认的开头与表达，交付逐字顺读稿和每段来源。"

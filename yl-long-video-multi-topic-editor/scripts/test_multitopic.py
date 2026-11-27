@@ -32,6 +32,16 @@ def plan(clips=None):
 
 
 class TimelineTests(unittest.TestCase):
+    def test_comparison_counts_repeated_hook_once(self):
+        data = plan([clip(segments=[segment(), segment(), segment(source="source-b")])])
+        data["comparison_edits"] = [{"id":"full", "segments":[segment(end=5_000_000), segment(end=4_000_000)]}]
+        record = tool.audit(data)["comparison_edits"][0]
+        self.assertEqual(record["shared_source_seconds"], 5)
+        self.assertEqual(record["share_of_clip_unique_source"], .25)
+        data["comparison_edits"][0]["segments"][0]["source"] = "other"
+        with self.assertRaises(ValueError):
+            tool.audit(data)
+
     def test_piecewise_speed_accounts_for_the_opening_separately(self):
         a = segment(end=36_000_000, rate="6/5")
         b = segment(start=40_000_000, end=79_000_000, rate="13/10")

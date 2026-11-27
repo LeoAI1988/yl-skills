@@ -1,5 +1,5 @@
 """Selected, provenance-preserving, incremental text sync; no local mutation."""
-import argparse,collections,hashlib,json,re,time,urllib.request,urllib.error
+import argparse,collections,hashlib,importlib.util,json,re,time,urllib.request,urllib.error
 from pathlib import Path
 import yaml
 LOADER=getattr(yaml,'CSafeLoader',yaml.SafeLoader)
@@ -39,6 +39,25 @@ def collect(cfg):
             h=sha(text.encode());title=next((x.lstrip('# ').strip() for x in text.splitlines() if x.startswith('# ')),p.stem)
             docs.append({'id':sha(rel.encode()),'hash':h,'title':title[:300],'source':rel,'category':entry['category'],'text':text,'meta':{'source_sha256':sha(raw),'metadata':m}})
     if not docs:raise RuntimeError('Selection is empty; refusing to clear the cloud service.')
+    if cfg.get('include_verified_quotes'):
+        profile=Path(cfg.get('profile') or Path.home()/'.config/yl-toolbox/profile.json')
+        metadata_profile=json.loads(profile.read_text('utf-8-sig'))
+        if Path(metadata_profile['knowledge_root']).resolve()!=root:raise ValueError('Knowledge profile does not match selected sync root.')
+        module_path=root/'.obsidian/plugins/yl-knowledge-workbench/backend/personal_library.py'
+        spec=importlib.util.spec_from_file_location('verified_personal_library',module_path)
+        module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+        library=module.PersonalLibrary(metadata_profile)
+        rows=library.active_sources()
+        allowed={str((root/d['source']).resolve()).casefold():d for d in docs if d['category']=='works'}
+        for q in library.verified_quotes(only_direct=True):
+            row=rows.get(q['source_id'])
+            parent=allowed.get(str(Path(row['path']).resolve()).casefold()) if row else None
+            if not parent or q['text'] not in parent['text'] or q.get('origin') not in ('hand_selected','source_extraction'):continue
+            # Only excerpts of an independently approved, selected public work can leave this machine.
+            meta={'source_id':parent['id'],'source_hash':parent['hash'],'origin':q['origin'],'status':q['status']}
+            identity=sha(('quote/'+q['id']+'/'+json.dumps(meta,sort_keys=True)).encode())
+            docs.append({'id':identity,'hash':sha(q['text'].encode()),'title':parent['title'],'source':parent['source'],
+                         'category':'verified_quotes','text':q['text'],'meta':meta})
     return docs,skipped
 def request(creds,path,body=None):
     base=creds['base'].rstrip('/');u=urllib.parse.urlsplit(base)

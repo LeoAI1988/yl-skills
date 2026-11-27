@@ -6,7 +6,7 @@ import {
   readFileSync,
   writeFileSync,
 } from "node:fs";
-import { dirname, extname, isAbsolute, resolve } from "node:path";
+import { basename, dirname, extname, isAbsolute, resolve } from "node:path";
 
 function parseArgs(argv) {
   const args = {};
@@ -166,7 +166,15 @@ function renderArticle(markdown, inputDir, cta = "") {
   return blocks.map((block, index) => blockToHtml(block, inputDir, ctaBlocks.length > 0 && index >= blocks.length - ctaBlocks.length)).join("\n");
 }
 
-function documentTemplate(articleHtml, title) {
+function documentTemplate(articleHtml, title, cover) {
+  let coverPanel = "";
+  if (cover) {
+    const heading = articleHtml.match(/^<h1\b[^>]*>[\s\S]*?<\/h1>/);
+    if (!heading) throw new Error("A cover package requires a leading Markdown title");
+    articleHtml = heading[0] + '<section id="article-body">' + articleHtml.slice(heading[0].length) + "</section>";
+    const filename = escapeHtml(basename(cover.imagePath));
+    coverPanel = `<figure class="cover"><img src="${cover.dataUri}" alt="${escapeHtml(title)} · 公众号封面" /><figcaption><a download="${filename}" href="${cover.dataUri}">下载封面</a></figcaption></figure>`;
+  }
   return `<!doctype html>
 <html lang="zh-CN">
 <head>
@@ -181,22 +189,36 @@ function documentTemplate(articleHtml, title) {
     .toolbar button:hover{background:#c9272c}
     #copy-status{min-width:150px;color:#fff;font-size:14px}
     .page{width:min(100%,760px);margin:28px auto;padding:0 16px}
+    .cover{margin:0 0 16px;background:#fff}.cover img{display:block;width:100%;height:auto}.cover figcaption{padding:10px 16px}
+    .toolbar{flex-wrap:wrap}
     #article{padding:38px 34px;background:#fff;box-shadow:0 8px 32px rgba(0,0,0,.08)}
     @media(max-width:640px){.page{margin:0;padding:0}.toolbar{justify-content:flex-start}.toolbar button{padding:10px 16px}#article{padding:28px 20px;box-shadow:none}}
   </style>
 </head>
 <body>
   <div class="toolbar">
-    <button id="copy-button" type="button">复制公众号全文</button>
+    ${cover ? '<button id="copy-title" type="button">复制标题</button>' : ''}
+    <button id="copy-button" type="button">${cover ? '复制正文' : '复制公众号全文'}</button>
     <span id="copy-status" role="status" aria-live="polite">图片已内嵌，可离线复制</span>
   </div>
   <main class="page">
+    ${coverPanel}
     <article id="article">${articleHtml}</article>
   </main>
   <script>
     const button = document.getElementById("copy-button");
     const status = document.getElementById("copy-status");
-    const article = document.getElementById("article");
+    const article = document.getElementById("article-body") || document.getElementById("article");
+    document.getElementById("copy-title")?.addEventListener("click", async () => {
+      const heading = document.querySelector("#article h1");
+      try {
+        if (navigator.clipboard?.writeText) await navigator.clipboard.writeText(heading.innerText);
+        else copySelection(heading);
+        status.textContent = "标题已复制";
+      } catch {
+        status.textContent = "请选中标题手动复制";
+      }
+    });
 
     async function richCopy() {
       const html = article.innerHTML;
@@ -211,9 +233,13 @@ function documentTemplate(articleHtml, title) {
         return;
       }
 
+      copySelection(article);
+    }
+
+    function copySelection(element) {
       const selection = window.getSelection();
       const range = document.createRange();
-      range.selectNodeContents(article);
+      range.selectNodeContents(element);
       selection.removeAllRanges();
       selection.addRange(range);
       const copied = document.execCommand("copy");
@@ -254,7 +280,8 @@ function main() {
   const cta = args["cta-file"] ? readFileSync(resolve(args["cta-file"]), "utf8").replace(/^\uFEFF/, "").trim() : "";
   if (args["cta-file"] && !cta) throw new Error("CTA file must not be empty");
   const articleHtml = renderArticle(markdown, dirname(inputPath), cta);
-  const html = documentTemplate(articleHtml, title);
+  const cover = args.cover ? resolveLocalImage(args.cover, dirname(inputPath)) : null;
+  const html = documentTemplate(articleHtml, title, cover);
 
   mkdirSync(dirname(outputPath), { recursive: true });
   writeFileSync(outputPath, html, "utf8");

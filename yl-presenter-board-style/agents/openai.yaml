@@ -1,0 +1,4 @@
+interface:
+  display_name: "YL · 横屏人物图解风格"
+  short_description: "将真人口播做成横屏人物窗、动态图解和双语字幕"
+  default_prompt: "用 $yl-presenter-board-style 按我选定的参考风格剪辑这段口播。"
